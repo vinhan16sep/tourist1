@@ -188,4 +188,19 @@ class MY_Model extends CI_Model {
         }
         return $temp_slug;
     }
+    public function get_all_with_pagination_and_sort_search($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '') {
+        $this->db->select($this->table .'.*, '. $this->table_lang .'.title');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
+        $this->db->like($this->table_lang .'.title', $keywords);
+        $this->db->where($this->table .'.is_deleted', 0);
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
+        $this->db->limit($limit, $start);
+        $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
+        $this->db->order_by($this->table .".sort", $order);
+
+        return $result = $this->db->get()->result_array();
+    }
 }
