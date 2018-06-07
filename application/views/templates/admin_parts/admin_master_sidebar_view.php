@@ -45,23 +45,7 @@
                         <li class="<?php echo ($this->uri->segment(2) == 'about')? 'active' : '' ?>">
                             <a href="<?php echo base_url('admin/about') ?>"><i class="fa fa-group"></i> Giới Thiệu</a>
                         </li>
-                        <li class="<?php echo ($this->uri->segment(2) == 'our_message')? 'active' : '' ?>">
-                            <a href="<?php echo base_url('admin/our_message') ?>"><i class="fa fa-comments-o"></i></i> Thông điệp</a>
-                        </li>
-                        <li class="<?php echo ($this->uri->segment(2) == 'our_methods')? 'active' : '' ?>">
-                            <a href="<?php echo base_url('admin/our_methods') ?>"><i class="fa fa-gears"></i> Phương Pháp</a>
-                        </li>
                     </ul>
-                </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'courses')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/courses') ?>">
-                        <i class="fa fa-book" aria-hidden="true"></i> <span>Khóa Học</span>
-                    </a>
-                </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'document')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/document') ?>">
-                        <i class="fa fa-file" aria-hidden="true"></i> <span>Tài Liệu</span>
-                    </a>
                 </li>
                 <li class="<?php echo ($this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'blog')? 'active' : 'treeview' ?>">
                     <a href="">
@@ -79,21 +63,6 @@
                             <a href="<?php echo base_url('admin/blog') ?>"><i class="fa fa-list"></i> Danh Sách Bài Viêt</a>
                         </li>
                     </ul>
-                </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'register_courses')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/register_courses') ?>">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Đăng Ký Khóa Học</span>
-                    </a>
-                </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'register_document')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/register_document') ?>">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Đăng Ký Tải Tài Liệu</span>
-                    </a>
-                </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'landing')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/landing') ?>">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Landing Page</span>
-                    </a>
                 </li>
                 <li class="header">DOCUMENTATION</li>
                 <li>
