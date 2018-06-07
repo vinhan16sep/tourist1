@@ -12,7 +12,6 @@ if (!function_exists('handle_multi_language_request')) {
     function handle_multi_language_request($foreign_key, $id, $request_language_template, $request, $languages) {
         $list_request = array_keys($request);
         $converted_request = array();
-
         for ($i = 0; $i < count($languages); $i++) {
             $converted_request[$i] = array($foreign_key => $id, 'language' => $languages[$i]);
             for ($j = 0; $j < count($list_request); $j++) {
@@ -49,6 +48,62 @@ if (!function_exists('handle_common_author_data')) {
     }
 }
 
+//build array for dropdown form template
+if (!function_exists('handle_common_author_data')) {
+    function build_array_for_dropdown($data = array(), $id = null){
+        $new_data = array(0 => 'Danh mục gốc');
+        foreach ($data as $key => $value) {
+            $new_data[$value['id']] = $value['title'];
+
+        }
+        unset($new_data[$id]);
+        return $new_data;
+    }
+
+    function build_array_by_slug_for_dropdown($data = array()){
+        $new_data = array('' => 'Click để chọn');
+        foreach ($data as $key => $value) {
+            if($value['is_activated'] == 0){
+                $new_data[$value['slug']] = $value['title'];
+            }else{
+                $new_data[$value['slug']] = $value['title'].MESSAGE_ERROR_TURN_ON_POST_PERSENT;
+            }
+
+        }
+        return $new_data;
+    }
+}
+
+//build title for input
+if (!function_exists('handle_common_author_data')) {
+    function build_template(){
+        $template = array(
+            'vi' => array(
+                'title' => 'Tiêu đề',
+                'metakeywords' => 'Từ khóa Meta',
+                'metadescription' => 'Mô tả Meta',
+                'description' => 'Giới Thiệu',
+                'content' => 'Nội Dung'
+            ),
+            'en' => array(
+                'title' => 'Title',
+                'metakeywords' => 'Meta keywords',
+                'metadescription' => 'Meta description',
+                'description' => 'Description',
+                'content' => 'Content'
+            ),
+        );
+        return $template;
+    }
+}
+/**
+
+    TODO:
+    - $select = array('title', 'content', ...);
+    - $page_languages = array('vi', 'en', 'cn' ...);
+
+ */
+
 if (!function_exists('handle_common_author_data')) {
     function build_language($controller, $detail, $select = array(), $page_languages){
         foreach ($select as $key => $value) {
@@ -62,13 +117,3 @@ if (!function_exists('handle_common_author_data')) {
     }
 }
 
-if (!function_exists('handle_common_author_data')) {
-    function build_array_for_dropdown($data = array(), $id = null){
-        foreach ($data as $key => $value) {
-            $new_data[$value['id']] = $value['title'];
-
-        }
-        unset($new_data[$id]);
-        return $new_data;
-    }
-}

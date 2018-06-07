@@ -15,7 +15,7 @@ class Product_category extends Admin_Controller{
         $this->load->helper('common');
         $this->load->helper('file');
 
-        
+        $this->data['template'] = build_template();
         $this->data['request_language_template'] = $this->request_language_template;
         $this->data['controller'] = $this->product_category_model->table;
         $this->author_data = handle_author_common_data();
@@ -139,8 +139,8 @@ class Product_category extends Admin_Controller{
                     if($unique_slug !== $this->input->post('slug_shared')){
                         $unique_slug = $this->product_category_model->build_unique_slug($this->input->post('slug_shared'));
                     }
-                    if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && !empty($_FILES['image_shared']['name'])){
-                        mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0755);
+                    if(!file_exists("assets/upload/product_category/".$unique_slug) && !empty($_FILES['image_shared']['name'])){
+                        mkdir("assets/upload/product_category/".$unique_slug, 0755);
                         mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0755);
                     }
                     if(!empty($_FILES['image_shared']['name'])){
@@ -189,14 +189,11 @@ class Product_category extends Admin_Controller{
         $this->load->model('product_model');
         if($id &&  is_numeric($id) && ($id > 0)){
             if($this->product_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
-                return $this->output
-                    ->set_content_type('application/json')
-                    ->set_status_header(404)
-                    ->set_output(json_encode(array('status' => 404,'message' => MESSAGE_ISSET_ERROR)));
+                return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
             }
             $where = array('product_category_id' => $id,'is_deleted' => 0);
             $product = $this->product_model->find_rows($where);// lấy số bài viết thuộc về category
-            $where = array('parent_id' => $id);
+            $where = array('parent_id' => $id,'is_deleted' => 0);
             $parent_id = $this->product_category_model->find_rows($where);//lấy số con của category
             if($product == 0 && $parent_id == 0){
                 $data = array('is_deleted' => 1);
@@ -240,9 +237,9 @@ class Product_category extends Admin_Controller{
     public function active(){
         $this->load->model('product_model');
         $id = $this->input->post('id');
-        $product_cateogry = $this->product_category_model->find($id);
-        if($product_cateogry['parent_id'] != 0){
-            $parent_id = $this->product_category_model->find($product_cateogry['parent_id']);
+        $product_category = $this->product_category_model->find($id);
+        if($product_category['parent_id'] != 0){
+            $parent_id = $this->product_category_model->find($product_category['parent_id']);
             if($parent_id['is_activated'] == 1){ 
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_ACTIVE_CATEGORY);
             }
