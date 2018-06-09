@@ -16,6 +16,7 @@ class Product extends Admin_Controller{
 		$this->load->helper('common');
         $this->load->helper('file');
 
+        $this->data['template'] = build_template();
         $this->data['request_language_template'] = $this->request_language_template;
         $this->data['controller'] = $this->product_model->table;
 		$this->author_data = handle_author_common_data();

@@ -39,7 +39,7 @@
                                         <div class="item col-md-6 row_<?php echo $key ?>">
                                             <div class="mask-sm">
                                                 <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/' .$value) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>" width="100px" >
-                                                <i class="fa fa-times-circle fa-2x" onclick="remove_image('product',  <?php echo $detail['id'] ?>, '<?php echo $value ?>', <?php echo $key ?>)" ></i>
+                                                <i class="fa fa-times-circle fa-2x" onclick="remove_image('product',  <?php echo $detail['id'] ?>, '<?php echo $value ?>', <?php echo $key ?>)" style="cursor: pointer;" ></i>
                                             </div>
                                         </div>
                                     <?php endforeach ?>

@@ -1,10 +1,17 @@
 switch(window.location.origin){
     case 'http://myielts.vn':
-        var HOSTNAME = 'http://myielts.vn/';
+        var HOSTNAME = 'http://tourist1.vn/';
         break;
     default:
-        var HOSTNAME = 'http://localhost/myielts/';
+        var HOSTNAME = 'http://localhost/tourist1/';
 }
+switch(window.location.origin){
+    case 'http://tourist1.com':
+        var HOSTNAMEADMIN = 'http://tourist1.com/admin';
+        break;
+    default:
+        var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
+} 
 
 function to_slug(str){
     str = str.toLowerCase();
