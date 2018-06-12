@@ -184,6 +184,7 @@
         </div>
     </section>
 </div>
+<script src="<?php echo base_url('assets/js/');?>client.js" type="text/javascript" charset="utf-8" async defer></script>
 <script type="text/javascript">
     function isNumberKey(evt)
     {

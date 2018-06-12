@@ -63,12 +63,7 @@ $(document).ready(function(){
         ],
         external_filemanager_path: HOSTNAME + "filemanager/",
         filemanager_title: "Responsive Filemanager",
-        external_plugins: {"filemanager": HOSTNAME + "filemanager/plugin.min.js"},
-        onchange_callback: function(editor) {
-            tinymce.triggerSave();
-            $("#" + editor.id).valid();
-        }
-
+        external_plugins: {"filemanager": HOSTNAME + "filemanager/plugin.min.js"}
     });
 
     $('#title_vi').change(function(){

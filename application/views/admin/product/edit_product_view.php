@@ -198,6 +198,7 @@
                             <ul class="nav nav-tabs" role="tablist" id="nav-product">
                                 <li role="presentation" id="content-home" class="active"><button href="#home" class="btn btn-primary" aria-controls="home" role="tab" data-toggle="tab">Home</button></li>
                                 <li role="presentation" id="add-date"><button href="#add-date" class="btn btn-primary" aria-controls="add-date" role="tab" data-toggle="tab">Profile</button></li>
+                                <!-- <input type="button" name="submit_shared" value="OK" class="btn btn-primary" id="submit-shared"> -->
                                 <?php echo form_submit('submit_shared', 'OK', 'class="btn btn-primary" id="submit-shared" '); ?>
                             </ul>
                         </div>
@@ -207,7 +208,7 @@
             </div>
         </section>
     </div>
-
+<script src="<?php echo base_url('assets/js/');?>client.js" type="text/javascript" charset="utf-8" async defer></script>
 <script type="text/javascript">
     $(".collapse").css("height","0px");
     numberdate = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
