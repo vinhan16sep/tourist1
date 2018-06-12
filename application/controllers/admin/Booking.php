@@ -30,9 +30,9 @@ class Booking extends Admin_Controller {
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->booking_model->count_search_booking();
+        $total_rows  = $this->booking_model->count_search_booking($status);
         if($keywords != ''){
-            $total_rows  = $this->booking_model->count_search_booking($keywords);
+            $total_rows  = $this->booking_model->count_search_booking($status, $keywords);
         }
 
         $this->load->library('pagination');
@@ -54,7 +54,6 @@ class Booking extends Admin_Controller {
         }
 
         $this->data['booking'] = $result;
-        // print_r($result);die;
         $this->render('admin/booking/list_booking_view');
     }
 
