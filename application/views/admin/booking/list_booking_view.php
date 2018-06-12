@@ -52,7 +52,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <form action="<?php echo base_url('admin/booking/'.$this->uri->segment(3)) ?>" method="get">
+                            <?php $action = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 'index' ?>
+                            <form action="<?php echo base_url('admin/booking/'. $action) ?>" method="get">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
                                     <span class="input-group-btn">
@@ -72,7 +73,7 @@
                                         <th>No.</th>
                                         <th>Họ Tên</th>
                                         <th>Thời gian</th>
-                                        <th>Số điện thoại</th>
+                                        <th>Tour</th>
                                         <th>Xem thêm</th>
                                         <th>Tình trạng</th>
                                         <th>Hủy bỏ</th>
@@ -82,20 +83,20 @@
                                     <?php if ($booking): ?>
                                         <?php foreach ($booking as $key => $value): ?>
                                         <?php $i = 1 ?>
-                                            <tr class="row-status-<?php echo $value['id']; ?>">
+                                            <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                 <td><?php echo $value['time'] ?></td>
-                                                <td><?php echo $value['phone'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/product/' .$value['product_id']) ?>"><?php echo $value['product_title'] ?></a></td>
 												<!--
 												<td><?php echo $value['address'] ?></td>
 												-->
-                                                <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['id']; ?>" aria-expanded="false" aria-controls="collapseExample">
+                                                <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['booking_id']; ?>" aria-expanded="false" aria-controls="collapseExample">
                                                     Chi Tiết
                                                 </a></td>
                                                 <td>
                                                     <?php if ($value['status'] == 0): ?>
-                                                        <span class="label label-warning status-success" data-id="<?php echo $value['id']; ?>">Chờ xác nhận</span>
+                                                        <span class="label label-warning status-success" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Chờ xác nhận</span>
                                                     <?php elseif($value['status'] == 1): ?>
                                                         <span class="label label-success">Đã xác nhận</span>
                                                     <?php else: ?>
@@ -105,18 +106,22 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($value['status'] == 2): ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['id']; ?>" style="pointer-events: none" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="pointer-events: none; cursor: pointer;" >Hủy bỏ</span>
                                                     <?php else: ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['id']; ?>" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Hủy bỏ</span>
                                                     <?php endif ?>
                                                     
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="7">
-                                                    <div class="collapse" id="collapse_<?php echo $value['id']; ?>">
+                                                    <div class="collapse" id="collapse_<?php echo $value['booking_id']; ?>">
                                                         <div class="well">
                                                             <table class="table">
+                                                                <tr>
+                                                                    <td style="width: 20%"><strong>Số điện thoại : </strong></td>
+                                                                    <td><?php echo $value['phone'] ?></td>
+                                                                <tr>
                                                                 <tr>
                                                                     <td><strong>Email : </strong></td>
                                                                     <td><?php echo $value['email'] ?></td>
@@ -131,6 +136,10 @@
                                                                 <tr>
                                                                     <td><strong>Em bé (dưới 2 tuổi) : </strong></td>
                                                                     <td><?php echo $value['infants'] ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><strong>Nội dung: </strong></td>
+                                                                    <td><?php echo $value['content'] ?></td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -149,7 +158,7 @@
                                         <th>No.</th>
                                         <th>Họ Tên</th>
                                         <th>Thời gian</th>
-                                        <th>Số điện thoại</th>
+                                        <th>Tour</th>
                                         <th>Xem thêm</th>
                                         <th>Tình trạng</th>
                                         <th>Hủy bỏ</th>
