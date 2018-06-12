@@ -12,7 +12,6 @@ switch(window.location.origin){
     default:
         var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
 } 
-
 function to_slug(str){
     str = str.toLowerCase();
 
@@ -46,6 +45,7 @@ $(document).ready(function(){
         height: 300,
         relative_urls: false,
         remove_script_host: false,
+        forced_root_block : false,
         plugins: [
             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -63,7 +63,12 @@ $(document).ready(function(){
         ],
         external_filemanager_path: HOSTNAME + "filemanager/",
         filemanager_title: "Responsive Filemanager",
-        external_plugins: {"filemanager": HOSTNAME + "filemanager/plugin.min.js"}
+        external_plugins: {"filemanager": HOSTNAME + "filemanager/plugin.min.js"},
+        onchange_callback: function(editor) {
+            tinymce.triggerSave();
+            $("#" + editor.id).valid();
+        }
+
     });
 
     $('#title_vi').change(function(){

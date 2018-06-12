@@ -112,52 +112,44 @@
                                     <?php foreach ($template as $key => $value): ?>
                                         <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
                                             <?php foreach ($value as $k => $val): ?>
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped">
-                                                        <tbody>
-                                                            <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
-                                                                <tr>
-                                                                    <th style="width: 100px">Tiêu đề: </th>
-                                                                    <td><?php echo $detail['title_'. $key] ?></td>
-                                                                </tr>
-                                                            <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
-                                                                <tr>
-                                                                    <th style="width: 100px">Giới thiệu: </th>
-                                                                    <td><?php echo $detail['description_'. $key] ?></td>
-                                                                </tr>
-                                                            <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
-                                                                <tr>
-                                                                    <th style="width: 100px">Nội dung: </th>
-                                                                    <td><?php echo $detail['content_'. $key] ?></td>
-                                                                </tr>
-                                                            <?php endif ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                <?php if(in_array($k, $request_language_template)): ?>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <tbody>
+                                                                <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
+                                                                    <tr>
+                                                                        <th style="width: 120px">Tiêu đề: </th>
+                                                                        <td><?php echo $detail['title_'. $key] ?></td>
+                                                                    </tr>
+                                                                <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
+                                                                    <tr>
+                                                                        <th style="width: 120px">Giới thiệu: </th>
+                                                                        <td><?php echo $detail['description_'. $key] ?></td>
+                                                                    </tr>
+                                                                <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
+                                                                    <tr>
+                                                                        <th style="width: 120px">Nội dung: </th>
+                                                                        <td><?php echo $detail['content_'. $key] ?></td>
+                                                                    </tr>
+                                                                <?php elseif($k == 'metakeywords' && in_array($k, $request_language_template)): ?>
+                                                                    <tr>
+                                                                        <th style="width: 120px">Từ khóa Meta: </th>
+                                                                        <td><?php echo $detail['metakeywords_'. $key] ?></td>
+                                                                    </tr>
+                                                                <?php elseif($k == 'metadescription' && in_array($k, $request_language_template)): ?>
+                                                                    <tr>
+                                                                        <th style="width: 120px">Mô tả Meta: </th>
+                                                                        <td><?php echo $detail['metadescription_'. $key] ?></td>
+                                                                    </tr>
+                                                                <?php endif ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                <?php endif; ?>
                                             <?php endforeach ?>
                                         </div>
                                     <?php $i++; ?>
                                     <?php endforeach ?>
-                                    <div role="tabpanel" class="tab-pane" id="en">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <tbody>
-                                                    <tr>
-                                                        <th style="width: 100px">Title: </th>
-                                                        <td><?php echo $detail['title_en'] ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width: 100px">Description: </th>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width: 100px">Content: </th>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>

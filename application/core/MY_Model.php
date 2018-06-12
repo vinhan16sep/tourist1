@@ -72,10 +72,18 @@ class MY_Model extends CI_Model {
         if(in_array('content', $select)){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
         }
+        if(in_array('metakeywords', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metakeywords ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metakeywords');
+        }
+        if(in_array('metadescription', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metadescription');
+        }
         if($select == null){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metakeywords ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metakeywords');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metadescription');
         }
         
         $this->db->from($this->table);
@@ -213,6 +221,10 @@ class MY_Model extends CI_Model {
     }
     public function find($id){
         $this->db->where(array('id' => $id,'is_deleted' => 0));
+        return $this->db->get($this->table)->row_array();
+    }
+    public function find_array($where = array()){
+        $this->db->where(array_merge(array('is_deleted' => 0),$where));
         return $this->db->get($this->table)->row_array();
     }
 }
