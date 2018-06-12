@@ -164,6 +164,27 @@
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 0;
 }
+label[id$="-error"]{display:block;color:red;}
+.title-content-date.date label[id$="-error"]{
+  margin-bottom:10px;
+}
+.title-content-date.date{
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+.title-content-date.date .remove{
+  float: right;
+  cursor:pointer;
+}
+#append-date,#submit-shared{
+  float: right;
+  cursor:pointer;
+}
+#parent_id_shared{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 @media (min-width: 768px) {
   .skin-black-light.sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu {
     border-left: 1px solid #d2d6de;
