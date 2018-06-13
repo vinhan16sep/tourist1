@@ -101,27 +101,27 @@
                                                                     <tbody>
                                                                         <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
-                                                                                <th style="width: 120px">Tiêu đề: </th>
+                                                                                <th style="width: 120px"><?php echo $val ?>: </th>
                                                                                 <td><?php echo $detail['title_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
-                                                                                <th style="width: 120px">Giới thiệu: </th>
+                                                                                <th style="width: 120px"><?php echo $val ?>: </th>
                                                                                 <td><?php echo $detail['description_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
-                                                                                <th style="width: 120px">Nội dung: </th>
+                                                                                <th style="width: 120px"><?php echo $val ?>: </th>
                                                                                 <td><?php echo $detail['content_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php elseif($k == 'metakeywords' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
-                                                                                <th style="width: 120px">Từ khóa Meta: </th>
+                                                                                <th style="width: 120px"><?php echo $val ?>: </th>
                                                                                 <td><?php echo $detail['metakeywords_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php elseif($k == 'metadescription' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
-                                                                                <th style="width: 120px">Mô tả Meta: </th>
+                                                                                <th style="width: 120px"><?php echo $val ?>: </th>
                                                                                 <td><?php echo $detail['metadescription_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php endif ?>
