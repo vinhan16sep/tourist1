@@ -241,6 +241,9 @@ $(document).ready(function(){
             return false;
         }
     });
+$(".append-date").mousemove(function(){
+    onKeyUpTinymce("content_date_en_0","FULL Content field is required.",".title-content-date.date.en");
+});
     $(".append-date").click(function(){
         numberdates = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
         if($(this).attr("id") == 'button-numberdate' || $(this).attr("id") == 'append-date'){

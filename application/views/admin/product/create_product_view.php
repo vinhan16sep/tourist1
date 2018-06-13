@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <select name="parent_id_shared" id="parent_id_shared" class="form-control">
-                                        <option selected="">Chọn danh mục</option>
+                                        <option selected="" value="">Chọn danh mục</option>
                                         <?php echo $product_category; ?>
                                     </select>
                                 </div>
@@ -184,7 +184,9 @@
         </div>
     </section>
 </div>
-<script src="<?php echo base_url('assets/js/');?>client.js" type="text/javascript" charset="utf-8" async defer></script>
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+<script src="<?php echo base_url('assets/js/admin/');?>admin.js" type="text/javascript" charset="utf-8" async defer></script>
 <script type="text/javascript">
     function isNumberKey(evt)
     {

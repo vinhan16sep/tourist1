@@ -201,13 +201,13 @@ class Product extends Admin_Controller{
                     $reponse[$key] .= ($key == 'vi')?'Nội dung Đầy đủ Ngày '.($i+1):'Content full date  '.($i+1);
                     $reponse[$key] .= '</div>';
                     $reponse[$key] .= '<div class="no_border"><div class="collapse in" id="showdatecontent_'.$key.'_'.$i.'">';
-                    $reponse[$key] .= '<div class="title-content-date date '.$key.'">';
-                    $reponse[$key] .= form_label(($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1), 'title_date'.'_'. $key.'[]','class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
-                    $reponse[$key] .= form_error('title_date'.'_'. $key.'[]');
-                    $reponse[$key] .= form_input('title_date'.'_'. $key.'[]',"", 'class="form-control" id="title_date_'.$key.'_'.$i.'"');
-                    $reponse[$key] .= form_label(($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1), 'content_date'.'_'. $key.'[]','class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
-                    $reponse[$key] .= form_error('content_date'.'_'. $key.'_'.$i);
-                    $reponse[$key] .= form_textarea('content_date'.'_'. $key.'[]',"", 'class="tinymce-area form-control" id="content_date_'.$key.'_'.$i.'" rows="3"');
+                    $reponse[$key] .= '<div class="col-xs-12 title-content-date date '.$key.'">';
+                    $reponse[$key] .= form_label(($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1), 'title_date_'.$i.'_'. $key,'class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
+                    $reponse[$key] .= form_error('title_date_'.$i.'_'. $key);
+                    $reponse[$key] .= form_input('title_date_'.$i.'_'. $key,"", 'class="form-control" id="title_date_'.$key.'_'.$i.'"');
+                    $reponse[$key] .= form_label(($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1),'content_date_'.$i.'_'. $key,'class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
+                    $reponse[$key] .= form_error('content_date_'.$i.'_'. $key);
+                    $reponse[$key] .= form_textarea('content_date_'.$i.'_'. $key,"", 'class="tinymce-area form-control" id="content_date_'.$key.'_'.$i.'" rows="3"');
                     $reponse[$key] .= '</div></div></div>';
                 }
             $reponse[$key] .= '</div>';
