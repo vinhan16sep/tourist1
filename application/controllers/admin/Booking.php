@@ -2,9 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Booking extends Admin_Controller {
-	private $request_language_template = array(
-        'title', 'content'
-    );
+	private $request_language_template = array();
     private $author_data = array();
     function __construct(){
         parent::__construct();
