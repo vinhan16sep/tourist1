@@ -134,7 +134,7 @@
                                     </label>
                                     <div class="col-md-10">
                                         <?php  
-                                            echo form_input("numberdate", (int)$tour_date['numberdate'], 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
+                                            echo form_input("number", (int)$tour_date['numberdate'], 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
                                         ?>
                                     </div>
                                     <div class="col-md-2">
