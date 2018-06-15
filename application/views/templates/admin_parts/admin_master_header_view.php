@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>dist/css/skins/skin-black-light.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/daterangepicker.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -43,6 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo site_url('assets/lib/') ?>bootstrap/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js') ?>" ></script>
+    <script src="<?php echo site_url('assets/js/jquery.rateit.js') ?>"></script>
 
 
 
