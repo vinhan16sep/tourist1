@@ -96,7 +96,7 @@
                                                 </a></td>
                                                 <td>
                                                     <?php if ($value['status'] == 0): ?>
-                                                        <span class="label label-warning status-success" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Chờ xác nhận</span>
+                                                        <span class="label label-warning status-success" data-id="<?php echo $value['booking_id']; ?>" data-controller="booking" style="cursor: pointer;" >Chờ xác nhận</span>
                                                     <?php elseif($value['status'] == 1): ?>
                                                         <span class="label label-success">Đã xác nhận</span>
                                                     <?php else: ?>
@@ -149,7 +149,7 @@
                                         <?php endforeach ?>
                                     <?php else: ?>
                                         <tr>
-                                            Chưa có khách đặt hàng
+                                            Chưa có khách đặt tour
                                         </tr>
                                     <?php endif ?>
                                 </tbody>

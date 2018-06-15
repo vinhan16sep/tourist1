@@ -28,14 +28,14 @@
                 <div class="box">
                     <div class="box-header">
                         <ul class="nav nav-tabs" role="tablist" id="nav-product">
-                            <li role="presentation" class="active"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
-                            <li role="presentation"><a href="#date-tour" class="btn btn-primary" aria-controls="date-tour" role="tab" data-toggle="tab">Date tour</a></li>
+                            <li role="presentation" class="<?php echo ($refer == true)? '' : 'active' ?>"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
+                            <li role="presentation" class="<?php echo ($refer == true)? 'active' : '' ?>"><a href="#date-tour" class="btn btn-primary" aria-controls="date-tour" role="tab" data-toggle="tab">Date tour</a></li>
                         </ul>
                         <h3 class="box-title">Chi tiết</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="tour">
+                        <div role="tabpanel" class="tab-pane fade in <?php echo ($refer == true)? '' : 'active' ?>" id="tour">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="detail-image col-md-6">
@@ -141,7 +141,7 @@
 
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="date-tour">
+                        <div role="tabpanel" class="tab-pane <?php echo ($refer == true)? 'active' : 'fade' ?>" id="date-tour">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="detail-image col-md-6">

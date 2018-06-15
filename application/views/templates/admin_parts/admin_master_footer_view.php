@@ -17,5 +17,19 @@
 <script src="<?php echo site_url('assets/js/admin/script.js') ?>"></script>
 <script src="<?php echo site_url('assets/js/admin/image.js') ?>"></script>
 <script src="<?php echo site_url('assets/js/admin/common.js') ?>"></script>
-<script src="<?php echo site_url('assets/js/admin/booking.js') ?>"></script>
+<script src="<?php echo site_url('assets/js/admin/workflow.js') ?>"></script>
+<script src="<?php echo site_url('assets/lib/bootstrap/js/moment.min.js') ?>"></script>
+<script src="<?php echo site_url('assets/lib/bootstrap/js/bootstrap-datepicker.min.js') ?>"></script>
+<script src="<?php echo site_url('assets/lib/bootstrap/js/daterangepicker.js') ?>"></script>
+
+<script type="text/javascript">
+	$(function(){
+		//Date range picker
+    	$('#reservation').daterangepicker({
+    		locale: {
+    			format: 'DD-MM-YYYY'
+    		}
+    	});
+	});
+</script>
 </html>
