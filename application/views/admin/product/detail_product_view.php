@@ -59,6 +59,12 @@
                                                     <th colspan="2">Thông tin cơ bản</th>
                                                 </tr>
                                                 <tr>
+                                                    <th>Đánh Giá</th>
+                                                    <td style="text-align: center;">
+                                                        <div class="rateit" data-rateit-value="<?php echo $rating ?>"  data-rateit-readonly="true"></div><br /><?php echo $rating ?> Điểm / <?php echo $count_rating ?> Lượt đánh giá
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
                                                 </tr>

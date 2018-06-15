@@ -7,6 +7,7 @@ class Client extends Public_Controller {
     }
 
 	public function register(){
+        $this->load->library('ion_auth');
         $username = $this->input->post('name');
         $email = $this->input->post('email');
         $phone = $this->input->post('phone');
@@ -21,25 +22,29 @@ class Client extends Public_Controller {
 			'phone' => $phone,
 			'age' => $age
         );
-
+        $count_email = $this->ion_auth->email_check($email);
         if($username == '' || $email == '' || $phone == '' || $password == ''){
         	$isExits = false;
         }else{
-        	$group = array('2');
-        	$this->load->library('ion_auth');
-        	if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
-                $this->load->helper('cookie');
-                set_cookie('remember_email',$email,180*24*60*60);
-        		$isExits = true;
-        		$reponse = array(
-	                'csrf_hash' => $this->security->get_csrf_hash()
-	            );
-        	}
+            if($count_email){
+                $isExits = false;
+            }else{
+                $group = array('2');
+            
+                if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
+                    $this->load->helper('cookie');
+                    set_cookie('remember_email',$email,180*24*60*60);
+                    $isExits = true;
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    );
+                }
+            }
         }
         return $this->output
             ->set_content_type('application/json')
             ->set_status_header(200)
-            ->set_output(json_encode(array('status' => 200, 'reponse' => $reponse, 'isExits' => $isExits)));
+            ->set_output(json_encode(array('status' => 200, 'reponse' => $reponse, 'isExits' => $isExits, 'count_email' => $count_email)));
     }
 
     public function register_courses(){

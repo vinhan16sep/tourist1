@@ -87,7 +87,7 @@
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                 <td><?php echo $value['time'] ?></td>
-                                                <td><a href="<?php echo base_url('admin/product/' .$value['product_id']) ?>"><?php echo $value['product_title'] ?></a></td>
+                                                <td><a href="<?php echo base_url('admin/product/detail/' .$value['product_id']) ?>"><?php echo $value['product_title'] ?></a></td>
 												<!--
 												<td><?php echo $value['address'] ?></td>
 												-->

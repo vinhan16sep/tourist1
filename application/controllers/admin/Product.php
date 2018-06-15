@@ -171,6 +171,7 @@ class Product extends Admin_Controller{
     // }
 
     public function detail($id){
+        $this->load->model('rating_model');
         if($id &&  is_numeric($id) && ($id > 0)){
             if($this->product_model->find_rows(array('id' => $id,'is_deleted' => 0)) != 0){
                 $this->load->helper('form');
@@ -179,7 +180,14 @@ class Product extends Admin_Controller{
                 $detail = build_language($this->data['controller'], $detail, array('title', 'description', 'content','metakeywords','metadescription'), $this->page_languages);
                 $parent_title = $this->build_parent_title($detail['product_category_id']);
                 $detail['parent_title'] = $parent_title;
+
+                $count_rating = $this->rating_model->count_by_product_id($id);
+                $total_rating = $this->rating_model->total_by_product_id($id);
+                $rating = round($total_rating['rating'] / $count_rating, 1);
+
                 $this->data['detail'] = $detail;
+                $this->data['rating'] = $rating;
+                $this->data['count_rating'] = $count_rating;
                 $this->data['refer'] = $this->input->get('refer');
                 $this->data['tour_date'] = $this->tour_date_model->find_array(array('product_id' => $id));
                 $this->data['tour_date_full']['vi'] = $this->tour_date_model->get_all_tour_date_id($this->data['tour_date']['id'],"vi");
