@@ -47,7 +47,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'blog')? 'active' : 'treeview' ?>">
+                <!-- <li class="<?php echo ($this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'blog')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-newspaper-o"></i>
                         <span>Bài Viết</span>
@@ -63,6 +63,33 @@
                             <a href="<?php echo base_url('admin/blog') ?>"><i class="fa fa-list"></i> Danh Sách Bài Viêt</a>
                         </li>
                     </ul>
+                </li> -->
+                <li class="<?php echo ($this->uri->segment(2) == 'post_category' || $this->uri->segment(2) == 'post')? 'active' : 'treeview' ?>">
+                    <a href="">
+                        <i class="fa fa-newspaper-o"></i>
+                        <span>Bài Viết</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php echo ($this->uri->segment(2) == 'post_category')? 'active' : '' ?>">
+                            <a href="<?php echo base_url('admin/post_category') ?>"><i class="fa fa-filter"></i> Danh Mục Bài Viêt</a>
+                        </li>
+                        <li class="<?php echo ($this->uri->segment(2) == 'post')? 'active' : '' ?>">
+                            <a href="<?php echo base_url('admin/post') ?>"><i class="fa fa-list"></i> Danh Sách Bài Viêt</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="<?php echo ($this->uri->segment(2) == 'booking')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/booking') ?>">
+                        <i class="fa fa-book"></i> <span>Đặt Tour</span>
+                    </a>
+                </li>
+                <li class="<?php echo ($this->uri->segment(2) == 'customize')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/customize') ?>">
+                        <i class="fa fa-book"></i> <span>Tùy Biến Khách Hàng</span>
+                    </a>
                 </li>
                 <li class="header">DOCUMENTATION</li>
                 <li>

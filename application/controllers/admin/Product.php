@@ -180,6 +180,7 @@ class Product extends Admin_Controller{
                 $parent_title = $this->build_parent_title($detail['product_category_id']);
                 $detail['parent_title'] = $parent_title;
                 $this->data['detail'] = $detail;
+                $this->data['refer'] = $this->input->get('refer');
                 $this->data['tour_date'] = $this->tour_date_model->find_array(array('product_id' => $id));
                 $this->data['tour_date_full']['vi'] = $this->tour_date_model->get_all_tour_date_id($this->data['tour_date']['id'],"vi");
                 $this->data['tour_date_full']['en'] = $this->tour_date_model->get_all_tour_date_id($this->data['tour_date']['id'],"en");

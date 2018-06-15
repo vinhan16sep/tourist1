@@ -1,8 +1,17 @@
 $('.status-success').click(function(){
 	var id = $(this).data('id');
-	var url = HOSTNAMEADMIN + '/booking/status_success';
+	var controller = $(this).data('controller');
+	var url = HOSTNAMEADMIN + '/'+ controller +'/status_success';
+	switch(controller){
+		case 'booking':
+			var message = 'Xác nhận đặt lịch?'
+			break;
+		case 'customize': 
+			var message = 'Xác nhận tùy biến của khách hàng'
+			break;
+	}
 
-	if(confirm('Xác nhận đặt lịch?')){
+	if(confirm(message)){
 		$.ajax({
 			method: "get",
 			url: url,
@@ -25,9 +34,19 @@ $('.status-success').click(function(){
 
 $('.status-cancel').click(function(){
 	var id = $(this).data('id');
-	var url = HOSTNAMEADMIN + '/booking/status_cancel';
+	var controller = $(this).data('controller');
+	var url = HOSTNAMEADMIN + '/'+ controller +'/status_cancel';
 
-	if(confirm('Hủy đặt lịch?')){
+	switch(controller){
+		case 'booking':
+			var message = 'Hủy đặt lịch?'
+			break;
+		case 'customize': 
+			var message = 'Hủy tùy biến của khách hàng'
+			break;
+	}
+	
+	if(confirm(message)){
 		$.ajax({
 			method: "get",
 			url: url,

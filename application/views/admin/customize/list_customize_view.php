@@ -2,13 +2,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Chỉnh Sửa
-            <small>Danh sách Chỉnh Sửa</small>
+            Tùy biến của khách hàng
+            <small>Danh sách Tùy biến của khách hàng</small>
         </h1>
         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash() ?>" id="csrf" />
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="#"><i class="fa fa-dashboard"></i> Chỉnh Sửa</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Tùy biến của khách hàng</a></li>
             <li class="active">
                 <?php
                     switch ($this->uri->segment(3)) {
@@ -34,19 +34,38 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
+                        <h3>
+                        <?php
+                            switch ($this->uri->segment(3)) {
+                                case 'success':
+                                echo 'Thành công';
+                                break;
+                                case 'cancel':
+                                echo 'Hủy bỏ';
+                                break;
+                                default:
+                                echo 'Chờ xác nhận';
+                                break;
+                            }
+                        ?>
+                        </h3>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <form action="<?php echo base_url('admin/customize/index') ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tour ..." name="search" value="">
+                        <?php $action = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 'index' ?>
+                        <form action="<?php echo base_url('admin/customize/' .$action) ?>" method="get">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tour ..." name="search" value="<?php echo $keywords; ?>">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control pull-right" id="reservation" name="search_date" value="<?php echo $date ?>">
+                                </div>
+                                <div class="col-md-2">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
+                            </div>
+                        </form>
 
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -57,7 +76,6 @@
                                         <th>No.</th>
                                         <th>Họ Tên</th>
                                         <th>Tên Tour</th>
-                                        <th>Tên Ngày</th>
                                         <th>Thời Gian</th>
                                         <th>Xem thêm</th>
                                         <th>Action</th>
@@ -71,7 +89,6 @@
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                 <td><?php echo $value['product_title'] ?></td>
-                                                <td><?php echo $value['tour_date_title'] ?></td>
                                                 <td><?php echo $value['time'] ?></td>
 
                                                 <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['customize_id']; ?>" aria-expanded="false" aria-controls="collapseExample">
@@ -79,12 +96,20 @@
                                                 </a></td>
                                                 
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/customize/compare/'. $value['product_id']) ?>" class="dataActionEdit" title="So Sánh"><i class="fa fa-eye" aria-hidden="true"></i> </a>
-                                                    <a href="javascript:void(0);" class="dataActionDelete btn-remove" data-controller="blog" data-id="<?php echo $value['id'] ?>" ><i class="fa fa-remove" aria-hidden="true"></i> </a>
+                                                    <a href="<?php echo base_url('admin/product/detail/'. $value['product_id'] .'?refer=true') ?>" class="dataActionEdit" title="So Sánh"><i class="fa fa-eye" aria-hidden="true"></i> </a>
+                                                    &nbsp&nbsp
+                                                    <?php if ($value['status'] != 2 && $value['status'] != 1): ?>
+                                                        <a href="javascript:void(0);" class="dataActionDelete status-success" data-id="<?php echo $value['customize_id'] ?>" data-controller="customize" ><i class="fa fa-check" aria-hidden="true"></i> </a>
+                                                    <?php endif ?>
+                                                    &nbsp&nbsp
+                                                    <?php if ($value['status'] != 2): ?>
+                                                        <a href="javascript:void(0);" class="dataActionDelete status-cancel" data-id="<?php echo $value['customize_id'] ?>" data-controller="customize" style="color: red"><i class="fa fa-times" aria-hidden="true"></i> </a>
+                                                    <?php endif ?>
+                                                    
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="7">
+                                                <td colspan="6">
                                                     <div class="collapse" id="collapse_<?php echo $value['customize_id']; ?>">
                                                         <div class="well">
                                                             <table class="table">
@@ -112,8 +137,14 @@
                                                                     <td><?php echo $value['message'] ?></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td><strong>Nội dung: </strong></td>
-                                                                    <td><?php echo $value['content'] ?></td>
+                                                                    <td colspan="2">
+                                                                        <?php foreach ($value['array_date'] as $k => $val): ?>
+                                                                            <?php if ($val != ''): ?>
+                                                                                <label><?php echo $k ?> : </label>
+                                                                                <p><?php echo $val ?></p>
+                                                                            <?php endif ?>
+                                                                        <?php endforeach ?>
+                                                                    </td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -123,7 +154,7 @@
                                         <?php endforeach ?>
                                     <?php else: ?>
                                         <tr>
-                                            Chưa có khách đặt hàng
+                                            Chưa có Tùy biến của khách hàng
                                         </tr>
                                     <?php endif ?>
                                 </tbody>
@@ -132,7 +163,6 @@
                                         <th>No.</th>
                                         <th>Họ Tên</th>
                                         <th>Tên Tour</th>
-                                        <th>Tên Ngày</th>
                                         <th>Thời Gian</th>
                                         <th>Xem thêm</th>
                                         <th>Action</th>
@@ -154,17 +184,3 @@
         <!-- END ACCORDION & CAROUSEL-->
     </section>
 </div>
-
-<!-- DataTables -->
-<script>
-    $(function () {
-        $('#table').DataTable({
-            'paging'      : false,
-            'lengthChange': false,
-            'searching'   : false,
-            'bookinging'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-    })
-</script>
