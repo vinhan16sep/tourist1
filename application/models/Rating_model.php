@@ -11,7 +11,7 @@ class Rating_model extends MY_Model {
 
 	public function get_all_rating_with_pagination_search($limit = NULL, $start = NULL, $keywords = ''){
 		$this->db->from($this->table);
-    	$this->db->select($this->table .'.*, rating.id as rating_id, product_lang.title as product_title, product_lang.product_id, product_lang.langurating, product.id, users.email, users.last_name, users.company, users.phone, users.age');
+    	$this->db->select($this->table .'.*, rating.id as rating_id, product_lang.title as product_title, product_lang.product_id, product_lang.language, product.id, users.email, users.last_name, users.company, users.phone, users.age');
     	$this->db->join('product', $this->table .'.product_id = product.id');
     	$this->db->join('product_lang', 'product.id = product_lang.product_id');
     	$this->db->join('users', $this->table .'.users_id = users.id');
