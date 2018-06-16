@@ -183,7 +183,11 @@ class Product extends Admin_Controller{
 
                 $count_rating = $this->rating_model->count_by_product_id($id);
                 $total_rating = $this->rating_model->total_by_product_id($id);
-                $rating = round($total_rating['rating'] / $count_rating, 1);
+                if($count_rating != 0 && $total_rating != 0){
+                    $rating = round($total_rating['rating'] / $count_rating, 1);
+                }else{
+                    $rating = 0;
+                }
 
                 $this->data['detail'] = $detail;
                 $this->data['rating'] = $rating;
