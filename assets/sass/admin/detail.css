@@ -14,14 +14,19 @@
 
 .mask-sm {
   width: 100%;
-  height: 150px;
-  overflow: hidden;
-  padding: 15px;
   border: 1px solid #4e4e4e;
+  background: #070B19;
+  padding: 3px;
   display: inline-block; }
   .mask-sm img {
     width: 100%;
     height: 100%;
+    padding-right: 12px;
     object-fit: cover; }
+  .mask-sm i {
+    float: right;
+    color: white;
+    cursor: pointer;   
+  }
 
 /*# sourceMappingURL=detail.css.map */

@@ -51,24 +51,18 @@ $(document).ready(function(){
     }
 
 });
-var numberdates = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
+var numberdates = $("#content-full-date .title-content-date.date").length;
 function removeDate(){
-    numberdate = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
-    var idShowDateVi = $($(".title-content-date.showdate.vi .title-content-date.date.vi")[numberdate-1]).parents(".no_border").prev();
-    var idShowDateEn = $($(".title-content-date.showdate.en .title-content-date.date.en")[numberdate-1]).parents(".no_border").prev();
-    $($(".title-content-date.date.vi .remove")).remove();
-    $($(".title-content-date.date.en .remove")).remove();
-    $($(".title-content-date.showdate.vi .title-content-date.date.vi")[numberdate-1]).attr("class","title-content-date date vi1");
-    $($(".title-content-date.showdate.en .title-content-date.date.en")[numberdate-1]).attr("class","title-content-date date en1");
-    idShowDateVi.fadeOut();
-    idShowDateEn.fadeOut();
-    $($(".title-content-date.showdate.vi .title-content-date.date.vi1")).fadeOut();
-    $($(".title-content-date.showdate.en .title-content-date.date.en1")).fadeOut();
+    numberdate = $(".title-content-date.date").length;
+    $($("#content-full-date .title-content-date.date")[numberdate-1]).parents(".no_border").prev().css("display","none");
+    $($("#content-full-date .title-content-date.date")[numberdate-1]).removeClass('date').addClass('rm');;
+    $($("#content-full-date .title-content-date.rm")).css("display","none");
+    $(".title-content-date.showdate .btn-margin span.remove").remove();
     if(numberdate>=3){
-        $($(".title-content-date.date.vi .title_date")[numberdate-2]).before("<span class='remove' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
-        $($(".title-content-date.date.en .title_date")[numberdate-2]).before("<span class='remove' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
+        $($(".title-content-date.showdate .btn-margin")[numberdate-2]).append("<span class='col-xs-1 remove' style='float:right;padding:0px;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
     }
-    $("#numberdate").val($("#numberdate").val()-1);
+    $("#numberdate").val($("#content-full-date .title-content-date.date").length);
+    
 
 
 }

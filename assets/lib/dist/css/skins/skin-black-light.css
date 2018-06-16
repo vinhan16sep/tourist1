@@ -164,9 +164,12 @@
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 0;
 }
-label[id$="-error"]{display:block;color:red;}
+span[id$="-error"]{color:red;}
 .title-content-date.date label[id$="-error"]{
   margin-bottom:10px;
+}
+.input-error{
+  border:1px solid red;
 }
 .title-content-date.date{
   margin-bottom: 10px;

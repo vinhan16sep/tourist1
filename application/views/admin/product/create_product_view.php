@@ -5,11 +5,10 @@
         <h1>
             Thêm mới
             <small>
-                Thực Đơn
+                Tour
             </small>
         </h1>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -120,49 +119,24 @@
                                 <div class="row">
                                     <span><?php echo $this->session->flashdata('message'); ?></span>
                                 </div>
-                                <div class="col-md-12" style="padding: 0px;">
+                                <div class="col-md-12" style="padding: 0px;margin-bottom: 10px;">
                                     <label class="col-md-12" for="">
                                             Nhập số ngày Tour
                                     </label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-10" style="margin-top:5px;">
                                         <?php  
                                             echo form_input("number", set_value("number"), 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
                                         ?>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" style="margin-top:5px;">
                                         <span class="btn btn-primary form-control append-date" id="button-numberdate">Xác nhận</span>
                                     </div>
                                 </div>
 
-                                <div class="col-md-12" style="padding: 0px;">
-                                    <div class="col-md-12" style="margin-top: 10px;">
-                                        <ul class="nav nav-pills nav-justified language" role="tablist">
-                                            <?php $i = 0; ?>
-                                            <?php foreach ($page_languages as $key => $value): ?>
-                                                <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
-                                                    <a href="#<?php echo $key ?>1" aria-controls="<?php echo $key ?>1" role="tab" data-toggle="tab">
-                                                        <span class="badge"><?php echo $i + 1 ?></span> <?php echo $value ?>
-                                                    </a>
-                                                </li>
-                                                <?php $i++; ?>
-                                            <?php endforeach ?>
-                                        </ul>
-                                        <hr>
-                                    </div>
-                                    <div class="col-md-12 tab-content">
-                                        <?php $i = 0; ?>
-                                        <?php foreach ($template as $key => $value): ?>
-                                            <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>1">
-                                                <div class="title-content-date showdate <?php echo $key; ?>">
-                                                        
-                                                </div>
-                                            </div>
-                                            <?php $i++; ?>
-                                        <?php endforeach ?>
-                                    </div>
-                                    <div class="col-md-12 tab-content">
-                                        <span class="append-date" id="append-date"><i class="fa-2x fa fa-plus-square"></i></span>
-                                    </div>
+                                <div class="col-md-12" id="content-full-date">
+                                </div>
+                                <div class="col-md-12 tab-content">
+                                    <span class="append-date" id="append-date"><i class="fa-2x fa fa-plus-square"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -171,12 +145,20 @@
                         <div class="box-body">
                             <div class="col-xs-12">
                             <ul class="nav nav-tabs" role="tablist" id="nav-product">
-                                <li role="presentation" id="content-home" class="active"><button href="#home" class="btn btn-primary" aria-controls="home" role="tab" data-toggle="tab">Home</button></li>
-                                <li role="presentation" id="add-date"><button href="#add-date" class="btn btn-primary" aria-controls="add-date" role="tab" data-toggle="tab">Profile</button></li>
-                                <?php echo form_submit('submit_shared', 'OK', 'class="btn btn-primary" id="submit-shared" '); ?>
+                                <a class="btn btn-primary" id="go-back" onclick="history.back(-1);" >Go back</a>
+                                <li role="presentation" id="content-home" class="active"><button href="#home" class="btn btn-primary" aria-controls="home" role="tab" data-toggle="tab">Tour</button></li>
+                                <li role="presentation" id="add-date"><button href="#add-date" class="btn btn-primary" aria-controls="add-date" role="tab" data-toggle="tab">Tour date</button></li>
+                                <input type="button" name="submit_shared" id="submit-shared" value="OK" class="btn btn-primary">
                             </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="hidden">
+                        <input type="text" name="datetitle_vi[]" value=""/>
+                        <input type="text" name="datecontent_vi[]" value=""/>
+                        <input type="text" name="datetitle_en[]" value=""/>
+                        <input type="text" name="datecontent_en[]" value=""/>
+                        <input type="file" name="dateimg[]" multiple="">
                     </div>
                 </div>
                 <?php echo form_close(); ?>

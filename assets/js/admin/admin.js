@@ -15,8 +15,10 @@ switch(window.location.origin){
 } 
 $("#nav-product #submit-shared").css("display","none");
 $("#nav-product li#content-home").css("float","left");
+$("#content-home").css("display","none");
+$("#go-back").css("display","inline");
 $("#nav-product li#add-date").css("float","right");
-$("#nav-product li").click(function(){ 
+$("#nav-product li#add-date").click(function(){
 	$.validator.setDefaults({
 		ignore: ":hidden:not('input')"
 	});
@@ -24,10 +26,12 @@ $("#nav-product li").click(function(){
 		errorElement: 'span',
 		errorClass: 'help-block',
 		highlight: function(element, errorClass, validClass) {
-			$(element).closest('.col-xs-12').addClass("has-error");
+			$(element).addClass("input-error");
+			$(element).closest('.col-xs-12').addClass("has-errors");
 		},
 		unhighlight: function(element, errorClass, validClass) {
-			$(element).closest('.col-xs-12').removeClass("has-error");
+			$(element).closest('.col-xs-12').removeClass("has-errors");
+			$(element).removeClass("input-error");
 		},
 		rules: {
 			title_vi: {
@@ -54,7 +58,7 @@ $("#nav-product li").click(function(){
 
 	});
 	if ($('#register-form').valid() === false){
-		if($(".col-xs-12.has-error input").length >0 && $(".col-xs-12.has-error input")[0].id.indexOf($("#home ul.language .active a").attr("aria-controls")) == "-1"){
+		if($(".col-xs-12.has-errors input").length >0 && $(".col-xs-12.has-errors input")[0].id.indexOf($("#home ul.language .active a").attr("aria-controls")) == "-1"){
 			$("#home ul.language .active a").attr("aria-expanded","false");
 			$("#"+$("#home ul.language .active a").attr("aria-controls")).removeClass('active');
 			if($("#home ul.language .active a").attr("aria-controls") == "vi"){
@@ -69,41 +73,33 @@ $("#nav-product li").click(function(){
 				$("#vi").addClass('active');
 			}
 		}
-		if($("select[name=parent_id_shared]").parent().attr("class") == "col-xs-12 has-error"){
+		if($("select[name=parent_id_shared]").parent().attr("class") == "col-xs-12 has-errors"){
 			$("select[name=parent_id_shared]")[0].focus();
 		}else{
-			$(".col-xs-12.has-error input")[0].focus();
+			$(".col-xs-12.has-errors input")[0].focus();
 		}
 		return false;
 	}else{
         $("#nav-product li").css("display","inline");
+		$("#go-back").css("display","none");
         if($(this)[0].id == "add-date"){
             $(this).css("display","none");
             $("#nav-product #submit-shared").css("display","inline");
-        }else if($(this)[0].id == "content-home"){
-            $("#nav-product #submit-shared").css("display","none");
-            $("#nav-product #add-date").css("display","inline");
         }
         $("#nav-product li#content-home").css("float","left");
         $("#nav-product #submit-shared").css("float","right");
         
 	}
 });
-$("#register-form").submit(function(event) {
-	$.validator.addMethod("number", function(value, element) {
-		return this.optional(element) || (value>0);
-	}, "Bạn phải nhập số và lớn hơn 0.");
-	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
-	});
+/*$("#nav-product li#content-home").click(function(){
 	$('#register-form').validate({
 		errorElement: 'span',
 		errorClass: 'help-block',
 		highlight: function(element, errorClass, validClass) {
-			$(element).closest('.col-xs-12').addClass("has-error");
+			$(element).closest('.col-xs-12').addClass("has-errors");
 		},
 		unhighlight: function(element, errorClass, validClass) {
-			$(element).closest('.col-xs-12').removeClass("has-error");
+			$(element).closest('.col-xs-12').removeClass("has-errors");
 		}
 	});
 	$('[name^=title_date_]').each(function(e) {
@@ -122,98 +118,176 @@ $("#register-form").submit(function(event) {
 	$("[name=number]").rules('add', {
 		required: true,
 		number: true
-	})
+	});
 	if ($('#register-form').valid() === false){
-		subStringLast = $("#add-date ul.language .active a").attr("aria-controls").substring(0, $("#add-date ul.language .active a").attr("aria-controls").length - 1);
-
-		if($(".col-xs-12.has-error input")[0].id.indexOf(subStringLast) == "-1"){
-			$("#add-date ul.language .active a").attr("aria-expanded","false");
-			$("#"+$("#add-date ul.language .active a").attr("aria-controls")).removeClass('active');
-			if(subStringLast == "vi"){
-				$("#add-date ul.language .active").removeClass('active');
-				$("a[aria-controls=en1]").parent().addClass("active");
-				$("#add-date ul.language .active a").attr("aria-expanded","true");
-				$("#en1").addClass('active');
-			}else if(subStringLast == "en"){
-				$("#add-date ul.language .active").removeClass('active');
-				$("a[aria-controls=vi1]").parent().addClass("active");
-				$("#add-date ul.language .active a").attr("aria-expanded","true");
-				$("#vi1").addClass('active');
-			}
-		}
-		$(".col-xs-12.has-error input")[0].focus();
-		return false;
-	}else{
-		if($(".title-content-date.showdate.vi .title-content-date.date.vi").length<=0){
-			alert("Vui lòng tạo ra một ngày của tour");
-			return false;
-		}
-		if(window.location.pathname.indexOf("/product/edit/") == '-1'){
-			var url = HOSTNAME + 'admin/product/create';
+		if($("#numberdate").val() == "" || $("#numberdate").val() == 0){
+			$("#numberdate").focus();
 		}else{
-			var url = window.location.href;
+			$(".col-xs-12.has-errors input")[0].focus();
 		}
-		var image_shared = new FormData();
-		numberdates = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
-		for (var i = 0; i < document.getElementById("image_shared").files.length; i++) {
-			image_shared.append('image_shared[]',document.getElementById("image_shared").files[i]);
+		return false;
+	}
+	$("#content-home").css("display","none");
+    $("#nav-product #submit-shared").css("display","none");
+	$("#go-back").css("display","inline");
+    $("#nav-product #add-date").css("display","inline");
+});*/
+$("#submit-shared,#content-home").click(function(event) {
+	$.validator.addMethod("number", function(value, element) {
+		return this.optional(element) || ($(".title-content-date.date").length>0);
+	}, "Bạn phải nhập số và lớn hơn 0.");
+	$.validator.addMethod("vehicles", function(value, element) {
+		return this.optional(element) || (value>0);
+	}, "Bạn phải chọn phương tiện.");
+	$.validator.setDefaults({
+		ignore: ":hidden:not('input')"
+	});
+	$('#register-form').validate({
+		highlight: function(element, errorClass, validClass) {
+			$(element).closest('.col-xs-12').addClass("has-errors");
+			$(element).addClass("input-error");
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).closest('.col-xs-12').removeClass("has-errors");
+			$(element).removeClass("input-error");
 		}
-		if(window.location.pathname.indexOf("/product/edit/") != '-1'){
-			for (var k = 0; k < numberdates; k++) {
-				image_shared.append('id_date_'+k+'_vi',$('#id_date_vi_'+k).val());
-				image_shared.append('id__date_'+k+'_en',$('#id_date_en_'+k).val());
+	});
+	$('[name^=title_date_]').each(function(e) {
+		if($(this)[0].name.indexOf("vi") != "-1"){
+			messages = "Tiêu đề không được trống.";
+		}else{
+			messages = "Title field is required.";
+		}
+		$("[name="+$(this)[0].name+"]").rules('add', {
+			required: true,
+			messages: {
+				required:messages
 			}
-		}
-		for (var k = 0; k < numberdates; k++) {
-			image_shared.append('title_date_'+k+'_vi',$('#title_date_vi_'+k).val());
-			image_shared.append('title_date_'+k+'_en',$('#title_date_en_'+k).val());
-			image_shared.append('content_date_'+k+'_vi',tinymce.get("content_date_vi_"+k).getContent());
-			image_shared.append('content_date_'+k+'_en',tinymce.get("content_date_en_"+k).getContent());
-		}
-		image_shared.append('numberdate',$('#numberdate').val());
-		image_shared.append('title_vi',$('#title_vi').val());
-		image_shared.append('title_en',$('#title_en').val());
-		image_shared.append('metakeywords_vi',$('#metakeywords_vi').val());
-		image_shared.append('metakeywords_en',$('#metakeywords_en').val());
-		image_shared.append('metadescription_vi',$('#metadescription_vi').val());
-		image_shared.append('metadescription_en',$('#metadescription_en').val());
-		image_shared.append('slug_shared',$('#slug_shared').val());
-		image_shared.append('parent_id_shared',$('#parent_id_shared').val());
-		image_shared.append('description_vi',$('#description_vi').val());
-		image_shared.append('description_en',$('#description_en').val());
-		image_shared.append('content_vi',tinymce.get("content_vi").getContent());
-		image_shared.append('content_en',tinymce.get("content_en").getContent());
-		image_shared.append('csrf_myielts_token',csrf_hash);
-		$.ajax({
-			method: "post",
-			url: url,
-			data: image_shared,
-			contentType: false,
-			processData: false,
-			success: function(response){
-				console.log(response);
-				if(response.status == 200){
-					csrf_hash = response.reponse.csrf_hash;
-					if (response.isExisted == true) {
-						alert(response.message);
-						window.location.href=HOSTNAMEADMIN+"/product";
-					}
-				}
-			},
-			error: function(jqXHR, exception){
-				// console.log(errorHandle(jqXHR, exception));
+		})
+	});
+	$('[name^=vehicles_]').each(function(e) {
+		$("[name="+$(this)[0].name+"]").rules('add', {
+			vehicles: true
+		})
+	});
+	if($("#content-full-date .title-content-date.date").length>0){
+		$("[name=number]").rules('add', {
+			required: true,
+			number: true,
+			messages: {
+				required:'Bạn phải nhập số ngày của tour này.'
 			}
 		});
 	}
-});
-$(".append-date").click(function(){
-	numberdates = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
-	if($(this).attr("id") == 'button-numberdate' || $(this).attr("id") == 'append-date'){
-		if($(this).attr("id") == 'append-date'){
-			$("#numberdate").val(Number($("#numberdate").val())+1)
+	if ($('#register-form').valid() === false){
+		if($($(".col-xs-12.has-errors")[0]).parents("[id^=showdatecontent_]").length >0){
+			var active = $($(".col-xs-12.has-errors")[0]).parents("[id^=showdatecontent_]")[0].id;
+			$("#"+active).attr({"class":"collapse in","aria-expanded":"true"});
+			$("#"+active).parent().prev().attr("aria-expanded","true").removeClass('collapsed');
+			subStringLast = $("#"+active+" ul.language .active a").attr("aria-controls").substring(0, $("#"+active+" ul.language .active a").attr("aria-controls").length - 1);
+			if($(".col-xs-12.has-errors input[name^=title_date_]")[0].id.indexOf(subStringLast) == "-1" && $("#numberdate").val() >0 && $("#numberdate").val() != "" && $($("#"+active+" [name^=vehicles_]")[0]).val() != 0){
+				$("#"+active+" ul.language .active a").attr("aria-expanded","false");
+				$("#"+$("#"+active+" ul.language .active a").attr("aria-controls")).removeClass('active');
+				$("#"+active+" ul.language .active").removeClass('active');
+				$("a[aria-controls="+$($(".col-xs-12.has-errors")[0]).parent()[0].id+"]").parent().addClass("active");
+				$("#"+active+" ul.language .active").attr("aria-expanded","true");
+				$("#"+$($(".col-xs-12.has-errors")[0]).parent()[0].id).addClass('active');
+			}
 		}
-	}else{
+		if($("#numberdate").val() == "" || $("#numberdate").val() == 0){
+			$("#numberdate").focus();
+		}else if($($("#"+active+" [name^=vehicles_]")[0]).val() == 0){
+				$($("#"+active+" [name^=vehicles_]")[0]).focus();
+		}else{
+			$(".col-xs-12.has-errors input[name^=title_date_]")[0].focus();
+		}
 		return false;
+	}else{
+		if($(this)[0].id != "submit-shared"){
+			if($("#content-full-date .title-content-date.date").length == 0){
+				$("#numberdate").val("");
+			}else{
+				$("#numberdate").val($("#content-full-date .title-content-date.date").length);
+			}
+			$("#content-home").css("display","none");
+		    $("#nav-product #submit-shared").css("display","none");
+			$("#go-back").css("display","inline");
+		    $("#nav-product #add-date").css("display","inline");
+			return true;
+		}else{
+			if($(".title-content-date.date").length<=0){
+				alert("Vui lòng tạo ra một ngày của tour");
+				return false;
+			}
+			if(window.location.pathname.indexOf("/product/edit/") != '-1'){
+				var url = window.location.href;
+			}else{
+				var url = HOSTNAME + 'admin/product/create';
+			}
+			var post = new FormData();
+			// var idDateVi = [];
+			// var titleDateVi = [];
+			// var contentDateVi =[];
+			// var idDateEn = [];
+			// var titleDateEn = [];
+			// var contentDateEn = [];
+			numberdates = $(".title-content-date.date").length;
+			for (var i = 0; i < document.getElementById("image_shared").files.length; i++) {
+				post.append('image_shared[]',document.getElementById("image_shared").files[i]);
+			}
+			for (var k = 0; k < numberdates; k++) {
+				if(document.getElementById("img_date_"+k).files.length == 0){
+					post.append('dateimg[]',k);
+				}else{
+					post.append('dateimg[]',document.getElementById("img_date_"+k).files[0]);
+				}
+				post.append('vehicles[]',$('#vehicles_'+k).val());
+				post.append('datetitle_vi[]',$('#title_date_vi_'+k).val());
+				post.append('datetitle_en[]',$('#title_date_en_'+k).val());
+				post.append('datecontent_vi[]',tinymce.get("content_date_vi_"+k).getContent());
+				post.append('datecontent_en[]',tinymce.get("content_date_en_"+k).getContent());
+			}
+			post.append('number',($(".title-content-date.date [name^=title_date_]").length));
+			post.append('title_vi',$('#title_vi').val());
+			post.append('title_en',$('#title_en').val());
+			post.append('metakeywords_vi',$('#metakeywords_vi').val());
+			post.append('metakeywords_en',$('#metakeywords_en').val());
+			post.append('metadescription_vi',$('#metadescription_vi').val());
+			post.append('metadescription_en',$('#metadescription_en').val());
+			post.append('slug_shared',$('#slug_shared').val());
+			post.append('parent_id_shared',$('#parent_id_shared').val());
+			post.append('description_vi',$('#description_vi').val());
+			post.append('description_en',$('#description_en').val());
+			post.append('content_vi',tinymce.get("content_vi").getContent());
+			post.append('content_en',tinymce.get("content_en").getContent());
+			post.append('csrf_myielts_token',csrf_hash);
+			$.ajax({
+				method: "post",
+				url: url,
+				data: post,
+				contentType: false,
+				processData: false,
+				success: function(response){
+					console.log(response);
+					if(response.status == 200){
+						csrf_hash = response.reponse.csrf_hash;
+						if (response.isExisted == true) {
+							alert(response.message);
+							window.location.href=HOSTNAMEADMIN+"/product";
+						}
+					}
+				},
+				error: function(jqXHR, exception){
+					console.log(errorHandle(jqXHR, exception));
+				}
+			});
+		}
+	}
+});
+$("#button-numberdate,#append-date").click(function(){
+	numberdates = $(".title-content-date.showdate.vi .title-content-date.date").length;
+	if($(this).attr("id") == 'append-date'){
+		$("#numberdate").val($("#content-full-date .title-content-date.date").length+1);
 	}
 	var numberdate = Number($("#numberdate").val());
 	if(numberdate == 'NaN' || numberdate == 0){
@@ -221,7 +295,7 @@ $(".append-date").click(function(){
 		$("#numberdate").val(numberdates);
 		return false;
 	}
-	var url = HOSTNAMEADMIN + '/product/ajax_form/'+numberdate+'/'+($(".title-content-date.showdate.vi .title-content-date.date.vi").length+$(".title-content-date.showdate.vi .title-content-date.date.vi1").length);
+	var url = HOSTNAMEADMIN + '/product/ajax_form/'+numberdate+'/'+$("#content-full-date .title-content-date").length/2;
 	$.ajax({
 		method: "get",
 		url: url,
@@ -257,46 +331,35 @@ $(".append-date").click(function(){
 					external_plugins: {"filemanager": HOSTNAME + "filemanager/plugin.min.js"}
 				});
 			});
-			$($(".title-content-date.date.vi .remove")).remove();
-			$($(".title-content-date.date.en .remove")).remove();
-			$(".title-content-date.showdate.vi").append($(response.reponse.vi)[0].innerHTML);
-			$(".title-content-date.showdate.en").append($(response.reponse.en)[0].innerHTML);
-			numberdates = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
-			numberdates1 = $(".title-content-date.showdate.vi .title-content-date.date.vi1").length;
-			for (var i = 0; i <= numberdates1; i++) {
-				$($(".title-content-date.showdate.vi .title-content-date.date.vi1")[i]).attr("class","title-content-date date vi");
-				$($(".title-content-date.showdate.en .title-content-date.date.en1")[i]).attr("class","title-content-date date en");
+			$("#content-full-date").append(response.reponse);
+			for (var i = 0; i <= $("#content-full-date .title-content-date.rm").length; i++) {
+				$($("#content-full-date .title-content-date.rm")[i]).removeClass('rm').addClass('date');
 			}
-			if(numberdate<(numberdates+numberdates1)){
-				$(".no_border").prev().css("display","block");
-				$($(".title-content-date.showdate.vi .title-content-date.date.vi1")).attr("class","title-content-date date vi");
-				$($(".title-content-date.showdate.en .title-content-date.date.en1")).attr("class","title-content-date date en");
-				numberdates = $(".title-content-date.showdate.vi .title-content-date.date.vi").length;
-				for (var i = numberdate; i < numberdates; i++) {
-					$($(".title-content-date.showdate.vi .title-content-date.date.vi")[numberdate]).attr("class","title-content-date date vi1");
-					$($(".title-content-date.showdate.en .title-content-date.date.en")[numberdate]).attr("class","title-content-date date en1");
+			if(numberdate<($("#content-full-date .title-content-date.date").length+$("#content-full-date .title-content-date.rm").length)){
+				$($("#content-full-date .title-content-date.rm")).removeClass('rm').addClass('date');
+				$(".no_border").prev().css("display","inline");
+				for (var i = numberdate; i < $("#content-full-date .title-content-date").length; i++) {
+    				$($("#content-full-date .title-content-date.date")[numberdate]).parents(".no_border").prev().fadeOut();
+					$($("#content-full-date .title-content-date.date")[numberdate]).removeClass('date').addClass('rm');
 				}
 			}else{
-				$(".no_border").prev().css("display","block");
-				for (var i = 0; i < (numberdate-numberdates); i++) {
-					$($(".title-content-date.showdate.vi .title-content-date.date.vi1")[i]).css("display","block");
-					$($(".title-content-date.showdate.en .title-content-date.date.en1")[i]).css("display","block");
-					$($(".title-content-date.showdate.vi .title-content-date.date.vi1")[i]).attr("class","title-content-date date vi");
-					$($(".title-content-date.showdate.en .title-content-date.date.en1")[i]).attr("class","title-content-date date en");
+				$(".no_border").prev().css("display","inline");
+				for (var i = 0; i < (numberdate-$("#content-full-date .title-content-date.date").length); i++) {
+					console.log($("#content-full-date .title-content-date.rm"));
+					$($("#content-full-date .title-content-date.rm")[i]).parents(".no_border").prev().fadeIn();
+					$($("#content-full-date .title-content-date.rm")[i]).css("display","block");
+					$($("#content-full-date .title-content-date.rm")[i]).removeClass('rm').addClass('date');
 				}     
 			}
-			$($(".title-content-date.showdate.vi .title-content-date.date.vi")).css("display","block");
-			$($(".title-content-date.showdate.en .title-content-date.date.en")).css("display","block");
-			$($(".title-content-date.showdate.vi .title-content-date.date.vi1")).css("display","none");
-			$($(".title-content-date.showdate.en .title-content-date.date.en1")).css("display","none");
+			$("#content-full-date .title-content-date.date").css("display","block");
+			$("#content-full-date .title-content-date.rm").css("display","none");
+			$(".title-content-date.showdate .btn-margin span.remove").remove();
 			if(numberdate >1){     
-				$($(".title-content-date.date.vi .title_date")[numberdate-1]).before("<span class='remove' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
-				$($(".title-content-date.date.en .title_date")[numberdate-1]).before("<span class='remove' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
+				$($(".title-content-date.showdate .btn-margin")[numberdate-1]).append("<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
 			}
 		},
 		error: function(jqXHR, exception){
 			console.log(errorHandle(jqXHR, exception));
-
 		}
 	});
 });
