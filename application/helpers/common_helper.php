@@ -19,25 +19,11 @@ if (!function_exists('handle_multi_language_request')) {
                 if (count($language_type) == 2) {
                     if (in_array($language_type[0], $request_language_template)) {
                         if ($language_type[1] == $languages[$i]) {
-                            $converted_request[$i][$language_type[0]] = $request[$list_request[$j]];
-                        }
-                    }
-                }
-            }
-        }
-        return $converted_request;
-    }
-    function handle_multi_language_request_date($foreign_key, $id, $request_language_template, $request, $languages) {
-        $list_request = array_keys($request);
-        $converted_request = array();
-        for ($i = 0; $i < count($languages); $i++) {
-            $converted_request[$i] = array($foreign_key => $id, 'language' => $languages[$i]);
-            for ($j = 0; $j < count($list_request); $j++) {
-                $language_type = explode('_date_', $list_request[$j]);
-                if (count($language_type) == 2) {
-                    if (in_array($language_type[0], $request_language_template)) {
-                        if ($language_type[1] == $languages[$i]) {
-                            $converted_request[$i][$language_type[0]] = $request[$list_request[$j]];
+                            if(strpos($language_type[0], "date") !== false){
+                                $converted_request[$i][$language_type[0]] = json_encode($request[$list_request[$j]]);
+                            }else{
+                                $converted_request[$i][$language_type[0]] = $request[$list_request[$j]];
+                            }
                         }
                     }
                 }

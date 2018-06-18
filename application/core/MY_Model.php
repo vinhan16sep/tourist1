@@ -78,12 +78,20 @@ class MY_Model extends CI_Model {
         if(in_array('metadescription', $select)){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metadescription');
         }
+        if(in_array('datetitle', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datetitle ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datetitle');
+        }
+        if(in_array('datecontent', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datecontent ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datecontent');
+        }
         if($select == null){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metakeywords ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metakeywords');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metadescription');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datetitle ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datetitle');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datecontent ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datecontent');
         }
         
         $this->db->from($this->table);
