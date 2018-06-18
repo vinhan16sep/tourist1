@@ -8,7 +8,6 @@ class Courses extends Public_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('courses_model');
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
     }
 
@@ -34,10 +33,6 @@ class Courses extends Public_Controller {
 
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
-
-
-        $result = $this->courses_model->get_all_field('desc', array('title', 'description', 'content'), $this->data['lang'], $per_page, $this->data['page']);
-        $this->data['result'] = $result;
 
         $this->render('courses_view');
     }
