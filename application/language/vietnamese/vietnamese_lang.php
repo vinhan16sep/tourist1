@@ -3,98 +3,112 @@
 /**
  * Form translations
  */
-$lang['title'] = 'Tiêu đề';
-$lang['image'] = 'Ảnh đại diện';
-$lang['description'] = 'Giới thiệu';
-$lang['content'] = 'Nội dung';
 
-$lang['homepage'] = 'Trang chủ';
-$lang['more-info'] = 'Xem Thêm';
-$lang['see-more'] = 'Chi Tiết';
-$lang['register'] = 'Đăng Ký';
-$lang['slogan'] = 'Tham gia với chúng tôi ngay bây giờ!';
-$lang['join-now'] = 'Tham Gia Ngay';
+//Top Nav
+$lang['about'] = 'About Us';
+$lang['contact'] = 'Contact Us';
 
-/*
-    Main Header
- */
+//Main Nav
 
-$lang['about'] = 'Giới Thiệu';
-$lang['courses'] = 'Khóa Học';
-$lang['document'] = 'Tài Liệu';
-$lang['blogs'] = 'Bài Viết';
-$lang['contact'] = 'Liên Hệ';
+$lang['home'] = 'Home';
+$lang['domestic'] = 'Domestic';
+$lang['international'] = 'International';
+$lang['special-tours'] = 'Special Tour';
+$lang['mice'] = 'Mice';
+$lang['services'] = 'Services';
+$lang['visa'] = 'Visa';
+$lang['blogs'] = 'Blogs';
 
-/*
-    Home Page
- */
-$lang['intro-about'] = 'Giới thiệu Trung tâm tiếng Anh myIELTS';
-$lang['getting-started'] = 'Bắt Đầu';
+//Sub Nav
+$lang['pilgrimage'] = 'Pilgrimage';
+$lang['northern'] = 'Northern';
+$lang['central'] = 'Central';
+$lang['southern'] = 'Southern';
 
-$lang['intro-courses'] = 'Hệ thống bài học của My IELTS được thiết kế theo chuẩn sư phạm bởi đội ngũ giáo viên được đào tạo chuyên môn tại các trường về sư phạm Anh tại Hà Nội.';
-$lang['testinomial'] = 'Cảm nhận';
+//Footer
+$lang['accept'] = 'We accept';
+$lang['follow'] = 'Follow Us on';
+
+//Company Information
+
+$lang['branch-1-location'] = 'Location 1';
+$lang['branch-1-address'] = 'Address 1';
+
+$lang['branch-2-location'] = 'Location 2';
+$lang['branch-2-address'] = 'Address 2';
+
+//.btn
+
+$lang['see-all'] = 'See all';
+$lang['explore'] = 'Expore Now';
+$lang['tour-request'] = 'Send Us your Request';
+$lang['booking'] = 'Book Now!';
+
+//Tour Request
+
+$lang['tour-request-title'] = 'Let us help you to find your suitable trip';
+$lang['tour-request-content'] = 'Could not find a suitable trip for you? Let us help you! Tell us your travel plan and we will reply to you with the best option of holiday in Laos, Vietnam & Cambodia within 12 - 24 hours.';
+
+//Services
+
+$lang['services-hotel'] = 'Hotel Services';
+$lang['services-air'] = 'Air Services';
+
+//Visa
+
+$lang['visa-title'] = 'Find out VISA Services';
+$lang['visa-content'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra non dui ut suscipit. Proin quis odio et mi dignissim accumsan. Integer fringilla fringilla rutrum. Pellentesque fringilla sem a nisi consequat porttitor. Sed in pharetra ipsum. Sed suscipit tincidunt sapien ac mollis. Fusce malesuada ornare convallis. Donec aliquam nisl et lacus varius bibendum. Duis ut purus ut erat consectetur tincidunt id eget nunc.';
+
+//Blogs
+
+$lang[''] = '';
+
+//Tour Detail
+
+$lang['tour-detail-duration'] = 'Duration';
+$lang['tour-detail-start'] = 'Starting Day';
+$lang['tour-detail-price'] = 'Price';
+$lang['tour-detail-rating'] = 'Rating';
+$lang['tour-detail-votes'] = 'Votes';
+
+$lang['tour-detail-schedule'] = 'Schedule';
+
+$lang['tour-tabs-overview'] = 'Overview';
+$lang['tour-tabs-gallery'] = 'Gallery';
+$lang['tour-tabs-price'] = 'Price';
+$lang['tour-tabs-trip-notes'] = 'Trip Notes';
+$lang['tour-tabs-inquire'] = 'Inquire';
+$lang['tour-tabs-customize'] = 'Customize';
+
+$lang['tour-price-adult'] = 'Adult';
+$lang['tour-price-u11'] = 'Children from 2 to 11';
+$lang['tour-price-u2'] = 'Children under 2';
+
+$lang['inclusion'] = 'Inclusion';
+$lang['exclusion'] = 'Exclusion';
+
+$lang['condition-register'] = 'Tour Registration Conditions';
+$lang['condition-cancel'] = 'Tour Cancellation Conditions';
+$lang['condition-general'] = 'Tour General Conditions';
+
+$lang['customize-program'] = 'Daily Program';
+$lang['customize-change'] = 'Your Change';
+
+//Forms
+
+$lang['form-title'] = 'Title';
+$lang['form-first-name'] = 'First Name';
+$lang['form-last-name'] = 'Last Name';
+$lang['form-email'] = 'Email Address';
+$lang['form-email-confirm'] = 'Confirm Email Address';
+$lang['form-phone-number'] = 'Phone Number';
+$lang['form-departure'] = 'Preferred Departure Date';
+$lang['form-country'] = 'Country';
+$lang['form-adults'] = 'Adults';
+$lang['form-children-u11'] = 'Children (2-11 years old)';
+$lang['form-children-u2'] = 'Children (Under 2 years old)';
+$lang['form-message'] = 'Message';
 
 
-/*
-    About
- */
-
-$lang['about-us'] = 'Giới Thiệu';
-$lang['our-message'] = 'THÔNG ĐIỆP';
-$lang['our-methods'] = 'HÀNH ĐỘNG';
-
-/*
-    courses
- */
-$lang['courses-title'] = 'Khóa Học myIELTS';
-$lang['detail-courses'] = 'Chi Tiết Khóa Học';
-
-/*
-    Document
- */
-$lang['document'] = 'Tài Liệu';
-$lang['detail-document'] = 'Chi Tiết Tài Liệu';
-
-/*
-    blogs
- */
-
-$lang['blogs'] = 'Bài Viết';
-$lang['detail-blog'] = 'Chi Tiết Bài Viết';
-
-$lang['perfect-blend'] = 'Sự kết hợp hoàn hảo';
-$lang['elegant-recipes'] = 'Những công thức thanh lịch';
-
-/*
-    Contact form
- */
-$lang['contact'] = 'Liên Hệ';
-$lang['contact-title'] = 'Liên Hệ';
-$lang['contact-description'] = 'Hãy thoải mái liên hệ với chúng tôi';
-$lang['contact-chat'] = 'Đừng ngại, hãy trò chuyện với chúng tôi.';
-
-$lang['contact-name'] = 'Tên của bạn';
-$lang['contact-mail'] = 'Email của bạn';
-$lang['contact-phone'] = 'Số điện thoại của bạn';
-$lang['contact-message'] = 'Tin nhắn của bạn';
-$lang['contact-send'] = 'Gửi Tin Nhắn';
 
 
-$lang['submit'] = 'Gửi tin nhắn';
-
-/*
-    Register
- */
-$lang['register-name'] = 'Tên của bạn';
-$lang['register-phone'] = 'Số điện thoại của bạn';
-$lang['register-age'] = 'Tuổi của bạn';
-$lang['register-office'] = 'Nơi Làm Việc/ Trường Học';
-$lang['register-email'] = 'Email của bạn';
-
-/*
-    Modal
- */
-
-$lang['modal-menu'] = 'Menu';
-$lang['modal-floor-plan'] = 'Sơ đồ nhà hàng';
-$lang['modal-close'] = 'Đóng';
