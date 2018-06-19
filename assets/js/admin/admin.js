@@ -225,16 +225,7 @@ $("#submit-shared,#content-home").click(function(event) {
 				var url = HOSTNAME + 'admin/product/create';
 			}
 			var post = new FormData();
-			// var idDateVi = [];
-			// var titleDateVi = [];
-			// var contentDateVi =[];
-			// var idDateEn = [];
-			// var titleDateEn = [];
-			// var contentDateEn = [];
 			numberdates = $(".title-content-date.date").length;
-			for (var i = 0; i < document.getElementById("image_shared").files.length; i++) {
-				post.append('image_shared[]',document.getElementById("image_shared").files[i]);
-			}
 			for (var k = 0; k < numberdates; k++) {
 				if(document.getElementById("img_date_"+k).files.length == 0){
 					post.append('dateimg[]',k);
@@ -242,11 +233,21 @@ $("#submit-shared,#content-home").click(function(event) {
 					post.append('dateimg[]',document.getElementById("img_date_"+k).files[0]);
 				}
 				post.append('vehicles[]',$('#vehicles_'+k).val());
+				post.append('librarylocaltion[]',$('#go-place_'+k).val());
 				post.append('datetitle_vi[]',$('#title_date_vi_'+k).val());
 				post.append('datetitle_en[]',$('#title_date_en_'+k).val());
 				post.append('datecontent_vi[]',tinymce.get("content_date_vi_"+k).getContent());
 				post.append('datecontent_en[]',tinymce.get("content_date_en_"+k).getContent());
 			}
+			post.append('price',$('#price').val());
+			post.append('date',$('#datepicker').val());
+			post.append('priceadults',$('#priceadults').val());
+			post.append('pricechildren',$('#pricechildren').val());
+			post.append('priceinfants',$('#priceinfants').val());
+			post.append('percen',$('#percen').val());
+			post.append('localtion',$('#localtion').val());
+			post.append('image_shared',document.getElementById("image_shared").files[0]);
+			post.append('image_localtion',document.getElementById("image_localtion").files[0]);
 			post.append('number',($(".title-content-date.date [name^=title_date_]").length));
 			post.append('title_vi',$('#title_vi').val());
 			post.append('title_en',$('#title_en').val());
@@ -260,6 +261,10 @@ $("#submit-shared,#content-home").click(function(event) {
 			post.append('description_en',$('#description_en').val());
 			post.append('content_vi',tinymce.get("content_vi").getContent());
 			post.append('content_en',tinymce.get("content_en").getContent());
+			post.append('tripnodes_vi',tinymce.get("tripnodes_vi").getContent());
+			post.append('tripnodes_en',tinymce.get("tripnodes_en").getContent());
+			post.append('detailsprice_vi',tinymce.get("detailsprice_vi").getContent());
+			post.append('detailsprice_en',tinymce.get("detailsprice_en").getContent());
 			post.append('csrf_myielts_token',csrf_hash);
 			$.ajax({
 				method: "post",
@@ -279,6 +284,7 @@ $("#submit-shared,#content-home").click(function(event) {
 				},
 				error: function(jqXHR, exception){
 					console.log(errorHandle(jqXHR, exception));
+					location.reload();
 				}
 			});
 		}
@@ -357,6 +363,31 @@ $("#button-numberdate,#append-date").click(function(){
 			if(numberdate >1){     
 				$($(".title-content-date.showdate .btn-margin")[numberdate-1]).append("<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
 			}
+   	 		$('.select2').select2();
+		 	$(document).off("change","[id^=paren-go-place_]").on("change","[id^=paren-go-place_]",function(){
+		 		var stt = $($(this)[0])[0].dataset.idlocaltion;
+		 		var url = HOSTNAMEADMIN + '/product/ajax_area_selected';
+		        $.ajax({
+		            method: "post",
+		            url: url,
+		            data: {
+		                area : $($(this)[0]).val(), csrf_myielts_token : csrf_hash
+		            },
+		            success: function(response){
+		            	console.log(response)
+		                csrf_hash = response.reponse.csrf_hash;
+		                if(response.status == 200 && response.isExisted == true){
+		                    $("input[name='csrf_myielts_token']").val(csrf_hash);
+		                    $("#go-place_"+stt).html(response.reponse.content);
+		                }
+		            },
+		            error: function(jqXHR, exception){
+		                console.log(errorHandle(jqXHR, exception));
+		                location.reload();
+		            }
+		        });	
+			});
+
 		},
 		error: function(jqXHR, exception){
 			console.log(errorHandle(jqXHR, exception));

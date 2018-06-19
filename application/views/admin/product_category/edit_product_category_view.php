@@ -27,7 +27,7 @@
                         <div class="form-group col-xs-12">
                             <label for="image_shared">Hình ảnh đang dùng</label>
                             <br>
-                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['image']); ?>" width=250px>
+                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $detail['image']); ?>" width=250px>
                             <br>
                         </div>
                         <div class="form-group col-xs-12">

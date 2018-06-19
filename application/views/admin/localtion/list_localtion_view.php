@@ -5,14 +5,11 @@
     <section class="content-header">
         <h1>
             Danh sách
-            <small>Danh Mục Bài Viết</small>
+            <small>
+                Localtion
+            </small>
         </h1>
-<!--        <ol class="breadcrumb">-->
-<!--            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>-->
-<!--            <li class="active">Product/ Service</li>-->
-<!--        </ol>-->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -34,15 +31,17 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Danh Mục Bài Viết</h3>
+                        <h3 class="box-title">
+                            Localtion
+                        </h3>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="<?php echo base_url('admin/category/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
+                            <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
                         </div>
                         <div class="col-md-6">
-                            <form action="<?php echo base_url('admin/category/index') ?>" method="get">
+                            <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
                                     <span class="input-group-btn">
@@ -61,48 +60,67 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
+                                    <th>Khu vực</th>
+                                    <th>Vị trí</th>
                                     <th>Detail</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php if($result): ?>
+                                <?php if(isset($result) && $result): ?>
                                 <?php $i = 1; ?>
                                 <?php foreach ($result as $key => $value): ?>
-                                    <tr class="remove_<?php echo $value['id'] ?>">
+                                    <tr class="remove_<?php echo $value['id']; ?>">
                                         <td><?php echo $i++ ?></td>
-                                        <td><?php echo $value['title'] ?></td>
                                         <td>
-                                            <a href="<?php echo base_url('admin/category/detail/'.$value['id']) ?>"
-                                            <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1" target="_blank" >Xem Chi Tiết</button>
+                                            <div class="mask_sm">
+                                                <?php if (!empty($value['image'])): ?>
+                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
+                                                <?php else: ?>
+                                                    Chưa có Ảnh.
+                                                <?php endif ?>
+                                            </div>
+                                        </td>
+                                        <td><?php echo $value['title'] ?></td>
+                                        <td><?php echo $value['area'] ?></td>
+                                        <td><?php echo $value['localtion'] ?></td>
+                                        <td>
+                                            <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
+                                            <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">See Detail</button>
                                         </td>
                                         <td>
-                                            <a href="<?php echo base_url('admin/category/edit/'. $value['id']) ?>" class="dataActionEdit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                                            <a href="javascript:void(0);" class="dataActionDelete btn-remove" data-controller="category" data-id="<?php echo $value['id'] ?>" ><i class="fa fa-remove" aria-hidden="true"></i> </a>
+                                            <a href="<?php echo base_url('admin/'.$controller.'/edit/'. $value['id']) ?>" class="dataActionEdit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                            &nbsp&nbsp&nbsp
+                                            <a href="javascript:void(0);" onclick="remove('<?php echo $controller; ?>', <?php echo $value['id'] ?>)" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a>
+
+                                            <!-- <a href="<?php echo base_url('admin/'.$controller.'/remove/'.$value['id']); ?>" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a> -->
                                         </td>
 
                                     </tr>
                                 <?php endforeach ?>
+
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Khu vực</th>
+                                        <th>Vị trí</th>
+                                        <th>Detail</th>
+                                        <th>Action</th>
+                                    </tr>
                                 <?php else: ?>
                                     <tr>
-                                        Chưa có Danh Mục Bài Viết
+                                        Chưa có Localtion
                                     </tr>
                                 <?php endif; ?>
 
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Tiêu đề</th>
-                                    <th>Detail</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <div class="col-md-6 col-md-offset-5 page">
-                            <?php echo $page_links ?>
+                            <?php echo (isset($page_links))? $page_links : ''; ?>
                         </div>
                     </div>
                     <!-- /.box-body -->

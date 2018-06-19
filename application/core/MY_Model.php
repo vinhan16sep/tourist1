@@ -84,6 +84,12 @@ class MY_Model extends CI_Model {
         if(in_array('datecontent', $select)){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datecontent ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datecontent');
         }
+        if(in_array('tripnodes', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.tripnodes ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_tripnodes');
+        }
+        if(in_array('detailsprice', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.detailsprice ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_detailsprice');
+        }
         if($select == null){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
@@ -92,6 +98,8 @@ class MY_Model extends CI_Model {
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_metadescription');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datetitle ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datetitle');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datecontent ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_datecontent');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.tripnodes ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_tripnodes');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.detailsprice ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_detailsprice');
         }
         
         $this->db->from($this->table);

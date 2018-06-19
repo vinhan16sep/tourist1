@@ -188,6 +188,9 @@ span[id$="-error"]{color:red;}
   margin-bottom: 10px;
   margin-top: 10px;
 }
+#home .col-xs-12>label{
+  margin-top: 10px;
+}
 @media (min-width: 768px) {
   .skin-black-light.sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu {
     border-left: 1px solid #d2d6de;

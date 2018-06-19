@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>dist/css/skins/skin-black-light.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/daterangepicker.css">
+    <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/select2.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
     

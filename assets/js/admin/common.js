@@ -142,3 +142,4 @@ function errorHandle(jqXHR, exception){
     return ('Unknown error occurred. Please try again.');
 }
 
+    $('.select2').select2();
