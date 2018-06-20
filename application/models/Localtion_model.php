@@ -42,9 +42,10 @@ class Localtion_model extends MY_Model {
         $this->db->where_in('id', $librarylocaltion);
         return $result = $this->db->get()->result_array();
     }
-    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array()){
+    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area){
         $this->db->select('*');
         $this->db->from($this->table);
+        $this->db->where('area', $area);
         $this->db->where_not_in('id', $notlibrarylocaltion);
         return $result = $this->db->get()->result_array();
     }

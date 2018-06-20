@@ -143,3 +143,27 @@ function errorHandle(jqXHR, exception){
 }
 
     $('.select2').select2();
+    $(document).off("change","[id^=paren-go-place_]").on("change","[id^=paren-go-place_]",function(){
+        var stt = $($(this)[0])[0].dataset.idlocaltion;
+        var url = HOSTNAMEADMIN + '/product/ajax_area_selected';
+        $.ajax({
+            method: "post",
+            url: url,
+            data: {
+                area : $($(this)[0]).val(), csrf_myielts_token : csrf_hash
+            },
+            success: function(response){
+                console.log(response)
+                csrf_hash = response.reponse.csrf_hash;
+                if(response.status == 200 && response.isExisted == true){
+                    $("input[name='csrf_myielts_token']").val(csrf_hash);
+                    $("#go-place_"+stt).html(response.reponse.content);
+                }
+            },
+            error: function(jqXHR, exception){
+                console.log(errorHandle(jqXHR, exception));
+                location.reload();
+            }
+        }); 
+    });
+    

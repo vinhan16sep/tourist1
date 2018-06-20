@@ -159,38 +159,26 @@ class Localtion extends Admin_Controller {
 
         $this->render('admin/localtion/detail_localtion_view');
     }
-    public function ddd(){
-            $checkid = array();
-            foreach ($this->product_model->get_all_for_remove() as $key => $value) {
-                $checkid[] = $value['librarylocaltion'];
-                
-            }
-            echo $checkid[0].$checkid[0];
-            $pattern = '/("'.'[0-9]'.',)|(,'.'[0-9]'.',)|(,'.'[0-9]'.'")|("'.'[0-9]'.'")/';
-            preg_match($pattern, $checkid[0], $matches);
-            echo '<pre>';
-            print_r($matches);
-            echo '</pre>';
-    }
-    public function remove(){
+    function remove(){
         $id = $this->input->post('id');
         if($id &&  is_numeric($id) && ($id > 0)){
-            $checkid = array();
-            foreach ($this->product_model->get_all_for_remove() as $key => $value) {
-                $checkid[] = json_encode($value['librarylocaltion']);
-            }
             if($this->localtion_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
-                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ISSET_ERROR,$reponse);
+                return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
             }
-            $data = array('is_deleted' => 1);
-            $update = $this->localtion_model->common_update($id, $data);
-            if($update){
-                $reponse = array(
-                    'csrf_hash' => $this->security->get_csrf_hash()
-                );
-                return $this->return_api(HTTP_SUCCESS,MESSAGE_REMOVE_SUCCESS,$reponse);
+            $localtion = count($this->product_model->get_all_for_remove($id));// lấy số bài viết thuộc về category
+            if($localtion == 0){
+                $data = array('is_deleted' => 1);
+                $update = $this->localtion_model->common_update($id, $data);
+                if($update){
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    );
+                    return $this->return_api(HTTP_SUCCESS,MESSAGE_REMOVE_SUCCESS,$reponse);
+                }
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
+            }else{
+                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_ERROR_REMOVE_LOCALTION,$localtion));
             }
-            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
         }
         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
     }

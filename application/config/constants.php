@@ -228,3 +228,5 @@ defined('MESSAGE_ERROR_SELECT_ORIGINAL_CATEGORY') OR define('MESSAGE_ERROR_SELEC
 defined('MESSAGE_ERROR_TURN_ON_POST_CATEGORY_FOR_SELECTED') OR define('MESSAGE_ERROR_TURN_ON_POST_CATEGORY_FOR_SELECTED', 'Bạn phải bật danh mục bài viết mà menu đã chọn (tên danh mục là: %s)');
 defined('MESSAGE_ERROR_TURN_ON_POST_FOR_SELECTED') OR define('MESSAGE_ERROR_TURN_ON_POST_FOR_SELECTED', 'Bạn phải bật bài viết mà bạn đã chọn làm đường dẫn cho menu (tên bài viết là: %s)');
 /*=====  End of Message for Create  ======*/
+
+defined('MESSAGE_ERROR_REMOVE_LOCALTION') OR define('MESSAGE_ERROR_REMOVE_LOCALTION', 'Bạn có %u tour đang chọn địa điểm đến này nên bạn không thể xóa.');

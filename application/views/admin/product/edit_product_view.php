@@ -226,9 +226,9 @@
                                                             <select class="form-control" name="parengoplace_<?php echo $i; ?>" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;"  id="paren-go-place_<?php echo $i; ?>">';
                                                                     <?php foreach ($area_selected as $key => $value): ?>
                                                                         <?php if(!empty($detail['librarylocaltion'][$i][0])): ?>
-                                                                            <option <?php echo ($value['slug'] == $detail['librarylocaltion'][$i][0]['slug'])?'selected' :''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['area']; ?></option>
+                                                                            <option <?php echo ($value['slug'] == $detail['librarylocaltion'][$i][0]['slug'])?'selected' :''; ?> value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
                                                                         <?php else: ?>
-                                                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['area']; ?></option>
+                                                                            <option value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
                                                                         <?php endif ?>
                                                                     <?php endforeach ?>
                                                             </select>
@@ -342,11 +342,13 @@
        return true;
     }
 </script>
-<script type="text/javascript">
+<script>
   $(function () {
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true,
+      format: 'dd/mm/yyyy',
     })
   })
 </script>
+

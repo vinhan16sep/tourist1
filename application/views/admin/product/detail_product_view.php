@@ -63,18 +63,19 @@
                                             </div>
                                         </div>
                                     <?php endif ?>
-                                    <div class="detail-info col-sm-6">
+                                    <div class="detail-info col-sm-12">
                                         <div class="table-responsive">
                                             <label>Thông tin</label>
                                             <table class="table table-striped">
-                                                <!-- <tr>
+                                                <tr>
                                                     <th>Đánh Giá</th>
-                                                    <td style="text-align: center;">
-                                                        <div class="rateit" data-rateit-value="<?php echo $rating ?>"  data-rateit-readonly="true"></div>
-                                                        <br />
-                                                        <?php echo $rating ?> Điểm / <?php echo $count_rating ?> Lượt đánh giá
+                                                    <td style="">
+                                                        <span class="rateit" data-rateit-value="<?php echo $rating ?>"  data-rateit-readonly="true" style="margin-top: 2px;"></span>
+                                                        <span style="color:blue; padding-left: 10px;">
+                                                            <?php echo $rating ?> Điểm / <?php echo $count_rating ?> Lượt đánh giá
+                                                        </span>
                                                     </td>
-                                                </tr> -->
+                                                </tr>
                                                 <tr>
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
@@ -104,7 +105,6 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-pills nav-justified" role="tablist">
                                             <?php $i = 0; ?>

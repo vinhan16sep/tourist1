@@ -113,6 +113,13 @@ class Product extends Admin_Controller{
                     'vehicles' => json_encode($this->input->post('vehicles')),
                     'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
                 );
+                if($this->input->post('date') !== null){
+                    $date= explode("/",$this->input->post('date'));
+                    $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                }
+                if(isset($datetime)){
+                    $shared_request['date'] = $datetime;
+                }
                 if(isset($image)){
                     $shared_request['image'] = $image;
                 }
@@ -174,19 +181,16 @@ class Product extends Admin_Controller{
                     $detail['librarylocaltion'] = $librarylocaltion;
                 }
                 $this->data['detail'] = $detail;
-		        // $count_rating = $this->rating_model->count_by_product_id($id);
-          //       $total_rating = $this->rating_model->total_by_product_id($id);
-          //       if($count_rating != 0 && $total_rating != 0){
-          //           $rating = round($total_rating['rating'] / $count_rating, 1);
-          //       }else{
-          //           $rating = 0;
-          //       }
-		  //       $this->data['rating'] = $rating;
-          //       $this->data['count_rating'] = $count_rating;
-          //       $this->data['refer'] = $this->input->get('refer');
-          //       $this->data['tour_date'] = $this->tour_date_model->find_array(array('product_id' => $id));
-          //       $this->data['tour_date_full']['vi'] = $this->tour_date_model->get_all_tour_date_id($this->data['tour_date']['id'],"vi");
-          //       $this->data['tour_date_full']['en'] = $this->tour_date_model->get_all_tour_date_id($this->data['tour_date']['id'],"en");
+		        $count_rating = $this->rating_model->count_by_product_id($id);
+                $total_rating = $this->rating_model->total_by_product_id($id);
+                if($count_rating != 0 && $total_rating != 0){
+                    $rating = round($total_rating['rating'] / $count_rating, 1);
+                }else{
+                    $rating = 0;
+                }
+		        $this->data['rating'] = $rating;
+                $this->data['count_rating'] = $count_rating;
+                $this->data['refer'] = $this->input->get('refer');
                 $this->render('admin/product/detail_product_view');
             }else{
                 $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
@@ -284,12 +288,25 @@ class Product extends Admin_Controller{
             $this->data['detail']['datecontent_vi'] = json_decode($this->data['detail']['datecontent_vi']);
             $this->data['detail']['datecontent_en'] = json_decode($this->data['detail']['datecontent_en']);
             $this->data['detail']['vehicles'] = json_decode($this->data['detail']['vehicles']);
+            if($this->data['detail']['date'] != "0000-00-00 00:00:00" && $this->data['detail']['date'] != "1970-01-01 08:00:00"){
+                $rmtime = str_replace(" 00:00:00","",$this->data['detail']['date']);
+                $date= explode("-",$rmtime);
+                if(count($date) == 3){
+                    $this->data['detail']['date'] = $date[2]."/".$date[1]."/".$date[0];
+                }else{
+                    $this->data['detail']['date'] = "";
+                }
+            }else{
+                $this->data['detail']['date'] = "";
+            }
             $librarylocaltion = json_decode($this->data['detail']['librarylocaltion']);
             if(!empty($librarylocaltion)){
                 for($i=0;$i < count($librarylocaltion);$i++){
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
-                    $library[] = $this->localtion_model->get_librarylocaltion_by_id_array($librarylocaltions);
-                    $notlibrary[] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions);
+                    $library[$i] = $this->localtion_model->get_librarylocaltion_by_id_array($librarylocaltions);
+                    if(!empty($library[$i])){
+                        $notlibrary[$i] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions,$library[$i][0]['area']);
+                    }
                 }
                 $this->data['detail']['librarylocaltion'] = $library;
                 $this->data['detail']['notlibrarylocaltion'] = $notlibrary;
@@ -339,7 +356,6 @@ class Product extends Admin_Controller{
                         $dateimage_json = json_encode($dateimage_full);
                     }
                     $shared_request = array(
-                        'date' => $this->input->post('date'),
                         'price' => $this->input->post('price'),
                         'priceadults ' => $this->input->post('priceadults'),
                         'pricechildren ' => $this->input->post('pricechildren'),
@@ -352,6 +368,13 @@ class Product extends Admin_Controller{
                     );
                     if($unique_slug != $this->data['detail']['slug']){
                         $shared_request['slug'] = $unique_slug;
+                    }
+                    if($this->input->post('date') !== null){
+                        $date= explode("/",$this->input->post('date'));
+                        $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                    }
+                    if(isset($datetime)){
+                        $shared_request['date'] = $datetime;
                     }
                     if(isset($image)){
                         $shared_request['image'] = $image;
