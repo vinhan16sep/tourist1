@@ -12,6 +12,7 @@
 <!-- fastClick -->
 <script src="<?php echo site_url('assets/lib/') ?>fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
+<script src="<?php echo site_url('assets/lib/bootstrap/js/select2.full.min.js') ?>"></script>
 <script src="<?php echo site_url('assets/lib/') ?>dist/js/adminlte.min.js"></script>
 <script src="<?php echo base_url('assets/js/');?>filereader.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="<?php echo site_url('assets/js/admin/script.js') ?>"></script>

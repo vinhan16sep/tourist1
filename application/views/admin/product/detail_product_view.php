@@ -30,6 +30,7 @@
                         <ul class="nav nav-tabs" role="tablist" id="nav-product">
                             <li role="presentation" class="active"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
                             <li role="presentation"><a href="#date-tour" class="btn btn-primary" aria-controls="date-tour" role="tab" data-toggle="tab">Date tour</a></li>
+                            <li role="presentation"><a href="#img-tour" class="btn btn-primary" aria-controls="img-tour" role="tab" data-toggle="tab">Nơi đến các ngày của tour</a></li>
                         </ul>
                         <h3 class="box-title">Chi tiết</h3>
                     </div>
@@ -38,36 +39,43 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="tour">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="detail-image col-sm-6">
-                                        <label>Hình ảnh</label>
-                                        <div class="row">
-                                            <?php if (!empty(json_decode($detail['image']))): ?>
-                                                <?php foreach (json_decode($detail['image']) as $key => $value): ?>
-                                                    <div class="item col-sm-6 row_<?php echo $key ?>">
+                                    <?php if (!empty($detail['imglocaltion'])): ?>
+                                        <div class="detail-image col-sm-6" style="margin-bottom: 5px;">
+                                            <label>Hình ảnh localtion</label>
+                                            <div class="row">
+                                                    <div class="col-xs-12">
                                                         <div class="mask-sm">
-                                                            <i class="glyphicon glyphicon-remove" onclick="remove_image('product',  <?php echo $detail['id'] ?>, '<?php echo $value ?>', <?php echo $key ?>)" style="cursor: pointer;" ></i>
-                                                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/' .$value) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>" >
+                                                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/'.$detail['imglocaltion']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>" style="padding: 0px;">
                                                         </div>
                                                     </div>
-                                                <?php endforeach ?>
-                                            <?php endif ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="detail-info col-sm-6">
+                                    <?php endif ?>
+                                    <?php if (!empty($detail['image'])): ?>
+                                        <div class="detail-image col-sm-6" style="margin-bottom: 5px;">
+                                            <label>Hình ảnh của tour</label>
+                                            <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="mask-sm">
+                                                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['slug'].'/'.$detail['image']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>" style="padding: 0px;">
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                    <div class="detail-info col-sm-12">
                                         <div class="table-responsive">
                                             <label>Thông tin</label>
                                             <table class="table table-striped">
                                                 <tr>
-                                                    <th colspan="2">Thông tin cơ bản</th>
-                                                </tr>
-                                                <!-- <tr>
                                                     <th>Đánh Giá</th>
-                                                    <td style="text-align: center;">
-                                                        <div class="rateit" data-rateit-value="<?php echo $rating ?>"  data-rateit-readonly="true"></div>
-                                                        <br />
-                                                        <?php echo $rating ?> Điểm / <?php echo $count_rating ?> Lượt đánh giá
+                                                    <td style="">
+                                                        <span class="rateit" data-rateit-value="<?php echo $rating ?>"  data-rateit-readonly="true" style="margin-top: 2px;"></span>
+                                                        <span style="color:blue; padding-left: 10px;">
+                                                            <?php echo $rating ?> Điểm / <?php echo $count_rating ?> Lượt đánh giá
+                                                        </span>
                                                     </td>
-                                                </tr> -->
+                                                </tr>
                                                 <tr>
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
@@ -80,12 +88,23 @@
                                                     <th>Số ngày tour</th>
                                                     <td><?php echo count($detail['datetitle_vi']) ?></td>
                                                 </tr>
+                                                <tr>
+                                                    <th>Giá</th>
+                                                    <td><?php echo $detail['price'] ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Giám giá</th>
+                                                    <td><?php echo $detail['percen'] ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Những nơi đi</th>
+                                                    <td><?php echo $detail['localtion'] ?></td>
+                                                </tr>
 
                                             </table>
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-pills nav-justified" role="tablist">
                                             <?php $i = 0; ?>
@@ -133,6 +152,16 @@
                                                                             <tr>
                                                                                 <th style="width: 140px"><?php echo $val;?>: </th>
                                                                                 <td><?php echo $detail['metadescription_'. $key] ?></td>
+                                                                            </tr>
+                                                                        <?php elseif($k == 'tripnodes' && in_array($k, $request_language_template)): ?>
+                                                                            <tr>
+                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
+                                                                                <td><?php echo $detail['tripnodes_'. $key] ?></td>
+                                                                            </tr>
+                                                                        <?php elseif($k == 'detailsprice' && in_array($k, $request_language_template)): ?>
+                                                                            <tr>
+                                                                                <th style="width: 140px"><?php echo $val;?>: </th>
+                                                                                <td><?php echo $detail['detailsprice_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php endif ?>
                                                                     </tbody>
@@ -231,6 +260,81 @@
 
                                 </div>
 
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="img-tour">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="detail-image col-sm-12">
+                                        <div class="row">
+                                            <?php for($h = 0;$h < count($detail['librarylocaltion']); $h++): ?>
+                                                <div role="tabpanel" class="tab-pane active" id="localtion_<?php echo $h; ?>">
+                                                    <div class="title-content-date showdate <?php echo $h; ?>">
+                                                        <div class="btn btn-primary col-xs-12 btn-margin collapsed" type="button" data-toggle="collapse" href="#librarylocaltion_<?php echo $h; ?>" aria-expanded="false" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
+                                                            <div class="col-xs-11">Nơi đến Ngày <?php echo $h+1; ?></div>
+                                                        </div>
+                                                        <div class="no_border">
+                                                            <div class="collapse" id="librarylocaltion_<?php echo $h; ?>">
+                                                                <?php if (!empty($detail['librarylocaltion'][$h])): ?>
+                                                                    <?php foreach ($detail['librarylocaltion'][$h] as $k => $value): ?>
+                                                                        <?php if(!empty($value)): ?>
+                                                                            <div class="col-sm-12" style="margin:10px 0px;">
+                                                                                <div class="col-sm-4" style="padding: 0px; padding-right: 5px;">
+                                                                                    <img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>"  style="width: 100%;">
+                                                                                </div>
+                                                                                <div class="col-sm-8" style="padding: 0px;">
+                                                                                        <ul class="nav nav-pills nav-justified language" role="tablist">
+                                                                                            <?php $number = 0; ?>
+                                                                                            <?php foreach ($page_languages as $key => $val) : ?>
+                                                                                                <?php $active = ($number == 0)?'active':''; ?>
+                                                                                                <li role="presentation" class="<?php echo $active; ?>">
+                                                                                                    <a href="#date-localtion<?php echo $key.$h.$k;?>" aria-controls="<?php echo $key.$h;?>" role="tab" data-toggle="tab">
+                                                                                                        <span class="badge"><?php echo $number + 1; ?></span><?php echo $val; ?>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <?php $number++; ?>
+                                                                                            <?php endforeach; ?>
+                                                                                            <?php $number = 0; ?>
+                                                                                        </ul>
+                                                                                    <div class="tab-content">
+                                                                                        <?php $number = 0; ?>
+                                                                                        <?php foreach ($template as $key => $val): ?>
+                                                                                            <div role="tabpanel" class="tab-pane <?php echo ($number == 0)? 'active' : '' ?>" id="date-localtion<?php echo $key.$h.$k; ?>">
+                                                                                                    <div class="table-responsive">
+                                                                                                        <table class="table table-striped">
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <th style="width: 140px"><?php echo $template[$key]['title'];?>: </th>
+                                                                                                                    <td><?php echo $value['title_'. $key] ?></td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <th style="width: 140px"><?php echo $template[$key]['content'];?>: </th>
+                                                                                                                    <td><?php echo $value['content_'. $key] ?></td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+                                                                                            </div>
+                                                                                            <?php $number++; ?>
+                                                                                        <?php endforeach; ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        <?php else: ?>
+                                                                            <div style="padding:20px;">
+                                                                                Không có nơi nào được chọn trong ngày    
+                                                                            </div>
+                                                                        <?php endif;?>
+                                                                    <?php endforeach ?>
+                                                                <?php endif ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endfor; ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

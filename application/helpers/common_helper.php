@@ -87,14 +87,18 @@ if (!function_exists('handle_common_author_data')) {
                 'metakeywords' => 'Từ khóa Meta',
                 'metadescription' => 'Mô tả Meta',
                 'description' => 'Giới Thiệu',
-                'content' => 'Nội Dung'
+                'content' => 'Nội Dung',
+                'tripnodes' => 'Ghi chú chuyến đi',
+                'detailsprice' => 'Chi tiết giá'
             ),
             'en' => array(
                 'title' => 'Title',
                 'metakeywords' => 'Meta keywords',
                 'metadescription' => 'Meta description',
                 'description' => 'Description',
-                'content' => 'Content'
+                'content' => 'Content',
+                'tripnodes' => 'Trip nodes',
+                'detailsprice' => 'Details price'
             ),
         );
         return $template;

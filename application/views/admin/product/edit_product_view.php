@@ -28,28 +28,34 @@
                                 <div class="row">
                                     <span><?php echo $this->session->flashdata('message'); ?></span>
                                 </div>
-                                <div class="col-xs-12">
-                                    <?php if (!empty(json_decode($detail['image']))): ?>
-                                        <label for="image_shared">Hình ảnh đang dùng</label>
-                                        <br>
-                                        <?php foreach (json_decode($detail['image']) as $key => $value): ?>
-                                            <div class="item col-md-3 row_<?php echo $key ?>">
-                                                <div class="mask-sm">
-                                                    <i class="glyphicon glyphicon-remove" onclick="remove_image('product',  <?php echo $detail['id'] ?>, '<?php echo $value ?>', <?php echo $key ?>)" ></i>
-                                                    <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. $value); ?>">
-                                                </div>
-                                            </div>
-                                        <?php endforeach ?>
-                                    <?php endif ?>
-                                    <br>
+                                <div class="col-xs-6">
+                                    <label for="image_shared">Hình ảnh tour đang dùng</label>
+                                    </br>
+                                        <?php if(!empty($detail['image'])): ?>
+                                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. $detail['image']); ?>" style="width: 100%;">
+                                        <?php endif; ?>
                                 </div>
                                 <div class="col-xs-12">
                                     <?php
                                     echo form_label('Ảnh đại diện', 'image_shared');
                                     echo form_error('image_shared');
-                                    echo form_upload('image_shared[]', set_value('image_shared'), 'class="form-control" id="image_shared" multiple');
+                                    echo form_upload('image_shared', set_value('image_shared'), 'class="form-control" id="image_shared"');
                                     ?>
                                     <br>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label for="image_shared">Hình ảnh localtion đang dùng</label>
+                                    </br>
+                                        <?php if(!empty($detail['imglocaltion'])): ?>
+                                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. $detail['imglocaltion']); ?>" style="width: 100%;">
+                                        <?php endif; ?>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Hình ảnh Map', 'image_localtion');
+                                    echo form_error('image_localtion');
+                                    echo form_upload('image_localtion', set_value('image_localtion'), 'class="form-control" id="image_localtion"');
+                                    ?>
                                 </div>
                                 <div class="col-xs-12">
                                     <?php
@@ -58,8 +64,57 @@
                                     echo form_input('slug_shared', $detail['slug'], 'class="form-control" id="slug_shared" readonly');
                                     ?>
                                 </div>
-
-
+                                <div class="col-xs-12">
+                                    <label>Date:</label>
+                                    <div class="input-group date">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input type="text" name="date" value ="<?php echo trim($detail['date']); ?>" class="form-control pull-right" id="datepicker" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Giá tour  ( Đơn vị tiền: VNĐ )', 'price');
+                                    echo form_error('price');
+                                    echo form_input('price', trim($detail['price']), 'class="form-control" id="price" placeholder ="Đơn vị tiền: VNĐ" onkeypress=" return isNumberKey(event)"');
+                                    ?>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Giá tour cho người lớn  ( Đơn vị : Phần trăm )', 'priceadults');
+                                    echo form_error('priceadults');
+                                    echo form_input('priceadults', trim($detail['priceadults']), 'class="form-control" id="priceadults" placeholder ="Đơn vị : Phần trăm (%)" onkeypress=" return isNumberKey(event)"');
+                                    ?>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Giá tour cho trẻ em  ( Đơn vị : Phần trăm )', 'pricechildren');
+                                    echo form_error('pricechildren');
+                                    echo form_input('pricechildren', trim($detail['pricechildren']), 'class="form-control" id="pricechildren" placeholder ="Đơn vị : Phần trăm (%)" onkeypress=" return isNumberKey(event)"');
+                                    ?>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Giá tour cho em bé  ( Đơn vị : Phần trăm )', 'priceinfants');
+                                    echo form_error('priceinfants');
+                                    echo form_input('priceinfants', trim($detail['priceinfants']), 'class="form-control" id="priceinfants" placeholder ="Đơn vị : Phần trăm (%)" onkeypress=" return isNumberKey(event)"');
+                                    ?>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Giảm giá', 'percen');
+                                    echo form_error('percen');
+                                    echo form_input('percen', trim($detail['percen']), 'class="form-control" id="percen" placeholder ="Đơn vị : Phần trăm (%)" onkeypress=" return isNumberKey(event)"');
+                                    ?>
+                                </div>
+                                <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Vị trí đến', 'localtion');
+                                    echo form_error('localtion');
+                                    echo form_input('localtion', trim($detail['localtion']), 'class="form-control" id="localtion" placeholder ="VD:Hanoi, Halong Bay, Hue, Hoian, Saigon, Cu Chi"');
+                                    ?>
+                                </div>
                                 <div class="col-xs-12">
                                     <select name="parent_id_shared" id="parent_id_shared" class="form-control">
                                         <?php echo $product_category; ?>
@@ -108,6 +163,14 @@
                                                             echo form_label($val, $k .'_'. $key);
                                                             echo form_error($k .'_'. $key);
                                                             echo form_input($k .'_'. $key, trim($detail['metadescription_'. $key]), 'class="form-control" id="metadescription_'.$key.'"');
+                                                        }elseif($k == 'tripnodes' && in_array($k, $request_language_template)){
+                                                            echo form_label($val, $k .'_'. $key);
+                                                            echo form_error($k .'_'. $key);
+                                                            echo form_textarea($k .'_'. $key, trim($detail['tripnodes_'. $key]), 'class="tinymce-area form-control" rows="5" ');
+                                                        }elseif($k == 'detailsprice' && in_array($k, $request_language_template)){
+                                                            echo form_label($val, $k .'_'. $key);
+                                                            echo form_error($k .'_'. $key);
+                                                            echo form_textarea($k .'_'. $key, trim($detail['detailsprice_'. $key]), 'class="tinymce-area form-control" rows="5" ');
                                                         }
                                                         ?>
                                                     </div>
@@ -158,6 +221,32 @@
                                                             <?php
                                                                 echo form_label('Hình ảnh ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
                                                                 echo form_upload('img_date_'.$i.'[]',"",'class="form-control" id="img_date_'.$i.'"');
+                                                                echo form_label('Chọn khu vực ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
+                                                            ?>
+                                                            <select class="form-control" name="parengoplace_<?php echo $i; ?>" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;"  id="paren-go-place_<?php echo $i; ?>">';
+                                                                    <?php foreach ($area_selected as $key => $value): ?>
+                                                                        <?php if(!empty($detail['librarylocaltion'][$i][0])): ?>
+                                                                            <option <?php echo ($value['slug'] == $detail['librarylocaltion'][$i][0]['slug'])?'selected' :''; ?> value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
+                                                                        <?php else: ?>
+                                                                            <option value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
+                                                                        <?php endif ?>
+                                                                    <?php endforeach ?>
+                                                            </select>
+                                                            <?php echo form_label('Chọn những nơi đến ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
+                                                            ?>
+                                                            <select class="form-control select2 select2-hidden-accessible" name="goplace_<?php echo $i; ?>" multiple="" data-placeholder="Select a State" style="width: 100%;min-height:34px;min-width:300px;" tabindex="-1" aria-hidden="true" id="go-place_<?php echo $i; ?>">
+                                                                <?php if (!empty($detail['librarylocaltion'])): ?>
+                                                                    <?php for ($m=0;$m< count($detail['librarylocaltion'][$i]);$m++): ?>
+                                                                            <option selected value="<?php echo $detail['librarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['librarylocaltion'][$i][$m]['localtion']; ?></option>
+                                                                    <?php endfor ?>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($detail['notlibrarylocaltion'])): ?>
+                                                                    <?php for ($m=0;$m< count($detail['notlibrarylocaltion'][$i]);$m++): ?>
+                                                                            <option value="<?php echo $detail['notlibrarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['notlibrarylocaltion'][$i][$m]['localtion']; ?></option>
+                                                                    <?php endfor ?>
+                                                                <?php endif ?>
+                                                            </select>
+                                                            <?php
                                                                 echo form_label('Phương tiện đi ngày '.($i+1), 'vehicles');
                                                                 echo form_error('vehicles');
                                                                 echo form_dropdown('vehicles_'.$i, $request_vehicles,$detail['vehicles'][$i], 'class="form-control" id="vehicles_'.$i.'"');
@@ -227,12 +316,14 @@
                     <input type="text" name="titledate_en[]" value=""/>
                     <input type="text" name="contentdate_en[]" value=""/>
                     <input type="text" name="numberdatehidden" value="<?php echo count($detail['datecontent_vi']);?>"/>
+                    <input type="file" name="dateimg[]" multiple="">
+                    <input type="text" name="librarylocaltion[]">
                 </div>
                 <?php echo form_close(); ?>
             </div>
         </section>
     </div>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/');?>jquery.validate.js"></script>
 <script src="<?php echo base_url('assets/js/admin/');?>admin.js" type="text/javascript" charset="utf-8" async defer></script>
 <script type="text/javascript">
     $(".collapse").css("height","0px");
@@ -251,3 +342,13 @@
        return true;
     }
 </script>
+<script>
+  $(function () {
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true,
+      format: 'dd/mm/yyyy',
+    })
+  })
+</script>
+

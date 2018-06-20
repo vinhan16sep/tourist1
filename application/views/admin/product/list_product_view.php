@@ -10,7 +10,6 @@
             </small>
         </h1>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -63,8 +62,8 @@
                                     <th>No.</th>
                                     <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
-                                    <th>Danh mục</th>
-                                    <th>Trạng thái</th>
+                                    <th>Khu vực</th>
+                                    <th>Vị trí</th>
                                     <th>Detail</th>
                                     <th>Action</th>
                                 </tr>
@@ -73,15 +72,12 @@
                                 <?php if(isset($result) && $result): ?>
                                 <?php $i = 1; ?>
                                 <?php foreach ($result as $key => $value): ?>
-                                    
-                                
                                     <tr class="remove_<?php echo $value['id'] ?>">
                                         <td><?php echo $i++ ?></td>
                                         <td>
                                             <div class="mask_sm">
-                                                <?php if (!empty(json_decode($value['image']))): ?>
-                                                    <?php $image = json_decode($value['image']) ?>
-                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$image[0]) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
+                                                <?php if (!empty($value['image'])): ?>
+                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$value['imglocaltion']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
                                                 <?php else: ?>
                                                     Chưa có Ảnh.
                                                 <?php endif ?>
