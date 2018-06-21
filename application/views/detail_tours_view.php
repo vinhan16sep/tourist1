@@ -47,22 +47,30 @@
 						<tr>
 							<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
 							<td>
-								<div class="rating">
-									<span>☆</span>
-									<span>☆</span>
-									<span>☆</span>
-									<span>☆</span>
-									<span>☆</span>
-									<p class="number">9999 <?php echo $this->lang->line('tour-detail-votes') ?></p>
-								</div>
+								<div id="rateit_star" data-productid="123" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
+								<input type="hidden" name="re_rateit" id="re_rateit" value="">
+								<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
 							</td>
 						</tr>
 						<tr>
-							<td></td>
 							<td>
-								<a href="" class="btn btn-default">
+								<div class="captcha-image image"></div>
+								<div class="captcha-input">
+									<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="">
+									<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" style="border-radius: 4px; border: none; width: 48%; margin-right: 5%; color: black">  
+									<a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a>    
+								</div>
+								<div>
+									<span class="message"></span>
+								</div>
+							</td>
+							<td>
+								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('tours/created_captcha'); ?>">
+								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('tours/created_rating'); ?>">
+								<input type="hidden" name="product_id" class="product_id" value="91">
+								<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
                                     <?php echo $this->lang->line('booking') ?>
-								</a>
+								</button>
 							</td>
 						</tr>
 					</table>
@@ -396,3 +404,5 @@
 		</div>
 	</div>
 </section>
+
+<script src="<?php echo base_url('assets/js/rating.js') ?>"></script>

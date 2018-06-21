@@ -88,4 +88,12 @@ class Product_model extends MY_Model{
         $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
     }
+
+    public function rating_by_id($id=''){
+        $this->db->select('count_rating, total_rating');
+        $this->db->from($this->table);
+        $this->db->where('id', $id);
+        $this->db->where('is_deleted', 0);
+        return $result = $this->db->get()->row_array();
+    }
 }
