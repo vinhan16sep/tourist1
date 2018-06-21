@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 lang: $(this).val()
             },
             success: function(res){
-                if(res.message === 1){
+                if(res.message == 'changed'){
                     window.location.reload();
                 }
             },
