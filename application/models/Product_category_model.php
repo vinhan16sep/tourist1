@@ -74,4 +74,17 @@ class Product_category_model extends MY_Model{
         $this->db->order_by($this->table .".sort", $order);
         return $this->db->get()->result_array();
     }
+
+    public function fetch_domestic_categories($lang = 'vi'){
+        $where_parent = "product_category.is_deleted = 0 AND  product_category_lang.language = '" . $lang . "' AND product_category.slug = '" . DOMESTIC_TOUR . "'";
+        $where_child = "product_category.is_deleted = 0 AND product_category_lang.language = '" . $lang . "' AND product_category.parent_id = 22";
+
+        $this->db->select('*')
+            ->from('product_category')
+            ->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id')
+            ->where($where_parent)
+            ->or_where($where_child);
+
+        return $this->db->get()->result_array();
+    }
 }

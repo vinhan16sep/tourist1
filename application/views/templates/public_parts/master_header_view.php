@@ -53,10 +53,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<a href="mailto:info@diamondtour.vn"><i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn</a>
 					</li>
 					<li>
-						<select class="form-control">
-							<option>Vietnamese</option>
-							<option>English</option>
-						</select>
+                        <select name="change_language" class="form-control">
+                            <option value="vi" <?php echo ($lang == 'vi') ? 'selected="selected"' : ''; ?> >Vietnamese</option>
+                            <option value="en" <?php echo ($lang == 'en') ? 'selected="selected"' : ''; ?> >English</option>
+                        </select>
 					</li>
 				</ul>
 
@@ -64,6 +64,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 </section>
+<script>
+    $("select[name='change_language']").change(function(){
+        $.ajax({
+            method: "GET",
+            url: "http://localhost/tourist1/homepage/change_language",
+            data: {
+                lang: $(this).val()
+            },
+            success: function(res){
+                if(res.message === 1){
+                    window.location.reload();
+                }
+            },
+            error: function(){
+
+            }
+        });
+    });
+</script>
 
 <section class="main-page">
 	<header class="header">

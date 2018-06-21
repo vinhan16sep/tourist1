@@ -103,7 +103,6 @@
                 unset($categorie[$key]);
             }
         }
-        // print_r($cate_child);die;
         if ($cate_child){
             foreach ($cate_child as $key => $value){
             ?>

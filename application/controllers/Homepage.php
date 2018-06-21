@@ -4,8 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Homepage extends Public_Controller {
 
-	private $_lang = '';
-
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
@@ -34,4 +32,15 @@ class Homepage extends Public_Controller {
     	return $blogs;
     }
 
+    public function change_language(){
+        if($this->session->userdata('langAbbreviation') == $this->input->get('lang')){
+            return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_FAIL, $this->session->userdata('langAbbreviation'), null);
+        }else{
+            $this->session->set_userdata('langAbbreviation', $this->input->get('lang'));
+            if($this->session->userdata('langAbbreviation') == $this->input->get('lang')){
+                return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_SUCCESS, $this->session->userdata('langAbbreviation'), null);
+            }
+            return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_FAIL, $this->session->userdata('langAbbreviation'), null);
+        }
+    }
 }
