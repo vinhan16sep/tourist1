@@ -9,7 +9,7 @@ $(document).ready(function(){
                 method: "post",
                 url: url,
                 data: {
-                    id : id, csrf_myielts_token : csrf_hash
+                    id : id, csrf_diamondtour_token : csrf_hash
                 },
                 success: function(response){
                     if(response.status == 200){
@@ -66,7 +66,7 @@ function removeDate(){
 
 
 }
-var csrf_hash = $("input[name='csrf_myielts_token']").val();
+var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
 function remove(controller, id){
     var url = HOSTNAMEADMIN + '/' + controller + '/remove';
     if(confirm('Chắc chắn xóa?')){
@@ -74,7 +74,7 @@ function remove(controller, id){
             method: "post",
             url: url,
             data: {
-                id : id, csrf_myielts_token : csrf_hash
+                id : id, csrf_diamondtour_token : csrf_hash
             },
             success: function(response){
                 csrf_hash = response.reponse.csrf_hash;
@@ -107,17 +107,105 @@ function remove_image(controller, id, image, key){
             method: "post",
             url: url,
             data: {
-                id : id, csrf_myielts_token : csrf_hash, image : image
+                id : id, csrf_diamondtour_token : csrf_hash, image : image
             },
             success: function(response){
                 if(response.status == 200){
                     csrf_hash = response.reponse.csrf_hash;
                     $('.row_' + key).fadeOut();
-                    $("input[name='csrf_myielts_token']").val(csrf_hash);
+                    $("input[name='csrf_diamondtour_token']").val(csrf_hash);
                 }
             },
             error: function(jqXHR, exception){
                 console.log(errorHandle(jqXHR, exception));
+            }
+        });
+    }
+}function active(controller, id, question) {
+    var url = HOSTNAMEADMIN + '/' + controller + '/active';
+    if(confirm(question)){
+        $.ajax({
+            method: "post",
+            url: url,
+            data: {
+                id : id, csrf_diamondtour_token : csrf_hash
+            },
+            success: function(response){
+                csrf_hash = response.reponse.csrf_hash;
+                if(response.status == 200){
+                    switch(controller){
+                        case 'post_category' :
+                            alert('Bật danh mục thành công');
+                            break;
+                        case 'order' :
+                            alert('Hủy đặt bàn thành công');
+                            break;
+                        case 'banner' :
+                            alert('Bật banner thành công');
+                            break;
+                        case 'product' :
+                            alert('Bật thực đơn thành công');
+                            break;
+                        case 'post' :
+                            alert('Bật bài viết thành công');
+                            break;
+                        case 'product_category' :
+                            alert('Bật danh mục thành công');
+                            break;
+                    }
+                    location.reload();
+                }
+                console.log(response);
+            },
+            error: function(jqXHR, exception){
+                if(jqXHR.status == 404 &&  jqXHR.responseJSON.message != 'undefined '){
+                    alert(jqXHR.responseJSON.message);
+                    location.reload();
+                }else{
+                    console.log(errorHandle(jqXHR, exception));
+                }
+            }
+        });
+    }
+}
+
+function deactive(controller, id, question) {
+    var url = HOSTNAMEADMIN + '/' + controller + '/deactive';
+    if(confirm(question)){
+        $.ajax({
+            method: "post",
+            url: url,
+            data: {
+                id : id, csrf_diamondtour_token : csrf_hash
+            },
+            success: function(response){
+                csrf_hash = response.reponse.csrf_hash;
+                if(response.status == 200){
+                    switch(controller){
+                        case 'post_category' :
+                            alert('Tắt danh mục thành công');
+                            break;
+                        case 'order' :
+                            alert('Hủy đặt bàn thành công');
+                            break;
+                        case 'banner' :
+                            alert('Tắt banner thành công');
+                            break;
+                        case 'product' :
+                            alert('Tắt thực đơn thành công');
+                            break;
+                        case 'post' :
+                            alert('Tắt bài viết thành công');
+                            break;
+                        case 'product_category' :
+                            alert('Tắt danh mục thành công');
+                            break;
+                    }
+                    location.reload();
+                }
+            },
+            error: function(jqXHR, exception){
+                console.log(jqXHR);
             }
         });
     }
@@ -150,13 +238,13 @@ function errorHandle(jqXHR, exception){
             method: "post",
             url: url,
             data: {
-                area : $($(this)[0]).val(), csrf_myielts_token : csrf_hash
+                area : $($(this)[0]).val(), csrf_diamondtour_token : csrf_hash
             },
             success: function(response){
                 console.log(response)
                 csrf_hash = response.reponse.csrf_hash;
                 if(response.status == 200 && response.isExisted == true){
-                    $("input[name='csrf_myielts_token']").val(csrf_hash);
+                    $("input[name='csrf_diamondtour_token']").val(csrf_hash);
                     $("#go-place_"+stt).html(response.reponse.content);
                 }
             },

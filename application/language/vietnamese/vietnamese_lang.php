@@ -11,7 +11,7 @@ $lang['contact'] = 'Contact Us';
 //Main Nav
 
 $lang['home'] = 'Home';
-$lang['domestic'] = 'Domestic';
+$lang['domestic'] = 'Trong nước';
 $lang['international'] = 'International';
 $lang['special-tours'] = 'Special Tour';
 $lang['mice'] = 'Mice';

@@ -1,6 +1,6 @@
-var csrf_hash = $("input[name='csrf_myielts_token']").val();
+var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
 switch(window.location.origin){
-    case 'http://myielts.vn':
+    case 'http://diamondtour.vn':
         var HOSTNAME = 'http://tourist1.vn/';
         break;
     default:
@@ -265,7 +265,7 @@ $("#submit-shared,#content-home").click(function(event) {
 			post.append('tripnodes_en',tinymce.get("tripnodes_en").getContent());
 			post.append('detailsprice_vi',tinymce.get("detailsprice_vi").getContent());
 			post.append('detailsprice_en',tinymce.get("detailsprice_en").getContent());
-			post.append('csrf_myielts_token',csrf_hash);
+			post.append('csrf_diamondtour_token',csrf_hash);
 			$.ajax({
 				method: "post",
 				url: url,
@@ -283,6 +283,7 @@ $("#submit-shared,#content-home").click(function(event) {
 					}
 				},
 				error: function(jqXHR, exception){
+					alert(jqXHR.responseJSON.message);
 					console.log(errorHandle(jqXHR, exception));
 					location.reload();
 				}
@@ -371,13 +372,13 @@ $("#button-numberdate,#append-date").click(function(){
 		            method: "post",
 		            url: url,
 		            data: {
-		                area : $($(this)[0]).val(), csrf_myielts_token : csrf_hash
+		                area : $($(this)[0]).val(), csrf_diamondtour_token : csrf_hash
 		            },
 		            success: function(response){
 		            	console.log(response)
 		                csrf_hash = response.reponse.csrf_hash;
 		                if(response.status == 200 && response.isExisted == true){
-		                    $("input[name='csrf_myielts_token']").val(csrf_hash);
+		                    $("input[name='csrf_diamondtour_token']").val(csrf_hash);
 		                    $("#go-place_"+stt).html(response.reponse.content);
 		                }
 		            },
