@@ -15,6 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
+    <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
+
 	<!-- jQuery 3 -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.min.js"></script>
 	<!-- Bootstrap JS -->
@@ -31,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Waypoint Js -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.waypoints.min.js"></script>
+	<script src="<?php echo site_url('assets/js/jquery.rateit.js') ?>"></script>
 
 
 </head>

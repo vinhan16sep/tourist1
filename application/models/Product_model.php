@@ -88,6 +88,7 @@ class Product_model extends MY_Model{
         $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
     }
+
     public function get_by_slug($slug, $select = array(), $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
@@ -239,6 +240,13 @@ class Product_model extends MY_Model{
         $this->db->where($this->table .'.is_deleted', 0);
         $this->db->where($this->table .'.product_category_id', $product_category_id);
         return $this->db->get()->row_array();
+    }     
+
+    public function rating_by_id($id=''){
+        $this->db->select('count_rating, total_rating');
+        $this->db->from($this->table);
+        $this->db->where('id', $id);
+        $this->db->where('is_deleted', 0);
+        return $result = $this->db->get()->row_array();
     }
-       
 }

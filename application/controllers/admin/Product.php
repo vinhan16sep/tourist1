@@ -191,15 +191,16 @@ class Product extends Admin_Controller{
                     $detail['librarylocaltion'] = $librarylocaltion;
                 }
                 $this->data['detail'] = $detail;
-		        $count_rating = $this->rating_model->count_by_product_id($id);
-                $total_rating = $this->rating_model->total_by_product_id($id);
+                $rating = $this->product_model->rating_by_id($id);
+                $count_rating = $rating['count_rating'];
+                $total_rating = $rating['total_rating'];
                 if($count_rating != 0 && $total_rating != 0){
-                    $rating = round($total_rating['rating'] / $count_rating, 1);
+                    $new_rating = round($total_rating / $count_rating, 1);
                 }else{
-                    $rating = 0;
+                    $new_rating = 0;
                 }
-		        $this->data['rating'] = $rating;
                 $this->data['count_rating'] = $count_rating;
+                $this->data['rating'] = $new_rating;
                 $this->data['refer'] = $this->input->get('refer');
                 $this->render('admin/product/detail_product_view');
             }else{
