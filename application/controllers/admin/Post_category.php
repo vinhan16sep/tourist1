@@ -57,9 +57,6 @@ class Post_category extends Admin_Controller{
         $this->data['result'] = $result;
         $this->data['check'] = $this;
         
-
-        // print_r($result);die;
-        
         $this->render('admin/'. $this->controller .'/list_post_category_view');
     }
 

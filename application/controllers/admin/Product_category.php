@@ -127,7 +127,7 @@ class Product_category extends Admin_Controller{
             $detail = $this->product_category_model->get_by_id($id, array('title', 'metakeywords', 'metadescription'));
             $this->build_new_category($product_category,0,$this->data['product_category'],$detail['parent_id'],$id);
             $this->data['detail'] = build_language($this->data['controller'], $detail, array('title', 'metakeywords', 'metadescription'), $this->page_languages);
-            if($this->input->post()){
+            if($this->input->post()){;
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
                 $this->form_validation->set_rules('title_en', 'Title', 'required');

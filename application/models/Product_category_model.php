@@ -75,15 +75,24 @@ class Product_category_model extends MY_Model{
         return $this->db->get()->result_array();
     }
 
-    public function fetch_domestic_categories($lang = 'vi'){
-        $where_parent = "product_category.is_deleted = 0 AND  product_category_lang.language = '" . $lang . "' AND product_category.slug = '" . DOMESTIC_TOUR . "'";
-        $where_child = "product_category.is_deleted = 0 AND product_category_lang.language = '" . $lang . "' AND product_category.parent_id = 22";
+    public function fetch_menu_categories($parent, $lang = 'vi'){
+        $where = "product_category.is_deleted = 0 AND product_category_lang.language = '" . $lang . "' AND product_category.parent_id = '" . $parent . "'";
 
         $this->db->select('*')
             ->from('product_category')
             ->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id')
-            ->where($where_parent)
-            ->or_where($where_child);
+            ->where($where);
+
+        return $this->db->get()->result_array();
+    }
+
+    public function fetch_tour_by_category($category_id, $lang = 'vi'){
+        $where = "product.is_deleted = 0 AND product_lang.language = '" . $lang . "' AND product.product_category_id = '" . $category_id . "'";
+
+        $this->db->select('*')
+            ->from('product')
+            ->join('product_lang', 'product.id = product_lang.product_id')
+            ->where($where);
 
         return $this->db->get()->result_array();
     }

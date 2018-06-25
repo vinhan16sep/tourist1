@@ -292,12 +292,18 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('english_lang', 'english');
         }
 
-        $this->data['domestic_menu'] = $this->fetch_tour_menu();
+        $this->data['domestic_menu'] = $this->fetch_menu_categories(22);
+        $this->data['international_menu'] = $this->fetch_menu_categories(23);
+        $this->data['controller'] = $this;
 
     }
 
-    public function fetch_tour_menu(){
-        return $this->product_category_model->fetch_domestic_categories($this->session->userdata('langAbbreviation'));
+    public function fetch_menu_categories($parent){
+        return $this->product_category_model->fetch_menu_categories($parent, $this->session->userdata('langAbbreviation'));
+    }
+
+    public function fetch_tour_by_category($category_id){
+        return $this->product_category_model->fetch_tour_by_category($category_id, $this->session->userdata('langAbbreviation'));
     }
 
     protected function render($the_view = NULL, $template = 'master') {
