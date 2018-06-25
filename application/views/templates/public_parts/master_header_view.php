@@ -56,10 +56,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="right col-sm-6 col-xs-12">
 				<ul>
 					<li>
-						<a href="">Vietnamese</a>
-					</li>
-					<li> / </li>
-					<li>
                         <select name="change_language" class="form-control">
                             <option value="vi" <?php echo ($lang == 'vi') ? 'selected="selected"' : ''; ?> >Vietnamese</option>
                             <option value="en" <?php echo ($lang == 'en') ? 'selected="selected"' : ''; ?> >English</option>
@@ -148,17 +144,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="body">
 										<ul>
 											<li>
-												<div class="mask">
-													<img src="<?php echo site_url('assets/upload/product_category/' . $val['slug'] . '/' . $val['image']); ?>" alt="image first tour">
-												</div>
-												<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
 												<ul>
 													<?php
 														$sub = $controller->fetch_menu_categories($val['product_category_id']);
 														if($sub){
 															foreach($sub as $sub_key => $sub_val){
+															    if($sub_key == 0){
 													?>
-																<li><?php echo $sub_val['title']; ?></li>
+                                                                    <img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image first tour">
+                                                                    <li><a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a></li>
+                                                                <?php } else{ ?>
+                                                                    <li><a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a></li>
+                                                                <?php } ?>
 													<?php
 															}
 														}
@@ -208,7 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
 																	 alt="image example">
 															</div>
-															<a href="<?php echo base_url('') ?>"><?php echo $sub_val['title']; ?></a>
+															<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
 														</li>
 													<?php
 														}
@@ -218,10 +215,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															?>
 															<li>
 																<div class="mask">
-																	<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
+																	<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
 																		 alt="image example">
 																</div>
-																<a href="<?php echo base_url('') ?>"><?php echo $tour['title']; ?></a>
+																<a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
 															</li>
 															<?php
 														}
@@ -242,29 +239,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				</li>
 				<li>
-					<a href="<?php echo base_url('') ?>">
+					<a href="<?php echo base_url('danh-muc/tour-dac-biet'); ?>">
 						<?php echo $this->lang->line('special-tours') ?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('') ?>">
+					<a href="javascript:void(0);">
 						<?php echo $this->lang->line('mice') ?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('') ?>">
+					<a href="javascript:void(0);">
 						<?php echo $this->lang->line('services') ?>
 					</a>
+                    <ul>
+                        <li><a href="<?php echo base_url('chuyen-muc/khach-san'); ?>"><?php echo $this->lang->line('hotel') ?></a></li>
+                        <li><a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>"><?php echo $this->lang->line('ticket') ?></a></li>
+                    </ul>
 				</li>
 				<li>
-					<a href="<?php echo base_url('') ?>">
+					<a href="javascript:void(0);">
 						<?php echo $this->lang->line('visa') ?>
 					</a>
+                    <ul>
+                        <li><a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>"><?php echo $this->lang->line('visa-procedure') ?></a></li>
+                        <li><a href="javascript:void(0);"><?php echo $this->lang->line('registration-form') ?></a></li>
+                    </ul>
 				</li>
 				<li>
-					<a href="<?php echo base_url('') ?>">
-						<?php echo $this->lang->line('blogs') ?>
+					<a href="javascript:void(0);">
+						<?php echo $this->lang->line('blog') ?>
 					</a>
+                    <ul>
+                        <li><a href="<?php echo base_url('chuyen-muc/diem-den'); ?>"><?php echo $this->lang->line('location') ?></a></li>
+                        <li><a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>"><?php echo $this->lang->line('handbook') ?></a></li>
+                        <li><a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>"><?php echo $this->lang->line('diary') ?></a></li>
+                    </ul>
 				</li>
 			</ul>
 		</div>

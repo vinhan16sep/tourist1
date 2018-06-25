@@ -17,14 +17,14 @@ class Tours extends Public_Controller {
         $this->load->library('image_lib');
         $this->load->helper('captcha');
         $this->load->helper('common');
-//        $this->data['controller'] = $this->product_model->table;
+        $this->data['controller'] = $this->product_model->table;
         $this->data['request_vehicles_icon'] = $this->request_vehicles_icon;
     }
 
     public function index() {
         $this->data['current_link'] = 'tours';
     }
-  
+
     function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
         foreach ($categories as $key => $item){
             if ($item['parent_id'] == $parent_id){
@@ -221,7 +221,7 @@ class Tours extends Public_Controller {
                 'text' => array(255, 0, 0),
                 'grid' => array(255, 255, 255)
             )
-        );    
+        );
         $captcha = create_captcha($vals);
         return $this->output
             ->set_content_type('application/json')

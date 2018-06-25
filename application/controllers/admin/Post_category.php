@@ -46,6 +46,9 @@ class Post_category extends Admin_Controller{
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
+        /**
+         * Temporary remove pagination, refer to MY_Model
+         */
         $result = $this->post_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page']);
         if($keywords != ''){
             $result = $this->post_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page'], $keywords);

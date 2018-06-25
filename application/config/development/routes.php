@@ -62,3 +62,6 @@ $route['^en$'] = $route['default_controller'];
 $route['admin'] = 'admin/dashboard';
 $route['tours/([a-zA-Z0-9-_]+)'] = 'tours/detail/$1';
 $route['danh-muc/([a-zA-Z0-9-_]+)'] = 'tours/category/$1';
+
+$route['bai-viet/([a-zA-Z0-9-_]+)'] = 'post/detail/$1';
+$route['chuyen-muc/([a-zA-Z0-9-_]+)'] = 'post/category/$1';
