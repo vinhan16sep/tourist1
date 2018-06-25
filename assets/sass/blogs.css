@@ -244,6 +244,25 @@ section.main-content .section {
   display: block;
   padding-top: 100px;
   padding-bottom: 100px; }
+  section.main-content .section .section-header {
+    margin-bottom: 30px; }
+    section.main-content .section .section-header h1 {
+      font-size: 2em;
+      margin-top: 0;
+      padding-bottom: 15px; }
+    section.main-content .section .section-header .line {
+      width: 100%;
+      height: 4px;
+      margin-bottom: 30px;
+      background-color: #eaeaea;
+      position: relative; }
+      section.main-content .section .section-header .line .line-primary {
+        width: 25%;
+        height: 100%;
+        background-color: #55b73d;
+        position: absolute;
+        top: 0;
+        left: 0; }
   section.main-content .section .item h2.post-title {
     font-size: 2em;
     overflow: hidden;
@@ -426,22 +445,6 @@ footer.footer {
     height: 100%;
     object-fit: cover; }
 
-.content .container .row .left .section-header {
-  margin-bottom: 30px; }
-  .content .container .row .left .section-header h1 {
-    padding-bottom: 15px; }
-  .content .container .row .left .section-header .line {
-    width: 100%;
-    height: 4px;
-    background-color: #eaeaea;
-    position: relative; }
-    .content .container .row .left .section-header .line .line-primary {
-      width: 25%;
-      height: 100%;
-      background-color: #55b73d;
-      position: absolute;
-      top: 0;
-      left: 0; }
 .content .container .row .left .row .item .inner {
   background-color: #fff; }
   .content .container .row .left .row .item .inner .head .mask {
