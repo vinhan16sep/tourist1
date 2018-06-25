@@ -1,0 +1,91 @@
+/* =======================================================
+*
+* 	@IMPORT SCSS
+*
+* ======================================================= */
+
+@import "main";
+
+/* =======================================================
+*
+* 	BLOGS STYLE
+*
+* ======================================================= */
+
+.cover{
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.content{
+    .container{
+        .row{
+            .left{
+                .section-header{
+                    margin-bottom: 30px;
+
+                    h1{
+                        padding-bottom: 15px;
+                    }
+
+                    .line{
+                        width: 100%;
+                        height: 4px;
+
+                        background-color: #eaeaea;
+
+                        position: relative;
+
+                        .line-primary{
+                            width: 25%;
+                            height: 100%;
+
+                            background-color: $primary;
+
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+
+                .row{
+                    .item{
+                        .inner{
+                            background-color: #fff;
+
+                            .head{
+                                .mask{
+                                    width: 100%;
+                                    height: 230px;
+                                    overflow: hidden;
+                                }
+                            }
+
+                            .body{
+                                padding: 0 15px 15px;
+                            }
+
+                            .foot{
+                                padding: 15px 15px 0;
+                                border-top: 1px solid #eaeaea;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right{
+
+            }
+
+        }
+    }
+}

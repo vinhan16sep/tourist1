@@ -45,6 +45,17 @@ MIXINS
     transform: translate(-50%, -50%);
 }
 
+@mixin primary-bg{
+    background: rgba(119,197,100,1);
+    background: -moz-linear-gradient(-45deg, rgba(119,197,100,1) 0%, rgba(85,183,61,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(119,197,100,1)), color-stop(100%, rgba(85,183,61,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(119,197,100,1) 0%, rgba(85,183,61,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(119,197,100,1) 0%, rgba(85,183,61,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(119,197,100,1) 0%, rgba(85,183,61,1) 100%);
+    background: linear-gradient(135deg, rgba(119,197,100,1) 0%, rgba(85,183,61,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+}
+
 /*
 =======================================
 FONT EMBED
@@ -132,15 +143,32 @@ HEADER STYLE
  */
 
 #top-nav{
-    padding-top: 7px;
-    padding-bottom: 7px;
-
     background-color: #fff;
 
     .container{
         .row{
-            .left{
+            margin-top: 15px;
 
+            ul{
+                padding-left: 0;
+
+                li{
+                    display: inline-block;
+                }
+            }
+
+            a{
+                &:hover{
+                    color: $primary;
+                }
+            }
+
+            .left{
+                ul{
+                    li{
+                        padding-right: 15px;
+                    }
+                }
             }
 
             .right{
@@ -150,198 +178,248 @@ HEADER STYLE
     }
 }
 
-section.main-page{
-    position: relative;
+#brand{
+    .container{
+        .row{
+            .left{
 
-    header.header{
-        width: 100%;
+            }
 
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1011;
-
-        #brand{
-
-        }
-
-        #main-nav{
-
-
-            > ul{
-                margin-bottom: 0;
+            .right{
                 text-align: right;
 
-                > li{
-                    padding: 10px;
+                ul{
+                    list-style: none;
+                    padding-top: 30px;
+                    padding-bottom: 30px;
 
-                    &:hover{
-                        background-color: $primary-hover;
+                    li{
+                        display: inline-block;
+
+                        padding: 15px 30px;
+
+                        &.outline{
+                            text-align: left;
+
+                            padding-right: 15px;
+
+                            -webkit-border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            border-radius: 7px;
+
+                            border: 1px dashed $primary;
+
+                            color: $gray-light;
+                        }
+
+                        a{
+                            color: $primary;
+                            font-size: 1.5em;
+
+                            &:hover{
+                                color: $primary-hover;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+header.header{
+    width: 100%;
+
+    @include primary-bg;
+
+    .container-fluid{
+        .container{
+            position: relative;
+
+            &#main-nav{
+
+                > ul{
+                    margin-bottom: 0;
+                    padding-left: 0;
+
+                    list-style: none;
+
+                    > li{
+                        padding: 20px 30px;
+
+                        display: inline-block;
+
+                        font-size: 1em;
+
+                        &:hover{
+                            background-color: $primary-hover;
+
+                            .menu-expand{
+                                top: 100%;
+
+                                display: block;
+
+                                -webkit-transition: all ease 500ms;
+                                -moz-transition: all ease 500ms;
+                                -ms-transition: all ease 500ms;
+                                -o-transition: all ease 500ms;
+                                transition: all ease 500ms;
+
+                                .row{
+                                    ul{
+                                        list-style: none;
+                                    }
+
+                                    .mask{
+                                        width: 100%;
+                                        height: 150px;
+                                        overflow: hidden;
+
+                                        margin-bottom: 15px;
+
+                                        img{
+                                            width: 100%;
+                                            height: 100%;
+                                            object-fit: cover;
+                                        }
+                                    }
+
+                                    a{
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        line-height: 1.5em;
+                                        height: 3em;
+                                        -webkit-line-clamp: 2;
+                                        -webkit-box-orient: vertical;
+                                        font-size: .875em;
+                                    }
+                                }
+
+                            }
+
+                            a{
+                                color: #fff;
+                            }
+                        }
+
+                        > a{
+                            color: #fff;
+                            text-transform: uppercase;
+                        }
 
                         .menu-expand{
-                            top: 100%;
+                            width: 100%;
 
-                            display: block;
+                            position: absolute;
+                            top: 110%;
+                            left: 0;
+                            z-index: 1001;
+
+                            background-color: #fff;
+                            border: 1px solid #dadada;
+
+                            display: none;
 
                             -webkit-transition: all ease 500ms;
                             -moz-transition: all ease 500ms;
                             -ms-transition: all ease 500ms;
                             -o-transition: all ease 500ms;
                             transition: all ease 500ms;
-
-                            .row{
-                                ul{
-                                    list-style: none;
-                                }
-
-                                .mask{
-                                    width: 100%;
-                                    height: 150px;
-                                    overflow: hidden;
-
-                                    margin-bottom: 15px;
-
-                                    img{
-                                        width: 100%;
-                                        height: 100%;
-                                        object-fit: cover;
-                                    }
-                                }
-
-                                a{
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    display: -webkit-box;
-                                    line-height: 1.5em;
-                                    height: 3em;
-                                    -webkit-line-clamp: 2;
-                                    -webkit-box-orient: vertical;
-                                    font-size: .875em;
-                                }
-                            }
-
                         }
 
-                        a{
-                            color: $gray-dark;
-                        }
-                    }
+                        &.menu-tabs{
+                            .menu-tabs-expand{
+                                .row{
+                                    .left{
+                                        > ul{
+                                            list-style: none;
+                                            padding-left: 0;
+                                            text-align: left;
 
-                    > a{
-                        color: #fff;
-                    }
+                                            position: relative;
 
-                    .menu-expand{
-                        width: 100%;
+                                            > li{
+                                                padding: 10px 15px;
 
-                        position: absolute;
-                        top: 110%;
-                        left: 0;
-                        z-index: 1001;
+                                                &:hover{
+                                                    background-color: #eaeaea;
 
-                        background-color: #fff;
-                        border: 1px solid #dadada;
-
-                        display: none;
-
-                        -webkit-transition: all ease 500ms;
-                        -moz-transition: all ease 500ms;
-                        -ms-transition: all ease 500ms;
-                        -o-transition: all ease 500ms;
-                        transition: all ease 500ms;
-                    }
-
-                    &.menu-tabs{
-                        .menu-tabs-expand{
-                            .row{
-                                .left{
-                                    > ul{
-                                        list-style: none;
-                                        padding-left: 0;
-                                        text-align: left;
-
-                                        position: relative;
-
-                                        > li{
-                                            padding: 10px 15px;
-
-                                            &:hover{
-                                                background-color: #eaeaea;
+                                                    > ul{
+                                                        display: block;
+                                                    }
+                                                }
 
                                                 > ul{
-                                                    display: block;
-                                                }
-                                            }
+                                                    position: absolute;
+                                                    top: 0;
+                                                    left: 100%;
 
-                                            > ul{
-                                                position: absolute;
-                                                top: 0;
-                                                left: 100%;
+                                                    width: 330%;
 
-                                                width: 330%;
+                                                    display: none;
 
-                                                display: none;
+                                                    > li{
+                                                        width: 32%;
+                                                        padding-left: 15px;
+                                                        padding-right: 15px;
 
-                                                > li{
-                                                    width: 32%;
-                                                    padding-left: 15px;
-                                                    padding-right: 15px;
-
-                                                    display: inline-block;
+                                                        display: inline-block;
+                                                    }
                                                 }
                                             }
                                         }
                                     }
-                                }
 
-                                .right{
-                                    padding: 15px;
+                                    .right{
+                                        padding: 15px;
 
-                                    .item{
-                                        .mask{
-                                            width: 100%;
-                                            height: 200px;
-                                            overflow: hidden;
-
-                                            margin-bottom: 15px;
-
-                                            img{
+                                        .item{
+                                            .mask{
                                                 width: 100%;
-                                                height: 100%;
-                                                object-fit: cover;
+                                                height: 200px;
+                                                overflow: hidden;
+
+                                                margin-bottom: 15px;
+
+                                                img{
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    object-fit: cover;
+                                                }
                                             }
+
+
                                         }
-
-
                                     }
                                 }
                             }
                         }
-                    }
 
-                    &.menu-list{
-                        .menu-list-expand{
-                            .row{
-                                margin-left: 0;
-                                margin-right: 0;
+                        &.menu-list{
+                            .menu-list-expand{
+                                .row{
+                                    margin-left: 0;
+                                    margin-right: 0;
 
-                                .item{
-                                    padding: 15px;
+                                    .item{
+                                        padding: 15px;
 
-                                    .head{
+                                        .head{
 
-                                    }
+                                        }
 
-                                    .body{
-                                        ul{
-                                            padding-left: 0;
+                                        .body{
+                                            ul{
+                                                padding-left: 0;
 
-                                            li{
-                                                a{
-                                                    color: $gray-light;
+                                                li{
+                                                    a{
+                                                        color: $gray-light;
 
-                                                    &:hover{
-                                                        color: $gray;
+                                                        &:hover{
+                                                            color: $gray;
+                                                        }
                                                     }
                                                 }
                                             }
@@ -352,9 +430,19 @@ section.main-page{
                         }
                     }
                 }
-            }
 
+            }
         }
+    }
+
+
+}
+
+section.main-page{
+
+    .container-fluid{
+        position: relative;
+
     }
 }
 
@@ -363,6 +451,48 @@ section.main-content{
         display: block;
         padding-top: 100px;
         padding-bottom: 100px;
+
+        .item{
+            h2.post-title{
+                font-size: 2em;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                line-height: 1.168;
+                max-height: 2.5em;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+            h4.post-subtitle{
+                font-size: 1em;
+                text-transform: uppercase;
+
+                margin-top: 30px;
+                color: $gray-light;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                line-height: 1.168;
+                max-height: 1.5em;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+
+            p.post-description{
+                font-size: 1em;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                line-height: 1.5;
+                max-height: 7.5em;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+            }
+        }
     }
 }
 
@@ -403,5 +533,272 @@ footer.footer{
                 }
             }
         }
+    }
+}
+
+@media (max-width: 768px){
+    #top-nav{
+        .container{
+            .row{
+                ul{
+                    li{
+                    }
+                }
+
+                a{
+                }
+
+                .left{
+                }
+
+                .right{
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    #brand{
+        .container{
+            .row{
+                .left{
+                    img{
+                        width: 100px;
+                    }
+                }
+
+                .right{
+                    text-align: left;
+
+                    ul{
+                        list-style: none;
+                        padding-top: 15px;
+                        padding-left: 0;
+
+                        li{
+                            display: list-item;
+
+                            padding: 7px 15px;
+                            margin-bottom: 7px;
+
+                            &.outline{
+                            }
+
+                            a{
+                                font-size: 1em;
+
+                                &:hover{
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    header.header{
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 1011;
+
+        .container-fluid{
+            .container{
+
+                &#main-nav{
+
+                    > ul{
+
+                        > li{
+                            padding: 12px 15px;
+
+                            display: list-item;
+
+                            &:hover{
+                                background-color: $primary-hover;
+
+                                .menu-expand{
+                                    top: 100%;
+
+                                    display: block;
+
+                                    -webkit-transition: all ease 500ms;
+                                    -moz-transition: all ease 500ms;
+                                    -ms-transition: all ease 500ms;
+                                    -o-transition: all ease 500ms;
+                                    transition: all ease 500ms;
+
+                                    .row{
+                                        ul{
+                                            list-style: none;
+                                        }
+
+                                        .mask{
+                                            width: 100%;
+                                            height: 150px;
+                                            overflow: hidden;
+
+                                            margin-bottom: 15px;
+
+                                            img{
+                                                width: 100%;
+                                                height: 100%;
+                                                object-fit: cover;
+                                            }
+                                        }
+
+                                        a{
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            display: -webkit-box;
+                                            line-height: 1.5em;
+                                            height: 3em;
+                                            -webkit-line-clamp: 2;
+                                            -webkit-box-orient: vertical;
+                                            font-size: .875em;
+                                        }
+                                    }
+
+                                }
+
+                                a{
+                                    color: #fff;
+                                }
+                            }
+
+                            > a{
+                                color: #fff;
+                                text-transform: uppercase;
+                            }
+
+                            .menu-expand{
+                                width: 100%;
+
+                                position: absolute;
+                                top: 110%;
+                                left: 0;
+                                z-index: 1001;
+
+                                background-color: #fff;
+                                border: 1px solid #dadada;
+
+                                display: none;
+
+                                -webkit-transition: all ease 500ms;
+                                -moz-transition: all ease 500ms;
+                                -ms-transition: all ease 500ms;
+                                -o-transition: all ease 500ms;
+                                transition: all ease 500ms;
+                            }
+
+                            &.menu-tabs{
+                                .menu-tabs-expand{
+                                    .row{
+                                        .left{
+                                            > ul{
+                                                list-style: none;
+                                                padding-left: 0;
+                                                text-align: left;
+
+                                                position: relative;
+
+                                                > li{
+                                                    padding: 10px 15px;
+
+                                                    &:hover{
+                                                        background-color: #eaeaea;
+
+                                                        > ul{
+                                                            display: block;
+                                                        }
+                                                    }
+
+                                                    > ul{
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 100%;
+
+                                                        width: 330%;
+
+                                                        display: none;
+
+                                                        > li{
+                                                            width: 32%;
+                                                            padding-left: 15px;
+                                                            padding-right: 15px;
+
+                                                            display: inline-block;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .right{
+                                            padding: 15px;
+
+                                            .item{
+                                                .mask{
+                                                    width: 100%;
+                                                    height: 200px;
+                                                    overflow: hidden;
+
+                                                    margin-bottom: 15px;
+
+                                                    img{
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        object-fit: cover;
+                                                    }
+                                                }
+
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.menu-list{
+                                .menu-list-expand{
+                                    .row{
+                                        margin-left: 0;
+                                        margin-right: 0;
+
+                                        .item{
+                                            padding: 15px;
+
+                                            .head{
+
+                                            }
+
+                                            .body{
+                                                ul{
+                                                    padding-left: 0;
+
+                                                    li{
+                                                        a{
+                                                            color: $gray-light;
+
+                                                            &:hover{
+                                                                color: $gray;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+
     }
 }

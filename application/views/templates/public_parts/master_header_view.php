@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="row">
 			<div class="left col-sm-6 col-xs-12">
-				<ul class="list-inline">
+				<ul>
 					<li>
 						<a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?></a>
 					</li>
@@ -54,10 +54,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</ul>
 			</div>
 			<div class="right col-sm-6 col-xs-12">
-				<ul class="list-inline">
+				<ul>
 					<li>
-						<a href="mailto:info@diamondtour.vn"><i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn</a>
+						<a href="">Vietnamese</a>
 					</li>
+					<li> / </li>
 					<li>
                         <select name="change_language" class="form-control">
                             <option value="vi" <?php echo ($lang == 'vi') ? 'selected="selected"' : ''; ?> >Vietnamese</option>
@@ -65,7 +66,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select>
 					</li>
 				</ul>
-
+			</div>
+		</div>
+	</div>
+</section>
+<section id="brand" class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="left col-sm-4 col-xs-6">
+				<a href="<?php echo base_url('') ?>">
+					<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
+				</a>
+			</div>
+			<div class="right col-sm-8 hidden-xs">
+				<ul>
+					<li class="outline">
+						<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
+						<a href="tel:(024) 1234 5678">(024) 1234 5678</a>
+					</li>
+					<li class="outline">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
+						<a href="mailto:info@diamondtour.vn">info@diamondtour.vn</a>
+					</li>
+				</ul>
+			</div>
+			<div class="btn-expand visible-xs col-xs-6">
+				<button class="btn btn-primary" id="btn-expand">
+					<i class="fa fa-bars" aria-hidden="false"></i>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -90,20 +118,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     });
 </script>
 
-<section class="main-page">
-	<header class="header">
-		<div class="container">
-			<div class="row">
-				<section id="brand" class="col-xs-4">
-					<div class="row">
-						<div class="left col-sm-6 col-xs-12">
-							<a href="<?php echo base_url('') ?>">
-								<img src="<?php echo site_url('assets/img/')?>logo-w.png" alt="logo Diamond">
-							</a>
-						</div>
-						<div class="right col-sm-6 col-xs-12">
+<header class="header">
+	<div class="container-fluid">
+		<div class="container" id="main-nav">
+			<ul>
+				<li>
+					<a href="<?php echo base_url('') ?>">
+						<i class="fa fa-home" aria-hidden="true"></i>
+					</a>
+				</li>
+				<li class="menu-list">
+					<a href="<?php echo base_url('') ?>">
+                        <?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
+					</a>
+					<div class="menu-list-expand menu-expand">
+						<div class="row">
+							<div class="item col-sm-3 col-xs-12">
+								<div class="head">
+									<h3><?php echo $this->lang->line('pilgrimage') ?></h3>
+								</div>
+								<div class="body">
+									<ul>
+										<li>
+											<div class="mask">
+												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
+											</div>
+											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="item col-sm-3 col-xs-12">
+								<div class="head">
+									<h3><?php echo $this->lang->line('northern') ?></h3>
+								</div>
+								<div class="body">
+									<ul>
+										<li>
+											<div class="mask">
+												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
+											</div>
+											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
+										</li>
+										<li><a href="<?php echo base_url('') ?>">Link location</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="item col-sm-3 col-xs-12">
+								<div class="head">
+									<h3><?php echo $this->lang->line('central') ?></h3>
+								</div>
+								<div class="body">
+									<ul>
+										<li>
+											<div class="mask">
+												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
+											</div>
+											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="item col-sm-3 col-xs-12">
+								<div class="head">
+									<h3><?php echo $this->lang->line('southern') ?></h3>
+								</div>
+								<div class="body">
+									<ul>
+										<li>
+											<div class="mask">
+												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
+											</div>
+											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
+
 				</section>
 				<section id="main-nav" class="col-xs-8">
 					<ul class="list-inline">
@@ -224,39 +317,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!----------------------------------------------->
                                 <!-- END INTERNATIONAL MENU -->
                                 <!----------------------------------------------->
-							</div>
-						</li>
-						<li>
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('special-tours') ?>
-							</a>
-						</li>
-						<li>
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('mice') ?>
-							</a>
-						</li>
-						<li>
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('services') ?>
-							</a>
-						</li>
-						<li>
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('visa') ?>
-							</a>
-						</li>
-						<li>
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('blogs') ?>
-							</a>
-						</li>
-					</ul>
 
-				</section>
-			</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="<?php echo base_url('') ?>">
+                        <?php echo $this->lang->line('special-tours') ?>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('') ?>">
+                        <?php echo $this->lang->line('mice') ?>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('') ?>">
+                        <?php echo $this->lang->line('services') ?>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('') ?>">
+                        <?php echo $this->lang->line('visa') ?>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url('') ?>">
+                        <?php echo $this->lang->line('blogs') ?>
+					</a>
+				</li>
+			</ul>
 		</div>
-	</header>
+	</div>
+
+</header>
+
+<section class="main-page">
+	<div class="container-fluid">
+
+
+	</div>
+
+
+
 
 
 
