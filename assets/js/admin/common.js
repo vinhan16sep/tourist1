@@ -137,14 +137,11 @@ function remove_image(controller, id, image, key){
                         case 'post_category' :
                             alert('Bật danh mục thành công');
                             break;
-                        case 'order' :
-                            alert('Hủy đặt bàn thành công');
-                            break;
                         case 'banner' :
                             alert('Bật banner thành công');
                             break;
                         case 'product' :
-                            alert('Bật thực đơn thành công');
+                            alert('Bật tour thành công');
                             break;
                         case 'post' :
                             alert('Bật bài viết thành công');
@@ -185,27 +182,29 @@ function deactive(controller, id, question) {
                         case 'post_category' :
                             alert('Tắt danh mục thành công');
                             break;
-                        case 'order' :
-                            alert('Hủy đặt bàn thành công');
-                            break;
                         case 'banner' :
                             alert('Tắt banner thành công');
                             break;
                         case 'product' :
-                            alert('Tắt thực đơn thành công');
+                            alert('Tắt tour thành công');
                             break;
                         case 'post' :
                             alert('Tắt bài viết thành công');
                             break;
                         case 'product_category' :
-                            alert('Tắt danh mục thành công');
+                            alert(response.message);
                             break;
                     }
                     location.reload();
                 }
             },
             error: function(jqXHR, exception){
-                console.log(jqXHR);
+                if(jqXHR.status == 404 &&  jqXHR.responseJSON.message != 'undefined '){
+                    alert(jqXHR.responseJSON.message);
+                    location.reload();
+                }else{
+                    console.log(errorHandle(jqXHR, exception));
+                }
             }
         });
     }
