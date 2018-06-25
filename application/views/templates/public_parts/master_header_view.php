@@ -151,14 +151,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<div class="mask">
 													<img src="<?php echo site_url('assets/upload/product_category/' . $val['slug'] . '/' . $val['image']); ?>" alt="image first tour">
 												</div>
-												<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
+												Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe
 												<ul>
 													<?php
 														$sub = $controller->fetch_menu_categories($val['product_category_id']);
 														if($sub){
 															foreach($sub as $sub_key => $sub_val){
 													?>
-																<li><?php echo $sub_val['title']; ?></li>
+																<li>
+																	<a href="<?php echo base_url('danhmuc/' . $sub_val['slug']) ?>">
+																		<?php echo $sub_val['title']; ?>
+																	</a>
+																</li>
 													<?php
 															}
 														}

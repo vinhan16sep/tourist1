@@ -259,11 +259,7 @@ header.header{
 
                                 display: block;
 
-                                -webkit-transition: all ease 500ms;
-                                -moz-transition: all ease 500ms;
-                                -ms-transition: all ease 500ms;
-                                -o-transition: all ease 500ms;
-                                transition: all ease 500ms;
+                                @include transition(500ms);
 
                                 .row{
                                     ul{
@@ -321,11 +317,7 @@ header.header{
 
                             display: none;
 
-                            -webkit-transition: all ease 500ms;
-                            -moz-transition: all ease 500ms;
-                            -ms-transition: all ease 500ms;
-                            -o-transition: all ease 500ms;
-                            transition: all ease 500ms;
+                            @include transition(500ms);
                         }
 
                         &.menu-tabs{
@@ -451,6 +443,37 @@ section.main-content{
         display: block;
         padding-top: 100px;
         padding-bottom: 100px;
+
+        .section-header{
+            margin-bottom: 30px;
+
+            h1{
+                font-size: 2em;
+                margin-top: 0;
+                padding-bottom: 15px;
+            }
+
+            .line{
+                width: 100%;
+                height: 4px;
+                margin-bottom: 30px;
+
+                background-color: #eaeaea;
+
+                position: relative;
+
+                .line-primary{
+                    width: 25%;
+                    height: 100%;
+
+                    background-color: $primary;
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
 
         .item{
             h2.post-title{
@@ -623,11 +646,7 @@ footer.footer{
 
                                     display: block;
 
-                                    -webkit-transition: all ease 500ms;
-                                    -moz-transition: all ease 500ms;
-                                    -ms-transition: all ease 500ms;
-                                    -o-transition: all ease 500ms;
-                                    transition: all ease 500ms;
+                                    @include transition(500ms);
 
                                     .row{
                                         ul{
@@ -685,11 +704,7 @@ footer.footer{
 
                                 display: none;
 
-                                -webkit-transition: all ease 500ms;
-                                -moz-transition: all ease 500ms;
-                                -ms-transition: all ease 500ms;
-                                -o-transition: all ease 500ms;
-                                transition: all ease 500ms;
+                                @include transition(500ms);
                             }
 
                             &.menu-tabs{
