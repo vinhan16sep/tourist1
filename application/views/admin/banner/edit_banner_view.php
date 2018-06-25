@@ -1,10 +1,11 @@
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/admin/') ?>detail.css">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Cập nhật
             <small>
-                Danh Mục
+                Banner
             </small>
         </h1>
     </section>
@@ -26,9 +27,7 @@
                         </div>
                         <div class="form-group col-xs-12">
                             <label for="image_shared">Hình ảnh đang dùng</label>
-                            <br>
-                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $detail['image']); ?>" width=250px>
-                            <br>
+                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['image']); ?>" alt="anh-mo-ta" width=150>
                         </div>
                         <div class="form-group col-xs-12">
                             <?php
@@ -38,26 +37,6 @@
                             ?>
                             <br>
                         </div>
-                        <div class="form-group col-xs-12">
-                            <?php
-                            echo form_label('Slug', 'slug_shared');
-                            echo form_error('slug_shared');
-                            echo form_input('slug_shared', $detail['slug'], 'class="form-control" id="slug_shared" readonly');
-                            ?>
-                        </div>
-
-                        <div class="form-group col-xs-12">
-                            <?php
-                            echo form_label('Danh Mục', 'parent_id_shared');
-                            echo form_error('parent_id_shared');
-                            ?>
-                            <select name="parent_id_shared" class="form-control">
-                                <<option value="0">Danh mục gốc</option>}
-                                option
-                                <?php echo $product_category; ?>
-                            </select>
-                        </div>
-
                         <div>
                             <ul class="nav nav-pills nav-justified" role="tablist">
                                 <?php $i = 0; ?>
@@ -91,14 +70,6 @@
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
                                                         echo form_textarea($k .'_'. $key,  trim($detail['content_'. $key]), 'class="tinymce-area form-control" rows="5"');
-                                                    }elseif($k == 'metakeywords' && in_array($k,$request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['metakeywords_'. $key], 'class="form-control"');
-                                                    }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['metadescription_'. $key], 'class="form-control"');
                                                     }
                                                 ?>
                                             </div>

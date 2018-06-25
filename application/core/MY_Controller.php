@@ -145,6 +145,12 @@ class MY_Controller extends CI_Controller {
                 ->set_output(json_encode(array('message' => 'Success', 'data' => $ids)));
         }
     }
+    function return_api($status, $message='', $data = null,$isExisted= true){
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header($status)
+            ->set_output(json_encode(array('status' => $status,'message' => $message , 'reponse' => $data, 'isExisted' => $isExisted)));
+    }
 
 }
 

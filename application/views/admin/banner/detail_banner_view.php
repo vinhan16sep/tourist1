@@ -7,20 +7,21 @@
         <h1>
             Chi tiết
             <small>
-                Danh Mục
+                Banner
             </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-dashboard"></i> Chi tiết</a></li>
             <li class="active">
-                Danh Mục
+                Banner
             </li>
         </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash() ?>" id="csrf" />
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-md-9">
@@ -34,39 +35,20 @@
                             <div class="detail-image col-md-6">
                                 <label>Hình ảnh</label>
                                 <div class="row">
-                                    <div class="item col-md-12">
-                                        <div class="mask-lg">
-                                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'. $detail['image'] ) ?>" alt="Image Detail" width=300px>
-                                        </div>
+                                    <div class="col-md-12">
+                                        <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['image']); ?>" alt="anh-mo-ta" width=150>
                                     </div>
                                 </div>
                             </div>
                             <div class="detail-info col-md-6">
-                                <div class="table-responsive">
-                                    <label>Thông tin</label>
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th colspan="2">Thông tin cơ bản</th>
-                                        </tr>
-                                        <tr>
-                                            <th>Trạng thái</th>
-                                            <td>
-                                                <?php echo ($detail['is_activated'] == 0)? '<span class="label label-success">Đang sử dụng</span>' : '<span class="label label-warning">Không sử dụng</span>' ?>   
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Slug</th>
-                                            <td><?php echo $detail['slug'] ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Danh Mục</th>
-                                            <td><?php echo $detail['parent_title'] ?></td>
-                                        </tr>
-
-                                    </table>
-                                </div>
+                                <label>Status: </label>
+                                <?php if ($detail['is_activated'] == 0): ?>
+                                    <a class="btn btn-success btn-xs" title="Banner đang bật">Đang  sử dụng </a>
+                                <?php else: ?>
+                                    <a class="btn btn-warning btn-xs" title="Banner không sử dụng">Không sử dụng</a>
+                                <?php endif ?>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 5px;">
 
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-pills nav-justified" role="tablist">
@@ -95,6 +77,11 @@
                                                                     <th style="width: 100px">Tiêu đề: </th>
                                                                     <td><?php echo $detail['title_'. $key] ?></td>
                                                                 </tr>
+                                                            <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
+                                                                <tr>
+                                                                    <th style="width: 100px">Giới thiệu: </th>
+                                                                    <td><?php echo $detail['description_'. $key] ?></td>
+                                                                </tr>
                                                             <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
                                                                 <tr>
                                                                     <th style="width: 100px">Nội dung: </th>
@@ -108,26 +95,6 @@
                                         </div>
                                     <?php $i++; ?>
                                     <?php endforeach ?>
-                                    <div role="tabpanel" class="tab-pane" id="en">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <tbody>
-                                                    <tr>
-                                                        <th style="width: 100px">Title: </th>
-                                                        <td><?php echo $detail['title_en'] ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width: 100px">Description: </th>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width: 100px">Content: </th>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -144,19 +111,7 @@
                 <div class="box box-warning">
                     <div class="box-header">
                         <h3 class="box-title">Chỉnh sửa 
-                            <?php 
-                                switch ($controller) {
-                                    case 'post_category':
-                                        echo "";
-                                        break;
-                                    case 'post':
-                                        echo "Bài Viết";
-                                        break;
-                                    default:
-                                        # code...
-                                        break;
-                                }
-                             ?>
+                            Banner
                          này?</h3>
                     </div>
                     <div class="box-body">

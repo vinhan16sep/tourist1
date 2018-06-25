@@ -214,6 +214,7 @@
                                                 <div class="title-content-date showdate <?php echo $i; ?>">
                                                     <div class="btn btn-primary col-xs-12 btn-margin" type="button" data-toggle="collapse" href="#showdatecontent_<?php echo $i; ?>" aria-expanded="true" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
                                                         <div class="col-xs-11">Nội dung Đầy đủ Ngày <?php echo $i+1; ?></div>
+                                                        <?php echo ((count($detail['datecontent_vi']) -1) > 0 && $i == (count($detail['datecontent_vi']) -1))?"<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>":""; ?>
                                                     </div>
                                                     <div class="no_border">
                                                         <div class="collapse in" id="showdatecontent_<?php echo $i; ?>">
