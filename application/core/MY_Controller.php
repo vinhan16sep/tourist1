@@ -152,6 +152,13 @@ class MY_Controller extends CI_Controller {
             ->set_output(json_encode(array('status' => $status,'message' => $message , 'reponse' => $data, 'isExisted' => $isExisted)));
     }
 
+    function return_api($status, $message='', $data = null,$isExisted= true){
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header($status)
+            ->set_output(json_encode(array('status' => $status,'message' => $message , 'reponse' => $data, 'isExisted' => $isExisted)));
+    }
+
 }
 
 class Admin_Controller extends MY_Controller {
@@ -177,13 +184,7 @@ class Admin_Controller extends MY_Controller {
             'modified_by' => $this->ion_auth->user()->row()->username
         );
     } 
-    
-    function return_api($status, $message='', $data = null,$isExisted= true){
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_status_header($status)
-            ->set_output(json_encode(array('status' => $status,'message' => $message , 'reponse' => $data, 'isExisted' => $isExisted)));
-    }
+
     protected function upload_image($image_input_id, $image_name, $upload_path, $upload_thumb_path = '', $thumbs_with = 500, $thumbs_height = 500) {
         $image = '';
         if (!empty($image_name)) {
@@ -275,26 +276,40 @@ class Public_Controller extends MY_Controller {
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('ion_auth');
-        
-        $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'vi';
+        $this->load->model('product_category_model');
+
+        $this->langAbbreviation = $this->session->userdata('langAbbreviation') ? $this->session->userdata('langAbbreviation') : 'vi';
+
         if($this->langAbbreviation == 'vi' || $this->langAbbreviation == 'en' || $this->langAbbreviation == ''){
             $this->session->set_userdata('langAbbreviation', $this->langAbbreviation);
         }
         
-        if($this->session->userdata('langAbbreviation') == 'vi'){
+        if($this->session->userdata('langAbbreviation') == 'vi' || $this->session->userdata('langAbbreviation') == ''){
             $langName = 'vietnamese';
             $this->config->set_item('language', $langName); 
             $this->session->set_userdata("langAbbreviation",'vi');
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
         
-        if($this->session->userdata('langAbbreviation') == 'en' || $this->session->userdata('langAbbreviation') == ''){
+        if($this->session->userdata('langAbbreviation') == 'en'){
             $langName = 'english';
             $this->config->set_item('language', $langName); 
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
-        
+
+        $this->data['domestic_menu'] = $this->fetch_menu_categories(22);
+        $this->data['international_menu'] = $this->fetch_menu_categories(23);
+        $this->data['controller'] = $this;
+
+    }
+
+    public function fetch_menu_categories($parent){
+        return $this->product_category_model->fetch_menu_categories($parent, $this->session->userdata('langAbbreviation'));
+    }
+
+    public function fetch_tour_by_category($category_id){
+        return $this->product_category_model->fetch_tour_by_category($category_id, $this->session->userdata('langAbbreviation'));
     }
 
     protected function render($the_view = NULL, $template = 'master') {

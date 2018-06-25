@@ -84,6 +84,12 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+/**
+ * Tour categories
+ */
+defined('DOMESTIC_TOUR')       OR define('DOMESTIC_TOUR', 'trong-nuoc');
+defined('INTERNATIONAL_TOUR')  OR define('INTERNATIONAL_TOUR', 'nuoc-ngoai');
+defined('SPECIAL_TOUR')        OR define('SPECIAL_TOUR', 'tour-dac-biet');
 
 /**
  * HTTP Success code
@@ -236,3 +242,9 @@ defined('MESSAGE_CREATE_BOOKING_ERROR') OR define('MESSAGE_CREATE_BOOKING_ERROR'
 defined('MESSAGE_CREATE_ERROR_REQUIRE') OR define('MESSAGE_CREATE_ERROR_REQUIRE', 'Vui lòng nhập đầy đủ thông tin.');
 defined('MESSAGE_EDIT_ERROR_VALIDATE') OR define('MESSAGE_EDIT_ERROR_VALIDATE', 'Lỗi sửa tour vui lòng thao tác lại.');
 defined('MESSAGE_CREATE_ERROR_VALIDATE') OR define('MESSAGE_CREATE_ERROR_VALIDATE', 'Lỗi tạo mới tour vui lòng thao tác lại.');
+
+/**
+ * Change Language
+ */
+defined('MESSAGE_CHANGE_LANGUAGE_SUCCESS') OR define('MESSAGE_CHANGE_LANGUAGE_SUCCESS', 'changed');
+defined('MESSAGE_CHANGE_LANGUAGE_FAIL') OR define('MESSAGE_CHANGE_LANGUAGE_FAIL', 'keep');

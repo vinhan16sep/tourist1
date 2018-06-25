@@ -7,6 +7,7 @@ class Tours extends Public_Controller {
     private $request_vehicles_icon = array(
         '', 'fa-ban', 'fa-plane', 'fa-ship', 'fa-train', 'fa-bus', 'fa-motorcycle', 'fa-bicycle', 'fa-blind'
     );
+  
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
@@ -21,8 +22,9 @@ class Tours extends Public_Controller {
     }
 
     public function index() {
-
+        $this->data['current_link'] = 'tours';
     }
+  
     function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
         foreach ($categories as $key => $item){
             if ($item['parent_id'] == $parent_id){

@@ -48,6 +48,17 @@ class Product extends Admin_Controller{
             $parent_title = $this->build_parent_title($value['product_category_id']);
             $this->data['result'][$key]['parent_title'] = $parent_title;
         }
+
+
+
+//        echo '<pre>';
+//        print_r($this->data['result']);die;
+
+
+
+
+
+
         $this->render('admin/product/list_product_view');
     }
 

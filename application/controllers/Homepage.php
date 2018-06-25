@@ -4,8 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Homepage extends Public_Controller {
 
-	private $_lang = '';
-
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
@@ -49,15 +47,15 @@ class Homepage extends Public_Controller {
         $check = 0;
         $tour_all_in_category=array();
         for ($i=0; $i < count($ids); $i++) {
-             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-             if($tour['id'] != ''){
+            $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+            if($tour['id'] != ''){
                 $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
                 $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id']);
                 $check++;
                 if($check == $number_tour){
                     break;
                 }
-             }
+            }
         }
         return $tour_all_in_category;
     }
@@ -81,15 +79,15 @@ class Homepage extends Public_Controller {
     }
 
     function about(){
-    	$this->load->model('about_model');
-    	$about = $this->about_model->get_by_id_in_about($this->data['lang']);
-    	return $about;
+        $this->load->model('about_model');
+        $about = $this->about_model->get_by_id_in_about($this->data['lang']);
+        return $about;
     }
 
     function blogs(){
-    	$this->load->model('blog_model');
-    	$blogs = $this->blog_model->get_all_field('desc', array('title', 'description', 'content'), $this->data['lang'], 3, 0);
-    	return $blogs;
+        $this->load->model('blog_model');
+        $blogs = $this->blog_model->get_all_field('desc', array('title', 'description', 'content'), $this->data['lang'], 3, 0);
+        return $blogs;
     }
 
     public function build_new_category($categorie, $parent_id = 0,&$result, $id = "",$char=""){
@@ -102,10 +100,22 @@ class Homepage extends Public_Controller {
         }
         if ($cate_child){
             foreach ($cate_child as $key => $value){
-            $select = ($value['id'] == $id)? 'selected' : '';
-            $result.='<option value="'.$value['id'].'">'.$char.$value['title'].'</option>';
-            $this->build_new_category($categorie, $value['id'],$result, $id, $char.'---|');
+                $select = ($value['id'] == $id)? 'selected' : '';
+                $result.='<option value="'.$value['id'].'">'.$char.$value['title'].'</option>';
+                $this->build_new_category($categorie, $value['id'],$result, $id, $char.'---|');
             }
+        }
+    }
+
+    public function change_language(){
+        if($this->session->userdata('langAbbreviation') == $this->input->get('lang')){
+            return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_FAIL, $this->session->userdata('langAbbreviation'), null);
+        }else{
+            $this->session->set_userdata('langAbbreviation', $this->input->get('lang'));
+            if($this->session->userdata('langAbbreviation') == $this->input->get('lang')){
+                return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_SUCCESS, $this->session->userdata('langAbbreviation'), null);
+            }
+            return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_FAIL, $this->session->userdata('langAbbreviation'), null);
         }
     }
 }

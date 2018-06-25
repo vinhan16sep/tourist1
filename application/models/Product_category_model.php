@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 /**
-* 
-*/
+ *
+ */
 class Product_category_model extends MY_Model{
-	
-	public $table = 'product_category';
+
+    public $table = 'product_category';
 
 
-	public function update_sort($sort, $id){
+    public function update_sort($sort, $id){
         $this->db->set(array('sort' => $sort))
             ->where('id', $id)
             ->update('product_category');
@@ -31,7 +31,7 @@ class Product_category_model extends MY_Model{
         if(is_numeric($parent_id)){
             $this->db->where($this->table .'.parent_id', $parent_id);
         }
-        
+
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
 
@@ -48,7 +48,7 @@ class Product_category_model extends MY_Model{
         if(is_numeric($parent_id)){
             $this->db->where($this->table .'.parent_id', $parent_id);
         }
-        
+
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
 
@@ -74,6 +74,7 @@ class Product_category_model extends MY_Model{
         $this->db->order_by($this->table .".sort", $order);
         return $this->db->get()->result_array();
     }
+    
     public function get_all_lang($select = array(), $lang = 'vi',$order="asc") {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
@@ -139,5 +140,27 @@ class Product_category_model extends MY_Model{
         $this->db->limit(1);
         
         return $this->db->get()->row_array();
+    }
+
+    public function fetch_menu_categories($parent, $lang = 'vi'){
+        $where = "product_category.is_deleted = 0 AND product_category_lang.language = '" . $lang . "' AND product_category.parent_id = '" . $parent . "'";
+
+        $this->db->select('*')
+            ->from('product_category')
+            ->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id')
+            ->where($where);
+
+        return $this->db->get()->result_array();
+    }
+
+    public function fetch_tour_by_category($category_id, $lang = 'vi'){
+        $where = "product.is_deleted = 0 AND product_lang.language = '" . $lang . "' AND product.product_category_id = '" . $category_id . "'";
+
+        $this->db->select('*')
+            ->from('product')
+            ->join('product_lang', 'product.id = product_lang.product_id')
+            ->where($where);
+
+        return $this->db->get()->result_array();
     }
 }
