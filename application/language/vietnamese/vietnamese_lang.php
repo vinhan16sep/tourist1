@@ -43,6 +43,7 @@ $lang['see-all'] = 'See all';
 $lang['explore'] = 'Expore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
+$lang['see-detail'] = 'See Detail';
 
 //Tour Request
 
