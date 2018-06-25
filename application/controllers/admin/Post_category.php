@@ -5,7 +5,7 @@
 */
 class Post_category extends Admin_Controller{
 	private $request_language_template = array(
-        'title'
+        'title', 'content'
     );
     private $author_data = array();
     private $controller = '';
@@ -126,9 +126,9 @@ class Post_category extends Admin_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $detail = $this->post_category_model->get_by_id($id, array('title'));
+        $detail = $this->post_category_model->get_by_id($id, array('title', 'content'));
 
-        $detail = build_language($this->controller, $detail, array('title'), $this->page_languages);
+        $detail = build_language($this->controller, $detail, array('title', 'content'), $this->page_languages);
         $parent_title = $this->build_parent_title($detail['parent_id']);
         $detail['parent_title'] = $parent_title;
 
@@ -143,8 +143,8 @@ class Post_category extends Admin_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $detail = $this->post_category_model->get_by_id($id, array('title'));
-        $detail = build_language($this->controller, $detail, array('title'), $this->page_languages);
+        $detail = $this->post_category_model->get_by_id($id, array('title', 'content'));
+        $detail = build_language($this->controller, $detail, array('title', 'content'), $this->page_languages);
         $category = $this->post_category_model->get_by_parent_id(null,'asc');
         // print_r($detail);die;
 

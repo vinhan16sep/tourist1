@@ -67,92 +67,102 @@ class Product extends Admin_Controller{
         $product_category = $this->product_category_model->get_by_parent_id_when_active(null,'asc');
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-            $this->form_validation->set_rules('title_en', 'Title', 'required');
-            if($this->form_validation->run() == TRUE){
-                if(!empty($_FILES['image_shared']['name'])){
-                    $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
-                }
-                if(!empty($_FILES['dateimg']['name'])){
-                    $this->check_imgs($_FILES['dateimg']['name'], $_FILES['dateimg']['size']);
-                }
-                if(!empty($_FILES['image_localtion']['name'])){
-                    $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
-                }
-                $img_array = array();
-                if($this->input->post('dateimg') !== null){
-                    $img_array = $this->input->post('dateimg');
-                }
-                $slug = $this->input->post('slug_shared');
-                $unique_slug = $this->product_model->build_unique_slug($slug);
-                if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && (!empty($_FILES['image_shared']['name']) || !empty($_FILES['dateimg']['name']) || !empty($_FILES['image_localtion']['name']))){
-                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0777);
-                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0777);
-                }
-                if(!empty($_FILES['image_shared']['name'])){
-                    $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
-                }
-                if(!empty($_FILES['image_localtion']['name'])){
-                    $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
-                }
-                $dateimage_full = array();
-                if(!empty($_FILES['dateimg']['name'])){
-                    $dateimage = $this->upload_file('./assets/upload/product/'.$unique_slug, 'dateimg', 'assets/upload/product/'. $unique_slug .'/thumb');
-                    for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
-                        if(array_key_exists($i,array_flip($img_array))){
-                            $dateimage_full[] = "";
-                        }else{
-                            $dateimage_full[] = array_shift($dateimage);
-                        }
+            if($this->input->post('parent_id_shared') == '' || $this->input->post('title_vi') == '' || $this->input->post('title_en') == ''){
+                        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR_VALIDATE);
+            }
+            foreach ($this->page_languages as $key => $value) {
+                for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                    if($this->input->post('datetitle_'.$value)[$i] == ''){
+                        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR_VALIDATE);
                     }
-                }else{
-                    for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                }
+            }
+            for ($i=0; $i < count($this->input->post('vehicles')); $i++) {
+                if(empty($this->input->post('vehicles')[$i])){
+                    return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR_VALIDATE);
+                }
+            }
+            if(!empty($_FILES['image_shared']['name'])){
+                $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
+            }
+            if(!empty($_FILES['dateimg']['name'])){
+                $this->check_imgs($_FILES['dateimg']['name'], $_FILES['dateimg']['size']);
+            }
+            if(!empty($_FILES['image_localtion']['name'])){
+                $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
+            }
+            $img_array = array();
+            if($this->input->post('dateimg') !== null){
+                $img_array = $this->input->post('dateimg');
+            }
+            $slug = $this->input->post('slug_shared');
+            $unique_slug = $this->product_model->build_unique_slug($slug);
+            if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && (!empty($_FILES['image_shared']['name']) || !empty($_FILES['dateimg']['name']) || !empty($_FILES['image_localtion']['name']))){
+                mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0777);
+                mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0777);
+            }
+            if(!empty($_FILES['image_shared']['name'])){
+                $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
+            }
+            if(!empty($_FILES['image_localtion']['name'])){
+                $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
+            }
+            $dateimage_full = array();
+            if(!empty($_FILES['dateimg']['name'])){
+                $dateimage = $this->upload_file('./assets/upload/product/'.$unique_slug, 'dateimg', 'assets/upload/product/'. $unique_slug .'/thumb');
+                for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
+                    if(array_key_exists($i,array_flip($img_array))){
                         $dateimage_full[] = "";
+                    }else{
+                        $dateimage_full[] = array_shift($dateimage);
                     }
                 }
-                $shared_request = array(
-                    'slug' => $unique_slug,
-                    'price' => $this->input->post('price'),
-                    'priceadults ' => $this->input->post('priceadults'),
-                    'pricechildren ' => $this->input->post('pricechildren'),
-                    'priceinfants ' => $this->input->post('priceinfants'),
-                    'percen' => $this->input->post('percen'),
-                    'localtion' => $this->input->post('localtion'),
-                    'product_category_id' => $this->input->post('parent_id_shared'),
-                    'dateimg' => json_encode($dateimage_full),
-                    'vehicles' => json_encode($this->input->post('vehicles')),
-                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+            }else{
+                for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                    $dateimage_full[] = "";
+                }
+            }
+            $shared_request = array(
+                'slug' => $unique_slug,
+                'price' => $this->input->post('price'),
+                'priceadults ' => $this->input->post('priceadults'),
+                'pricechildren ' => $this->input->post('pricechildren'),
+                'priceinfants ' => $this->input->post('priceinfants'),
+                'percen' => $this->input->post('percen'),
+                'localtion' => $this->input->post('localtion'),
+                'product_category_id' => $this->input->post('parent_id_shared'),
+                'dateimg' => json_encode($dateimage_full),
+                'vehicles' => json_encode($this->input->post('vehicles')),
+                'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+            );
+            if($this->input->post('date') !== null){
+                $date= explode("/",$this->input->post('date'));
+                $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
+            }
+            if(isset($datetime)){
+                $shared_request['date'] = $datetime;
+            }
+            if(isset($image)){
+                $shared_request['image'] = $image;
+            }
+            if(isset($localtionimage)){
+                $shared_request['imglocaltion'] = $localtionimage;
+            }
+            $this->db->trans_begin();
+            $insert = $this->product_model->common_insert(array_merge($shared_request,$this->author_data));
+            if($insert){
+                $requests = handle_multi_language_request('product_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
+                $this->product_model->insert_with_language($requests);
+            }
+            if ($this->db->trans_status() === false) {
+                $this->db->trans_rollback();
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR);
+            } else {
+                $this->db->trans_commit();
+                $reponse = array(
+                    'csrf_hash' => $this->security->get_csrf_hash()
                 );
-                if($this->input->post('date') !== null){
-                    $date= explode("/",$this->input->post('date'));
-                    $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
-                }
-                if(isset($datetime)){
-                    $shared_request['date'] = $datetime;
-                }
-                if(isset($image)){
-                    $shared_request['image'] = $image;
-                }
-                if(isset($localtionimage)){
-                    $shared_request['imglocaltion'] = $localtionimage;
-                }
-                $this->db->trans_begin();
-                $insert = $this->product_model->common_insert(array_merge($shared_request,$this->author_data));
-                if($insert){
-                    $requests = handle_multi_language_request('product_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
-                    $this->product_model->insert_with_language($requests);
-                }
-                if ($this->db->trans_status() === false) {
-                    $this->db->trans_rollback();
-                    return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR);
-                } else {
-                    $this->db->trans_commit();
-                    $reponse = array(
-                        'csrf_hash' => $this->security->get_csrf_hash()
-                    );
-                    return $this->return_api(HTTP_SUCCESS,MESSAGE_CREATE_SUCCESS,$reponse);
-                }
+                return $this->return_api(HTTP_SUCCESS,MESSAGE_CREATE_SUCCESS,$reponse);
             }
         }
         $this->render('admin/product/create_product_view');
@@ -192,15 +202,16 @@ class Product extends Admin_Controller{
                     $detail['librarylocaltion'] = $librarylocaltion;
                 }
                 $this->data['detail'] = $detail;
-		        $count_rating = $this->rating_model->count_by_product_id($id);
-                $total_rating = $this->rating_model->total_by_product_id($id);
+                $rating = $this->product_model->rating_by_id($id);
+                $count_rating = $rating['count_rating'];
+                $total_rating = $rating['total_rating'];
                 if($count_rating != 0 && $total_rating != 0){
-                    $rating = round($total_rating['rating'] / $count_rating, 1);
+                    $new_rating = round($total_rating / $count_rating, 1);
                 }else{
-                    $rating = 0;
+                    $new_rating = 0;
                 }
-		        $this->data['rating'] = $rating;
                 $this->data['count_rating'] = $count_rating;
+                $this->data['rating'] = $new_rating;
                 $this->data['refer'] = $this->input->get('refer');
                 $this->render('admin/product/detail_product_view');
             }else{
@@ -327,103 +338,113 @@ class Product extends Admin_Controller{
             }
             $dateimg_array = json_decode($detail['dateimg']);
             if($this->input->post()){
-                $this->load->library('form_validation');
-                $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-                $this->form_validation->set_rules('title_en', 'Title', 'required');
-                if($this->form_validation->run() == TRUE){
-                    $unique_slug = $this->data['detail']['slug'];
-                    $img_array = array();
-                    if($this->input->post('dateimg') !== null){
-                        $img_array = $this->input->post('dateimg');
-                    }
-                    if($unique_slug !== $this->input->post('slug_shared')){
-                        $unique_slug = $this->product_model->build_unique_slug($this->input->post('slug_shared'));
-                        if(file_exists("assets/upload/product/".$detail['slug'])) {
-                            rename("assets/upload/product/".$detail['slug'], "assets/upload/product/".$unique_slug);
+                if($this->input->post('parent_id_shared') == '' || $this->input->post('title_vi') == '' || $this->input->post('title_en') == ''){
+                            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR_VALIDATE);
+                }
+                foreach ($this->page_languages as $key => $value) {
+                    for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                        if($this->input->post('datetitle_'.$value)[$i] == ''){
+                            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR_VALIDATE);
                         }
                     }
-                    if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && (!empty($_FILES['image_shared']['name']) || !empty($_FILES['dateimg']['name']) || !empty($_FILES['image_localtion']['name']))){
-                        mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0777);
-                        mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0777);
+                }
+                for ($i=0; $i < count($this->input->post('vehicles')); $i++) {
+                    if(empty($this->input->post('vehicles')[$i])){
+                        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR_VALIDATE);
                     }
-                    if(!empty($_FILES['image_shared']['name'])){
-                        $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
-                        $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
+                }
+                $unique_slug = $this->data['detail']['slug'];
+                $img_array = array();
+                if($this->input->post('dateimg') !== null){
+                    $img_array = $this->input->post('dateimg');
+                }
+                if($unique_slug !== $this->input->post('slug_shared')){
+                    $unique_slug = $this->product_model->build_unique_slug($this->input->post('slug_shared'));
+                    if(file_exists("assets/upload/product/".$detail['slug'])) {
+                        rename("assets/upload/product/".$detail['slug'], "assets/upload/product/".$unique_slug);
                     }
-                    if(!empty($_FILES['image_localtion']['name'])){
-                        $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
-                        $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
-                    }
-                    if(!empty($_FILES['dateimg']['name'])){
-                        $this->check_imgs($_FILES['dateimg']['name'], $_FILES['dateimg']['size']);
-                        $dateimage = $this->upload_file('./assets/upload/product/'.$unique_slug, 'dateimg', 'assets/upload/product/'. $unique_slug .'/thumb');
-                        for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
-                            if(array_key_exists($i,array_flip($img_array))){
-                                $dateimage_full[$i] = $dateimg_array[$i];
-                            }else{
-                                $dateimage_full[$i] = array_shift($dateimage);
-                            }
+                }
+                if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && (!empty($_FILES['image_shared']['name']) || !empty($_FILES['dateimg']['name']) || !empty($_FILES['image_localtion']['name']))){
+                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0777);
+                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0777);
+                }
+                if(!empty($_FILES['image_shared']['name'])){
+                    $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
+                    $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
+                }
+                if(!empty($_FILES['image_localtion']['name'])){
+                    $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
+                    $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/product/'.$unique_slug, 'assets/upload/product/'.$unique_slug.'/thumb');
+                }
+                if(!empty($_FILES['dateimg']['name'])){
+                    $this->check_imgs($_FILES['dateimg']['name'], $_FILES['dateimg']['size']);
+                    $dateimage = $this->upload_file('./assets/upload/product/'.$unique_slug, 'dateimg', 'assets/upload/product/'. $unique_slug .'/thumb');
+                    for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
+                        if(array_key_exists($i,array_flip($img_array))){
+                            $dateimage_full[$i] = $dateimg_array[$i];
+                        }else{
+                            $dateimage_full[$i] = array_shift($dateimage);
                         }
-                        $dateimage_json = json_encode($dateimage_full);
                     }
-                    $shared_request = array(
-                        'price' => $this->input->post('price'),
-                        'priceadults ' => $this->input->post('priceadults'),
-                        'pricechildren ' => $this->input->post('pricechildren'),
-                        'priceinfants ' => $this->input->post('priceinfants'),
-                        'percen' => $this->input->post('percen'),
-                        'localtion' => $this->input->post('localtion'),
-                        'product_category_id' => $this->input->post('parent_id_shared'),
-                        'vehicles' => json_encode($this->input->post('vehicles')),
-                        'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                    $dateimage_json = json_encode($dateimage_full);
+                }
+                $shared_request = array(
+                    'price' => $this->input->post('price'),
+                    'priceadults ' => $this->input->post('priceadults'),
+                    'pricechildren ' => $this->input->post('pricechildren'),
+                    'priceinfants ' => $this->input->post('priceinfants'),
+                    'percen' => $this->input->post('percen'),
+                    'localtion' => $this->input->post('localtion'),
+                    'product_category_id' => $this->input->post('parent_id_shared'),
+                    'vehicles' => json_encode($this->input->post('vehicles')),
+                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                );
+                if($unique_slug != $this->data['detail']['slug']){
+                    $shared_request['slug'] = $unique_slug;
+                }
+                if($this->input->post('date') !== null){
+                    $date= explode("/",$this->input->post('date'));
+                    $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                }
+                if(isset($datetime)){
+                    $shared_request['date'] = $datetime;
+                }
+                if(isset($image)){
+                    $shared_request['image'] = $image;
+                }
+                if(isset($localtionimage)){
+                    $shared_request['imglocaltion'] = $localtionimage;
+                }
+                if(isset($dateimage_json)){
+                    $shared_request['dateimg'] = $dateimage_json;
+                }
+                $this->db->trans_begin();
+                $update = $this->product_model->common_update($id,array_merge($shared_request,$this->author_data));
+                if($update){
+                    $requests = handle_multi_language_request('product_id', $id, $this->request_language_template, $this->input->post(), $this->page_languages);
+                    foreach ($requests as $key => $value) {
+                        $this->product_model->update_with_language($id, $requests[$key]['language'],$value);
+                    }
+                }
+                if ($this->db->trans_status() === false) {
+                    $this->db->trans_rollback();
+                    return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR);
+                } else {
+                    $this->db->trans_commit();
+                    if(isset($dateimage_json) && !empty($this->data['detail']['dateimg'])) {
+                        $this->remove_img_date($this->input->post('datetitle_vi'),$dateimg_array,$unique_slug,$img_array);
+                    }
+                    if(isset($localtionimage) && !empty($this->data['detail']['imglocaltion'])) {
+                        $this->remove_img($unique_slug,$this->data['detail']['imglocaltion']);
+                    }
+                    if(isset($image) && !empty($this->data['detail']['image'])) {
+                        $this->remove_img($unique_slug,$this->data['detail']['image']);
+                    }
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
                     );
-                    if($unique_slug != $this->data['detail']['slug']){
-                        $shared_request['slug'] = $unique_slug;
-                    }
-                    if($this->input->post('date') !== null){
-                        $date= explode("/",$this->input->post('date'));
-                        $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
-                    }
-                    if(isset($datetime)){
-                        $shared_request['date'] = $datetime;
-                    }
-                    if(isset($image)){
-                        $shared_request['image'] = $image;
-                    }
-                    if(isset($localtionimage)){
-                        $shared_request['imglocaltion'] = $localtionimage;
-                    }
-                    if(isset($dateimage_json)){
-                        $shared_request['dateimg'] = $dateimage_json;
-                    }
-                    $this->db->trans_begin();
-                    $update = $this->product_model->common_update($id,array_merge($shared_request,$this->author_data));
-                    if($update){
-                        $requests = handle_multi_language_request('product_id', $id, $this->request_language_template, $this->input->post(), $this->page_languages);
-                        foreach ($requests as $key => $value) {
-                            $this->product_model->update_with_language($id, $requests[$key]['language'],$value);
-                        }
-                    }
-                    if ($this->db->trans_status() === false) {
-                        $this->db->trans_rollback();
-                        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR);
-                    } else {
-                        $this->db->trans_commit();
-                        if(isset($dateimage_json) && !empty($this->data['detail']['dateimg'])) {
-                            $this->remove_img_date($this->input->post('datetitle_vi'),$dateimg_array,$unique_slug,$img_array);
-                        }
-                        if(isset($localtionimage) && !empty($this->data['detail']['imglocaltion'])) {
-                            $this->remove_img($unique_slug,$this->data['detail']['imglocaltion']);
-                        }
-                        if(isset($image) && !empty($this->data['detail']['image'])) {
-                            $this->remove_img($unique_slug,$this->data['detail']['image']);
-                        }
-                        $reponse = array(
-                            'csrf_hash' => $this->security->get_csrf_hash()
-                        );
-                        return $this->return_api(HTTP_SUCCESS,MESSAGE_EDIT_SUCCESS,$reponse);
-                        
-                    }
+                    return $this->return_api(HTTP_SUCCESS,MESSAGE_EDIT_SUCCESS,$reponse);
+                    
                 }
             }
         }else{

@@ -129,6 +129,10 @@
                                                                     <td><?php echo $value['children'] ?></td>
                                                                 </tr>
                                                                 <tr>
+                                                                    <td><strong>Em bé (dưới 2 tuổi) : </strong></td>
+                                                                    <td><?php echo $value['infants'] ?></td>
+                                                                </tr>
+                                                                <tr>
                                                                     <td><strong>Quốc Gia : </strong></td>
                                                                     <td><?php echo $value['country'] ?></td>
                                                                 </tr>

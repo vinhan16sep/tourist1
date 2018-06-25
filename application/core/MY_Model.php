@@ -101,7 +101,7 @@ class MY_Model extends CI_Model {
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.tripnodes ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_tripnodes');
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.detailsprice ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_detailsprice');
         }
-        
+
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         if($lang != ''){
@@ -114,7 +114,7 @@ class MY_Model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
-    public function get_by_slug($slug, $select = array('title', 'description', 'content'), $lang = '') {
+    public function get_by_slug($slug, $select = array('title', 'description', 'content'), $lang = 'vi') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
         if(in_array('title', $select)){

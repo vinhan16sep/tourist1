@@ -283,6 +283,7 @@ $("#submit-shared,#content-home").click(function(event) {
 					}
 				},
 				error: function(jqXHR, exception){
+					alert(jqXHR.responseJSON.message);
 					console.log(errorHandle(jqXHR, exception));
 					location.reload();
 				}
