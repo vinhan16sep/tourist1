@@ -127,8 +127,9 @@
         }
         if ($cate_child){
             foreach ($cate_child as $key => $value){
+                $active = ($value['is_activated'] == 1)?'(Danh mục đang tắt)':'';
             ?>
-            <option value="<?php echo $value['id'] ?>" ><?php echo $char.$value['title'] ?></option>
+            <option value="<?php echo $value['id'] ?>" ><?php echo $char.$value['title'].$active; ?></option>
             <?php build_new_category($categorie, $value['id'], $char.'---|') ?>
             <?php
             }

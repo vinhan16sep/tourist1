@@ -67,7 +67,7 @@ class Product_category extends Admin_Controller{
             $this->data['id'] = 0;
         }
         $this->load->helper('form');
-        $product_category = $this->product_category_model->get_by_parent_id_when_active(null,'asc');
+        $product_category = $this->product_category_model->get_by_parent_id(null,'asc');
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
             $this->load->library('form_validation');
@@ -121,7 +121,7 @@ class Product_category extends Admin_Controller{
     public function edit($id){
         if($id &&  is_numeric($id) && ($id > 0)){
             $this->load->helper('form');
-            $product_category = $this->product_category_model->get_by_parent_id_when_active(null,'asc');
+            $product_category = $this->product_category_model->get_by_parent_id(null,'asc');
             $this->data['category'] = build_array_for_dropdown($this->product_category_model->get_all_with_pagination_search(),$id);
             if($this->product_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
                 $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
@@ -247,10 +247,8 @@ class Product_category extends Admin_Controller{
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_ACTIVE_CATEGORY);
             }
         }
-
         $data = array('is_activated' => 0);
-        $update = $this->product_category_model->multiple_update_by_ids($id, $data);
-
+        $update = $this->product_category_model->common_update($id,array_merge($data,$this->author_data));
         if ($update == 1) {
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
@@ -266,26 +264,24 @@ class Product_category extends Admin_Controller{
         $list_categories = $this->product_category_model->get_by_parent_id(null, 'asc');
         $this->get_multiple_products_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
-
-        $data = array('is_activated' => 1);
-
-        $this->db->trans_begin();
-
-        $update = $this->product_category_model->multiple_update_by_ids($ids, $data);
-
-        if ($update == 1) {
-            $this->product_model->multiple_update_by_category_ids($ids, $data);
+        if(count($ids)>1){
+            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_ERROR);
+        }else{
+            $product_category = $this->product_category_model->get_by_id($id,array('title'));
+            if($product_category['parent_id'] == 0 && ($product_category['slug'] == 'tour-dac-biet' || $product_category['slug'] == 'trong-nuoc' || $product_category['slug'] == 'nuoc-ngoai')){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_DEACTIVE_CATEGORY);
+            }
+            if(!empty($this->product_model->get_by_product_category_id($id))){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_ERROR);
+            }
         }
-
-        if ($this->db->trans_status() === false) {
-            $this->db->trans_rollback();
-            return $this->return_api(HTTP_BAD_REQUEST);
-        } else {
-            $this->db->trans_commit();
+        $data = array('is_activated' => 1);
+        $update = $this->product_category_model->common_update($id,array_merge($data,$this->author_data));
+        if ($update == 1) {
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
-            return $this->return_api(HTTP_SUCCESS,'',$reponse);
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_SUCCESS,$reponse);
         }
     }
 
@@ -340,8 +336,9 @@ class Product_category extends Admin_Controller{
             }
             foreach ($cate_child as $key => $value){
                     $select = ($value['id'] == $parent_id_edit)? 'selected' : '';
+                    $active = ($value['is_activated'] == 1)?'(Danh mục đang tắt)':'';
                 if($value['id'] != $id_edit){
-                    $result.='<option value="'.$value['id'].'"'.$select.'>'.$char.$value['title'].'</option>';
+                    $result.='<option value="'.$value['id'].'"'.$select.'>'.$char.$value['title'].$active.'</option>';
                     $this->build_new_category($categorie, $value['id'],$result, $parent_id_edit,$id_edit, $char.'---|');
                 }
             }
