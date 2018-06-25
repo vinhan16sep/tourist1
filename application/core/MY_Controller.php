@@ -152,13 +152,6 @@ class MY_Controller extends CI_Controller {
             ->set_output(json_encode(array('status' => $status,'message' => $message , 'reponse' => $data, 'isExisted' => $isExisted)));
     }
 
-    function return_api($status, $message='', $data = null,$isExisted= true){
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_status_header($status)
-            ->set_output(json_encode(array('status' => $status,'message' => $message , 'reponse' => $data, 'isExisted' => $isExisted)));
-    }
-
 }
 
 class Admin_Controller extends MY_Controller {
@@ -309,7 +302,7 @@ class Public_Controller extends MY_Controller {
     }
 
     public function fetch_tour_by_category($category_id){
-        return $this->product_category_model->fetch_tour_by_category($category_id, $this->session->userdata('langAbbreviation'));
+        return $this->product_model->fetch_tour_by_category($category_id, $this->session->userdata('langAbbreviation'));
     }
 
     protected function render($the_view = NULL, $template = 'master') {
