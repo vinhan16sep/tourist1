@@ -31,10 +31,10 @@
                                     <div class="body">
                                         <h4 class="post-subtitle">Blog SubTitles</h4>
                                         <h2 class="post-title"><?php echo $val['title']; ?></h2>
-                                        <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra non dui ut suscipit. Proin quis odio et mi dignissim accumsan. Integer fringilla fringilla rutrum. Pellentesque fringilla sem a nisi consequat porttitor. Sed in pharetra ipsum. Sed suscipit tincidunt sapien ac mollis. Fusce malesuada ornare convallis. Donec aliquam nisl et lacus varius bibendum. Duis ut purus ut erat consectetur tincidunt id eget nunc.</p>
+                                        <p class="post-description"><?php echo $val['description']; ?></p>
                                     </div>
                                     <div class="foot">
-                                        <a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
+                                        <a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>" class="btn btn-primary" role="button">
                                             <?php echo $this->lang->line('see-detail') ?>
                                         </a>
                                     </div>
