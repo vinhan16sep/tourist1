@@ -249,4 +249,15 @@ class Product_model extends MY_Model{
         $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->row_array();
     }
+
+    public function fetch_tour_by_category($category_id, $lang = 'vi'){
+        $where = "product.is_deleted = 0 AND product_lang.language = '" . $lang . "' AND product.product_category_id = '" . $category_id . "'";
+
+        $this->db->select('*')
+            ->from('product')
+            ->join('product_lang', 'product.id = product_lang.product_id')
+            ->where($where);
+
+        return $this->db->get()->result_array();
+    }
 }
