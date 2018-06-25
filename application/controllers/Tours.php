@@ -17,7 +17,7 @@ class Tours extends Public_Controller {
         $this->load->library('image_lib');
         $this->load->helper('captcha');
         $this->load->helper('common');
-        $this->data['controller'] = $this->product_model->table;
+//        $this->data['controller'] = $this->product_model->table;
         $this->data['request_vehicles_icon'] = $this->request_vehicles_icon;
     }
 
