@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-5 col-md-push-1 animate-box">
                 <div class="section-heading">
-                    <h2>myIELTS English Center</h2>
+                    <h2>Diamond Tour</h2>
                     <?php echo $detail['about_content'] ?>
                 </div>
             </div>

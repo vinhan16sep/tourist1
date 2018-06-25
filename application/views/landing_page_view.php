@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>
-        myIELTS
+        Diamond Tour
     </title>
     <meta charset="utf-8">
     <!--CSS-->
@@ -337,7 +337,7 @@
                     <div class="col-md-12">
                         <div class="social-icons wow slideInDown">
                             <ul class="list-unstyled">
-								<li><a href="https://www.facebook.com/myielts.edu.vn/" target="_blank"><i class="icon-facebook2"></i></a></li>
+								<li><a href="https://www.facebook.com/diamondtour.vn/" target="_blank"><i class="icon-facebook2"></i></a></li>
                             </ul>
                         </div>
                     </div>

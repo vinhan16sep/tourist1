@@ -1,4 +1,4 @@
-var csrf_hash = $("input[name='csrf_myielts_token']").val();
+var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
 $("[href$=customize]").click(function(){
 	$($(this)[0].hash+" [name=inquire_title]").val($("#inquire [name=inquire_title]").val());
 	if($($(this)[0].hash+" [name=inquire_first_name]").val() == ''){
@@ -142,7 +142,7 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
                 infants : $("#"+idForm+" [name=inquire_number_children_u2]").val(),
                 message : $("#"+idForm+" [name=inquire_message]").val(),
                 content : content,
-                csrf_myielts_token : csrf_hash
+                csrf_diamondtour_token : csrf_hash
             },
 			success: function(response){
 				console.log(response);
