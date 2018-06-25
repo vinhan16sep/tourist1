@@ -49,6 +49,22 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
+    public function get_all_with_pagination($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $category = '') {
+        $this->db->select($this->table .'.*, '. $this->table_lang .'.*');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
+        $this->db->where($this->table .'.post_category_id', $category);
+        $this->db->where($this->table .'.is_deleted', 0);
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
+        $this->db->limit($limit, $start);
+        $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
+        $this->db->order_by($this->table .".id", $order);
+
+        return $result = $this->db->get()->result_array();
+    }
+
     public function count_search($keyword = ''){
         $this->db->select('*');
         $this->db->from($this->table);
@@ -224,7 +240,7 @@ class MY_Model extends CI_Model {
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
-        $this->db->limit($limit, $start);
+//        $this->db->limit($limit, $start);
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
 
@@ -235,12 +251,25 @@ class MY_Model extends CI_Model {
         $this->db->where($data);
         return $this->db->count_all_results($this->table);
     }
+
     public function find($id){
         $this->db->where(array('id' => $id,'is_deleted' => 0));
         return $this->db->get($this->table)->row_array();
     }
+
     public function find_array($where = array()){
         $this->db->where(array_merge(array('is_deleted' => 0),$where));
         return $this->db->get($this->table)->row_array();
+    }
+
+    public function fetch_row_by_slug($slug, $lang){
+        $this->db->select('*')
+            ->from($this->table)
+            ->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id')
+            ->where($this->table . '.is_deleted', 0)
+            ->where($this->table_lang .'.language', $lang)
+            ->where($this->table .'.slug', $slug);
+
+        return $this->db->get()->row_array();
     }
 }

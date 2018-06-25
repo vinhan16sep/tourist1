@@ -12,12 +12,19 @@ $lang['contact'] = 'Contact Us';
 
 $lang['home'] = 'Home';
 $lang['domestic'] = 'Trong nước';
-$lang['international'] = 'International';
-$lang['special-tours'] = 'Special Tour';
-$lang['mice'] = 'Mice';
-$lang['services'] = 'Services';
-$lang['visa'] = 'Visa';
-$lang['blogs'] = 'Blogs';
+$lang['international'] = 'Nước ngoài';
+$lang['special-tours'] = 'Tour đặc biệt';
+$lang['mice'] = 'MICE';
+$lang['services'] = 'Dịch vụ';
+$lang['hotel'] = 'Khách sạn';
+$lang['ticket'] = 'Vé máy bay';
+$lang['visa'] = 'Hộ chiếu';
+$lang['visa-procedure'] = 'Thủ tục xin visa';
+$lang['registration-form'] = 'Form thông tin';
+$lang['blog'] = 'Bài viết';
+$lang['location'] = 'Điểm đến';
+$lang['handbook'] = 'Cẩm nang';
+$lang['diary'] = 'Nhật ký';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';

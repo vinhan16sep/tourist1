@@ -19,8 +19,15 @@ $lang['international'] = 'International';
 $lang['special-tours'] = 'Special Tour';
 $lang['mice'] = 'Mice';
 $lang['services'] = 'Services';
+$lang['hotel'] = 'Hotel';
+$lang['ticket'] = 'Ticket';
 $lang['visa'] = 'Visa';
-$lang['blogs'] = 'Blogs';
+$lang['visa-procedure'] = 'Visa procedure';
+$lang['registration-form'] = 'Registration form';
+$lang['blog'] = 'Blog';
+$lang['location'] = 'Location';
+$lang['handbook'] = 'Handbook';
+$lang['diary'] = 'Diary';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';

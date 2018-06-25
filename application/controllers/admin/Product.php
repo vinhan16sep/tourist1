@@ -48,17 +48,6 @@ class Product extends Admin_Controller{
             $parent_title = $this->build_parent_title($value['product_category_id']);
             $this->data['result'][$key]['parent_title'] = $parent_title;
         }
-
-
-
-//        echo '<pre>';
-//        print_r($this->data['result']);die;
-
-
-
-
-
-
         $this->render('admin/product/list_product_view');
     }
 
@@ -459,10 +448,7 @@ class Product extends Admin_Controller{
             $product = $this->product_model->find($id);
             $product_category = $this->product_category_model->find($product['product_category_id']);
             if($product_category['is_activated'] == 1){
-                return $this->output
-                    ->set_content_type('application/json')
-                    ->set_status_header(404)
-                    ->set_output(json_encode(array('status' => 404,'message' => MESSAGE_ERROR_ACTIVE_PRODUCT)));
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_ACTIVE_PRODUCT);
             }
             if($this->product_model->find_rows(array('id' => $id,'is_deleted' => 0)) != 0){
                 $update = $this->product_model->common_update($id,array_merge(array('is_activated' => 0),$this->author_data));
