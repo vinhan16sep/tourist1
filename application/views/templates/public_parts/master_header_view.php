@@ -129,222 +129,141 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 				<li class="menu-list">
 					<a href="<?php echo base_url('') ?>">
-                        <?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
+						<?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
 					</a>
 					<div class="menu-list-expand menu-expand">
+						<!----------------------------------------------->
+						<!-- DOMESTIC MENU -->
+						<!----------------------------------------------->
 						<div class="row">
-							<div class="item col-sm-3 col-xs-12">
-								<div class="head">
-									<h3><?php echo $this->lang->line('pilgrimage') ?></h3>
-								</div>
-								<div class="body">
-									<ul>
-										<li>
-											<div class="mask">
-												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
-											</div>
-											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="item col-sm-3 col-xs-12">
-								<div class="head">
-									<h3><?php echo $this->lang->line('northern') ?></h3>
-								</div>
-								<div class="body">
-									<ul>
-										<li>
-											<div class="mask">
-												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
-											</div>
-											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
-										</li>
-										<li><a href="<?php echo base_url('') ?>">Link location</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="item col-sm-3 col-xs-12">
-								<div class="head">
-									<h3><?php echo $this->lang->line('central') ?></h3>
-								</div>
-								<div class="body">
-									<ul>
-										<li>
-											<div class="mask">
-												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
-											</div>
-											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="item col-sm-3 col-xs-12">
-								<div class="head">
-									<h3><?php echo $this->lang->line('southern') ?></h3>
-								</div>
-								<div class="body">
-									<ul>
-										<li>
-											<div class="mask">
-												<img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=13b58b0343d8efc06a88c55e843f624f&auto=format&fit=crop&w=1950&q=80" alt="image first tour">
-											</div>
-											<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+							<?php
+							if($domestic_menu){
 
-				</section>
-				<section id="main-nav" class="col-xs-8">
-					<ul class="list-inline">
-						<li>
-							<a href="<?php echo base_url('') ?>">
-								<i class="fa fa-home" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li class="menu-list">
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
-							</a>
-							<div class="menu-list-expand menu-expand">
-                                <!----------------------------------------------->
-                                <!-- DOMESTIC MENU -->
-                                <!----------------------------------------------->
-								<div class="row">
-                                    <?php
-                                    if($domestic_menu){
-
-                                        foreach($domestic_menu as $key => $val){
-                                    ?>
-                                        <div class="item col-sm-3 col-xs-12">
-                                            <div class="head">
-                                                <h3><?php echo $val['title']; ?></h3>
-                                            </div>
-                                            <div class="body">
-                                                <ul>
-                                                    <li>
-                                                        <div class="mask">
-                                                            <img src="<?php echo site_url('assets/upload/product_category/' . $val['slug'] . '/' . $val['image']); ?>" alt="image first tour">
-                                                        </div>
-                                                        <a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
-                                                        <ul>
-                                                            <?php
-                                                                $sub = $controller->fetch_menu_categories($val['product_category_id']);
-                                                                if($sub){
-                                                                    foreach($sub as $sub_key => $sub_val){
-                                                            ?>
-                                                                        <li><?php echo $sub_val['title']; ?></li>
-                                                            <?php
-                                                                    }
-                                                                }
-                                                            ?>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-								</div>
-                                <!----------------------------------------------->
-                                <!-- END DOMESTIC MENU -->
-                                <!----------------------------------------------->
-							</div>
-						</li>
-						<li class="menu-tabs">
-							<a href="<?php echo base_url('') ?>">
-                                <?php echo $this->lang->line('international') ?> <span class="caret"></span>
-							</a>
-							<div class="menu-tabs-expand menu-expand">
-                                <!----------------------------------------------->
-                                <!-- INTERNATIONAL MENU -->
-                                <!----------------------------------------------->
-								<div class="row">
-									<div class="left col-md-3 col-sm-4 col-xs-12">
+								foreach($domestic_menu as $key => $val){
+							?>
+								<div class="item col-sm-3 col-xs-12">
+									<div class="head">
+										<h3><?php echo $val['title']; ?></h3>
+									</div>
+									<div class="body">
 										<ul>
-                                            <?php
-                                            if($international_menu){
-                                                foreach($international_menu as $key => $val){
-                                                    ?>
-                                                    <li>
-                                                        <?php echo $val['title']; ?> <span
-                                                                class="glyphicon glyphicon glyphicon-menu-right pull-right"
-                                                                aria-hidden="true"></span>
-                                                        <ul>
-                                                            <?php
-                                                            if($val['product_category_id'] == 27){
-                                                                $sub = $controller->fetch_menu_categories($val['product_category_id']);
-                                                                foreach($sub as $sub_key => $sub_val){
-                                                            ?>
-                                                                <li>
-                                                                    <div class="mask">
-                                                                        <img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
-                                                                             alt="image example">
-                                                                    </div>
-                                                                    <a href="<?php echo base_url('') ?>"><?php echo $sub_val['title']; ?></a>
-                                                                </li>
-                                                            <?php
-                                                                }
-                                                            }else{
-                                                                $tours = $controller->fetch_tour_by_category($val['product_category_id']);
-                                                                foreach($tours as $tour_key => $tour){
-                                                                    ?>
-                                                                    <li>
-                                                                        <div class="mask">
-                                                                            <img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
-                                                                                 alt="image example">
-                                                                        </div>
-                                                                        <a href="<?php echo base_url('') ?>"><?php echo $tour['title']; ?></a>
-                                                                    </li>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                            ?>
-                                                        </ul>
-                                                    </li>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
+											<li>
+												<div class="mask">
+													<img src="<?php echo site_url('assets/upload/product_category/' . $val['slug'] . '/' . $val['image']); ?>" alt="image first tour">
+												</div>
+												<a href="<?php echo base_url('') ?>">Link bai viet viet dai that la dai nhung ma no chi duoc keo dai den dong thu 2 ma thoi nhe</a>
+												<ul>
+													<?php
+														$sub = $controller->fetch_menu_categories($val['product_category_id']);
+														if($sub){
+															foreach($sub as $sub_key => $sub_val){
+													?>
+																<li><?php echo $sub_val['title']; ?></li>
+													<?php
+															}
+														}
+													?>
+												</ul>
+											</li>
 										</ul>
 									</div>
 								</div>
-                                <!----------------------------------------------->
-                                <!-- END INTERNATIONAL MENU -->
-                                <!----------------------------------------------->
-
-							</div>
+							<?php
+								}
+							}
+							?>
 						</div>
+						<!----------------------------------------------->
+						<!-- END DOMESTIC MENU -->
+						<!----------------------------------------------->
 					</div>
 				</li>
+				<li class="menu-tabs">
+					<a href="<?php echo base_url('') ?>">
+						<?php echo $this->lang->line('international') ?> <span class="caret"></span>
+					</a>
+					<div class="menu-tabs-expand menu-expand">
+						<!----------------------------------------------->
+						<!-- INTERNATIONAL MENU -->
+						<!----------------------------------------------->
+						<div class="row">
+							<div class="left col-md-3 col-sm-4 col-xs-12">
+								<ul>
+									<?php
+									if($international_menu){
+										foreach($international_menu as $key => $val){
+											?>
+											<li>
+												<?php echo $val['title']; ?> <span
+														class="glyphicon glyphicon glyphicon-menu-right pull-right"
+														aria-hidden="true"></span>
+												<ul>
+													<?php
+													if($val['product_category_id'] == 27){
+														$sub = $controller->fetch_menu_categories($val['product_category_id']);
+														foreach($sub as $sub_key => $sub_val){
+													?>
+														<li>
+															<div class="mask">
+																<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
+																	 alt="image example">
+															</div>
+															<a href="<?php echo base_url('') ?>"><?php echo $sub_val['title']; ?></a>
+														</li>
+													<?php
+														}
+													}else{
+														$tours = $controller->fetch_tour_by_category($val['product_category_id']);
+														foreach($tours as $tour_key => $tour){
+															?>
+															<li>
+																<div class="mask">
+																	<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
+																		 alt="image example">
+																</div>
+																<a href="<?php echo base_url('') ?>"><?php echo $tour['title']; ?></a>
+															</li>
+															<?php
+														}
+													}
+													?>
+												</ul>
+											</li>
+											<?php
+										}
+									}
+									?>
+								</ul>
+							</div>
+						</div>
+						<!----------------------------------------------->
+						<!-- END INTERNATIONAL MENU -->
+						<!----------------------------------------------->
+
+				</li>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-                        <?php echo $this->lang->line('special-tours') ?>
+						<?php echo $this->lang->line('special-tours') ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-                        <?php echo $this->lang->line('mice') ?>
+						<?php echo $this->lang->line('mice') ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-                        <?php echo $this->lang->line('services') ?>
+						<?php echo $this->lang->line('services') ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-                        <?php echo $this->lang->line('visa') ?>
+						<?php echo $this->lang->line('visa') ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-                        <?php echo $this->lang->line('blogs') ?>
+						<?php echo $this->lang->line('blogs') ?>
 					</a>
 				</li>
 			</ul>
