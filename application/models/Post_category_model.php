@@ -46,7 +46,7 @@ class Post_category_model extends MY_Model{
     }
 
     public function get_by_slug($slug, $order = 'desc',$lang = ''){
-        $this->db->select($this->table .'.*, '. $this->table_lang .'.title');
+        $this->db->select($this->table .'.*, '. $this->table_lang .'.title, '. $this->table_lang .'.content');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->where($this->table .'.is_deleted', 0);

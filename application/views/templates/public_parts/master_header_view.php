@@ -14,12 +14,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>fontAwesome/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
 	<!-- jQuery 3 -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="<?php echo site_url('assets/lib/') ?>bootstrap/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/daterangepicker.css">
+
+    <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/bootstrap-datepicker.min.css">
 	<!-- Main Js -->
 	<script src="<?php echo site_url('assets/js/') ?>main.js"></script>
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.validate.min.js"></script>

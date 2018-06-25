@@ -105,11 +105,9 @@ if (!function_exists('handle_common_author_data')) {
     }
 }
 /**
-
     TODO:
     - $select = array('title', 'content', ...);
     - $page_languages = array('vi', 'en', 'cn' ...);
-
  */
 
 if (!function_exists('handle_common_author_data')) {

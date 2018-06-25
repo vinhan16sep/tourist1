@@ -160,6 +160,8 @@
 
 
 
+<script src="<?php echo site_url('assets/lib/bootstrap/js/bootstrap-datepicker.min.js') ?>"></script>
+<script src="<?php echo site_url('assets/lib/bootstrap/js/daterangepicker.js') ?>"></script>
 <script src="<?php echo site_url('assets/js/') ?>main.js"></script>
 <script src="<?php echo site_url('assets/js/') ?>client.js"></script>
 

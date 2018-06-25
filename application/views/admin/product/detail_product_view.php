@@ -266,73 +266,72 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="detail-image col-sm-12">
-                                        <div class="row">
-                                            <?php for($h = 0;$h < count($detail['librarylocaltion']); $h++): ?>
-                                                <div role="tabpanel" class="tab-pane active" id="localtion_<?php echo $h; ?>">
-                                                    <div class="title-content-date showdate <?php echo $h; ?>">
-                                                        <div class="btn btn-primary col-xs-12 btn-margin collapsed" type="button" data-toggle="collapse" href="#librarylocaltion_<?php echo $h; ?>" aria-expanded="false" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
-                                                            <div class="col-xs-11">Nơi đến Ngày <?php echo $h+1; ?></div>
-                                                        </div>
-                                                        <div class="no_border">
-                                                            <div class="collapse" id="librarylocaltion_<?php echo $h; ?>">
-                                                                <?php if (!empty($detail['librarylocaltion'][$h])): ?>
-                                                                    <?php foreach ($detail['librarylocaltion'][$h] as $k => $value): ?>
-                                                                        <?php if(!empty($value)): ?>
-                                                                            <div class="col-sm-12" style="margin:10px 0px;">
-                                                                                <div class="col-sm-4" style="padding: 0px; padding-right: 5px;">
-                                                                                    <img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>"  style="width: 100%;">
-                                                                                </div>
-                                                                                <div class="col-sm-8" style="padding: 0px;">
-                                                                                        <ul class="nav nav-pills nav-justified language" role="tablist">
-                                                                                            <?php $number = 0; ?>
-                                                                                            <?php foreach ($page_languages as $key => $val) : ?>
-                                                                                                <?php $active = ($number == 0)?'active':''; ?>
-                                                                                                <li role="presentation" class="<?php echo $active; ?>">
-                                                                                                    <a href="#date-localtion<?php echo $key.$h.$k;?>" aria-controls="<?php echo $key.$h;?>" role="tab" data-toggle="tab">
-                                                                                                        <span class="badge"><?php echo $number + 1; ?></span><?php echo $val; ?>
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <?php $number++; ?>
-                                                                                            <?php endforeach; ?>
-                                                                                            <?php $number = 0; ?>
-                                                                                        </ul>
-                                                                                    <div class="tab-content">
+                                        <?php for($h = 0;$h < count($detail['librarylocaltion']); $h++): ?>
+                                            <div role="tabpanel" class="tab-pane active" id="localtion_<?php echo $h; ?>">
+                                                <div class="title-content-date showdate <?php echo $h; ?>">
+                                                    <div class="btn btn-primary col-xs-12 btn-margin collapsed" type="button" data-toggle="collapse" href="#librarylocaltion_<?php echo $h; ?>" aria-expanded="false" aria-controls="messageContent" style="margin-bottom:3px;padding:10px 0px;">
+                                                        <div class="col-xs-11">Nơi đến Ngày <?php echo $h+1; ?></div>
+                                                    </div>
+                                                    <div class="no_border">
+                                                        <div class="col-xs-12">
+                                                        <div class="collapse" id="librarylocaltion_<?php echo $h; ?>">
+                                                            <?php if (!empty($detail['librarylocaltion'][$h])): ?>
+                                                                <?php foreach ($detail['librarylocaltion'][$h] as $k => $value): ?>
+                                                                    <?php if(!empty($value)): ?>
+                                                                        <div class="col-sm-12" style="margin:10px 0px;">
+                                                                            <div class="col-sm-5" style="padding: 0px; padding-right: 5px;">
+                                                                                <img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $detail['slug'] ?>"  style="width: 100%;">
+                                                                            </div>
+                                                                            <div class="col-sm-7" style="padding: 0px;">
+                                                                                    <ul class="nav nav-pills nav-justified language" role="tablist">
                                                                                         <?php $number = 0; ?>
-                                                                                        <?php foreach ($template as $key => $val): ?>
-                                                                                            <div role="tabpanel" class="tab-pane <?php echo ($number == 0)? 'active' : '' ?>" id="date-localtion<?php echo $key.$h.$k; ?>">
-                                                                                                    <div class="table-responsive">
-                                                                                                        <table class="table table-striped">
-                                                                                                            <tbody>
-                                                                                                                <tr>
-                                                                                                                    <th style="width: 140px"><?php echo $template[$key]['title'];?>: </th>
-                                                                                                                    <td><?php echo $value['title_'. $key] ?></td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                    <th style="width: 140px"><?php echo $template[$key]['content'];?>: </th>
-                                                                                                                    <td><?php echo $value['content_'. $key] ?></td>
-                                                                                                                </tr>
-                                                                                                            </tbody>
-                                                                                                        </table>
-                                                                                                    </div>
-                                                                                            </div>
+                                                                                        <?php foreach ($page_languages as $key => $val) : ?>
+                                                                                            <?php $active = ($number == 0)?'active':''; ?>
+                                                                                            <li role="presentation" class="<?php echo $active; ?>">
+                                                                                                <a href="#date-localtion<?php echo $key.$h.$k;?>" aria-controls="<?php echo $key.$h;?>" role="tab" data-toggle="tab">
+                                                                                                    <span class="badge"><?php echo $number + 1; ?></span><?php echo $val; ?>
+                                                                                                </a>
+                                                                                            </li>
                                                                                             <?php $number++; ?>
                                                                                         <?php endforeach; ?>
-                                                                                    </div>
+                                                                                        <?php $number = 0; ?>
+                                                                                    </ul>
+                                                                                <div class="tab-content">
+                                                                                    <?php $number = 0; ?>
+                                                                                    <?php foreach ($template as $key => $val): ?>
+                                                                                        <div role="tabpanel" class="tab-pane <?php echo ($number == 0)? 'active' : '' ?>" id="date-localtion<?php echo $key.$h.$k; ?>">
+                                                                                            <div style="padding: 5px;">
+                                                                                                <label for=""><?php echo $template[$key]['title'];?>:</label>
+                                                                                                <p>
+                                                                                                    <?php echo $value['title_'. $key] ?>
+                                                                                                </p>
+                                                                                                <label for=""><?php echo $template[$key]['content'];?>:</label>
+                                                                                                <p>
+                                                                                                    <?php echo $value['content_'. $key] ?>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <?php $number++; ?>
+                                                                                    <?php endforeach; ?>
                                                                                 </div>
                                                                             </div>
-                                                                        <?php else: ?>
-                                                                            <div style="padding:20px;">
-                                                                                Không có nơi nào được chọn trong ngày    
-                                                                            </div>
-                                                                        <?php endif;?>
-                                                                    <?php endforeach ?>
-                                                                <?php endif ?>
-                                                            </div>
+                                                                        </div>
+                                                                        <?php if ($k+1 < count($detail['librarylocaltion'][$h])): ?>
+                                                                            <div style="border:2px solid gray" class="col-md-12"> </div>  
+                                                                        <?php endif ?>       
+                                                                    <?php else: ?>
+                                                                        <div style="padding:20px;">
+                                                                            Không có nơi nào được chọn trong ngày    
+                                                                        </div>
+                                                                    <?php endif;?>
+                                                                <?php endforeach ?>
+                                                            <?php endif ?>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php endfor; ?>
-                                        </div>
+                                            </div>
+                                        <?php endfor; ?>
                                     </div>
                                 </div>
                             </div>

@@ -47,6 +47,9 @@
                         </li>
                     </ul>
                 </li>
+                <li class="<?php echo ($this->uri->segment(2) == 'banner')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/banner') ?>"><i class="fa fa-list"></i> Banner</a>
+                </li>
                 <!-- <li class="<?php echo ($this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'blog')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-newspaper-o"></i>
@@ -118,19 +121,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'localtion')? 'active' : 'treeview' ?>">
-                    <a href="">
-                        <i class="fa fa-globe"></i>
-                        <span>Địa điểm</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="<?php echo ($this->uri->segment(2) == 'localtion')? 'active' : '' ?>">
-                            <a href="<?php echo base_url('admin/localtion') ?>"><i class="fa fa-globe"></i> Địa điểm</a>
-                        </li>
-                    </ul>
+                <li class="<?php echo ($this->uri->segment(2) == 'localtion')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/localtion') ?>"><i class="fa fa-globe"></i> Địa điểm</a>
                 </li>
                 <li class="<?php echo ($this->uri->segment(2) == 'customize')? 'active' : 'treeview' ?>">
                     <a href="">
