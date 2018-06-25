@@ -35,33 +35,39 @@ class Tours extends Public_Controller {
         }
     }
     public function category($slug) {
-        $detail = $this->product_category_model->get_by_slug_lang($slug,array(),'vi');
-        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['parent_id'],$sub);
-        if(empty($sub)){
-            $detail['sub'] = $sub;
+        if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
+            $detail = $this->product_category_model->get_by_slug_lang($slug,array(),'vi');
+            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['parent_id'],$sub);
+            if(empty($sub)){
+                $detail['sub'] = $sub;
+            }else{
+                $detail['sub'] = array_reverse($sub);
+            }
+            $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(), $detail['id'], $ids);
+            if(empty($ids)){
+                $ids = array();
+            }
+            array_unshift($ids,$detail['id']);
+            $check = 0;
+            $product_array = array();
+            for ($i=0; $i < count($ids); $i++) {
+                 $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+                 if($tour['id'] != ''){
+                    $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+                    $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id']);
+                    $check++;
+                    if($check == 3){
+                        break;
+                    }
+                 }
+            }
+            $this->data['detail'] = $detail;
+            $this->data['product_array'] = $product_array;
+            $this->render('list_tours_view');
         }else{
-            $detail['sub'] = array_reverse($sub);
+            $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
+            redirect('/', 'refresh');
         }
-        $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(), $detail['id'], $ids);
-        if(empty($ids)){
-            $ids = array();
-        }
-        array_unshift($ids,$detail['id']);
-        $check = 0;
-        for ($i=0; $i < count($ids); $i++) {
-             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-             if($tour['id'] != ''){
-                $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-                $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id']);
-                $check++;
-                if($check == 3){
-                    break;
-                }
-             }
-        }
-        $this->data['detail'] = $detail;
-        $this->data['product_array'] = $product_array;
-        $this->render('list_tours_view');
     }
 
     function get_multiple_products_with_category($categories, $parent_id = 0, &$sub){
@@ -75,7 +81,7 @@ class Tours extends Public_Controller {
     }
     public function detail($slug){
         $this->load->model('rating_model');
-        if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0)) != 0){
+        if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $this->load->helper('form');
             $this->load->library('form_validation');
             $detail = $this->product_model->get_by_slug_lang($slug,array());

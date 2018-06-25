@@ -12,7 +12,6 @@ class Post_category_model extends MY_Model{
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where($this->table .'.is_activated', 0);
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
