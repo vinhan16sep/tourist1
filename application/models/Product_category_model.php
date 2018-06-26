@@ -152,4 +152,17 @@ class Product_category_model extends MY_Model{
 
         return $this->db->get()->result_array();
     }
+
+    public function fetch_domestic_menu($parent_id){
+        $this->db->select($this->table .'.id');
+        $this->db->from($this->table);
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
+        if(is_numeric($parent_id)){
+            $this->db->where($this->table .'.parent_id', $parent_id);
+        }
+
+        return $result = $this->db->get()->result_array();
+    }
+
 }
