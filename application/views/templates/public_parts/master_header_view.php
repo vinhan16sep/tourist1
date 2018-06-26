@@ -35,6 +35,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.waypoints.min.js"></script>
 	<script src="<?php echo site_url('assets/js/jquery.rateit.js') ?>"></script>
 
+	<!--Favicon-->
+	<link rel="shortcut icon" type="image/png" href="<?php echo site_url('assets/img/favicon.png') ?>"/>
+
 
 </head>
 
@@ -46,10 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="left col-sm-6 col-xs-12">
 				<ul>
 					<li>
-						<a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?></a>
+						<a href="<?php echo base_url('about/')?>"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?></a>
 					</li>
 					<li>
-						<a href=""><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?></a>
+						<a href="<?php echo base_url('contact/')?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?></a>
 					</li>
 				</ul>
 			</div>

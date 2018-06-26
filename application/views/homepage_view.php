@@ -30,8 +30,10 @@
 					</div>
 				<?php endforeach ?>
 			<?php endif ?>
-			...
 		</div>
+
+		<!--Slider Background-->
+		<div class="slider-background"></div>
 
 		<!-- Controls -->
 		<a class="left carousel-control" href="#homepage-slider" role="button" data-slide="prev">
@@ -240,6 +242,18 @@
 						</div>
 					</div>
 				</div>
+				<ul class="list-inline">
+					<li>
+						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
+							<i class="fa fa-arrow-left" aria-hidden="false"></i>
+						</a>
+					</li>
+					<li>
+						<a class="btn btn-default" href="#domestic-slider" data-slide="next">
+							<i class="fa fa-arrow-right" aria-hidden="false"></i>
+						</a>
+					</li>
+				</ul>
 			</div>
 			<div class="right col-sm-3 col-xs-12">
 				<div class="section-header">
@@ -252,23 +266,9 @@
 					<p><?php echo $domestic['content']; ?></p>
 				</div>
 				<div class="foot">
-					<ul class="list-inline">
-						<li>
-							<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
-                                <?php echo $this->lang->line('see-all') ?>
-							</a>
-						</li>
-						<li>
-							<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
-								<i class="fa fa-arrow-left" aria-hidden="false"></i>
-							</a>
-						</li>
-						<li>
-							<a class="btn btn-default" href="#domestic-slider" data-slide="next">
-								<i class="fa fa-arrow-right" aria-hidden="false"></i>
-							</a>
-						</li>
-					</ul>
+					<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
+                        <?php echo $this->lang->line('see-all') ?>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -358,6 +358,18 @@
 						</div>
 					</div>
 				</div>
+				<ul class="list-inline">
+					<li>
+						<a class="btn btn-default" href="#international-slider" data-slide="prev">
+							<i class="fa fa-arrow-left" aria-hidden="false"></i>
+						</a>
+					</li>
+					<li>
+						<a class="btn btn-default" href="#international-slider" data-slide="next">
+							<i class="fa fa-arrow-right" aria-hidden="false"></i>
+						</a>
+					</li>
+				</ul>
 			</div>
 
 			<div class="right col-sm-3 col-xs-12">
@@ -371,23 +383,9 @@
 					<div><?php echo $international['content']; ?></div>
 				</div>
 				<div class="foot">
-					<ul class="list-inline">
-						<li>
-							<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
-                                <?php echo $this->lang->line('see-all') ?>
-							</a>
-						</li>
-						<li>
-							<a class="btn btn-default" href="#international-slider" data-slide="prev">
-								<i class="fa fa-arrow-left" aria-hidden="false"></i>
-							</a>
-						</li>
-						<li>
-							<a class="btn btn-default" href="#international-slider" data-slide="next">
-								<i class="fa fa-arrow-right" aria-hidden="false"></i>
-							</a>
-						</li>
-					</ul>
+					<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
+                        <?php echo $this->lang->line('see-all') ?>
+					</a>
 				</div>
 			</div>
 		</div>

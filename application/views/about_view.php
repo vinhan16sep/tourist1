@@ -1,111 +1,45 @@
 <!-- About Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>about.min.css">
 
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url('https://images.unsplash.com/photo-1484712401471-05c7215830eb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=64a2622330a7ea8f0e1e73d32b8afa9d&auto=format&fit=crop&w=1950&q=80');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="display-t js-fullheight">
-                    <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-                        <h1><?php echo $this->lang->line('about-us') ?></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<section class="cover">
+	<img src="https://images.unsplash.com/photo-1516974882164-2136160d59c6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4b9e1d39ed76f884d4d640f17d00a0c&auto=format&fit=crop&w=1950&q=80" alt="cover">
+</section>
 
-<div id="fh5co-about" class="fh5co-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 img-wrap animate-box" data-animate-effect="fadeInLeft">
-                <img src="<?php echo base_url('assets/upload/about/' . $detail['avatar']) ?>" alt="img about" width=100%>
-            </div>
-            <div class="col-md-5 col-md-push-1 animate-box">
-                <div class="section-heading">
-                    <h2>Diamond Tour</h2>
-                    <?php echo $detail['about_content'] ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<section id="about" class="content section container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="left col-sm-8 col-xs-12">
+				<div class="section-header">
+					<h1><?php echo $this->lang->line('about') ?></h1>
+					<div class="line">
+						<div class="line-primary"></div>
+					</div>
+				</div>
 
-<div id="fh5co-timeline">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
-                <ul class="timeline animate-box">
-                    <li class="timeline-heading text-center animate-box">
-                        <div><h3><?php echo $this->lang->line('our-message'); ?></h3></div>
-                    </li>
-                    <?php if ($our_message): ?>
-                        <?php foreach ($our_message as $key => $value): ?>
-                            <?php if ($key == 0 || ($key % 2 == 0) ): ?>
-                                <li class="animate-box timeline-unverted">
-                                    <div class="timeline-badge"><i class="icon-genius"></i></div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h3 class="timeline-title">The Founders Meet</h3>
+				<article>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.</p>
+					<img src="https://images.unsplash.com/photo-1529789864526-f7067145c1b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=122d73dc8e0cd54c2327699a237aa12a&auto=format&fit=crop&w=1950&q=80" alt="about image">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.
+				</article>
+			</div>
+			<div class="right col-sm-4 col-xs-12">
+				<div class="section-header">
+					<h1><?php echo $this->lang->line('about') ?></h1>
+					<div class="line">
+						<div class="line-primary"></div>
+					</div>
+				</div>
 
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p><?php echo $value['description'] ?></p>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php else: ?>
-                                <li class="timeline-inverted animate-box">
-                                    <div class="timeline-badge"><i class="icon-genius"></i></div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h3 class="timeline-title">Create A Restaurant</h3>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p><?php echo $value['description'] ?></p>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php endif ?>
-                        <?php endforeach ?>
-                    <?php endif ?>
-
-                    <br>
-                    <li class="timeline-heading text-center animate-box">
-                        <div><h3><?php echo $this->lang->line('our-methods'); ?></h3></div>
-                    </li>
-                    <?php if ($our_methods): ?>
-                        <?php foreach ($our_methods as $key => $value): ?>
-                            <?php if ($key == 0 || ($key % 2 == 0)): ?>
-                                <li class="timeline-inverted animate-box">
-                                    <div class="timeline-badge"><i class="icon-genius"></i></div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h3 class="timeline-title">Stablished Restaurant in Europe</h3>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p><?php echo $value['description'] ?></p>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php else: ?>
-                                <li class="animate-box timeline-unverted">
-                                    <div class="timeline-badge"><i class="icon-genius"></i></div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h3 class="timeline-title">Franchise Restaurants Brooklyn</h3>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p><?php echo $value['description'] ?></p>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php endif ?>
-                        <?php endforeach ?>
-                    <?php endif ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+				<!-- Category -->
+				<ul class="list-group">
+					<?php for ($i = 0; $i < 5; $i++) { ?>
+					<li class="list-group-item">
+						<a href="">Cras justo odio</a>
+					</li>
+				<?php } ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
