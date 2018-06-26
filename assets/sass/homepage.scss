@@ -50,6 +50,21 @@
                 }
             }
         }
+
+        .slider-background{
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background-image: url("../img/bg-slider.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+
+        }
     }
 }
 
@@ -178,53 +193,6 @@
         .col-md-6 {
             overflow: hidden;
         }
-
-        //.item{
-        //    .mask{
-        //        width: 100%;
-        //        height: 400px;
-        //        overflow: hidden;
-        //
-        //        position: relative;
-        //
-        //        border-radius: 7px;
-        //
-        //        img{
-        //            width: 100%;
-        //            height: 100%;
-        //            object-fit: cover;
-        //        }
-        //
-        //        .top{
-        //            position: absolute;
-        //            top: 15px;
-        //            left: 15px;
-        //
-        //            h4.post-subtitle, h2.post-title{
-        //                color: #fff;
-        //            }
-        //
-        //            h4.post-subtitle{
-        //                font-size: 1em;
-        //                margin-top: 10px;
-        //            }
-        //
-        //            h2.post-title{
-        //                font-size: 1.5em;
-        //            }
-        //        }
-        //
-        //        .bottom{
-        //            position: absolute;
-        //            bottom: 15px;
-        //            left: 15px;
-        //        }
-        //
-        //        &:last-of-type{
-        //
-        //        }
-        //    }
-        //}
 
         .slider-control{
             .carousel-control{
@@ -448,6 +416,19 @@
             .left{
                 .row{
                 }
+
+                ul.list-inline{
+                    margin-top: 15px;
+
+                    .btn-default{
+                        padding: 7px 15px;
+
+                        &:hover{
+                            background-color: $gray-light;
+                            color: #fff;
+                        }
+                    }
+                }
             }
 
             .right{
@@ -470,9 +451,7 @@
                 .foot{
                     ul{
                         li{
-                            .btn-default{
-                                padding: 7px 15px;
-                            }
+
                         }
                     }
                 }

@@ -13,6 +13,13 @@
 							<a href="<?php echo base_url('') ?>">
                                 <?php echo $this->lang->line('pilgrimage') ?>
 							</a>
+							<ul>
+								<li>
+									<a href="<?php echo base_url('') ?>">
+                                        <?php echo $this->lang->line('pilgrimage') ?>
+									</a>
+								</li>
+							</ul>
 						</li>
 						<?php } ?>
 					</ul>
@@ -29,6 +36,13 @@
 								<a href="<?php echo base_url('') ?>">
                                     <?php echo $this->lang->line('pilgrimage') ?>
 								</a>
+								<ul>
+									<li>
+										<a href="<?php echo base_url('') ?>">
+                                            <?php echo $this->lang->line('pilgrimage') ?>
+										</a>
+									</li>
+								</ul>
 							</li>
                         <?php } ?>
 					</ul>
@@ -111,6 +125,43 @@
 		</div>
 
 		<div class="row">
+			<div class="item col-sm-6 col-xs-12">
+				<div class="head">
+					<h3>Diamond Tour</h3>
+				</div>
+				<div class="body">
+					<table class="table">
+						<tr>
+							<td style="width: 50%">
+								<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
+								<br>
+								&copy; 2018 | <a class="link-primary" href="javascript:void(0);">Privacy</a>
+								<br>
+								All Rights Reversed
+							</td>
+							<td>
+								<div class="outline">
+									<i class="fa fa-phone" aria-hidden="false"></i> Hotline
+									<br>
+									<a class="link-primary" href="tel:(024) 1234 5678">
+										<h2>(024) 1234 5678</h2>
+									</a>
+								</div>
+
+								<div class="outline">
+									<i class="fa fa-envelope-o" aria-hidden="false"></i> Email
+									<br>
+									<a class="link-primary" href="mailto:info@diamondtour.vn">
+										<h2>info@diamondtour.vn</h2>
+									</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+
 			<div class="item col-sm-3 col-xs-12">
 				<div class="head">
 					<h3><?php echo $this->lang->line('branch-1-location') ?></h3>
