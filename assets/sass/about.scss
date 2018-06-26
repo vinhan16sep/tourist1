@@ -1,0 +1,54 @@
+/* =======================================================
+*
+* 	@IMPORT SCSS
+*
+* ======================================================= */
+
+@import "main";
+
+/* =======================================================
+*
+* 	ABOUT STYLE
+*
+* ======================================================= */
+
+.cover{
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+}
+
+#about{
+    .container{
+        .row{
+            .left{
+                article{
+                    p{
+                        padding-bottom: 30px;
+                    }
+
+                    img{
+                        width: 100%;
+
+                        margin-top: 15px;
+                        margin-bottom: 30px;
+                    }
+                }
+            }
+
+            .right{
+                ul{
+                    li{
+                        a{
+                            color: $gray-light;
+
+                            &:hover{
+                                color: $gray-dark;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

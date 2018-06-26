@@ -328,6 +328,8 @@ header.header{
                         &.menu-tabs{
                             .menu-tabs-expand{
                                 .row{
+                                    min-height: 300px;
+
                                     .left{
                                         > ul{
                                             list-style: none;
@@ -362,6 +364,14 @@ header.header{
                                                         padding-right: 15px;
 
                                                         display: inline-block;
+
+                                                        a{
+                                                            color: $gray-light;
+
+                                                            &:hover{
+                                                                color: $gray-dark;
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -451,6 +461,20 @@ header.header{
                                                 &:hover{
                                                     color: $gray;
                                                 }
+                                            }
+
+                                            p{
+                                                color: $gray-light;
+
+                                                font-size: 1em;
+
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                display: -webkit-box;
+                                                line-height: 1.5;
+                                                height: 7.5em;
+                                                -webkit-line-clamp: 5;
+                                                -webkit-box-orient: vertical;
                                             }
 
                                             .btn-primary{
@@ -572,16 +596,24 @@ section.main-content{
 }
 
 footer.footer{
-    background-color: $primary;
-    color: #fff;
+    background-color: #eee;
 
-    padding-bottom: 50px;
+    background-image: url("../img/bg-footer.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+
+
+    color: $gray;
+
+    padding-top: 30px;
+    padding-bottom: 150px;
 
     a{
-        color: #fff;
+        color: $gray-light;
 
         &:hover{
-            color: #fff;
+            color: $gray-dark;
         }
     }
 
@@ -589,25 +621,83 @@ footer.footer{
         .row{
             padding-bottom: 30px;
 
-            border-bottom: 1px solid #fcfcfc;
-
             &:last-of-type{
                 border-bottom: none;
             }
 
             .item{
                 .head{
-
+                    h3{
+                        padding-bottom: 15px;
+                        border-bottom: 1px solid $gray-light;
+                        font-size: 1.35em;
+                        font-weight: bold;
+                    }
                 }
 
                 .body{
-                    ul{
+                    > ul{
                         padding-left: 0;
                         list-style: none;
+
+                        > li{
+                            font-weight: bold;
+
+                            > ul{
+                                padding-left: 15px;
+
+                                > li{
+                                    font-weight: normal;
+                                }
+                            }
+                        }
+                    }
+
+                    table{
+                        tr{
+                            td{
+                                border-top-color: transparent;
+
+                                img{
+                                    width: 100px;
+                                }
+
+                                .outline{
+                                    padding: 15px;
+
+                                    -webkit-border-radius: 7px;
+                                    -moz-border-radius: 7px;
+                                    border-radius: 7px;
+
+                                    color: $gray-light;
+                                    font-size: 1em;
+
+                                    a{
+                                        h2{
+                                            margin-top: 10px;
+                                            font-size: 1.5em;
+                                        }
+                                    }
+                                }
+
+                                a{
+                                    &.link-primary{
+                                        color: $primary;
+
+                                        &:hover{
+                                            color: $primary-hover;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+
+    .container-fluid{
     }
 }
 
