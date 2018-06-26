@@ -128,6 +128,11 @@ body{
     background-color: #fafafa;
 }
 
+body, html{
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .mask{
     img{
         width: 100%;
@@ -420,6 +425,53 @@ header.header{
                                 }
                             }
                         }
+
+                        &.menu-dropdown{
+
+                            .menu-dropdown-expand{
+                                padding: 15px;
+
+                                .row{
+                                    .media{
+
+                                        .media-left{
+                                            width: 50%;
+
+                                            .mask{
+                                                width: 100%;
+                                                height: 230px;
+                                                overflow: hidden;
+                                            }
+                                        }
+
+                                        .media-body{
+                                            a{
+                                                color: $primary;
+
+                                                &:hover{
+                                                    color: $gray;
+                                                }
+                                            }
+
+                                            .btn-primary{
+                                                color: #fff;
+
+                                                &:hover{
+                                                    color: #fff;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            &:hover{
+                                .menu-dropdown-expand{
+                                    display: block;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -483,7 +535,7 @@ section.main-content{
                 text-overflow: ellipsis;
                 display: -webkit-box;
                 line-height: 1.168;
-                max-height: 2.5em;
+                height: 2.3em;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
             }
@@ -499,7 +551,7 @@ section.main-content{
                 text-overflow: ellipsis;
                 display: -webkit-box;
                 line-height: 1.168;
-                max-height: 1.5em;
+                height: 1.5em;
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
             }
@@ -511,7 +563,7 @@ section.main-content{
                 text-overflow: ellipsis;
                 display: -webkit-box;
                 line-height: 1.5;
-                max-height: 7.5em;
+                height: 7.5em;
                 -webkit-line-clamp: 5;
                 -webkit-box-orient: vertical;
             }

@@ -205,7 +205,7 @@
 			                                                    </div>
 			                                                <?php endif;?>
                                                             <?php if ($j+1 < count($detail['librarylocaltion'][$i])): ?>
-                                                                <div style="border:2px solid gray" class="col-md-12"> </div>  
+                                                                <div style="border:1px solid #999" class="col-md-12"> </div>
                                                             <?php endif ?> 
 														<?php endfor; ?>
                                     				<?php endif;?>
