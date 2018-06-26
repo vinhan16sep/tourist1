@@ -238,6 +238,7 @@ class Product_model extends MY_Model{
             $this->db->where($this->table_lang .'.language', $lang);
         }
         $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
         $this->db->where($this->table .'.product_category_id', $product_category_id);
         return $this->db->get()->row_array();
     }     
@@ -257,6 +258,19 @@ class Product_model extends MY_Model{
             ->from('product')
             ->join('product_lang', 'product.id = product_lang.product_id')
             ->where($where);
+
+        return $this->db->get()->result_array();
+    }
+
+    public function get_tours_in_array_category_id($domestic_array, $lang){
+        $this->db->select($this->table . '.*, ' . $this->table_lang . '.*, product_category_lang.title as category_title')
+            ->from($this->table)
+            ->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id')
+            ->join('product_category_lang', $this->table . '.product_category_id = product_category_lang.product_category_id')
+            ->where($this->table_lang . '.language', $lang)
+            ->where('product_category_lang.language', $lang)
+            ->where_in($this->table . '.product_category_id', $domestic_array)
+            ->where($this->table . '.is_deleted', 0);
 
         return $this->db->get()->result_array();
     }

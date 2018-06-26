@@ -55,19 +55,23 @@
 						</tr>
 						<tr>
 							<td>
-								<div class="captcha-image image"></div>
-								<div class="captcha-input">
-									<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="">
-									<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" style="border-radius: 4px; border: none; width: 48%; margin-right: 5%; color: black">  
-									<a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a>    
+								<div class="captcha-image image col-md-6"></div>
+
+								<div class="captcha-input input-group col-md-6"> 
+									<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
+									<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style="border: none;margin-right: 5%; color: black;height: 35px;"> 
+									<span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+								</div>
+								<div class="captcha-input col-md-7"> 
+									    
 								</div>
 								<div>
 									<span class="message"></span>
 								</div>
 							</td>
 							<td>
-								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('tours/created_captcha'); ?>">
-								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('tours/created_rating'); ?>">
+								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
+								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
 								<input type="hidden" name="product_id" class="product_id" value="91">
 								<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
                                     <?php echo $this->lang->line('booking') ?>
@@ -201,7 +205,7 @@
 			                                                    </div>
 			                                                <?php endif;?>
                                                             <?php if ($j+1 < count($detail['librarylocaltion'][$i])): ?>
-                                                                <div style="border:2px solid gray" class="col-md-12"> </div>  
+                                                                <div style="border:1px solid #999" class="col-md-12"> </div>
                                                             <?php endif ?> 
 														<?php endfor; ?>
                                     				<?php endif;?>

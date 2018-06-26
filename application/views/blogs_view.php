@@ -1,4 +1,4 @@
-<!-- About Stylesheet -->
+<!-- Blogs Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.min.css">
 
 <section class="cover">

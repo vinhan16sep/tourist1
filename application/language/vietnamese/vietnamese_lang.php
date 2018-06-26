@@ -12,12 +12,19 @@ $lang['contact'] = 'Contact Us';
 
 $lang['home'] = 'Home';
 $lang['domestic'] = 'Trong nước';
-$lang['international'] = 'International';
-$lang['special-tours'] = 'Special Tour';
-$lang['mice'] = 'Mice';
-$lang['services'] = 'Services';
-$lang['visa'] = 'Visa';
-$lang['blogs'] = 'Blogs';
+$lang['international'] = 'Nước ngoài';
+$lang['special-tours'] = 'Tour đặc biệt';
+$lang['mice'] = 'MICE';
+$lang['services'] = 'Dịch vụ';
+$lang['hotel'] = 'Khách sạn';
+$lang['ticket'] = 'Vé máy bay';
+$lang['visa'] = 'Hộ chiếu';
+$lang['visa-procedure'] = 'Thủ tục xin visa';
+$lang['registration-form'] = 'Form thông tin';
+$lang['blog'] = 'Bài viết';
+$lang['location'] = 'Điểm đến';
+$lang['handbook'] = 'Cẩm nang';
+$lang['diary'] = 'Nhật ký';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';
@@ -44,6 +51,7 @@ $lang['explore'] = 'Expore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
 $lang['see-detail'] = 'See Detail';
+$lang['submit-message'] = 'Submit Message';
 
 //Tour Request
 
@@ -109,6 +117,15 @@ $lang['form-adults'] = 'Adults';
 $lang['form-children-u11'] = 'Children (2-11 years old)';
 $lang['form-children-u2'] = 'Children (Under 2 years old)';
 $lang['form-message'] = 'Message';
+
+//Contact
+
+$lang['contact-name'] = 'Your name';
+$lang['contact-mail'] = 'Your email';
+$lang['contact-phone'] = 'Your phone number';
+$lang['contact-country'] = 'Your country of residence';
+$lang['contact-message'] = 'Your message';
+
 
 
 

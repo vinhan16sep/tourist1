@@ -270,6 +270,7 @@ class Public_Controller extends MY_Controller {
         $this->load->helper('form');
         $this->load->library('ion_auth');
         $this->load->model('product_category_model');
+        $this->load->model('product_model');
 
         $this->langAbbreviation = $this->session->userdata('langAbbreviation') ? $this->session->userdata('langAbbreviation') : 'vi';
 
