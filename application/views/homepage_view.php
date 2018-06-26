@@ -480,10 +480,11 @@
 					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 				</div>
 				<div class="head">
-					<h2><?php echo $value['title']; ?></h2>
+					<h4 class="post-subtitle"><?php echo $value['title']; ?></h4>
+					<h2 class="post-title"><?php echo $value['title']; ?></h2>
 				</div>
 				<div class="body">
-					<p><?php echo $value['description']; ?></p>
+					<p class="post-description"><?php echo $value['description']; ?></p>
 				</div>
 				<div class="foot">
 					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">

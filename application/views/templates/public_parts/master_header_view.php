@@ -248,33 +248,145 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php echo $this->lang->line('mice') ?>
 					</a>
 				</li>
-				<li>
+				<li class="menu-dropdown">
 					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('services') ?>
+						<?php echo $this->lang->line('services') ?> <span class="caret">
 					</a>
-                    <ul>
-                        <li><a href="<?php echo base_url('chuyen-muc/khach-san'); ?>"><?php echo $this->lang->line('hotel') ?></a></li>
-                        <li><a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>"><?php echo $this->lang->line('ticket') ?></a></li>
-                    </ul>
+                    <div class="menu-dropdown-expand menu-expand">
+						<div class="row">
+							<div class="media col-sm-6 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="<?php echo base_url('chuyen-muc/khach-san'); ?>">
+										<h3 class="media-heading"><?php echo $this->lang->line('hotel') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="<?php echo base_url('chuyen-muc/khach-san'); ?>" class="btn btn-primary" role="button">
+										<?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+							<div class="media col-sm-6 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>">
+										<h3 class="media-heading"><?php echo $this->lang->line('ticket') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>" class="btn btn-primary" role="button">
+                                        <?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+						</div>
+                    </div>
 				</li>
-				<li>
+				<li class="menu-dropdown">
 					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('visa') ?>
+						<?php echo $this->lang->line('visa') ?> <span class="caret">
 					</a>
-                    <ul>
-                        <li><a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>"><?php echo $this->lang->line('visa-procedure') ?></a></li>
-                        <li><a href="javascript:void(0);"><?php echo $this->lang->line('registration-form') ?></a></li>
-                    </ul>
+					<div class="menu-dropdown-expand menu-expand">
+						<div class="row">
+							<div class="media col-sm-6 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>">
+										<h3 class="media-heading"><?php echo $this->lang->line('visa-procedure') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>" class="btn btn-primary" role="button">
+                                        <?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+							<div class="media col-sm-6 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="javascript:void(0);">
+										<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="javascript:void(0);" class="btn btn-primary" role="button">
+                                        <?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</li>
-				<li>
+				<li class="menu-dropdown">
 					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('blog') ?>
+						<?php echo $this->lang->line('blog') ?> <span class="caret">
 					</a>
-                    <ul>
-                        <li><a href="<?php echo base_url('chuyen-muc/diem-den'); ?>"><?php echo $this->lang->line('location') ?></a></li>
-                        <li><a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>"><?php echo $this->lang->line('handbook') ?></a></li>
-                        <li><a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>"><?php echo $this->lang->line('diary') ?></a></li>
-                    </ul>
+					<div class="menu-dropdown-expand menu-expand">
+						<div class="row">
+							<div class="media col-sm-4 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>">
+										<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>" class="btn btn-primary" role="button">
+                                        <?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+							<div class="media col-sm-4 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>">
+										<h3 class="media-heading"><?php echo $this->lang->line('handbook') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>" class="btn btn-primary" role="button">
+                                        <?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+							<div class="media col-sm-4 col-xs-12">
+								<div class="media-left">
+									<div class="mask">
+										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+									</div>
+								</div>
+								<div class="media-body">
+									<a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>">
+										<h3 class="media-heading"><?php echo $this->lang->line('diary') ?></h3>
+									</a>
+									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+									<a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>" class="btn btn-primary" role="button">
+                                        <?php echo $this->lang->line('explore') ?>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -283,10 +395,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </header>
 
 <section class="main-page">
-	<div class="container-fluid">
 
-
-	</div>
 
 
 
