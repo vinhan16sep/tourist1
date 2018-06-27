@@ -18,25 +18,44 @@
     overflow: hidden;
 }
 
+section.main-page .container-fluid {
+    position: static;
+}
+
 #about{
     .container{
         .row{
             .left{
-                article{
-                    p{
-                        padding-bottom: 30px;
+                .about-post{
+                    padding-top: 30px;
+
+                    &:first-of-type{
+                        padding-top: 0;
                     }
 
-                    img{
-                        width: 100%;
+                    article{
+                        p{
+                            padding-bottom: 30px;
+                        }
 
-                        margin-top: 15px;
-                        margin-bottom: 30px;
+                        img{
+                            width: 100%;
+
+                            margin-top: 15px;
+                            margin-bottom: 30px;
+                        }
                     }
                 }
             }
 
             .right{
+
+                &.sticky{
+                    position: -webkit-sticky;
+                    position: sticky;
+                    top: 30px;
+                }
+
                 ul{
                     li{
                         a{
