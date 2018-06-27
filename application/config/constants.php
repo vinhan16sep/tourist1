@@ -85,13 +85,6 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 /**
- * Tour categories
- */
-defined('DOMESTIC_TOUR')       OR define('DOMESTIC_TOUR', 'trong-nuoc');
-defined('INTERNATIONAL_TOUR')  OR define('INTERNATIONAL_TOUR', 'nuoc-ngoai');
-defined('SPECIAL_TOUR')        OR define('SPECIAL_TOUR', 'tour-dac-biet');
-
-/**
  * HTTP Success code
  */
 defined('HTTP_SUCCESS') OR define('HTTP_SUCCESS', 200);
@@ -103,9 +96,11 @@ defined('HTTP_SUCCESS') OR define('HTTP_SUCCESS', 200);
 defined('HTTP_BAD_REQUEST') OR define('HTTP_BAD_REQUEST', 400);
 defined('HTTP_NOT_FOUND') OR define('HTTP_NOT_FOUND', 404);
 
-/*==============================
-=            Message for Create            =
-==============================*/
+/*
+|--------------------------------------------------------------------------
+| FIXED DATA
+|--------------------------------------------------------------------------
+*/
 
 /**
  * FIXED TOUR CATEGORIES ID
@@ -113,6 +108,28 @@ defined('HTTP_NOT_FOUND') OR define('HTTP_NOT_FOUND', 404);
 defined('FIXED_DOMESTIC_CATEGORY_ID') OR define('FIXED_DOMESTIC_CATEGORY_ID', 22);
 defined('FIXED_INTERNATIONAL_CATEGORY_ID') OR define('FIXED_INTERNATIONAL_CATEGORY_ID', 23);
 defined('FIXED_SPECIAL_CATEGORY_ID') OR define('FIXED_SPECIAL_CATEGORY_ID', 24);
+
+/**
+ * Tour categories
+ */
+defined('DOMESTIC_TOUR')       OR define('DOMESTIC_TOUR', 'trong-nuoc');
+defined('INTERNATIONAL_TOUR')  OR define('INTERNATIONAL_TOUR', 'nuoc-ngoai');
+defined('SPECIAL_TOUR')        OR define('SPECIAL_TOUR', 'tour-dac-biet');
+
+/**
+ * FIXED POST CATEGORIES ID
+ */
+defined('FIXED_ABOUT_US')        OR define('FIXED_ABOUT_US', 15);
+
+/*
+|--------------------------------------------------------------------------
+| END FIXED DATA
+|--------------------------------------------------------------------------
+*/
+
+/*==============================
+=            Message for Create            =
+==============================*/
 
 /**
  * Message Success code
