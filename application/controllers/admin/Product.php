@@ -38,7 +38,7 @@ class Product extends Admin_Controller{
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->product_model->count_search('vi', $this->data['keyword']);
+        $total_rows  = $this->product_model->count_search($this->data['keyword']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
@@ -406,6 +406,9 @@ class Product extends Admin_Controller{
                 }
                 if(isset($dateimage_json)){
                     $shared_request['dateimg'] = $dateimage_json;
+                }else{
+                    $dateimg = json_decode($this->data['detail']['dateimg']);
+                    $shared_request['dateimg'] = json_encode(array_slice($dateimg, 0,count($this->input->post('vehicles'))));
                 }
                 $this->db->trans_begin();
                 $update = $this->product_model->common_update($id,array_merge($shared_request,$this->author_data));

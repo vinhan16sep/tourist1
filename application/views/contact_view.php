@@ -54,7 +54,7 @@
                     ?>
                 </div>
                 <div class="form-group col-xs-12">
-                    <?php echo form_submit('submit', $this->lang->line('submit-message'), 'class="btn btn-primary"'); ?>
+                    <?php echo form_submit('submit', $this->lang->line('contact-send'), 'class="btn btn-primary"'); ?>
                 </div>
 
                 <?php echo form_close(); ?>

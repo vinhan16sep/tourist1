@@ -5,8 +5,8 @@
  */
 
 //Top Nav
-$lang['about'] = 'About Us';
-$lang['contact'] = 'Contact Us';
+$lang['about'] = 'Giới thiệu';
+$lang['contact'] = 'Liên hệ';
 
 //Main Nav
 
@@ -120,11 +120,12 @@ $lang['form-message'] = 'Message';
 
 //Contact
 
-$lang['contact-name'] = 'Your name';
-$lang['contact-mail'] = 'Your email';
-$lang['contact-phone'] = 'Your phone number';
-$lang['contact-country'] = 'Your country of residence';
-$lang['contact-message'] = 'Your message';
+$lang['contact-name'] = 'Họ tên';
+$lang['contact-mail'] = 'Email';
+$lang['contact-phone'] = 'Số điện thoại';
+$lang['contact-country'] = 'Country of residence';
+$lang['contact-message'] = 'Nội dung';
+$lang['contact-send'] = 'Gửi';
 
 
 
