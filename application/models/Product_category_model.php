@@ -153,7 +153,7 @@ class Product_category_model extends MY_Model{
         return $this->db->get()->result_array();
     }
 
-    public function fetch_domestic_menu($parent_id){
+    public function fetch_product_category_menu($parent_id){
         $this->db->select($this->table .'.id');
         $this->db->from($this->table);
         $this->db->where($this->table .'.is_deleted', 0);

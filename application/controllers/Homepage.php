@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Homepage extends Public_Controller {
 
-    protected $category_array = array();
+    protected $domestic_category_array = array();
+    protected $international_category_array = array();
+    protected $special_category_array = array();
 
     public function __construct() {
         parent::__construct();
@@ -15,7 +17,8 @@ class Homepage extends Public_Controller {
         $this->load->model('banner_model');
         $this->load->model('product_category_model');
 
-        $this->get_domestic_menu();
+        $this->get_domestic_data();
+        $this->get_international_data();
     }
 
     function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
@@ -74,7 +77,12 @@ class Homepage extends Public_Controller {
         $this->data['specialtour'] = $this->product_category_model->get_by_slug_lang('tour-dac-biet',array(),'vi');
         $this->data['tour_specialtour'] = $this->get_all_product_in_category($this->data['specialtour'],6);
 
-        $this->data['domestic_tours'] = $this->product_model->get_tours_in_array_category_id($this->category_array, $this->data['lang']);
+        /**
+         * GET TOURS IN EACH CATEGORY
+         */
+        $this->data['domestic_tours'] = $this->product_model->get_tours_in_array_category_id($this->domestic_category_array, $this->data['lang']);
+        $this->data['international_tours'] = $this->product_model->get_tours_in_array_category_id($this->international_category_array, $this->data['lang']);
+        $this->data['special_tours'] = $this->product_model->get_tours_in_array_category_id(array(FIXED_SPECIAL_CATEGORY_ID), $this->data['lang']);
 
         //post
         $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
@@ -85,12 +93,21 @@ class Homepage extends Public_Controller {
         $this->render('homepage_view');
     }
 
-    public function get_domestic_menu($parent = 22){
-        $categories = $this->product_category_model->fetch_domestic_menu($parent);
+    public function get_domestic_data($parent = FIXED_DOMESTIC_CATEGORY_ID){
+        $categories = $this->product_category_model->fetch_product_category_menu($parent);
 
         foreach($categories as $key => $category){
-            array_push($this->category_array, $category['id']);
-            $this->get_domestic_menu($category['id']);
+            array_push($this->domestic_category_array, $category['id']);
+            $this->get_domestic_data($category['id']);
+        }
+    }
+
+    public function get_international_data($parent = FIXED_INTERNATIONAL_CATEGORY_ID){
+        $categories = $this->product_category_model->fetch_product_category_menu($parent);
+
+        foreach($categories as $key => $category){
+            array_push($this->international_category_array, $category['id']);
+            $this->get_international_data($category['id']);
         }
     }
 
