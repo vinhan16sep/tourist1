@@ -108,6 +108,13 @@ defined('HTTP_NOT_FOUND') OR define('HTTP_NOT_FOUND', 404);
 ==============================*/
 
 /**
+ * FIXED TOUR CATEGORIES ID
+ */
+defined('FIXED_DOMESTIC_CATEGORY_ID') OR define('FIXED_DOMESTIC_CATEGORY_ID', 22);
+defined('FIXED_INTERNATIONAL_CATEGORY_ID') OR define('FIXED_INTERNATIONAL_CATEGORY_ID', 23);
+defined('FIXED_SPECIAL_CATEGORY_ID') OR define('FIXED_SPECIAL_CATEGORY_ID', 24);
+
+/**
  * Message Success code
  */
 defined('MESSAGE_CREATE_SUCCESS') OR define('MESSAGE_CREATE_SUCCESS', 'Thêm mới thành công!');

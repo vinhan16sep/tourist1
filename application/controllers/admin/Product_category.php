@@ -141,6 +141,11 @@ class Product_category extends Admin_Controller{
                     $unique_slug = $this->data['detail']['slug'];
                     if($unique_slug !== $this->input->post('slug_shared')){
                         $unique_slug = $this->product_category_model->build_unique_slug($this->input->post('slug_shared'));
+
+                        if(file_exists("assets/upload/product_category/".$this->data['detail']['slug'])) {
+                            rename("assets/upload/product_category/".$detail['slug'], "assets/upload/product_category/".$unique_slug);
+                        }
+
                     }
                     if(!file_exists("assets/upload/product_category/".$unique_slug) && !empty($_FILES['image_shared']['name'])){
                         mkdir("assets/upload/product_category/".$unique_slug, 0755);
