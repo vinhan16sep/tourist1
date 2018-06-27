@@ -93,15 +93,15 @@
 			<div class="col-xs-12">
 				<div class="carousel carousel-showmanymoveone slider" id="special-slider">
 					<div class="carousel-inner">
-                        <?php if (!empty($tour_specialtour)): ?>
-                            <?php foreach ($tour_specialtour as $key => $value): ?>
+                        <?php if (!empty($special_tours)): ?>
+                            <?php foreach ($special_tours as $key => $value): ?>
 								<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 									<div class="inner col-xs-12 col-sm-6 col-md-4">
 										<div class="mask">
 											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 											<div class="overview">
 												<div class="head">
-													<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></h4>
+													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 													<h2 class="post-title"><?php echo $value['title']; ?></h2>
 												</div>
 												<div class="body">
@@ -110,7 +110,7 @@
 											</div>
 											<div class="content">
 												<div class="head">
-													<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></h4>
+													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 														<h2 class="post-title"><?php echo $value['title']; ?></h2>
 														<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
 												</div>

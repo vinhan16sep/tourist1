@@ -77,9 +77,9 @@
                                         <td>
                                             <div class="mask_sm">
                                                 <?php if (!empty($value['image'])): ?>
-                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$value['imglocaltion']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
+                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
                                                 <?php else: ?>
-                                                    Chưa có Ảnh.
+                                                    <img src="<?php echo base_url('assets/upload/img/horizontal.jpg') ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
                                                 <?php endif ?>
                                             </div>
                                         </td>
