@@ -76,8 +76,7 @@ body {
   background-color: #fafafa; }
 
 body, html {
-  width: 100%;
-  overflow-x: hidden; }
+  width: 100%; }
 
 .mask img {
   width: 100%;
@@ -507,6 +506,9 @@ footer.footer {
 * 	HOMEPAGE STYLE
 *
 * ======================================================= */
+body, html {
+  overflow-x: hidden; }
+
 #slider {
   padding-left: 0;
   padding-right: 0; }

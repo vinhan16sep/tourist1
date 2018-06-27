@@ -12,6 +12,10 @@
 *
 * ======================================================= */
 
+body, html{
+    overflow-x: hidden;
+}
+
 #slider{
     padding-left: 0;
     padding-right: 0;
