@@ -76,8 +76,7 @@ body {
   background-color: #fafafa; }
 
 body, html {
-  width: 100%;
-  overflow-x: hidden; }
+  width: 100%; }
 
 .mask img {
   width: 100%;
@@ -512,12 +511,23 @@ footer.footer {
   height: 40vh;
   overflow: hidden; }
 
-#about .container .row .left article p {
-  padding-bottom: 30px; }
-#about .container .row .left article img {
-  width: 100%;
-  margin-top: 15px;
-  margin-bottom: 30px; }
+section.main-page .container-fluid {
+  position: static; }
+
+#about .container .row .left .about-post {
+  padding-top: 30px; }
+  #about .container .row .left .about-post:first-of-type {
+    padding-top: 0; }
+  #about .container .row .left .about-post article p {
+    padding-bottom: 30px; }
+  #about .container .row .left .about-post article img {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 30px; }
+#about .container .row .right.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px; }
 #about .container .row .right ul li a {
   color: #999; }
   #about .container .row .right ul li a:hover {
