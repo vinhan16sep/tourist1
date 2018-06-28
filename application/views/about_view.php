@@ -9,37 +9,22 @@
 	<div class="container">
 		<div class="row">
 			<div class="left col-sm-8 col-xs-12">
-				<div class="about-post" id="about">
-					<div class="section-header">
-						<h1><?php echo $this->lang->line('about') ?></h1>
-						<div class="line">
-							<div class="line-primary"></div>
-						</div>
-					</div>
+                <?php if($about){ ?>
+                    <?php foreach($about as $key => $val){ ?>
+                        <div class="about-post" id="<?php echo $val['slug']; ?>">
+                            <div class="section-header">
+                                <h1><?php echo $val['title']; ?></h1>
+                                <div class="line">
+                                    <div class="line-primary"></div>
+                                </div>
+                            </div>
 
-					<article>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.</p>
-						<img src="https://images.unsplash.com/photo-1529789864526-f7067145c1b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=122d73dc8e0cd54c2327699a237aa12a&auto=format&fit=crop&w=1950&q=80" alt="about image">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.
-					</article>
-				</div>
-
-				<div class="about-post" id="blogs">
-					<div class="section-header">
-						<h1><?php echo $this->lang->line('blog') ?></h1>
-						<div class="line">
-							<div class="line-primary"></div>
-						</div>
-					</div>
-
-					<article>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.</p>
-						<img src="https://images.unsplash.com/photo-1529789864526-f7067145c1b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=122d73dc8e0cd54c2327699a237aa12a&auto=format&fit=crop&w=1950&q=80" alt="about image">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique ultricies purus. Cras gravida dui tortor, et interdum erat imperdiet quis. Donec semper volutpat aliquam. Donec purus dui, tristique id enim et, gravida tincidunt orci. Nullam tristique maximus vehicula. In id dolor hendrerit, dignissim mi viverra, finibus erat. Vivamus at tellus tellus. Sed at porttitor sem. Duis nec faucibus nibh, non condimentum augue. Nam egestas leo enim, ut elementum arcu rutrum et. Nulla molestie justo a ultricies egestas. In ac metus egestas, congue erat ac, lacinia lacus. Aenean porta, arcu porta laoreet mollis, felis sem fringilla ante, vitae viverra erat augue et ante. Ut vel tortor at lectus consectetur sollicitudin quis id lectus.
-					</article>
-				</div>
+                            <article>
+                                <?php echo $val['content']; ?>
+                            </article>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
 			</div>
 			<div class="right col-sm-4 col-xs-12">
 				<div class="section-header">
@@ -51,14 +36,13 @@
 
 				<!-- Category -->
 				<ul class="list-group">
-
-						<li class="list-group-item">
-							<a href="#about"><?php echo $this->lang->line('about') ?></a>
-						</li>
-						<li class="list-group-item">
-							<a href="#blogs"><?php echo $this->lang->line('blog') ?></a>
-						</li>
-
+                    <?php if($about){ ?>
+                        <?php foreach($about as $key => $val){ ?>
+                            <li class="list-group-item">
+                                <a href="#<?php echo $val['slug']; ?>"><?php echo $val['title']; ?></a>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
 				</ul>
 			</div>
 		</div>

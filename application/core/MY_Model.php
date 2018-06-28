@@ -272,4 +272,20 @@ class MY_Model extends CI_Model {
 
         return $this->db->get()->row_array();
     }
+
+    /**
+     * FETCH POSTS IN SPECIFY CATEGORY
+     * @param string $lang
+     * @return mixed
+     */
+    public function get_all_item($category, $lang = ''){
+        $this->db->select($this->table . '.*, ' . $this->table_lang . '.*')
+            ->from($this->table)
+            ->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id')
+            ->where($this->table_lang . '.language', $lang)
+            ->where($this->table . '.post_category_id', 15)
+            ->where($this->table . '.is_deleted', 0);
+
+        return $result = $this->db->get()->result_array();
+    }
 }

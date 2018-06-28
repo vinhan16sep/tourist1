@@ -124,9 +124,10 @@ $lang['form-message'] = 'Message';
 
 //Contact
 
-$lang['contact-name'] = 'Your name';
-$lang['contact-mail'] = 'Your email';
-$lang['contact-phone'] = 'Your phone number';
-$lang['contact-country'] = 'Your country of residence';
-$lang['contact-message'] = 'Your message';
+$lang['contact-name'] = 'Full name';
+$lang['contact-mail'] = 'Email';
+$lang['contact-phone'] = 'Phone number';
+$lang['contact-country'] = 'Country of residence';
+$lang['contact-message'] = 'Message';
+$lang['contact-send'] = 'Send';
 

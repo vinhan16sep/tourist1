@@ -4,6 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Homepage extends Public_Controller {
 
+    protected $domestic_category_array = array();
+    protected $international_category_array = array();
+    protected $special_category_array = array();
+
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
@@ -12,6 +16,9 @@ class Homepage extends Public_Controller {
         $this->load->model('post_category_model');
         $this->load->model('banner_model');
         $this->load->model('product_category_model');
+
+        $this->get_domestic_data();
+        $this->get_international_data();
     }
 
     function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
@@ -69,6 +76,14 @@ class Homepage extends Public_Controller {
         $this->data['tour_international'] = $this->get_all_product_in_category($this->data['international'],3);
         $this->data['specialtour'] = $this->product_category_model->get_by_slug_lang('tour-dac-biet',array(),'vi');
         $this->data['tour_specialtour'] = $this->get_all_product_in_category($this->data['specialtour'],6);
+
+        /**
+         * GET TOURS IN EACH CATEGORY
+         */
+        $this->data['domestic_tours'] = $this->product_model->get_tours_in_array_category_id($this->domestic_category_array, $this->data['lang']);
+        $this->data['international_tours'] = $this->product_model->get_tours_in_array_category_id($this->international_category_array, $this->data['lang']);
+        $this->data['special_tours'] = $this->product_model->get_tours_in_array_category_id(array(FIXED_SPECIAL_CATEGORY_ID), $this->data['lang']);
+
         //post
         $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
         $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'vi',2);
@@ -76,6 +91,24 @@ class Homepage extends Public_Controller {
         $this->data['blogs'] = $this->post_category_model->get_by_slug('blogs','asc','vi');
         $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),'vi',3);
         $this->render('homepage_view');
+    }
+
+    public function get_domestic_data($parent = FIXED_DOMESTIC_CATEGORY_ID){
+        $categories = $this->product_category_model->fetch_product_category_menu($parent);
+
+        foreach($categories as $key => $category){
+            array_push($this->domestic_category_array, $category['id']);
+            $this->get_domestic_data($category['id']);
+        }
+    }
+
+    public function get_international_data($parent = FIXED_INTERNATIONAL_CATEGORY_ID){
+        $categories = $this->product_category_model->fetch_product_category_menu($parent);
+
+        foreach($categories as $key => $category){
+            array_push($this->international_category_array, $category['id']);
+            $this->get_international_data($category['id']);
+        }
     }
 
     function about(){

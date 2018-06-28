@@ -28,9 +28,9 @@ class Post_category extends Admin_Controller{
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->post_category_model->count_search('vi');
+        $total_rows  = $this->post_category_model->count_search();
         if($keywords != ''){
-            $total_rows  = $this->post_category_model->count_search('vi', $keywords);
+            $total_rows  = $this->post_category_model->count_search($keywords);
         }
 
         

@@ -93,15 +93,15 @@
 			<div class="col-xs-12">
 				<div class="carousel carousel-showmanymoveone slider" id="special-slider">
 					<div class="carousel-inner">
-                        <?php if (!empty($tour_specialtour)): ?>
-                            <?php foreach ($tour_specialtour as $key =>$value): ?>
+                        <?php if (!empty($special_tours)): ?>
+                            <?php foreach ($special_tours as $key => $value): ?>
 								<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 									<div class="inner col-xs-12 col-sm-6 col-md-4">
 										<div class="mask">
 											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 											<div class="overview">
 												<div class="head">
-													<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></h4>
+													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 													<h2 class="post-title"><?php echo $value['title']; ?></h2>
 												</div>
 												<div class="body">
@@ -110,7 +110,7 @@
 											</div>
 											<div class="content">
 												<div class="head">
-													<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></span>
+													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 														<h2 class="post-title"><?php echo $value['title']; ?></h2>
 														<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
 												</div>
@@ -177,83 +177,83 @@
 					<div class="col-xs-12">
 						<div class="carousel carousel-showmanymoveone slider" id="domestic-slider">
 							<div class="carousel-inner">
-                                <?php if (!empty($tour_domestic)): ?>
-                                <?php foreach ($tour_domestic as $key => $value): ?>
-									<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
-										<div class="inner col-xs-12 col-sm-6 col-md-4">
-											<div class="mask">
-												<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
-													<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
-												</a>
-												<div class="overview">
-													<div class="head">
-														<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></h4>
-														<h2 class="post-title"><?php echo $value['title']; ?></h2>
-													</div>
-													<div class="body">
-														<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
-													</div>
-												</div>
-												<div class="content">
-													<div class="head">
-														<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></span>
-														<h2 class="post-title"><?php echo $value['title']; ?></h2>
-														<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
-													</div>
-													<div class="body">
-														<table class="table">
-															<tr>
-																<td>Time</td>
-																<td><?php echo count(json_decode($value['dateimg'])) ?></td>
-															</tr>
-															<tr>
-																<td>Start</td>
-																<td>
-                                                                    <?php
-                                                                    if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
-                                                                        $rmtime = str_replace(" 00:00:00","",$value['date']);
-                                                                        $date= explode("-",$rmtime);
-                                                                        if(count($date) == 3){
-                                                                            $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                        }else{
-                                                                            $value['date'] = "";
+                                <?php if (!empty($domestic_tours)): ?>
+                                    <?php foreach ($domestic_tours as $key => $value): ?>
+                                        <div class="item <?php echo ($key == 0)?'active' : ''; ?>">
+                                            <div class="inner col-xs-12 col-sm-6 col-md-4">
+                                                <div class="mask">
+                                                    <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+                                                        <?php if($value['image']){ ?>
+                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                        <?php }else{ ?>
+                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                        <?php } ?>
+                                                    </a>
+                                                    <div class="overview">
+                                                        <div class="head">
+                                                            <h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
+                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                        </div>
+                                                        <div class="body">
+                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="head">
+                                                            <h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
+                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                        </div>
+                                                        <div class="body">
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <td>Time</td>
+                                                                    <td><?php echo count(json_decode($value['dateimg'])) ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Start</td>
+                                                                    <td>
+                                                                        <?php
+                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
+                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
+                                                                            $date= explode("-",$rmtime);
+                                                                            if(count($date) == 3){
+                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
+                                                                            }
                                                                         }
-                                                                    }else{
-                                                                        $value['date'] = "";
-                                                                    }
-                                                                    echo $value['date'];
-                                                                    ?>
-																</td>
-															</tr>
-														</table>
-													</div>
-													<div class="foot">
-														<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-                                                            <?php echo $this->lang->line('explore') ?>
-														</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+                                                                        ?>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="foot">
+                                                            <a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+                                                                <?php echo $this->lang->line('explore') ?>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     <?php endforeach; ?>
-                                <?php endif ?>
+                                <?php endif; ?>
 							</div>
 						</div>
 					</div>
 				</div>
-				<ul class="list-inline">
-					<li>
-						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
-							<i class="fa fa-arrow-left" aria-hidden="false"></i>
-						</a>
-					</li>
-					<li>
-						<a class="btn btn-default" href="#domestic-slider" data-slide="next">
-							<i class="fa fa-arrow-right" aria-hidden="false"></i>
-						</a>
-					</li>
-				</ul>
+<!--				<ul class="list-inline">-->
+<!--					<li>-->
+<!--						<a class="btn btn-default" href="#domestic-slider" data-slide="prev">-->
+<!--							<i class="fa fa-arrow-left" aria-hidden="false"></i>-->
+<!--						</a>-->
+<!--					</li>-->
+<!--					<li>-->
+<!--						<a class="btn btn-default" href="#domestic-slider" data-slide="next">-->
+<!--							<i class="fa fa-arrow-right" aria-hidden="false"></i>-->
+<!--						</a>-->
+<!--					</li>-->
+<!--				</ul>-->
 			</div>
 			<div class="right col-sm-3 col-xs-12">
 				<div class="section-header">
@@ -266,7 +266,19 @@
 					<p><?php echo $domestic['content']; ?></p>
 				</div>
 				<div class="foot">
-					<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
+					<ul class="list-inline">
+						<li>
+							<a class="btn btn-default" href="#domestic-slider" data-slide="prev">
+								<i class="fa fa-arrow-left" aria-hidden="false"></i>
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-default" href="#domestic-slider" data-slide="next">
+								<i class="fa fa-arrow-right" aria-hidden="false"></i>
+							</a>
+						</li>
+					</ul>
+					<a href="<?php echo base_url('/danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
                         <?php echo $this->lang->line('see-all') ?>
 					</a>
 				</div>
@@ -283,17 +295,21 @@
 					<div class="col-xs-12">
 						<div class="carousel carousel-showmanymoveone slider" id="international-slider">
 							<div class="carousel-inner">
-                                <?php if (!empty($tour_international)): ?>
-                                    <?php foreach ($tour_international as $key => $value): ?>
+                                <?php if (!empty($international_tours)): ?>
+                                    <?php foreach ($international_tours as $key => $value): ?>
 										<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 											<div class="inner col-xs-12 col-sm-6 col-md-4">
 												<div class="mask">
-													<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
-														<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+													<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+                                                        <?php if($value['image']){ ?>
+                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                        <?php }else{ ?>
+                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                        <?php } ?>
 													</a>
 													<div class="overview">
 														<div class="head">
-															<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></h4>
+															<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 															<h2 class="post-title"><?php echo $value['title']; ?></h2>
 														</div>
 														<div class="body">
@@ -302,7 +318,7 @@
 													</div>
 													<div class="content">
 														<div class="head">
-															<h4 class="post-subtitle"><?php echo $value['parent']['title']; ?></span>
+															<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 																<h2 class="post-title"><?php echo $value['title']; ?></h2>
 																<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
 														</div>
@@ -321,13 +337,8 @@
                                                                             $date= explode("-",$rmtime);
                                                                             if(count($date) == 3){
                                                                                 $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                            }else{
-                                                                                $value['date'] = "";
                                                                             }
-                                                                        }else{
-                                                                            $value['date'] = "";
                                                                         }
-                                                                        echo $value['date'];
                                                                         ?>
 																	</td>
 																</tr>
@@ -344,7 +355,7 @@
 											</div>
 										</div>
                                     <?php endforeach; ?>
-                                <?php endif ?>
+                                <?php endif; ?>
 							</div>
 
 <!--							<div class="slider-control">-->
@@ -358,36 +369,36 @@
 						</div>
 					</div>
 				</div>
-				<ul class="list-inline">
-					<li>
-						<a class="btn btn-default" href="#international-slider" data-slide="prev">
-							<i class="fa fa-arrow-left" aria-hidden="false"></i>
-						</a>
-					</li>
-					<li>
-						<a class="btn btn-default" href="#international-slider" data-slide="next">
-							<i class="fa fa-arrow-right" aria-hidden="false"></i>
-						</a>
-					</li>
-				</ul>
 			</div>
 
-			<div class="right col-sm-3 col-xs-12">
-				<div class="section-header">
-					<h1><?php echo $this->lang->line('international') ?></h1>
-					<div class="line">
-						<div class="line-primary"></div>
-					</div>
-				</div>
-				<div class="body">
-					<div><?php echo $international['content']; ?></div>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
+            <div class="right col-sm-3 col-xs-12">
+                <div class="section-header">
+                    <h1><?php echo $this->lang->line('international') ?></h1>
+                    <div class="line">
+                        <div class="line-primary"></div>
+                    </div>
+                </div>
+                <div class="body">
+                    <p><?php echo $international['content']; ?></p>
+                </div>
+                <div class="foot">
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-default" href="#international-slider" data-slide="prev">
+                                <i class="fa fa-arrow-left" aria-hidden="false"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-default" href="#international-slider" data-slide="next">
+                                <i class="fa fa-arrow-right" aria-hidden="false"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="<?php echo base_url('/danh-muc/' . $international['slug']) ?>" class="btn btn-primary" role="button">
                         <?php echo $this->lang->line('see-all') ?>
-					</a>
-				</div>
-			</div>
+                    </a>
+                </div>
+            </div>
 		</div>
 	</div>
 </section>
