@@ -84,6 +84,10 @@ class Homepage extends Public_Controller {
         $this->data['international_tours'] = $this->product_model->get_tours_in_array_category_id($this->international_category_array, $this->data['lang']);
         $this->data['special_tours'] = $this->product_model->get_tours_in_array_category_id(array(FIXED_SPECIAL_CATEGORY_ID), $this->data['lang']);
 
+        /**
+         * GET POSTS IN HANDBOOK
+         */
+
         //post
         $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
         $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'vi',2);
