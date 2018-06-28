@@ -17,7 +17,6 @@ class Post extends Public_Controller {
 
     public function category($slug) {
         $category = $this->post_category_model->fetch_row_by_slug($slug, $this->data['lang']);
-
         $total_rows  = $this->post_model->count_search();
         $this->load->library('pagination');
         $base_url = base_url('post/category');

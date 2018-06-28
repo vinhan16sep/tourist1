@@ -96,4 +96,27 @@ class Post_category_model extends MY_Model{
 
         return $result = $this->db->get()->row_array();
     }
+
+    public function fetch_menu_categories($parent, $lang = 'vi'){
+        $where = "post_category.is_deleted = 0 AND post_category_lang.language = '" . $lang . "' AND post_category.parent_id = '" . $parent . "'";
+
+        $this->db->select('*')
+            ->from('post_category')
+            ->join('post_category_lang', 'post_category.id = post_category_lang.post_category_id')
+            ->where($where);
+
+        return $this->db->get()->result_array();
+    }
+
+    public function fetch_post_category_menu($parent_id){
+        $this->db->select($this->table .'.id');
+        $this->db->from($this->table);
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
+        if(is_numeric($parent_id)){
+            $this->db->where($this->table .'.parent_id', $parent_id);
+        }
+
+        return $result = $this->db->get()->result_array();
+    }
 }

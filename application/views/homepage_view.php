@@ -54,11 +54,11 @@
 				<div class="section-header">
 					<div class="row">
 						<div class="col-xs-12">
-							<h3><?php echo $specialtour['title']; ?></h3>
+							<h3><?php echo $specialtour['product_category_title']; ?></h3>
 							<div class="line">
 								<div class="line-primary"></div>
 							</div>
-							<p><?php echo $specialtour['content']; ?></p>
+							<p><?php echo $specialtour['product_category_content']; ?></p>
 							<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
                                 <?php echo $this->lang->line('see-all') ?>
 							</a>
@@ -263,7 +263,7 @@
 					</div>
 				</div>
 				<div class="body">
-					<p><?php echo $domestic['content']; ?></p>
+					<p><?php echo $domestic['product_category_content']; ?></p>
 				</div>
 				<div class="foot">
 					<ul class="list-inline">
@@ -379,7 +379,7 @@
                     </div>
                 </div>
                 <div class="body">
-                    <p><?php echo $international['content']; ?></p>
+                    <p><?php echo $international['product_category_content']; ?></p>
                 </div>
                 <div class="foot">
                     <ul class="list-inline">
@@ -425,22 +425,22 @@
 	<div class="section-header">
 		<div class="row">
 			<div class="col-sm-6 col-xs-12">
-				<h1><?php echo $services['title'];?></h1>
+				<h1><?php echo $handbook['post_category_title'];?></h1>
 				<div class="line">
 					<div class="line-primary"></div>
 				</div>
-				<p><?php echo $services['content'];?></p>
+				<p><?php echo $handbook['post_category_content'];?></p>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<?php foreach ($post_services as $key => $value): ?>
+		<?php foreach ($post_handbook as $key => $value): ?>
 			<div class="item col-sm-6 col-xs-12">
 				<div class="mask">
 					<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="blogs image">
 					<div class="content">
-						<h4 class="sub-header"><?php echo $services['title'];?></h4>
-						<a href="<?php echo base_url('') ?>">
+						<h4 class="sub-header"><?php echo $value['category_title'];?></h4>
+						<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
 							<h2 class="header"><?php echo $value['title']; ?></h2>
 						</a>
 					</div>
@@ -472,24 +472,24 @@
 	<div class="section-header">
 		<div class="row">
 			<div class="col-sm-6 col-xs-12">
-				<h3><?php echo $blogs['title']; ?></h3>
+				<h3><?php echo $destination['post_category_title']; ?></h3>
 				<div class="line">
 					<div class="line-primary"></div>
 				</div>
-				<p><?php echo $blogs['content']; ?></p>
+				<p><?php echo $destination['post_category_content']; ?></p>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
-        <?php foreach ($post_blogs as $value): ?>
+        <?php foreach ($post_destination as $value): ?>
 		<div class="item col-sm-4 col-xs-12">
 			<div class="inner">
 				<div class="mask">
 					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
 				</div>
 				<div class="head">
-					<h4 class="post-subtitle"><?php echo $value['title']; ?></h4>
+					<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 					<h2 class="post-title"><?php echo $value['title']; ?></h2>
 				</div>
 				<div class="body">

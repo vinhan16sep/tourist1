@@ -9,7 +9,7 @@
 			<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
 			<?php if (!empty($detail['sub'])): ?>
 				<?php for($i=0;$i<count($detail['sub']);$i++): ?>
-					<li><a href="<?php echo base_url('/danhmuc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
+					<li><a href="<?php echo base_url('/danh-muc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
 				<?php endfor; ?>
 			<?php endif ?>
 			<li class="active"><?php echo $detail['title'];?></li>
