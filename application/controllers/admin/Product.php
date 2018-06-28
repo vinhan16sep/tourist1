@@ -311,6 +311,7 @@ class Product extends Admin_Controller{
                 $this->data['detail']['date'] = "";
             }
             $librarylocaltion = json_decode($this->data['detail']['librarylocaltion']);
+            $notlibrary = array();
             if(!empty($librarylocaltion)){
                 for($i=0;$i < count($librarylocaltion);$i++){
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
@@ -320,11 +321,10 @@ class Product extends Admin_Controller{
                     }
                 }
                 $this->data['detail']['librarylocaltion'] = $library;
-                $this->data['detail']['notlibrarylocaltion'] = $notlibrary;
             }else{
                 $this->data['detail']['librarylocaltion'] = $librarylocaltion;
-                $this->data['detail']['notlibrarylocaltion'] = array();
             }
+            $this->data['detail']['notlibrarylocaltion'] = $notlibrary;
             $dateimg_array = json_decode($detail['dateimg']);
             if($this->input->post()){
                 if($this->input->post('parent_id_shared') == '' || $this->input->post('title_vi') == '' || $this->input->post('title_en') == ''){

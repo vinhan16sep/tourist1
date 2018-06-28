@@ -41,7 +41,7 @@ class MY_Controller extends CI_Controller {
         $image = '';
         if (!empty($image_name)) {
             $config['upload_path'] = $upload_path;
-            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['file_name'] = $image_name;
             $config['encrypt_name'] = TRUE;
 
@@ -176,37 +176,6 @@ class Admin_Controller extends MY_Controller {
             'modified' => date('Y-m-d H:i:s', now()),
             'modified_by' => $this->ion_auth->user()->row()->username
         );
-    } 
-
-    protected function upload_image($image_input_id, $image_name, $upload_path, $upload_thumb_path = '', $thumbs_with = 500, $thumbs_height = 500) {
-        $image = '';
-        if (!empty($image_name)) {
-            $config['upload_path'] = $upload_path;
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['file_name'] = $image_name;
-            $config['max_size'] = '1200';
-            $config['encrypt_name'] = TRUE;
-
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-
-            if ($this->upload->do_upload($image_input_id)) {
-                $upload_data = $this->upload->data();
-                $image = $upload_data['file_name'];
-
-                $config_thumb['source_image'] = $upload_path . '/' . $image;
-                $config_thumb['create_thumb'] = TRUE;
-                $config_thumb['maintain_ratio'] = TRUE;
-                $config_thumb['new_image'] = $upload_thumb_path;
-                $config_thumb['width'] = $thumbs_with;
-                $config_thumb['height'] = $thumbs_height;
-
-                $this->load->library('image_lib', $config_thumb);
-
-                $this->image_lib->resize();
-            }
-        }
-        return $image;
     }
 
     protected function upload_file($upload_path = '', $file_name = '', $upload_thumb_path = '', $thumbs_with = 500, $thumbs_height = 500) {

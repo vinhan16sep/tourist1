@@ -77,48 +77,43 @@ class Post_category extends Admin_Controller{
         	$this->render('admin/'. $this->controller .'/create_post_category_view');
         } else {
         	if($this->input->post()){
-        		$check_upload = true;
-                if ($_FILES['image_shared']['size'] > 1228800) {
-                    $check_upload = false;
+        		if(!empty($_FILES['image_shared']['name'])){
+                    $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
                 }
-                if($check_upload == true){
-                	$slug = $this->input->post('slug_shared');
-                    $unique_slug = $this->post_category_model->build_unique_slug($slug);
+            	$slug = $this->input->post('slug_shared');
+                $unique_slug = $this->post_category_model->build_unique_slug($slug);
+                if(!empty($_FILES['image_shared']['name'])){
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
+                }
+                $shared_request = array(
+                    'slug' => $unique_slug,
+                    'parent_id' => $this->input->post('parent_id_shared'),
+                    'type' => $this->input->post('type_shared'),
+                    'created_at' => $this->author_data['created_at'],
+                    'created_by' => $this->author_data['created_by'],
+                    'updated_at' => $this->author_data['updated_at'],
+                    'updated_by' => $this->author_data['updated_by']
+                );
+                if($image){
+                    $shared_request['image'] = $image;
+                }
+                $this->db->trans_begin();
 
-                    $shared_request = array(
-                        'slug' => $unique_slug,
-                        'parent_id' => $this->input->post('parent_id_shared'),
-                        'type' => $this->input->post('type_shared'),
-                        'created_at' => $this->author_data['created_at'],
-                        'created_by' => $this->author_data['created_by'],
-                        'updated_at' => $this->author_data['updated_at'],
-                        'updated_by' => $this->author_data['updated_by']
-                    );
-                    if($image){
-                        $shared_request['image'] = $image;
-                    }
-                    $this->db->trans_begin();
+                $insert = $this->post_category_model->common_insert($shared_request);
+                if($insert){
+                    $requests = handle_multi_language_request('post_category_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
+                    $this->post_category_model->insert_with_language($requests);
+                }
 
-                    $insert = $this->post_category_model->common_insert($shared_request);
-                    if($insert){
-                        $requests = handle_multi_language_request('post_category_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
-                        $this->post_category_model->insert_with_language($requests);
-                    }
-
-                    if ($this->db->trans_status() === false) {
-                        $this->db->trans_rollback();
-                        $this->load->libraries('session');
-                        $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
-                        $this->render('admin/'. $this->controller .'/create_post_category_view');
-                    } else {
-                        $this->db->trans_commit();
-                        $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
-                        redirect('admin/'. $this->controller .'', 'refresh');
-                    }
-                }else{
-                    $this->session->set_flashdata('message_error', sprintf(MESSAGE_PHOTOS_ERROR, 1200));
-                    redirect('admin/'. $this->controller .'');
+                if ($this->db->trans_status() === false) {
+                    $this->db->trans_rollback();
+                    $this->load->libraries('session');
+                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                    $this->render('admin/'. $this->controller .'/create_post_category_view');
+                } else {
+                    $this->db->trans_commit();
+                    $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
+                    redirect('admin/'. $this->controller .'', 'refresh');
                 }
         	}
         }
@@ -163,52 +158,48 @@ class Post_category extends Admin_Controller{
             $this->render('admin/'. $this->controller .'/edit_post_category_view');
         } else {
             if($this->input->post()){
-                $check_upload = true;
-                if ($_FILES['image_shared']['size'] > 1228800) {
-                    $check_upload = false;
+                if(!empty($_FILES['image_shared']['name'])){
+                    $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
                 }
-                if ($check_upload == true) {
-                    $slug = $this->input->post('slug_shared');
-                    $unique_slug = $this->post_category_model->build_unique_slug($slug, $id);
+                $slug = $this->input->post('slug_shared');
+                $unique_slug = $this->post_category_model->build_unique_slug($slug, $id);
+                if(!empty($_FILES['image_shared']['name'])){
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
-                    $shared_request = array(
-                        'slug' => $unique_slug,
-                        'parent_id' => $this->input->post('parent_id_shared'),
-                        'type' => $this->input->post('type_shared'),
-                        'created_at' => $this->author_data['created_at'],
-                        'created_by' => $this->author_data['created_by'],
-                        'updated_at' => $this->author_data['updated_at'],
-                        'updated_by' => $this->author_data['updated_by']
-                    );
-                    if($image){
-                        $shared_request['image'] = $image;
-                    }
-                    $this->db->trans_begin();
+                }
+                $shared_request = array(
+                    'slug' => $unique_slug,
+                    'parent_id' => $this->input->post('parent_id_shared'),
+                    'type' => $this->input->post('type_shared'),
+                    'created_at' => $this->author_data['created_at'],
+                    'created_by' => $this->author_data['created_by'],
+                    'updated_at' => $this->author_data['updated_at'],
+                    'updated_by' => $this->author_data['updated_by']
+                );
+                if($image){
+                    $shared_request['image'] = $image;
+                }
+                $this->db->trans_begin();
 
-                    $update = $this->post_category_model->common_update($id, $shared_request);
-                    if($update){
-                        $requests = handle_multi_language_request('post_category_id', $id, $this->request_language_template, $this->input->post(), $this->page_languages);
-                        foreach ($requests as $key => $value){
-                            $this->post_category_model->update_with_language($id, $requests[$key]['language'], $value);
-                        }
+                $update = $this->post_category_model->common_update($id, $shared_request);
+                if($update){
+                    $requests = handle_multi_language_request('post_category_id', $id, $this->request_language_template, $this->input->post(), $this->page_languages);
+                    foreach ($requests as $key => $value){
+                        $this->post_category_model->update_with_language($id, $requests[$key]['language'], $value);
                     }
+                }
 
-                    if ($this->db->trans_status() === false) {
-                        $this->db->trans_rollback();
-                        $this->load->libraries('session');
-                        $this->session->set_flashdata('message_error', MESSAGE_EDIT_ERROR);
-                        $this->render('admin/'. $this->controller .'/edit/'.$id);
-                    } else {
-                        $this->db->trans_commit();
-                        $this->session->set_flashdata('message_success', MESSAGE_EDIT_SUCCESS);
-                        if($image != '' && $image != $detail['image'] && file_exists('assets/public/upload/'. $this->controller .'/'.$detail['image'])){
-                            unlink('assets/public/upload/'. $this->controller .'/'.$detail['image']);
-                        }
-                        redirect('admin/'. $this->controller .'', 'refresh');
+                if ($this->db->trans_status() === false) {
+                    $this->db->trans_rollback();
+                    $this->load->libraries('session');
+                    $this->session->set_flashdata('message_error', MESSAGE_EDIT_ERROR);
+                    $this->render('admin/'. $this->controller .'/edit/'.$id);
+                } else {
+                    $this->db->trans_commit();
+                    $this->session->set_flashdata('message_success', MESSAGE_EDIT_SUCCESS);
+                    if($image != '' && $image != $detail['image'] && file_exists('assets/public/upload/'. $this->controller .'/'.$detail['image'])){
+                        unlink('assets/public/upload/'. $this->controller .'/'.$detail['image']);
                     }
-                }else{
-                    $this->session->set_flashdata('message_error', sprintf(MESSAGE_PHOTOS_ERROR, 1200));
-                    redirect('admin/'. $this->controller .'');
+                    redirect('admin/'. $this->controller .'', 'refresh');
                 }
             }
         }
@@ -354,6 +345,19 @@ class Post_category extends Admin_Controller{
                 $ids[] = $item['id'];
                 $this->get_multiple_posts_with_category($categories, $item['id'], $ids);
             }
+        }
+    }
+
+    protected function check_img($filename, $filesize){
+        $map = strripos($filename, '.')+1;
+        $fileextension = substr($filename, $map,(strlen($filename)-$map));
+        if(!($fileextension == 'jpg' || $fileextension == 'jpeg' || $fileextension == 'png' || $fileextension == 'gif')){
+            $this->session->set_flashdata('message_error', MESSAGE_FILE_EXTENSION_ERROR);
+            redirect('admin/'.$this->data['controller']);
+        }
+        if ($filesize > 1228800) {
+            $this->session->set_flashdata('message_error', sprintf(MESSAGE_PHOTOS_ERROR, 1200));
+            redirect('admin/'.$this->data['controller']);
         }
     }
 }
