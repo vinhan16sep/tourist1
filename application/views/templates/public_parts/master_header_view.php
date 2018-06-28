@@ -62,18 +62,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<div class="right col-sm-6 col-xs-12">
 				<ul>
+<!--					<li>-->
+<!--                        <select name="change_language" class="form-control">-->
+<!--                            <option value="vi" --><?php //echo ($lang == 'vi') ? 'selected="selected"' : ''; ?><!-- >Vietnamese</option>-->
+<!--                            <option value="en" --><?php //echo ($lang == 'en') ? 'selected="selected"' : ''; ?><!-- >English</option>-->
+<!--                        </select>-->
+<!--					</li>-->
 					<li>
-                        <select name="change_language" class="form-control">
-                            <option value="vi" <?php echo ($lang == 'vi') ? 'selected="selected"' : ''; ?> >Vietnamese</option>
-                            <option value="en" <?php echo ($lang == 'en') ? 'selected="selected"' : ''; ?> >English</option>
-                        </select>
-					</li>
-					<li>
-						<a href="">
+						<a href="" class="change-language" data-language="vi">
 							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt</li>
 						</a>
 					<li>
-						<a href="">
+						<a href="" class="change-language" data-language="en">
 							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English</li>
 						</a>
 					</li>
@@ -142,12 +142,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </section>
 <script>
-    $("select[name='change_language']").change(function(){
+    $("a[class='change-language']").click(function(){
         $.ajax({
             method: "GET",
             url: "http://localhost/tourist1/homepage/change_language",
             data: {
-                lang: $(this).val()
+                lang: $(this).data('language')
             },
             success: function(res){
                 if(res.message == 'changed'){
