@@ -49,10 +49,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="left col-sm-6 col-xs-12">
 				<ul>
 					<li>
-						<a href="<?php echo base_url('about/')?>"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?></a>
+						<a href="<?php echo base_url('about/')?>">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+						</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url('contact/')?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?></a>
+						<a href="<?php echo base_url('contact/')?>">
+							<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -63,6 +67,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <option value="vi" <?php echo ($lang == 'vi') ? 'selected="selected"' : ''; ?> >Vietnamese</option>
                             <option value="en" <?php echo ($lang == 'en') ? 'selected="selected"' : ''; ?> >English</option>
                         </select>
+					</li>
+					<li>
+						<a href="">
+							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt</li>
+						</a>
+					<li>
+						<a href="">
+							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English</li>
+						</a>
+					</li>
+					<li> | </li>
+					<li>
+						<a href="" target="_blank">
+							<i class="fa fa-facebook-square" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<i class="fa fa-twitter-square" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<i class="fa fa-pinterest-square" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<i class="fa fa-instagram" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" target="_blank">
+							<i class="fa fa-youtube-square" aria-hidden="true"></i>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -154,8 +198,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															foreach($sub as $sub_key => $sub_val){
 															    if($sub_key == 0){
 													?>
-                                                                    <img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image first tour">
-                                                                    <li><a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a></li>
+																	<li>
+																		<div class="mask">
+																			<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image first tour">
+
+																			<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
+																		</div>
+																	</li>
                                                                 <?php } else{ ?>
                                                                     <li><a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a></li>
                                                                 <?php } ?>

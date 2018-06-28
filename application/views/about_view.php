@@ -57,9 +57,11 @@
         'use strict';
         if ($(window).scrollTop() > 600) {
             $('#about .container .right').addClass('sticky');
+            $('#about .container .left .about-post').css('padding-top' , '90px');
         }
         if ($(window).scrollTop() < 600) {
             $('#about .container .right').removeClass('sticky');
+            $('#about .container .left .about-post').css('padding-top' , '30px');
 
         }
     });

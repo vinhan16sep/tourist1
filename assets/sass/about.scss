@@ -30,7 +30,7 @@ section.main-page .container-fluid {
                     padding-top: 30px;
 
                     &:first-of-type{
-                        padding-top: 0;
+                        padding-top: 0 !important;
                     }
 
                     article{
@@ -53,7 +53,7 @@ section.main-page .container-fluid {
                 &.sticky{
                     position: -webkit-sticky;
                     position: sticky;
-                    top: 30px;
+                    top: 90px;
                 }
 
                 ul{

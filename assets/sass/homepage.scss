@@ -13,7 +13,6 @@
 * ======================================================= */
 
 body, html{
-    overflow-x: hidden;
 }
 
 #slider{
@@ -201,10 +200,11 @@ body, html{
         .slider-control{
             .carousel-control{
                 background-image: none;
+                width: 10%;
 
                 &.left{
                     top: 0;
-                    left: -15%;
+                    left: -5%;
 
                     i{
                         position: absolute;
@@ -225,7 +225,7 @@ body, html{
 
                     &:hover{
                         i{
-                            right: 30px;
+                            right: 80%;
                             opacity: 1;
 
                             @include transition(500ms);
@@ -235,7 +235,7 @@ body, html{
 
                 &.right{
                     top: 0;
-                    right: -15%;
+                    right: -5%;
 
                     i{
                         position: absolute;
@@ -256,7 +256,7 @@ body, html{
 
                     &:hover{
                         i{
-                            left: 30px;
+                            left: 80%;
                             opacity: 1;
 
                             @include transition(500ms);

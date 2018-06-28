@@ -147,42 +147,82 @@ HEADER STYLE
  */
 
 #top-nav{
-    background-color: #fff;
+    background-color: #fafafa;
+    border-top: 4px solid $primary;
 
     .container{
         .row{
-            margin-top: 15px;
+            padding-top: 7px;
+            padding-bottom: 7px;
 
             ul{
                 padding-left: 0;
+                margin-bottom: 0;
 
                 li{
                     display: inline-block;
-                }
-            }
-
-            a{
-                &:hover{
-                    color: $primary;
+                    font-size: 1.125em;
                 }
             }
 
             .left{
                 ul{
+                    padding-top: 5px;
+
                     li{
                         padding-right: 15px;
+
+                        a{
+                            i{
+                                color: $primary;
+                            }
+
+                            color: $gray-light;
+
+                            &:hover{
+                                color: $primary;
+                            }
+                        }
                     }
                 }
             }
 
             .right{
                 text-align: right;
+
+                ul{
+                    li{
+                        padding-right: 10px;
+                        color: $gray-light;
+
+                        img{
+                            height: 13px;
+
+                            vertical-align: middle;
+                        }
+
+                        a{
+                            color: $gray-light;
+
+                            &:hover{
+                                color: $primary;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 }
 
 #brand{
+    background-color: #fff;
+
+    background-image: url("../img/bg-brand.png");
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     .container{
         .row{
             .left{
@@ -200,18 +240,18 @@ HEADER STYLE
                     li{
                         display: inline-block;
 
-                        padding: 15px 30px;
-
                         &.outline{
                             text-align: left;
 
-                            padding-right: 15px;
+                            padding: 15px 40px;
+                            margin-left: 15px;
 
                             -webkit-border-radius: 7px;
                             -moz-border-radius: 7px;
                             border-radius: 7px;
 
                             border: 1px dashed $primary;
+                            background-color: #fff;
 
                             color: $gray-light;
                         }
@@ -233,6 +273,12 @@ HEADER STYLE
 
 header.header{
     width: 100%;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+    z-index: 1011;
 
     @include primary-bg;
 
@@ -276,12 +322,6 @@ header.header{
                                         overflow: hidden;
 
                                         margin-bottom: 15px;
-
-                                        img{
-                                            width: 100%;
-                                            height: 100%;
-                                            object-fit: cover;
-                                        }
                                     }
 
                                     a{
@@ -319,6 +359,10 @@ header.header{
                             background-color: #fff;
                             border: 1px solid #dadada;
 
+                            -webkit-box-shadow: 3px 3px 10px #ccc;
+                            -moz-box-shadow: 3px 3px 10px #ccc;
+                            box-shadow: 3px 3px 10px #ccc;
+
                             display: none;
 
                             @include transition(500ms);
@@ -337,8 +381,13 @@ header.header{
 
                                             position: relative;
 
+                                            border-right: 1px solid #dadada;
+
                                             > li{
                                                 padding: 10px 15px;
+                                                font-size: 1.25em;
+
+                                                border-bottom: 1px solid #dadada;
 
                                                 &:hover{
                                                     background-color: #eaeaea;
@@ -361,6 +410,8 @@ header.header{
                                                         width: 32%;
                                                         padding-left: 15px;
                                                         padding-right: 15px;
+
+                                                        font-size: 1.125em;
 
                                                         display: inline-block;
 
@@ -387,12 +438,6 @@ header.header{
                                                 overflow: hidden;
 
                                                 margin-bottom: 15px;
-
-                                                img{
-                                                    width: 100%;
-                                                    height: 100%;
-                                                    object-fit: cover;
-                                                }
                                             }
 
 
@@ -420,8 +465,44 @@ header.header{
                                                 padding-left: 0;
 
                                                 li{
+                                                    .mask{
+                                                        width: 100%;
+                                                        height: 200px;
+                                                        overflow: hidden;
+
+                                                        position: relative;
+
+                                                        a{
+                                                            width: 100%;
+                                                            height: 30%;
+
+                                                            padding: 15px;
+
+                                                            font-size: 1.5em;
+                                                            color: #fff;
+
+                                                            position: absolute;
+                                                            bottom: 0;
+                                                            left: 0;
+
+                                                            background: rgba(0,0,0,0.5);
+                                                            background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+                                                            background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
+                                                            background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+
+                                                            &:hover{
+                                                                color: #fff;
+                                                            }
+                                                        }
+                                                    }
+
                                                     a{
                                                         color: $gray-light;
+                                                        font-size: 1.25em;
 
                                                         &:hover{
                                                             color: $gray;
@@ -506,6 +587,7 @@ header.header{
 }
 
 section.main-page{
+    width: 100%;
 
     .container-fluid{
         position: relative;
@@ -595,7 +677,7 @@ section.main-content{
 }
 
 footer.footer{
-    background-color: #eee;
+    background-color: #e4f3e0;
 
     background-image: url("../img/bg-footer.png");
     background-repeat: no-repeat;
@@ -622,6 +704,16 @@ footer.footer{
 
             &:last-of-type{
                 border-bottom: none;
+            }
+
+            a{
+                &.link-primary{
+                    color: $primary;
+
+                    &:hover{
+                        color: $primary-hover;
+                    }
+                }
             }
 
             .item{
@@ -678,20 +770,14 @@ footer.footer{
                                         }
                                     }
                                 }
-
-                                a{
-                                    &.link-primary{
-                                        color: $primary;
-
-                                        &:hover{
-                                            color: $primary-hover;
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
                 }
+            }
+
+            .text-center{
+                padding-bottom: 70px;
             }
         }
     }

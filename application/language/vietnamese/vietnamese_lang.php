@@ -5,12 +5,12 @@
  */
 
 //Top Nav
-$lang['about'] = 'Giới thiệu';
-$lang['contact'] = 'Liên hệ';
+$lang['about'] = 'Về chúng tôi';
+$lang['contact'] = 'Liên hệ với chúng tôi';
 
 //Main Nav
 
-$lang['home'] = 'Home';
+$lang['home'] = 'Trang chủ';
 $lang['domestic'] = 'Trong nước';
 $lang['international'] = 'Nước ngoài';
 $lang['special-tours'] = 'Tour đặc biệt';
@@ -33,8 +33,9 @@ $lang['central'] = 'Central';
 $lang['southern'] = 'Southern';
 
 //Footer
-$lang['accept'] = 'We accept';
-$lang['follow'] = 'Follow Us on';
+$lang['accept'] = 'Chúng tôi chấp nhận';
+$lang['follow'] = 'Theo dõi chúng tôi qua';
+$lang['quick-links'] = 'Liên kết nhanh';
 
 //Company Information
 
@@ -46,12 +47,12 @@ $lang['branch-2-address'] = 'Address 2';
 
 //.btn
 
-$lang['see-all'] = 'See all';
-$lang['explore'] = 'Expore Now';
-$lang['tour-request'] = 'Send Us your Request';
-$lang['booking'] = 'Book Now!';
-$lang['see-detail'] = 'See Detail';
-$lang['submit-message'] = 'Submit Message';
+$lang['see-all'] = 'Xem tất cả';
+$lang['explore'] = 'Khám phá ngay';
+$lang['tour-request'] = 'Gửi yêu cầu';
+$lang['booking'] = 'Đặt lịch ngay';
+$lang['see-detail'] = 'Xem chi tiết';
+$lang['submit-message'] = 'Gửi tin nhắn';
 
 //Tour Request
 

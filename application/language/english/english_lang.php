@@ -39,6 +39,7 @@ $lang['southern'] = 'Southern';
 //Footer
 $lang['accept'] = 'We accept';
 $lang['follow'] = 'Follow Us on';
+$lang['quick-links'] = 'Quick Links';
 
 //Company Information
 
