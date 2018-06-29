@@ -44,13 +44,13 @@ class Homepage extends Public_Controller {
         }
     }
     function get_all_product_in_category($tour_in_category,$number_tour=0){
-        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),'vi'),$tour_in_category['parent_id'],$sub);
+        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['lang']),$tour_in_category['parent_id'],$sub);
         if(empty($sub)){
             $tour_in_category['sub'] = $sub;
         }else{
             $tour_in_category['sub'] = array_reverse($sub);
         }
-        $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(), $tour_in_category['id'], $ids);
+        $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(array(),$this->data['lang']), $tour_in_category['id'], $ids);
         if(empty($ids)){
             $ids = array();
         }
@@ -58,10 +58,10 @@ class Homepage extends Public_Controller {
         $check = 0;
         $tour_all_in_category=array();
         for ($i=0; $i < count($ids); $i++) {
-            $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+            $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
             if($tour['id'] != ''){
-                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-                $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id']);
+                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
+                $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id'],array(),$this->data['lang']);
                 $check++;
                 if($check == $number_tour){
                     break;
@@ -72,11 +72,11 @@ class Homepage extends Public_Controller {
     }
     public function index() {
         //banner
-        $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),'vi');
+        $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),$this->data['lang']);
         //tour
-        $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_CATEGORY_ID,array('title','content'),'vi');
-        $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_CATEGORY_ID,array('title','content'),'vi');
-        $this->data['specialtour'] = $this->product_category_model->get_by_id(FIXED_SPECIAL_CATEGORY_ID,array('title','content'),'vi');
+        $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_CATEGORY_ID,array('title','content'),$this->data['lang']);
+        $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_CATEGORY_ID,array('title','content'),$this->data['lang']);
+        $this->data['specialtour'] = $this->product_category_model->get_by_id(FIXED_SPECIAL_CATEGORY_ID,array('title','content'),$this->data['lang']);
         /**
          * GET TOURS IN EACH CATEGORY
          */
@@ -87,21 +87,21 @@ class Homepage extends Public_Controller {
         /**
          * GET POSTS IN HANDBOOK
          */
-        $this->data['handbook'] = $this->post_category_model->get_by_id(FIXED_HANDBOOK,array('title','content'),'vi');
+        $this->data['handbook'] = $this->post_category_model->get_by_id(FIXED_HANDBOOK,array('title','content'),$this->data['lang']);
         $this->data['post_handbook'] = $this->post_model->get_post_in_array_category_id($this->handbook_category_array, $this->data['lang'],2);
         /**
          * GET POSTS IN DESTINATION
 
          */
-        $this->data['destination'] = $this->post_category_model->get_by_id(FIXED_DESTINATION,array('title','content'),'vi');
+        $this->data['destination'] = $this->post_category_model->get_by_id(FIXED_DESTINATION,array('title','content'),$this->data['lang']);
         $this->data['post_destination'] = $this->post_model->get_post_in_array_category_id($this->destination_category_array, $this->data['lang'],3);
 
         //post
-        $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
-        $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'vi',2);
-        $this->data['visa'] = $this->post_category_model->get_by_slug('visa','asc','vi');
-        $this->data['blogs'] = $this->post_category_model->get_by_slug('blogs','asc','vi');
-        $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),'vi',3);
+        $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc',$this->data['lang']);
+        $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),$this->data['lang'],2);
+        $this->data['visa'] = $this->post_category_model->get_by_slug('visa','asc',$this->data['lang']);
+        $this->data['blogs'] = $this->post_category_model->get_by_slug('blogs','asc',$this->data['lang']);
+        $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),$this->data['lang'],3);
         $this->render('homepage_view');
     }
 
@@ -168,7 +168,6 @@ class Homepage extends Public_Controller {
             }
         }
     }
-
     public function change_language(){
         if($this->session->userdata('langAbbreviation') == $this->input->get('lang')){
             return $this->return_api(HTTP_SUCCESS, MESSAGE_CHANGE_LANGUAGE_FAIL, $this->session->userdata('langAbbreviation'), null);

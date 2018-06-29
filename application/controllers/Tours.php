@@ -36,14 +36,14 @@ class Tours extends Public_Controller {
     }
     public function category($slug) {
         if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
-            $detail = $this->product_category_model->get_by_slug_lang($slug,array(),'vi');
-            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['parent_id'],$sub);
+            $detail = $this->product_category_model->get_by_slug_lang($slug,array(),$this->data['lang']);
+            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['lang']),$detail['parent_id'],$sub);
             if(empty($sub)){
                 $detail['sub'] = $sub;
             }else{
                 $detail['sub'] = array_reverse($sub);
             }
-            $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(), $detail['id'], $ids);
+            $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(array(),$this->data['lang']), $detail['id'], $ids);
             if(empty($ids)){
                 $ids = array();
             }
@@ -51,10 +51,10 @@ class Tours extends Public_Controller {
             $check = 0;
             $product_array = array();
             for ($i=0; $i < count($ids); $i++) {
-                 $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+                 $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
                  if($tour['id'] != ''){
-                    $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-                    $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id']);
+                    $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
+                    $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id'],array(),$this->data['lang']);
                     $check++;
                  }
             }
@@ -81,9 +81,9 @@ class Tours extends Public_Controller {
         if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $this->load->helper('form');
             $this->load->library('form_validation');
-            $detail = $this->product_model->get_by_slug_lang($slug,array());
+            $detail = $this->product_model->get_by_slug_lang($slug,array(),$this->data['lang']);
             $parent_title = $this->build_parent_title($detail['product_category_id']);
-            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['product_category_id'],$sub);
+            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['lang']),$detail['product_category_id'],$sub);
             $detail['parent_title'] = $parent_title;
             if(empty($sub)){
                 $detail['sub'] = $sub;
@@ -99,7 +99,7 @@ class Tours extends Public_Controller {
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
                     if(!empty($librarylocaltions)){
                         for($j=0;$j < count($librarylocaltions);$j++){
-                            $library= $this->localtion_model->get_by_id_array_lang($librarylocaltions[$j]);
+                            $library= $this->localtion_model->get_by_id_array_lang($librarylocaltions[$j],array(),$this->data['lang']);
                             if(!empty($library['id'])){
                                 $librarys[$i][] =$library;
                             }else{
@@ -162,7 +162,7 @@ class Tours extends Public_Controller {
         }
     }
     protected function build_parent_title($parent_id){
-        $sub = $this->product_category_model->get_by_id($parent_id, array('title'));
+        $sub = $this->product_category_model->get_by_id($parent_id, array('title'),$this->data['lang']);
 
         if($parent_id != 0){
             $title = explode('|||', $sub['product_category_title']);
