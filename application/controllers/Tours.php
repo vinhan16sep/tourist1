@@ -82,9 +82,7 @@ class Tours extends Public_Controller {
             $this->load->helper('form');
             $this->load->library('form_validation');
             $detail = $this->product_model->get_by_slug_lang($slug,array(),$this->data['lang']);
-            $parent_title = $this->build_parent_title($detail['product_category_id']);
             $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['lang']),$detail['product_category_id'],$sub);
-            $detail['parent_title'] = $parent_title;
             if(empty($sub)){
                 $detail['sub'] = $sub;
             }else{
@@ -160,19 +158,6 @@ class Tours extends Public_Controller {
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
             redirect('/', 'refresh');
         }
-    }
-    protected function build_parent_title($parent_id){
-        $sub = $this->product_category_model->get_by_id($parent_id, array('title'),$this->data['lang']);
-
-        if($parent_id != 0){
-            $title = explode('|||', $sub['product_category_title']);
-            $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
-            $title = $sub['title_vi'];
-        }else{
-            $title = 'Danh mục gốc';
-        }
-        return $sub;
     }
 
     public function created_rating(){
