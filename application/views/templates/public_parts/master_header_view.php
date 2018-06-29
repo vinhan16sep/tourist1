@@ -248,7 +248,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														aria-hidden="true"></span>
 												<ul>
 													<?php
-													if($val['product_category_id'] == 27){
+													if($val['product_category_id'] == FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID){
 														$sub = $controller->fetch_menu_categories($val['product_category_id']);
 														foreach($sub as $sub_key => $sub_val){
 													?>
@@ -262,18 +262,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<?php
 														}
 													}else{
-														$tours = $controller->fetch_tour_by_category($val['product_category_id']);
-														foreach($tours as $tour_key => $tour){
-															?>
-															<li>
-																<div class="mask">
-																	<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
-																		 alt="image example">
-																</div>
-																<a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
-															</li>
-															<?php
-														}
+														$tours = $controller->receive_category_data($val['product_category_id']);
+
+                                                        if($tours)
+                                                        {
+                                                            foreach ($tours as $tour_key => $tour)
+                                                            {
+                                                                ?>
+                                                                <li>
+                                                                    <div class="mask">
+                                                                        <img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
+                                                                             alt="image example">
+                                                                    </div>
+                                                                    <a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
+                                                                </li>
+                                                                <?php
+                                                            }
+                                                        }
 													}
 													?>
 												</ul>

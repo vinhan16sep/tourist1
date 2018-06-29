@@ -233,6 +233,8 @@ class Admin_Controller extends MY_Controller {
 
 class Public_Controller extends MY_Controller {
 
+    protected $sub_international_category = array();
+
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -264,7 +266,6 @@ class Public_Controller extends MY_Controller {
         $this->data['domestic_menu'] = $this->fetch_menu_categories(FIXED_DOMESTIC_CATEGORY_ID);
         $this->data['international_menu'] = $this->fetch_menu_categories(FIXED_INTERNATIONAL_CATEGORY_ID);
         $this->data['controller'] = $this;
-
     }
 
     public function fetch_menu_categories($parent){
@@ -273,6 +274,25 @@ class Public_Controller extends MY_Controller {
 
     public function fetch_tour_by_category($category_id){
         return $this->product_model->fetch_tour_by_category($category_id, $this->session->userdata('langAbbreviation'));
+    }
+
+    public function receive_category_data($parent){
+        $this->sub_international_category = array();
+        array_push($this->sub_international_category, $parent);
+        $this->get_international_data($parent);
+        return $this->product_model->get_tours_in_array_category_id($this->sub_international_category, $this->session->userdata('langAbbreviation'));
+    }
+
+    public function get_international_data($parent){
+        $categories = $this->product_category_model->fetch_product_category_menu($parent);
+
+        if($categories){
+            foreach ($categories as $key => $category)
+            {
+                array_push($this->sub_international_category, $category['id']);
+                $this->get_international_data($category['id']);
+            }
+        }
     }
 
     protected function render($the_view = NULL, $template = 'master') {

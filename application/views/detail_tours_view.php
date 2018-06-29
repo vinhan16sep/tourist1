@@ -72,7 +72,7 @@
 							<td>
 								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
 								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
-								<input type="hidden" name="product_id" class="product_id" value="91">
+								<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']; ?>">
 								<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
                                     <?php echo $this->lang->line('booking') ?>
 								</button>
