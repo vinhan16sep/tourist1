@@ -103,10 +103,10 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 	}
 	if($("#"+idForm).valid() === true){
 		if(idForm == 'form-customize'){
-			url = "http://localhost/tourist1/customize";
+			url = "http://diamondtour.vn/customize";
 
 		}else{
-			url = "http://localhost/tourist1/booking";
+			url = "http://diamondtour.vn/booking";
 		}
         $.ajax({
             method: "post",

@@ -1,16 +1,16 @@
 switch(window.location.origin){
     case 'http://diamontour.vn':
-        var HOSTNAME = 'http://tourist1.vn/';
+        var HOSTNAME = 'http://diamondtour.vn/';
         break;
     default:
-        var HOSTNAME = 'http://localhost/tourist1/';
+        var HOSTNAME = 'http://localhost/diamondtour/';
 }
 switch(window.location.origin){
-    case 'http://tourist1.com':
-        var HOSTNAMEADMIN = 'http://tourist1.com/admin';
+    case 'http://diamondtour.vn':
+        var HOSTNAMEADMIN = 'http://diamondtour.vn/admin';
         break;
     default:
-        var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
+        var HOSTNAMEADMIN = 'http://localhost/diamondtour/admin';
 } 
 function to_slug(str){
     str = str.toLowerCase();
