@@ -112,9 +112,6 @@ class Tours extends Public_Controller {
             }else{
                 $detail['librarylocaltion'] = $librarylocaltion;
             }
-            echo '<pre>';
-            print_r($detail);
-            echo '</pre>';die;
             $this->data['detail'] = $detail;
             if($this->data['detail']['date'] != "0000-00-00 00:00:00" && $this->data['detail']['date'] != "1970-01-01 08:00:00"){
                 $rmtime = str_replace(" 00:00:00","",$this->data['detail']['date']);
