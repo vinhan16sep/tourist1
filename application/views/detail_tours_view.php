@@ -251,7 +251,7 @@
                                     <?php
                                     echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
                                     echo form_error('inquire_title');
-                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title"')
+                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title" onChange="change($(this));"')
                                     ?>
 								</div>
 								<div class="form-group col-sm-4 col-xs-12">
@@ -375,77 +375,77 @@
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
 	                                    echo form_error('inquire_title');
-	                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title"')
+	                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title" onChange="change($(this));"')
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
 	                                    echo form_error('inquire_first_name');
-	                                    echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
+	                                    echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name" onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
 	                                    echo form_error('inquire_last_name');
-	                                    echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
+	                                    echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name" onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
 	                                    echo form_error('inquire_email');
-	                                    echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
+	                                    echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email" onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
 	                                    echo form_error('inquire_email_confirm');
-	                                    echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
+	                                    echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm" onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
 	                                    echo form_error('inquire_phone_number');
-	                                    echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
+	                                    echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number" onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
 	                                    echo form_error('datepicker');
-	                                    echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly');
+	                                    echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
 	                                    echo form_error('inquire_country');
-	                                    echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
+	                                    echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country" onChange="change($(this));"');
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
 	                                    echo form_error('inquire_number_adults');
-	                                    echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0" >';
+	                                    echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0" onChange="change($(this));" >';
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
 	                                    echo form_error('inquire_number_children_u11');
-	                                    echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0" >';
+	                                    echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0" onChange="change($(this));" >';
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
 	                                    echo form_error('inquire_number_children_u2');
-	                                    echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0" >';
+	                                    echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0" onChange="change($(this));" >';
 	                                    ?>
 									</div>
 
