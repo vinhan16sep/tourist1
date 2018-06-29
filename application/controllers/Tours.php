@@ -56,9 +56,6 @@ class Tours extends Public_Controller {
                     $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
                     $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id']);
                     $check++;
-                    if($check == 3){
-                        break;
-                    }
                  }
             }
             $this->data['detail'] = $detail;

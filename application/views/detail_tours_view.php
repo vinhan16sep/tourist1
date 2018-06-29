@@ -123,15 +123,15 @@
 									<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
                                         <?php for($i = 0; $i < count($detail['dateimg']); $i++): ?>
 											<div class="panel panel-primary">
-												<div class="panel-heading" role="tab" id="day-<?php echo $i; ?>-heading">
+												<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
 													<h4 class="panel-title">
-														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i; ?>" aria-expanded="false" aria-controls="day-<?php echo $i; ?>">
+														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
 															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 													</h4>
 												</div>
-												<div id="day-<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $i; ?>-heading">
+												<div id="day-<?php echo $i+1; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $i+1; ?>-heading">
 													<div class="panel-body">
 														<div class="media">
 															<div class="media-left">
@@ -166,7 +166,7 @@
 											<div class="panel panel-primary">
 												<div class="panel-heading" role="tab" id="day-1-heading">
 													<h4 class="panel-title">
-														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i; ?>">
+														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
 															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
