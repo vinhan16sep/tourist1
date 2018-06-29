@@ -1,17 +1,17 @@
 var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
 switch(window.location.origin){
     case 'http://diamondtour.vn':
-        var HOSTNAME = 'http://tourist1.vn/';
+        var HOSTNAME = 'http://diamondtour.vn/';
         break;
     default:
-        var HOSTNAME = 'http://localhost/tourist1/';
+        var HOSTNAME = 'http://localhost/diamondtour/';
 }
 switch(window.location.origin){
-    case 'http://tourist1.com':
-        var HOSTNAMEADMIN = 'http://tourist1.com/admin';
+    case 'http://diamondtour.vn':
+        var HOSTNAMEADMIN = 'http://diamondtour.vn/admin';
         break;
     default:
-        var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
+        var HOSTNAMEADMIN = 'http://localhost/diamondtour/admin';
 } 
 $("#nav-product #submit-shared").css("display","none");
 $("#nav-product li#content-home").css("float","left");

@@ -1,36 +1,20 @@
 var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
-$("[href$=customize]").click(function(){
-	$($(this)[0].hash+" [name=inquire_title]").val($("#inquire [name=inquire_title]").val());
-	if($($(this)[0].hash+" [name=inquire_first_name]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_first_name]").val($("#inquire input[name=inquire_first_name]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_last_name]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_last_name]").val($("#inquire input[name=inquire_last_name]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_email]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_email]").val($("#inquire input[name=inquire_email]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_email_confirm]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_email_confirm]").val($("#inquire input[name=inquire_email_confirm]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_phone_number]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_phone_number]").val($("#inquire input[name=inquire_phone_number]").val());
-	}
-	if($($(this)[0].hash+" [name=datepicker]").val() == ''){
-		$($(this)[0].hash+" input[name=datepicker]").val($("#inquire input[name=datepicker]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_country]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_country]").val($("#inquire input[name=inquire_country]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_number_adults]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_number_adults]").val($("#inquire input[name=inquire_number_adults]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_number_children_u11]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_number_children_u11]").val($("#inquire input[name=inquire_number_children_u11]").val());
-	}
-	if($($(this)[0].hash+" [name=inquire_number_children_u2]").val() == ''){
-		$($(this)[0].hash+" input[name=inquire_number_children_u2]").val($("#inquire input[name=inquire_number_children_u2]").val());
-	}
+$("[href$=customize],[href$=inquire]").click(function(){
+    var href = '#customize';
+    if($(this)[0].hash == '#customize'){
+        href = '#inquire';
+    }
+    $($(this)[0].hash+" [name=inquire_title]").val($(href+" [name=inquire_title]").val());
+    $($(this)[0].hash+" input[name=inquire_first_name]").val($(href+" input[name=inquire_first_name]").val());
+    $($(this)[0].hash+" input[name=inquire_last_name]").val($(href+" input[name=inquire_last_name]").val());
+    $($(this)[0].hash+" input[name=inquire_email]").val($(href+" input[name=inquire_email]").val());
+    $($(this)[0].hash+" input[name=inquire_email_confirm]").val($(href+" input[name=inquire_email_confirm]").val());
+    $($(this)[0].hash+" input[name=inquire_phone_number]").val($(href+" input[name=inquire_phone_number]").val());
+    $($(this)[0].hash+" input[name=datepicker]").val($(href+" input[name=datepicker]").val());
+    $($(this)[0].hash+" input[name=inquire_country]").val($(href+" input[name=inquire_country]").val());
+    $($(this)[0].hash+" input[name=inquire_number_adults]").val($(href+" input[name=inquire_number_adults]").val());
+    $($(this)[0].hash+" input[name=inquire_number_children_u11]").val($(href+" input[name=inquire_number_children_u11]").val());
+    $($(this)[0].hash+" input[name=inquire_number_children_u2]").val($(href+" input[name=inquire_number_children_u2]").val());
 });
 $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookingsubmit,#customizesubmit",function(){
 	var idForm = $(this).parents('form')[0].id;
@@ -119,10 +103,10 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 	}
 	if($("#"+idForm).valid() === true){
 		if(idForm == 'form-customize'){
-			url = "http://localhost/tourist1/customize";
+			url = "http://diamondtour.vn/customize";
 
 		}else{
-			url = "http://localhost/tourist1/booking";
+			url = "http://diamondtour.vn/booking";
 		}
         $.ajax({
             method: "post",

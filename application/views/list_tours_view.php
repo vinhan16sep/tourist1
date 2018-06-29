@@ -41,7 +41,7 @@
 							</div>
 							<div class="content">
 								<div class="head">
-									<a href="<?php echo base_url("danhmuc/".$product_array[$i]['parent']['slug'])?>" class="sub-header" style="color:white"><?php echo $product_array[$i]['parent']['title'] ?></a>
+									<a href="<?php echo base_url("danh-muc/".$product_array[$i]['parent']['slug'])?>" class="sub-header" style="color:white"><?php echo $product_array[$i]['parent']['title'] ?></a>
 									<h4><?php echo $product_array[$i]['title'] ?></h4>
 									<h3 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h3>
 								</div>
