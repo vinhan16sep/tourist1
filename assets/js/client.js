@@ -1,55 +1,12 @@
 var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
-
-function change(currentInput) {
-    currentTab = currentInput.closest('.tab-pane').attr('id');
-
-    var targetTab = '';
-    if (currentTab == 'customize') {
-        targetTab = 'inquire';
-    } else {
-        targetTab = 'customize';
-    }
-
-    console.log(currentInput.is('textarea'));
-    if (currentInput.is('select')) {
-        $('#' + targetTab + ' select[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' select[name="' + currentInput.attr('name') + '"]').val());
-    }else if(currentInput.is('textarea')){
-        $('#' + targetTab + ' textarea[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' textarea[name="' + currentInput.attr('name') + '"]').val());
-    }else{
-        $('#' + targetTab + ' input[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' input[name="' + currentInput.attr('name') + '"]').val());
-    }
-
-}
-
-// $("#inquireTab, #customizeTab").click(function(){
-//     target = $(this).children()[0].hash;
-//     var href = '#customize';s
-//     if (target == '#customize') {
-//         href = '#inquire';
-//     }
-//     target = $(target + " input[name=inquire_first_name]");
-//     console.log(href);
-//     debugger;
-//     $(target + " input[name=inquire_first_name]").val($(href + " input[name=inquire_first_name]").val());
-// });
-
-// $("[href$=customize],[href$=inquire]").click(function () {
-//     var href = '#customize';
-//     if ($(this)[0].hash == '#customize') {
-//         href = '#inquire';
-//     }
-//     $($(this)[0].hash + " [name=inquire_title]").val($(href + " [name=inquire_title]").val());
-//     $($(this)[0].hash + " input[name=inquire_first_name]").val($(href + " input[name=inquire_first_name]").val());
-//     $($(this)[0].hash + " input[name=inquire_last_name]").val($(href + " input[name=inquire_last_name]").val());
-//     $($(this)[0].hash + " input[name=inquire_email]").val($(href + " input[name=inquire_email]").val());
-//     $($(this)[0].hash + " input[name=inquire_email_confirm]").val($(href + " input[name=inquire_email_confirm]").val());
-//     $($(this)[0].hash + " input[name=inquire_phone_number]").val($(href + " input[name=inquire_phone_number]").val());
-//     $($(this)[0].hash + " input[name=datepicker]").val($(href + " input[name=datepicker]").val());
-//     $($(this)[0].hash + " input[name=inquire_country]").val($(href + " input[name=inquire_country]").val());
-//     $($(this)[0].hash + " input[name=inquire_number_adults]").val($(href + " input[name=inquire_number_adults]").val());
-//     $($(this)[0].hash + " input[name=inquire_number_children_u11]").val($(href + " input[name=inquire_number_children_u11]").val());
-//     $($(this)[0].hash + " input[name=inquire_number_children_u2]").val($(href + " input[name=inquire_number_children_u2]").val());
-// });
+$("#inquire input,#customize input,#inquire #inquire_title,#customize #customize_title,#inquire textarea,#customize textarea").change(function(event) {
+	name = $(this).attr("name");
+	targetTab = "#inquire";
+	if($(this).closest('.tab-pane').attr('id') == "inquire"){
+		targetTab = "#customize";
+	}
+	$(targetTab + " [name="+name+"]").val($(this).val());
+});
 
 $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookingsubmit,#customizesubmit",function(){
 	var idForm = $(this).parents('form')[0].id;
