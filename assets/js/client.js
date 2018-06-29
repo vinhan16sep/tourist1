@@ -1,18 +1,23 @@
 var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
 
-function change(currentInput){
+function change(currentInput) {
     currentTab = currentInput.closest('.tab-pane').attr('id');
 
     var targetTab = '';
     if (currentTab == 'customize') {
         targetTab = 'inquire';
-    }else{
+    } else {
         targetTab = 'customize';
     }
 
-    console.log();
-
-    $('#' + targetTab + ' input[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' input[name="' + currentInput.attr('name') + '"]').val());
+    console.log(currentInput.is('textarea'));
+    if (currentInput.is('select')) {
+        $('#' + targetTab + ' select[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' select[name="' + currentInput.attr('name') + '"]').val());
+    }else if(currentInput.is('textarea')){
+        $('#' + targetTab + ' textarea[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' textarea[name="' + currentInput.attr('name') + '"]').val());
+    }else{
+        $('#' + targetTab + ' input[name="' + currentInput.attr('name') + '"]').val($('#' + currentTab + ' input[name="' + currentInput.attr('name') + '"]').val());
+    }
 
 }
 
