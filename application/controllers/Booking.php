@@ -8,7 +8,6 @@ class Booking extends Public_Controller{
         $this->load->helper('common');
         $this->load->model('rating_model');
         $this->load->model('booking_model');
-		$this->author_data = handle_author_common_data();
     }
 
 	public function index(){
@@ -44,7 +43,10 @@ class Booking extends Public_Controller{
                 'children' => $this->input->post('children'),
                 'infants' => $this->input->post('infants'),
                 'content' => $this->input->post('message'),
-
+                'created_at' => date('Y-m-d H:i:s', now()),
+                'created_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name'),
+                'updated_at' => date('Y-m-d H:i:s', now()),
+                'updated_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name')
             );
             $insert = $this->booking_model->common_insert(array_merge($shared_request,$this->author_data));
             if($insert){
