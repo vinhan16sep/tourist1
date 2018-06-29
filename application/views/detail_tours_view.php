@@ -9,7 +9,7 @@
 			<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
 			<?php if (!empty($detail['sub'])): ?>
 				<?php for($i=0;$i<count($detail['sub']);$i++): ?>
-					<li><a href="<?php echo base_url('/danhmuc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
+					<li><a href="<?php echo base_url('/danh-muc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
 				<?php endfor; ?>
 			<?php endif ?>
 			<li class="active"><?php echo $detail['title'];?></li>
@@ -120,22 +120,18 @@
 						<div role="tabpanel" class="tab-pane active" id="overview">
 							<div class="row">
 								<div class="schedule col-sm-8 col-xs-12">
-                                    <?php $daily = array(
-                                    		'number' => array('1','2','3','4','5','6','7'),
-											'icon' => array ('fa-plane', 'fa-bus', 'fa-ship', 'fa-train', 'fa-motorcycle', 'fa-bicycle', 'fa-blind')
-									) ?>
 									<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
                                         <?php for($i = 0; $i < count($detail['dateimg']); $i++): ?>
 											<div class="panel panel-primary">
-												<div class="panel-heading" role="tab" id="day-<?php echo $daily['number'][$i]; ?>-heading">
+												<div class="panel-heading" role="tab" id="day-<?php echo $i; ?>-heading">
 													<h4 class="panel-title">
-														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $daily['number'][$i]; ?>" aria-expanded="false" aria-controls="day-<?php echo $daily['number'][$i]; ?>">
+														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i; ?>" aria-expanded="false" aria-controls="day-<?php echo $i; ?>">
 															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 													</h4>
 												</div>
-												<div id="day-<?php echo $daily['number'][$i]; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $daily['number'][$i]; ?>-heading">
+												<div id="day-<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $i; ?>-heading">
 													<div class="panel-body">
 														<div class="media">
 															<div class="media-left">
@@ -165,19 +161,12 @@
 						<div role="tabpanel" class="tab-pane" id="gallery">
 							<div class="row">
 								<div class="col-xs-12">
-                                    <?php $daily = array(
-                                        'number' => array('1','2','3','4','5','6','7'),
-                                        'icon' => array ('fa-plane', 'fa-bus', 'fa-ship', 'fa-train', 'fa-motorcycle', 'fa-bicycle', 'fa-blind')
-                                    );
-                                    ?>
-
-
 									<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
                                         <?php for($i = 0; $i < count($detail['librarylocaltion']); $i++): ?>
 											<div class="panel panel-primary">
 												<div class="panel-heading" role="tab" id="day-1-heading">
 													<h4 class="panel-title">
-														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $daily['number'][$i]; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $daily['number'][$i]; ?>">
+														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i; ?>">
 															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>

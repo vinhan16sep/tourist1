@@ -105,10 +105,10 @@ defined('HTTP_NOT_FOUND') OR define('HTTP_NOT_FOUND', 404);
 /**
  * FIXED TOUR CATEGORIES ID
  */
-defined('FIXED_DOMESTIC_CATEGORY_ID') OR define('FIXED_DOMESTIC_CATEGORY_ID', 22);
-defined('FIXED_INTERNATIONAL_CATEGORY_ID') OR define('FIXED_INTERNATIONAL_CATEGORY_ID', 23);
-defined('FIXED_SPECIAL_CATEGORY_ID') OR define('FIXED_SPECIAL_CATEGORY_ID', 24);
-
+defined('FIXED_DOMESTIC_CATEGORY_ID') OR define('FIXED_DOMESTIC_CATEGORY_ID', 1);
+defined('FIXED_INTERNATIONAL_CATEGORY_ID') OR define('FIXED_INTERNATIONAL_CATEGORY_ID', 2);
+defined('FIXED_SPECIAL_CATEGORY_ID') OR define('FIXED_SPECIAL_CATEGORY_ID', 3);
+defined('FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID') OR define('FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID', 8);
 /**
  * Tour categories
  */
@@ -120,6 +120,12 @@ defined('SPECIAL_TOUR')        OR define('SPECIAL_TOUR', 'tour-dac-biet');
  * FIXED POST CATEGORIES ID
  */
 defined('FIXED_ABOUT_US')        OR define('FIXED_ABOUT_US', 15);
+
+/**
+ * FIXED POST CATEGORIES ID
+ */
+defined('FIXED_HANDBOOK')        OR define('FIXED_HANDBOOK', 4);
+defined('FIXED_DESTINATION')        OR define('FIXED_DESTINATION', 8);
 
 /*
 |--------------------------------------------------------------------------

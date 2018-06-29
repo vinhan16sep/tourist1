@@ -94,4 +94,19 @@ class Post_model extends MY_Model{
 
         return $this->db->get()->row_array();
     }
+    public function get_post_in_array_category_id($category_array, $lang,$litmit=''){
+        $this->db->select($this->table . '.*, ' . $this->table_lang . '.*, post_category_lang.title as category_title')
+            ->from($this->table)
+            ->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id')
+            ->join('post_category_lang', $this->table . '.post_category_id = post_category_lang.post_category_id')
+            ->where($this->table_lang . '.language', $lang)
+            ->where('post_category_lang.language', $lang)
+            ->where_in($this->table . '.post_category_id', $category_array)
+            ->where($this->table . '.is_deleted', 0)
+            ->order_by($this->table.'.id','desc');
+            if($litmit != '' && is_numeric($litmit)){
+                $this->db->limit($litmit);
+            }
+        return $this->db->get()->result_array();
+    }
 }

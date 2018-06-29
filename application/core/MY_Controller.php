@@ -261,8 +261,8 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('english_lang', 'english');
         }
 
-        $this->data['domestic_menu'] = $this->fetch_menu_categories(22);
-        $this->data['international_menu'] = $this->fetch_menu_categories(23);
+        $this->data['domestic_menu'] = $this->fetch_menu_categories(FIXED_DOMESTIC_CATEGORY_ID);
+        $this->data['international_menu'] = $this->fetch_menu_categories(FIXED_INTERNATIONAL_CATEGORY_ID);
         $this->data['controller'] = $this;
 
     }

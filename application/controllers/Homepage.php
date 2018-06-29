@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Homepage extends Public_Controller {
 
+    protected $handbook_category_array = array(FIXED_HANDBOOK);
+    protected $destination_category_array = array(FIXED_DESTINATION);
     protected $domestic_category_array = array();
     protected $international_category_array = array();
     protected $special_category_array = array();
@@ -17,6 +19,8 @@ class Homepage extends Public_Controller {
         $this->load->model('banner_model');
         $this->load->model('product_category_model');
 
+        $this->get_handbook_data();
+        $this->get_destination_data();
         $this->get_domestic_data();
         $this->get_international_data();
     }
@@ -70,13 +74,9 @@ class Homepage extends Public_Controller {
         //banner
         $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),'vi');
         //tour
-        $this->data['domestic'] = $this->product_category_model->get_by_slug_lang('trong-nuoc',array(),'vi');
-        $this->data['tour_domestic'] = $this->get_all_product_in_category($this->data['domestic'],3);
-        $this->data['international'] = $this->product_category_model->get_by_slug_lang('nuoc-ngoai',array(),'vi');
-        $this->data['tour_international'] = $this->get_all_product_in_category($this->data['international'],3);
-        $this->data['specialtour'] = $this->product_category_model->get_by_slug_lang('tour-dac-biet',array(),'vi');
-        $this->data['tour_specialtour'] = $this->get_all_product_in_category($this->data['specialtour'],6);
-
+        $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_CATEGORY_ID,array('title','content'),'vi');
+        $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_CATEGORY_ID,array('title','content'),'vi');
+        $this->data['specialtour'] = $this->product_category_model->get_by_id(FIXED_SPECIAL_CATEGORY_ID,array('title','content'),'vi');
         /**
          * GET TOURS IN EACH CATEGORY
          */
@@ -87,6 +87,14 @@ class Homepage extends Public_Controller {
         /**
          * GET POSTS IN HANDBOOK
          */
+        $this->data['handbook'] = $this->post_category_model->get_by_id(FIXED_HANDBOOK,array('title','content'),'vi');
+        $this->data['post_handbook'] = $this->post_model->get_post_in_array_category_id($this->handbook_category_array, $this->data['lang'],2);
+        /**
+         * GET POSTS IN DESTINATION
+
+         */
+        $this->data['destination'] = $this->post_category_model->get_by_id(FIXED_DESTINATION,array('title','content'),'vi');
+        $this->data['post_destination'] = $this->post_model->get_post_in_array_category_id($this->destination_category_array, $this->data['lang'],3);
 
         //post
         $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
@@ -95,6 +103,23 @@ class Homepage extends Public_Controller {
         $this->data['blogs'] = $this->post_category_model->get_by_slug('blogs','asc','vi');
         $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),'vi',3);
         $this->render('homepage_view');
+    }
+
+    public function get_handbook_data($parent = FIXED_HANDBOOK){
+        $categories = $this->post_category_model->fetch_post_category_menu($parent);
+
+        foreach($categories as $key => $category){
+            array_push($this->handbook_category_array, $category['id']);
+            $this->get_handbook_data($category['id']);
+        }
+    }
+    public function get_destination_data($parent = FIXED_DESTINATION){
+        $categories = $this->post_category_model->fetch_post_category_menu($parent);
+
+        foreach($categories as $key => $category){
+            array_push($this->destination_category_array, $category['id']);
+            $this->get_destination_data($category['id']);
+        }
     }
 
     public function get_domestic_data($parent = FIXED_DOMESTIC_CATEGORY_ID){
