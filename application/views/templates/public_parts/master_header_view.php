@@ -171,7 +171,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 				</li>
 				<li class="menu-list">
-					<a href="<?php echo base_url('') ?>">
+					<a href="<?php echo base_url('danh-muc/tour-trong-nuoc') ?>">
 						<?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
 					</a>
 					<div class="menu-list-expand menu-expand">
@@ -228,7 +228,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</li>
 				<li class="menu-tabs">
-					<a href="<?php echo base_url('') ?>">
+					<a href="<?php echo base_url('danh-muc/tour-nuoc-ngoai') ?>">
 						<?php echo $this->lang->line('international') ?> <span class="caret"></span>
 					</a>
 					<div class="menu-tabs-expand menu-expand">
