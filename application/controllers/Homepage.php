@@ -55,20 +55,7 @@ class Homepage extends Public_Controller {
             $ids = array();
         }
         array_unshift($ids,$tour_in_category['id']);
-        $check = 0;
-        $tour_all_in_category=array();
-        for ($i=0; $i < count($ids); $i++) {
-            $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
-            if($tour['id'] != ''){
-                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
-                $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id'],array(),$this->data['lang']);
-                $check++;
-                if($check == $number_tour){
-                    break;
-                }
-            }
-        }
-        return $tour_all_in_category;
+        return $this->product_model->get_all_product_category_id_array($ids,$number_tour,$this->data['lang']);
     }
     public function index() {
         //banner
