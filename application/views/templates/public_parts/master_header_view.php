@@ -167,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<ul>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-						<i class="fa fa-home" aria-hidden="true"></i>
+						<i class="fa fa-home" aria-hidden="true" style="font-size: 1.35em"></i>
 					</a>
 				</li>
 				<li class="menu-list">
@@ -243,9 +243,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										foreach($international_menu as $key => $val){
 											?>
 											<li>
-												<?php echo $val['title']; ?> <span
-														class="glyphicon glyphicon glyphicon-menu-right pull-right"
+												<a href="<?php echo base_url('danh-muc/' . $val['slug']); ?>">
+													<?php echo $val['title']; ?>
+													<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
 														aria-hidden="true"></span>
+												</a>
 												<ul>
 													<?php
 													if($val['product_category_id'] == FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID){
