@@ -396,7 +396,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 					<div class="menu-dropdown-expand menu-expand">
 						<div class="row">
-							<div class="media col-sm-4 col-xs-12">
+							<div class="media col-sm-4 col-xs-12" style="margin-top: 15px">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
