@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Post_category_model extends MY_Model{
-	
+
 	public $table = 'post_category';
 
 	public function get_by_parent_id($parent_id, $order = 'desc',$lang = ''){
@@ -18,7 +18,7 @@ class Post_category_model extends MY_Model{
         if(is_numeric($parent_id)){
             $this->db->where($this->table .'.parent_id', $parent_id);
         }
-    	
+
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
 
@@ -37,7 +37,7 @@ class Post_category_model extends MY_Model{
         if(is_numeric($parent_id)){
             $this->db->where($this->table .'.parent_id', $parent_id);
         }
-        
+
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
 
@@ -56,7 +56,7 @@ class Post_category_model extends MY_Model{
         if($slug != ''){
             $this->db->where($this->table .'.slug', $slug);
         }
-        
+
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
 
@@ -98,7 +98,7 @@ class Post_category_model extends MY_Model{
     }
 
     public function fetch_menu_categories($parent, $lang = 'vi'){
-        $where = "post_category.is_deleted = 0 AND post_category_lang.language = '" . $lang . "' AND post_category.parent_id = '" . $parent . "'";
+        $where = "post_category.is_deleted = 0 AND post_category.is_activated = 0 AND post_category_lang.language = '" . $lang . "' AND post_category.parent_id = '" . $parent . "'";
 
         $this->db->select('*')
             ->from('post_category')

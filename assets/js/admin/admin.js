@@ -4,15 +4,15 @@ switch(window.location.origin){
         var HOSTNAME = 'http://diamondtour.vn/';
         break;
     default:
-        var HOSTNAME = 'http://localhost/diamondtour/';
+        var HOSTNAME = 'http://localhost/tourist1/';
 }
 switch(window.location.origin){
     case 'http://diamondtour.vn':
         var HOSTNAMEADMIN = 'http://diamondtour.vn/admin';
         break;
     default:
-        var HOSTNAMEADMIN = 'http://localhost/diamondtour/admin';
-} 
+        var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
+}
 $("#nav-product #submit-shared").css("display","none");
 $("#nav-product li#content-home").css("float","left");
 $("#content-home").css("display","none");
@@ -43,7 +43,7 @@ $("#nav-product li#add-date").click(function(){
 			parent_id_shared: {
 				required: true
 			}
-		}, 
+		},
 		messages: {
 			title_vi: {
 				required: "Tiêu đề không được trống."
@@ -88,7 +88,7 @@ $("#nav-product li#add-date").click(function(){
         }
         $("#nav-product li#content-home").css("float","left");
         $("#nav-product #submit-shared").css("float","right");
-        
+
 	}
 });
 /*$("#nav-product li#content-home").click(function(){
@@ -272,6 +272,9 @@ $("#submit-shared,#content-home").click(function(event) {
 				data: post,
 				contentType: false,
 				processData: false,
+                beforeSend: function(){
+                    $('#submit-shared').prop('disabled', true);
+                },
 				success: function(response){
 					console.log(response);
 					if(response.status == 200){
@@ -356,12 +359,12 @@ $("#button-numberdate,#append-date").click(function(){
 					$($("#content-full-date .title-content-date.rm")[i]).parents(".no_border").prev().fadeIn();
 					$($("#content-full-date .title-content-date.rm")[i]).css("display","block");
 					$($("#content-full-date .title-content-date.rm")[i]).removeClass('rm').addClass('date');
-				}     
+				}
 			}
 			$("#content-full-date .title-content-date.date").css("display","block");
 			$("#content-full-date .title-content-date.rm").css("display","none");
 			$(".title-content-date.showdate .btn-margin span.remove").remove();
-			if(numberdate >1){     
+			if(numberdate >1){
 				$($(".title-content-date.showdate .btn-margin")[numberdate-1]).append("<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>");
 			}
    	 		$('.select2').select2();
@@ -386,7 +389,7 @@ $("#button-numberdate,#append-date").click(function(){
 		                console.log(errorHandle(jqXHR, exception));
 		                location.reload();
 		            }
-		        });	
+		        });
 			});
 
 		},
