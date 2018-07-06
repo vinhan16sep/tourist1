@@ -1,5 +1,5 @@
 switch(window.location.origin){
-    case 'http://diamontour.vn':
+    case 'http://diamondtour.vn':
         var HOSTNAME = 'http://diamondtour.vn/';
         break;
     default:
@@ -11,7 +11,7 @@ switch(window.location.origin){
         break;
     default:
         var HOSTNAMEADMIN = 'http://localhost/diamondtour/admin';
-} 
+}
 function to_slug(str){
     str = str.toLowerCase();
 
