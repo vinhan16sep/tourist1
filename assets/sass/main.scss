@@ -300,58 +300,23 @@ header.header{
 
                         font-size: 1em;
 
-                        &:hover{
-                            background-color: $primary-hover;
-
-                            .menu-expand{
-                                top: 100%;
-
-                                display: block;
-
-                                @include transition(500ms);
-
-                                .row{
-                                    ul{
-                                        list-style: none;
-                                    }
-
-                                    .mask{
-                                        width: 100%;
-                                        height: 150px;
-                                        overflow: hidden;
-
-                                        margin-bottom: 15px;
-                                    }
-
-                                    a{
-                                        overflow: hidden;
-                                        text-overflow: ellipsis;
-                                        display: -webkit-box;
-                                        line-height: 1.5em;
-                                        height: 3em;
-                                        -webkit-line-clamp: 2;
-                                        -webkit-box-orient: vertical;
-                                        font-size: .875em;
-                                    }
-                                }
-
-                            }
-
-                            a{
-                                color: #333;
-                            }
-                        }
-
                         > a{
-                            color: #333;
+                            color: #fff;
                             text-transform: uppercase;
                         }
 
-                        .menu-expand{
+
+                        &:hover{
+                            ul.menu-expand{
+                                display: block;
+                            }
+                        }
+
+                        > ul.menu-expand{
                             width: 100%;
 
                             position: absolute;
-                            top: 110%;
+                            top: 100%;
                             left: 0;
                             z-index: 1001;
 
@@ -362,13 +327,151 @@ header.header{
                             -moz-box-shadow: 3px 3px 10px #ccc;
                             box-shadow: 3px 3px 10px #ccc;
 
-                            display: none;
+                            a{
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                line-height: 1.5em;
+                                height: 3em;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                                font-size: .875em;
+                            }
 
-                            @include transition(500ms);
+                            ul{
+                                list-style: none;
+                            }
+
+                        }
+
+                        &:hover{
+                            background-color: $primary-hover;
+                        }
+
+                        &.menu-list{
+                            .menu-list-expand{
+                                .item{
+                                    padding: 15px;
+
+                                    .head{
+
+                                    }
+
+                                    .body{
+                                        ul{
+                                            padding-left: 0;
+
+                                            li{
+                                                .mask{
+                                                    width: 100%;
+                                                    height: 200px;
+                                                    overflow: hidden;
+
+                                                    position: relative;
+
+                                                    a{
+                                                        width: 100%;
+                                                        height: 30%;
+
+                                                        padding: 15px;
+
+                                                        font-size: 1.5em;
+                                                        color: #fff;
+
+                                                        position: absolute;
+                                                        bottom: 0;
+                                                        left: 0;
+
+                                                        background: rgba(0,0,0,0.5);
+                                                        background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+                                                        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
+                                                        background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                        background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                        background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                        background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+
+                                                        &:hover{
+                                                            color: #fff;
+                                                        }
+                                                    }
+                                                }
+
+                                                a{
+                                                    color: $gray-light;
+                                                    font-size: 1.25em;
+
+                                                    &:hover{
+                                                        color: $gray;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         &.menu-tabs{
                             .menu-tabs-expand{
+                                > li{
+                                    width: 25%;
+
+                                    padding: 10px 15px;
+                                    font-size: 1.25em;
+
+                                    border-right: 1px solid #dadada;
+                                    border-bottom: 1px solid #dadada;
+
+                                    position: relative;
+
+                                    > a{
+                                        color: $gray;
+                                    }
+
+                                    > ul{
+                                        position: absolute;
+                                        top: 0;
+                                        left: 100%;
+
+                                        width: 300%;
+
+                                        padding-left: 0;
+
+                                        display: none;
+
+                                        > li{
+                                            display: inline-block;
+                                            width: 33%;
+                                            padding-left: 15px;
+                                            padding-right: 15px;
+
+                                            .mask{
+                                                width: 100%;
+                                                height: 200px;
+
+                                                margin-bottom: 15px;
+                                            }
+                                        }
+                                    }
+
+                                    &:hover{
+                                        background-color: #eaeaea;
+
+                                        a{
+                                            color: $gray;
+
+                                            &:hover{
+                                                color: $gray;
+                                            }
+                                        }
+
+                                        > ul{
+                                            display: block;
+                                        }
+                                    }
+                                }
+
                                 .row{
                                     min-height: 300px;
 
@@ -446,75 +549,6 @@ header.header{
                             }
                         }
 
-                        &.menu-list{
-                            .menu-list-expand{
-                                .row{
-                                    margin-left: 0;
-                                    margin-right: 0;
-
-                                    .item{
-                                        padding: 15px;
-
-                                        .head{
-
-                                        }
-
-                                        .body{
-                                            ul{
-                                                padding-left: 0;
-
-                                                li{
-                                                    .mask{
-                                                        width: 100%;
-                                                        height: 200px;
-                                                        overflow: hidden;
-
-                                                        position: relative;
-
-                                                        a{
-                                                            width: 100%;
-                                                            height: 30%;
-
-                                                            padding: 15px;
-
-                                                            font-size: 1.5em;
-                                                            color: #fff;
-
-                                                            position: absolute;
-                                                            bottom: 0;
-                                                            left: 0;
-
-                                                            background: rgba(0,0,0,0.5);
-                                                            background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
-                                                            background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
-                                                            background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
-
-                                                            &:hover{
-                                                                color: #fff;
-                                                            }
-                                                        }
-                                                    }
-
-                                                    a{
-                                                        color: $gray-light;
-                                                        font-size: 1.25em;
-
-                                                        &:hover{
-                                                            color: $gray;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
                         &.menu-dropdown{
 
                             .menu-dropdown-expand{
@@ -568,16 +602,100 @@ header.header{
                                 }
 
                             }
+                        }
+                    }
+                }
 
-                            &:hover{
-                                .menu-dropdown-expand{
-                                    display: block;
+            }
+        }
+
+        #nav-device{
+            width: 90%;
+            height: 100vh;
+            overflow-y: scroll;
+
+            background-color: $primary;
+
+            position: fixed;
+            top: 0;
+            left: -100%;
+
+            padding: 15px;
+
+            a{
+                color: #fff;
+            }
+
+            > .head{
+                padding: 10px 0;
+                display: block;
+            }
+
+            > .body{
+                display: block;
+
+                margin-top: 30px;
+
+                .panel-group{
+                    .panel-default{
+                        background-color: transparent;
+                        border-color: transparent;
+
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        box-shadow: none;
+
+                        .panel-heading{
+                            background-color: transparent;
+                            border-color: transparent;
+
+                            h4{
+                                a{
+                                    color: #fff;
+                                    text-transform: uppercase;
+                                }
+                            }
+                        }
+
+                        .panel-body{
+                            ul{
+                                list-style: none;
+                                padding-left: 15px;
+                                color: #fff;
+
+                                li{
+                                    h3{
+                                        color: #fff;
+                                        font-size: 1em;
+                                    }
+
+                                    a{
+                                        color: #fff;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
 
+            > .foot{
+                padding-top: 30px;
+                border-top: 1px solid #fff;
+
+                ul{
+                    list-style: none;
+                    padding-left: 15px;
+
+                    li{
+                        color: #fff;
+
+                        h3{
+                            font-size: 1.25em;
+                            margin-top: 5px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -785,7 +903,7 @@ footer.footer{
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) and (hover: none){
     #top-nav{
         .container{
             .row{
@@ -798,10 +916,11 @@ footer.footer{
                 }
 
                 .left{
+                    text-align: center;
                 }
 
                 .right{
-                    text-align: left;
+
                 }
             }
         }
@@ -842,100 +961,224 @@ footer.footer{
                         }
                     }
                 }
+
+                .btn-expand{
+                    text-align: center;
+
+                    .btn-primary{
+                        padding: 10px 30px;
+                        margin-top: 25px;
+                    }
+                }
             }
         }
     }
 
     header.header{
+        width: 100%;
+
         position: fixed;
-        top: 0;
+        top: 145px;
         left: -100%;
+
         z-index: 1011;
+
+        @include primary-bg;
 
         .container-fluid{
             .container{
+                position: relative;
 
                 &#main-nav{
 
                     > ul{
+                        margin-bottom: 0;
+                        padding-left: 0;
+
+                        list-style: none;
 
                         > li{
-                            padding: 12px 15px;
+                            padding: 10px 15px;
 
-                            display: list-item;
+                            display: block;
 
-                            &:hover{
-                                background-color: $primary-hover;
-
-                                .menu-expand{
-                                    top: 100%;
-
-                                    display: block;
-
-                                    @include transition(500ms);
-
-                                    .row{
-                                        ul{
-                                            list-style: none;
-                                        }
-
-                                        .mask{
-                                            width: 100%;
-                                            height: 150px;
-                                            overflow: hidden;
-
-                                            margin-bottom: 15px;
-
-                                            img{
-                                                width: 100%;
-                                                height: 100%;
-                                                object-fit: cover;
-                                            }
-                                        }
-
-                                        a{
-                                            overflow: hidden;
-                                            text-overflow: ellipsis;
-                                            display: -webkit-box;
-                                            line-height: 1.5em;
-                                            height: 3em;
-                                            -webkit-line-clamp: 2;
-                                            -webkit-box-orient: vertical;
-                                            font-size: .875em;
-                                        }
-                                    }
-
-                                }
-
-                                a{
-                                    color: #fff;
-                                }
-                            }
+                            font-size: 1em;
 
                             > a{
                                 color: #fff;
                                 text-transform: uppercase;
                             }
 
-                            .menu-expand{
-                                width: 100%;
 
-                                position: absolute;
-                                top: 110%;
-                                left: 0;
-                                z-index: 1001;
+                            &:hover{
+                                ul.menu-expand{
+                                    display: block;
+                                }
+                            }
+
+
+                            > ul.menu-expand{
+                                width: 100%;
+                                height: 100vh;
+
+                                position: fixed;
+                                top: 0;
+
+                                overflow: scroll;
 
                                 background-color: #fff;
                                 border: 1px solid #dadada;
 
-                                display: none;
+                                -webkit-box-shadow: 3px 3px 10px #ccc;
+                                -moz-box-shadow: 3px 3px 10px #ccc;
+                                box-shadow: 3px 3px 10px #ccc;
 
-                                @include transition(500ms);
+                                a{
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    display: -webkit-box;
+                                    line-height: 1.5em;
+                                    height: 3em;
+                                    -webkit-line-clamp: 2;
+                                    -webkit-box-orient: vertical;
+                                    font-size: .875em;
+                                }
+
+                                ul{
+                                    list-style: none;
+                                }
+
+                            }
+
+                            &:hover{
+                                background-color: $primary-hover;
+                            }
+
+                            &.menu-list{
+                                .menu-list-expand{
+                                    .item{
+                                        padding: 15px;
+
+                                        .head{
+                                            h3{
+                                                font-size: 1.125em;
+                                            }
+                                        }
+
+                                        .body{
+                                            ul{
+                                                padding-left: 0;
+
+                                                li{
+                                                    .mask{
+                                                        width: 100%;
+                                                        height: 200px;
+                                                        overflow: hidden;
+
+                                                        position: relative;
+
+                                                        a{
+                                                            width: 100%;
+                                                            height: 30%;
+
+                                                            padding: 15px;
+
+                                                            font-size: 1.5em;
+                                                            color: #fff;
+
+                                                            position: absolute;
+                                                            bottom: 0;
+                                                            left: 0;
+
+                                                            background: rgba(0,0,0,0.5);
+                                                            background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+                                                            background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
+                                                            background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
+                                                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
+
+                                                            &:hover{
+                                                                color: #fff;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    a{
+                                                        color: $gray-light;
+                                                        font-size: 1.25em;
+
+                                                        &:hover{
+                                                            color: $gray;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
 
                             &.menu-tabs{
                                 .menu-tabs-expand{
+                                    > li{
+                                        width: 25%;
+
+                                        padding: 10px 15px;
+                                        font-size: 1.25em;
+
+                                        border-right: 1px solid #dadada;
+                                        border-bottom: 1px solid #dadada;
+
+                                        position: relative;
+
+                                        > ul{
+                                            position: absolute;
+                                            top: 0;
+                                            left: 100%;
+
+                                            width: 300%;
+
+                                            padding-left: 0;
+
+                                            display: none;
+
+                                            > li{
+                                                display: inline-block;
+                                                width: 33%;
+                                                padding-left: 15px;
+                                                padding-right: 15px;
+
+                                                .mask{
+                                                    width: 100%;
+                                                    height: 200px;
+
+                                                    margin-bottom: 15px;
+                                                }
+                                            }
+                                        }
+
+                                        &:hover{
+                                            background-color: #eaeaea;
+
+                                            a{
+                                                color: $gray;
+
+                                                &:hover{
+                                                    color: $gray;
+                                                }
+                                            }
+
+                                            > ul{
+                                                display: block;
+                                            }
+                                        }
+                                    }
+
                                     .row{
+                                        min-height: 300px;
+
                                         .left{
                                             > ul{
                                                 list-style: none;
@@ -944,8 +1187,13 @@ footer.footer{
 
                                                 position: relative;
 
+                                                border-right: 1px solid #dadada;
+
                                                 > li{
                                                     padding: 10px 15px;
+                                                    font-size: 1.25em;
+
+                                                    border-bottom: 1px solid #dadada;
 
                                                     &:hover{
                                                         background-color: #eaeaea;
@@ -969,7 +1217,17 @@ footer.footer{
                                                             padding-left: 15px;
                                                             padding-right: 15px;
 
+                                                            font-size: 1.125em;
+
                                                             display: inline-block;
+
+                                                            a{
+                                                                color: $gray-light;
+
+                                                                &:hover{
+                                                                    color: $gray-dark;
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -986,12 +1244,6 @@ footer.footer{
                                                     overflow: hidden;
 
                                                     margin-bottom: 15px;
-
-                                                    img{
-                                                        width: 100%;
-                                                        height: 100%;
-                                                        object-fit: cover;
-                                                    }
                                                 }
 
 
@@ -1001,35 +1253,63 @@ footer.footer{
                                 }
                             }
 
-                            &.menu-list{
-                                .menu-list-expand{
+                            &.menu-dropdown{
+
+                                .menu-dropdown-expand{
+                                    padding: 15px;
+
                                     .row{
-                                        margin-left: 0;
-                                        margin-right: 0;
+                                        .media{
 
-                                        .item{
-                                            padding: 15px;
+                                            .media-left{
+                                                width: 50%;
 
-                                            .head{
-
+                                                .mask{
+                                                    width: 100%;
+                                                    height: 230px;
+                                                    overflow: hidden;
+                                                }
                                             }
 
-                                            .body{
-                                                ul{
-                                                    padding-left: 0;
+                                            .media-body{
+                                                a{
+                                                    color: $primary;
 
-                                                    li{
-                                                        a{
-                                                            color: $gray-light;
+                                                    &:hover{
+                                                        color: $gray;
+                                                    }
+                                                }
 
-                                                            &:hover{
-                                                                color: $gray;
-                                                            }
-                                                        }
+                                                p{
+                                                    color: $gray-light;
+
+                                                    font-size: 1em;
+
+                                                    overflow: hidden;
+                                                    text-overflow: ellipsis;
+                                                    display: -webkit-box;
+                                                    line-height: 1.5;
+                                                    height: 7.5em;
+                                                    -webkit-line-clamp: 5;
+                                                    -webkit-box-orient: vertical;
+                                                }
+
+                                                .btn-primary{
+                                                    color: #fff;
+
+                                                    &:hover{
+                                                        color: #fff;
                                                     }
                                                 }
                                             }
                                         }
+                                    }
+
+                                }
+
+                                &:hover{
+                                    .menu-dropdown-expand{
+                                        display: block;
                                     }
                                 }
                             }
@@ -1039,7 +1319,133 @@ footer.footer{
                 }
             }
         }
+    }
 
+    section.main-content{
+        .section{
+            display: block;
+            padding-top: 50px;
+            padding-bottom: 50px;
 
+            .section-header{
+                margin-bottom: 30px;
+
+                h1{
+                    font-size: 2em;
+                    margin-top: 0;
+                    padding-bottom: 15px;
+                }
+
+                .line{
+                    width: 100%;
+                    height: 4px;
+                    margin-bottom: 30px;
+
+                    background-color: #eaeaea;
+
+                    position: relative;
+
+                    .line-primary{
+                        width: 25%;
+                        height: 100%;
+
+                        background-color: $primary;
+
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+
+            .item{
+                h2.post-title{
+                    font-size: 2em;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    line-height: 1.168;
+                    height: 2.3em;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+
+                h4.post-subtitle{
+                    font-size: 1em;
+                    text-transform: uppercase;
+
+                    margin-top: 30px;
+                    color: $gray-light;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    line-height: 1.168;
+                    height: 1.5em;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                }
+
+                p.post-description{
+                    font-size: 1em;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    line-height: 1.5;
+                    height: 7.5em;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+
+    footer.footer{
+        padding-bottom: 0px;
+
+        .container{
+            .row{
+                .item{
+                    .head{
+                        h3{
+                        }
+                    }
+
+                    .body{
+                        > ul{
+                            > li{
+
+                                > ul{
+                                    > li{
+                                    }
+                                }
+                            }
+                        }
+
+                        table{
+                            tr{
+                                td{
+                                    img{
+                                    }
+
+                                    .outline{
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .text-center{
+
+                }
+            }
+        }
+
+        .container-fluid{
+        }
     }
 }

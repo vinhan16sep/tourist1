@@ -16,7 +16,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 	<!-- jQuery 3 -->
@@ -62,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</li>
 				</ul>
 			</div>
-			<div class="right col-sm-6 col-xs-12">
+			<div class="right col-sm-6 col-xs-12 hidden-xs">
 				<ul>
 <!--					<li>-->
 <!--                        <select name="change_language" class="form-control">-->
@@ -164,7 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 
 <header class="header">
-	<div class="container-fluid">
+	<div class="container-fluid hidden-xs">
 		<div class="container" id="main-nav">
 			<ul>
 				<li>
@@ -176,128 +175,122 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a href="<?php echo base_url('danh-muc/tour-trong-nuoc') ?>">
 						<?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
 					</a>
-					<div class="menu-list-expand menu-expand">
+					<a class="right-caret visible-xs" data-toggle="collapse" data-parent="#main-nav-ul" href="#expand-domestic" aria-expanded="true" aria-controls="expand-domestic"><span class="caret"></span></a>
+					<ul class="menu-list-expand menu-expand collapse list-unstyled" id="expand-domestic">
 						<!----------------------------------------------->
 						<!-- DOMESTIC MENU -->
 						<!----------------------------------------------->
-						<div class="row">
-							<?php
-							if($domestic_menu){
 
-								foreach($domestic_menu as $key => $val){
-							?>
-								<div class="item col-sm-3 col-xs-12">
-									<div class="head">
-										<h3><?php echo $val['title']; ?></h3>
-									</div>
-									<div class="body">
-										<ul>
-											<li>
-												<ul>
-													<?php
-														$sub = $controller->fetch_menu_categories($val['product_category_id']);
-														if($sub){
-															foreach($sub as $sub_key => $sub_val){
-															    if($sub_key == 0){
-													?>
-																	<li>
-																		<div class="mask">
-																			<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image first tour">
+						<?php
+						if($domestic_menu){
 
-																			<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
-																		</div>
-																	</li>
-                                                                <?php } else{ ?>
-                                                                    <li><a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a></li>
-                                                                <?php } ?>
-													<?php
-															}
-														}
-													?>
-												</ul>
-											</li>
-										</ul>
-									</div>
+							foreach($domestic_menu as $key => $val){
+						?>
+							<li class="item col-sm-3 col-xs-12">
+								<div class="head">
+									<h3><?php echo $val['title']; ?></h3>
 								</div>
-							<?php
-								}
+								<div class="body">
+									<ul class="list-unstyled">
+										<li>
+											<ul class="list-unstyled">
+												<?php
+													$sub = $controller->fetch_menu_categories($val['product_category_id']);
+													if($sub){
+														foreach($sub as $sub_key => $sub_val){
+															if($sub_key == 0){
+												?>
+																<li>
+																	<div class="mask hidden-xs">
+																		<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image first tour">
+
+																		<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
+																	</div>
+																</li>
+															<?php } else{ ?>
+																<li><a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a></li>
+															<?php } ?>
+												<?php
+														}
+													}
+												?>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</li>
+						<?php
 							}
-							?>
-						</div>
+						}
+						?>
+
 						<!----------------------------------------------->
 						<!-- END DOMESTIC MENU -->
 						<!----------------------------------------------->
-					</div>
+					</ul>
 				</li>
 				<li class="menu-tabs">
 					<a href="<?php echo base_url('danh-muc/tour-nuoc-ngoai') ?>">
 						<?php echo $this->lang->line('international') ?> <span class="caret"></span>
 					</a>
-					<div class="menu-tabs-expand menu-expand">
+					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
+					<ul class="menu-tabs-expand menu-expand list-unstyled collapse" id="expand-international">
 						<!----------------------------------------------->
 						<!-- INTERNATIONAL MENU -->
 						<!----------------------------------------------->
-						<div class="row">
-							<div class="left col-md-3 col-sm-4 col-xs-12">
-								<ul>
-									<?php
-									if($international_menu){
-										foreach($international_menu as $key => $val){
-											?>
-											<li>
-												<a href="<?php echo base_url('danh-muc/' . $val['slug']); ?>">
-													<?php echo $val['title']; ?>
-													<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-														aria-hidden="true"></span>
-												</a>
-												<ul>
-													<?php
-													if($val['product_category_id'] == FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID){
-														$sub = $controller->fetch_menu_categories($val['product_category_id']);
-														foreach($sub as $sub_key => $sub_val){
-													?>
-														<li>
-															<div class="mask">
-																<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
-																	 alt="image example">
-															</div>
-															<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
-														</li>
-													<?php
-														}
-													}else{
-														$tours = $controller->receive_category_data($val['product_category_id']);
+                        <?php
+                        if($international_menu){
+                            foreach($international_menu as $key => $val){
+                                ?>
+								<li>
+									<a href="<?php echo base_url('danh-muc/' . $val['slug']); ?>">
+                                        <?php echo $val['title']; ?> <span class="glyphicon glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
+									</a>
+									<ul>
+                                        <?php
+                                        if($val['product_category_id'] == FIXED_INTERNATIONAL_PILGRIMAGE_CATEGORY_ID){
+                                            $sub = $controller->fetch_menu_categories($val['product_category_id']);
+                                            foreach($sub as $sub_key => $sub_val){
+                                                ?>
+												<li>
+													<div class="mask">
+														<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
+															 alt="image example">
+													</div>
+													<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
+												</li>
+                                                <?php
+                                            }
+                                        }else{
+                                            $tours = $controller->receive_category_data($val['product_category_id']);
 
-                                                        if($tours)
-                                                        {
-                                                            foreach ($tours as $tour_key => $tour)
-                                                            {
-                                                                ?>
-                                                                <li>
-                                                                    <div class="mask">
-                                                                        <img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
-                                                                             alt="image example">
-                                                                    </div>
-                                                                    <a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
-                                                                </li>
-                                                                <?php
-                                                            }
-                                                        }
-													}
-													?>
-												</ul>
-											</li>
-											<?php
-										}
-									}
-									?>
-								</ul>
-							</div>
-						</div>
+                                            if($tours)
+                                            {
+                                                foreach ($tours as $tour_key => $tour)
+                                                {
+                                                    ?>
+													<li>
+														<div class="mask">
+															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
+																 alt="image example">
+														</div>
+														<a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
+													</li>
+                                                    <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+									</ul>
+								</li>
+                                <?php
+                            }
+                        }
+                        ?>
 						<!----------------------------------------------->
 						<!-- END INTERNATIONAL MENU -->
 						<!----------------------------------------------->
-
+					</ul>
 				</li>
 				<li>
 					<a href="<?php echo base_url('danh-muc/tour-dac-biet'); ?>">
@@ -310,12 +303,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 				</li>
 				<li class="menu-dropdown">
-					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('services') ?> <span class="caret">
+					<a href="javascript:void(0);" class="nav-link">
+						<?php echo $this->lang->line('services') ?> <span class="caret hidden-xs"></span>
 					</a>
-                    <div class="menu-dropdown-expand menu-expand">
+					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
+                    <ul class="menu-dropdown-expand menu-expand collapse" id="expand-services">
 						<div class="row">
-							<div class="media col-sm-6 col-xs-12">
+							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
@@ -330,8 +324,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
-							</div>
-							<div class="media col-sm-6 col-xs-12">
+							</li>
+							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
@@ -346,17 +340,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
-							</div>
+							</li>
 						</div>
-                    </div>
+                    </ul>
 				</li>
 				<li class="menu-dropdown">
-					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('visa') ?> <span class="caret">
+					<a href="javascript:void(0);" class="nav-link">
+						<?php echo $this->lang->line('visa') ?> <span class="caret hidden-xs"></span>
 					</a>
-					<div class="menu-dropdown-expand menu-expand">
+					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
+					<ul class="menu-dropdown-expand menu-expand collapse" id="expand-visa">
 						<div class="row">
-							<div class="media col-sm-6 col-xs-12">
+							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
@@ -371,8 +366,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
-							</div>
-							<div class="media col-sm-6 col-xs-12">
+							</li>
+							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
@@ -387,18 +382,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
-							</div>
+							</li>
 						</div>
-					</div>
+					</ul>
 
 				</li>
 				<li class="menu-dropdown">
-					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('blog') ?> <span class="caret">
+					<a href="javascript:void(0);" class="nav-link">
+						<?php echo $this->lang->line('blog') ?> <span class="caret hidden-xs"></span>
 					</a>
-					<div class="menu-dropdown-expand menu-expand">
+					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
+					<ul class="menu-dropdown-expand menu-expand collapse" id="expand-blogs">
 						<div class="row">
-							<div class="media col-sm-4 col-xs-12" style="margin-top: 15px">
+							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
@@ -413,8 +409,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
-							</div>
-							<div class="media col-sm-4 col-xs-12">
+							</li>
+							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
@@ -429,8 +425,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
-							</div>
-							<div class="media col-sm-4 col-xs-12">
+							</li>
+							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
 										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
@@ -445,11 +441,217 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?php echo $this->lang->line('explore') ?>
 									</a>
 								</div>
+							</li>
+						</div>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid visible-xs">
+		<div id="nav-device">
+			<div class="head">
+				<a href="javascript:void(0);" class="pull-right" id="nav-close">
+					<i class="fa fa-close fa-2x" aria-hidden="false"></i>
+				</a>
+			</div>
+			<div class="body">
+				<div class="panel-group" id="main-nav-side" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="homepage">
+							<h4 class="panel-title">
+								<a href="<?php echo site_url('') ?>" role="button">
+									<i class="fa fa-home" aria-hidden="true"></i> <?php echo $this->lang->line('home') ?>
+								</a>
+							</h4>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="expand-domestic-heading">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#domestic" aria-expanded="true" aria-controls="expand-domestic-heading">
+                                    <?php echo $this->lang->line('domestic') ?>
+								</a>
+							</h4>
+						</div>
+						<div id="domestic" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-domestic-heading">
+							<div class="panel-body">
+								<ul>
+									<?php
+									if($domestic_menu){
+
+									foreach($domestic_menu as $key => $val){
+									?>
+									<li>
+										<a href="">
+											<h3><?php echo $val['title']; ?></h3>
+										</a>
+									</li>
+										<?php
+									}
+									}
+									?>
+								</ul>
 							</div>
 						</div>
 					</div>
-				</li>
-			</ul>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="expand-international-heading">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#international" aria-expanded="false" aria-controls="expand-international-heading">
+                                    <?php echo $this->lang->line('international') ?>
+								</a>
+							</h4>
+						</div>
+						<div id="international" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-international-heading">
+							<div class="panel-body">
+								<ul>
+                                    <?php
+                                    if($international_menu){
+                                        foreach($international_menu as $key => $val){
+                                            ?>
+											<li>
+												<a href="" >
+													<h3><?php echo $val['title']; ?></h3>
+												</a>
+											</li>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="special">
+							<h4 class="panel-title">
+								<a href="<?php echo site_url('danh-muc/tour-dac-biet') ?>" role="button">
+									<?php echo $this->lang->line('special-tours') ?>
+								</a>
+							</h4>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="mice">
+							<h4 class="panel-title">
+								<a href="<?php echo site_url('') ?>" role="button">
+                                    <?php echo $this->lang->line('mice') ?>
+								</a>
+							</h4>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="expand-services-heading">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#services" aria-expanded="true" aria-controls="expand-services-heading">
+                                    <?php echo $this->lang->line('services') ?>
+								</a>
+							</h4>
+						</div>
+						<div id="services" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-services-heading">
+							<div class="panel-body">
+								<ul>
+                                    <li>
+										<a href="<?php echo base_url('chuyen-muc/khach-san'); ?>">
+											<h3><?php echo $this->lang->line('hotel') ?></h3>
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>">
+											<h3><?php echo $this->lang->line('ticket') ?></h3>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="expand-visa-heading">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#visa" aria-expanded="true" aria-controls="expand-visa-heading">
+                                    <?php echo $this->lang->line('visa') ?>
+								</a>
+							</h4>
+						</div>
+						<div id="visa" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-visa-heading">
+							<div class="panel-body">
+								<ul>
+									<li>
+										<a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>">
+											<h3><?php echo $this->lang->line('visa-procedure') ?></h3>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);">
+											<h3><?php echo $this->lang->line('registration-form') ?></h3>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="expand-blogs-heading">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#blogs" aria-expanded="true" aria-controls="expand-blogs-heading">
+                                    <?php echo $this->lang->line('blog') ?>
+								</a>
+							</h4>
+						</div>
+						<div id="blogs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-blogs-heading">
+							<div class="panel-body">
+								<ul>
+									<li>
+										<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>">
+											<h3><?php echo $this->lang->line('location') ?></h3>
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>">
+											<h3><?php echo $this->lang->line('handbook') ?></h3>
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>">
+											<h3><?php echo $this->lang->line('diary') ?></h3>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="foot">
+				<ul>
+					<li>
+						<label>
+							<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
+						</label>
+						<h3>
+							<a href="tel:(024) 1234 5678">(024) 1234 5678</a>
+						</h3>
+					</li>
+					<li>
+						<label>
+							<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
+						</label>
+						<h3>
+							<a href="mailto: info@diamondtour.vn">info@diamondtour.vn</a>
+						</h3>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 

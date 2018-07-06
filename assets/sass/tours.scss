@@ -125,7 +125,9 @@
 #tour-detail{
     .row{
         .left{
-
+            table{
+                width: 100%;
+            }
         }
 
         .right{
@@ -327,6 +329,340 @@
 
                             textarea{
                                 resize: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    #head-cover{
+
+    }
+
+    #page{
+        .container{
+        }
+    }
+
+    #tours{
+        .row{
+            .item{
+                margin-bottom: 30px;
+
+                .mask{
+                    width: 100%;
+                    height: 400px;
+                    overflow: hidden;
+
+                    position: relative;
+
+                    border-radius: 7px;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    .overview{
+                        width: 100%;
+                        height: 50%;
+
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        z-index: 990;
+
+                        padding: 15px;
+
+                        color: #fff;
+
+                        opacity: 1;
+
+                        @include transition(0.5s)
+                    }
+
+                    .content{
+                        width: 100%;
+                        height: 100%;
+
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        z-index: 991;
+
+                        padding: 15px;
+
+                        background-color: rgba(0,0,0,0.5);
+
+                        color: #fff;
+
+                        opacity: 0;
+
+                        @include transition(0.5s)
+                    }
+                }
+
+                &:hover{
+                    .mask{
+                        .overview{
+                            top: 0;
+                            opacity: 0;
+
+                            @include transition(0.5s)
+                        }
+
+                        .content{
+                            top: 0;
+                            opacity: 1;
+
+                            @include transition(0.5s)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #tour-detail{
+        .row{
+            .left{
+                table{
+                    width: 100%;
+                }
+            }
+
+            .right{
+                table{
+
+                    .rating{
+                        unicode-bidi: bidi-override;
+                        direction: ltr;
+
+                        > span {
+                            display: inline-block;
+                            position: relative;
+                            width: 1.1em;
+
+                            &:hover {
+                                &:before {
+                                    content: "\2605";
+                                    position: absolute;
+                                }
+
+                                ~ span:before{
+                                    content: "\2605";
+                                    position: absolute;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody{
+                        tr{
+                            &:last-of-type{
+                                td{
+                                    border-top: 1px solid transparent;
+
+                                    .captcha-image{
+                                        padding-left: 0;
+                                        padding-right: 0;
+
+                                        img{
+                                            width: 100%;
+                                            height: auto;
+                                            padding-bottom: 15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.tabs{
+                margin-top: 30px;
+
+                .nav-tabs{
+                    li{
+                        display: inline-block;
+                    }
+                }
+
+                .tab-content{
+                    padding-top: 30px;
+
+                    #overview{
+                        .row{
+                            display: flex;
+                            flex-direction: column;
+
+                            .schedule{
+                                order: 2;
+
+                                .panel-group{
+                                    .panel-primary{
+
+                                        .panel-heading{
+                                            h4{
+                                                a{
+                                                    max-width: 80%;
+                                                }
+                                            }
+                                        }
+
+                                        .panel-body{
+                                            border-top-color: $primary;
+
+                                            .media{
+                                                .media-left{
+                                                    width: 100%;
+                                                    display: block;
+
+                                                    .mask{
+                                                        width: 100%;
+                                                        padding-bottom: 15px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .map{
+                                order: 1;
+
+                                img{
+                                    width: 100%;
+                                }
+                            }
+                        }
+
+                    }
+
+                    #gallery{
+                        .row{
+                            .panel-group{
+                                .panel-primary{
+                                    border-color: $primary;
+
+                                    .panel-heading{
+                                        background-color: $primary;
+                                        border-color: $primary;
+                                        color: #fff;
+                                    }
+
+                                    .panel-body{
+                                        border-top-color: $primary;
+
+                                        .media{
+                                            .media-left{
+                                                width: 100%;
+                                                display: block;
+
+                                                .mask{
+                                                    width: 100%;
+                                                    padding-bottom: 15px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #price{
+                        .row{
+                            table{
+                                width: 100%;
+
+                                thead{
+                                    tr{
+                                        th{
+                                            width: 33.33%;
+                                        }
+                                    }
+                                }
+                                tbody{
+                                    tr{
+                                        td{
+                                            min-height: 50px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            h3{
+                                padding: 7px 15px;
+                                background-color: $primary;
+                                color: #fff;
+
+                                border-radius: 7px;
+                            }
+                        }
+                    }
+
+                    #trip-notes{
+                        .row{
+                            h3{
+                                padding: 7px 15px;
+                                background-color: $primary;
+                                color: #fff;
+
+                                border-radius: 7px;
+                            }
+
+                            table{
+
+                            }
+                        }
+                    }
+
+                    #inquire{
+                        .row{
+                            .form-horizontal{
+                                .form-group{
+                                    margin-left: 0;
+                                    margin-right: 0;
+                                }
+
+                                textarea{
+                                    resize: none;
+                                }
+                            }
+                        }
+                    }
+
+                    #customize{
+                        .row{
+                            table{
+                                thead{
+                                    tr{
+                                        th{
+                                            width: 50%;
+                                            background-color: $primary;
+                                            color: #fff;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .form-horizontal{
+                                .form-group{
+                                    margin-left: 0;
+                                    margin-right: 0;
+                                }
+
+                                textarea{
+                                    resize: none;
+                                }
                             }
                         }
                     }

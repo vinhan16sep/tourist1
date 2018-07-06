@@ -24,9 +24,11 @@
 						<div class="mask">
 							<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
 						</div>
+						<!--
 						<div class="carousel-caption">
 							<?php echo $value['title']; ?>
 						</div>
+						-->
 					</div>
 				<?php endforeach ?>
 			<?php endif ?>
@@ -50,37 +52,37 @@
 <section id="tour-intro" class="container-fluid section">
 	<div class="container">
 		<div class="row">
-			<div class="left col-sm-6 col-xs-12">
-				<div class="section-header">
-					<div class="row">
-						<div class="col-xs-12">
-							<h3><?php echo $specialtour['product_category_title']; ?></h3>
-							<div class="line">
-								<div class="line-primary"></div>
-							</div>
-							<p><?php echo $specialtour['product_category_content']; ?></p>
-							<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                                <?php echo $this->lang->line('see-all') ?>
-							</a>
+			<div class="section-header col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
+						<h3><?php echo $specialtour['product_category_title']; ?></h3>
+						<div class="line">
+							<div class="line-primary"></div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="left col-sm-6 col-xs-12">
+				<p><?php echo $specialtour['product_category_content']; ?></p>
+				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
+                    <?php echo $this->lang->line('see-all') ?>
+				</a>
+			</div>
 			<div class="right col-sm-6 col-xs-12">
 				<div class="row">
-					<div class="item col-sm-4 col-xs-12">
+					<div class="item col-xs-4">
 						<div class="circle-border">
 							<i class="fa fa-plane" aria-hidden="true"></i>
 						</div>
 						<h4>Transport</h4>
 					</div>
-					<div class="item col-sm-4 col-xs-12">
+					<div class="item col-xs-4">
 						<div class="circle-border">
 							<i class="fa fa-compass" aria-hidden="true"></i>
 						</div>
 						<h4>Trip Guiding</h4>
 					</div>
-					<div class="item col-sm-4 col-xs-12">
+					<div class="item col-xs-4">
 						<div class="circle-border">
 							<i class="fa fa-hotel" aria-hidden="true"></i>
 						</div>
