@@ -591,7 +591,229 @@ body, html{
             padding-bottom: 100px;
         }
     }
-
 }
 
+
+/* =======================================================
+*
+* 	RESPONSIVE STYLE
+*
+* ======================================================= */
+
+@media (max-width: 768px){
+    #slider{
+        .slide{
+            height: 30vh;
+
+            .carousel-inner{
+                .item{
+                    height: 100%;
+
+                    .carousel-caption{
+                        width: 30%;
+                        padding: 30px;
+
+                        background-color: rgba(0,0,0,0.5);
+
+                        top: 50%;
+                        left: 60%;
+
+                        -webkit-transform: translateY(-50%);
+                        -moz-transform: translateY(-50%);
+                        -ms-transform: translateY(-50%);
+                        -o-transform: translateY(-50%);
+                        transform: translateY(-50%);
+
+                        text-align: left;
+                    }
+                }
+            }
+
+            .slider-background{
+                width: 100%;
+                height: 100%;
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                background-image: url("../img/bg-slider.png");
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: bottom center;
+
+            }
+        }
+    }
+
+    .section{
+
+        &#tour-intro{
+            background-color: #fcfcfc;
+
+            .container{
+                > .row{
+                    display: flex;
+                    flex-direction: column;
+
+                    .section-header{
+                        margin-bottom: 15px;
+                    }
+
+                    .left{
+                        order: 2;
+                    }
+
+                    .right{
+                        order: 1;
+
+                        .row{
+                            padding-top: 0px;
+
+                            .item{
+                                text-align: center;
+                                display: inline-block;
+
+                                .circle-border{
+                                    width: 80px;
+                                    height: 80px;
+
+                                    margin: 10px auto;
+
+                                    border-radius: 50%;
+                                    border: 1px solid $gray-light;
+
+                                    position: relative;
+
+                                    i.fa{
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 50%;
+
+                                        @include makeItCenter;
+
+                                        font-size: 2.5em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.tour-intro{
+            .row{
+                display: flex;
+                flex-direction: column;
+
+                > .left{
+                    order: 2;
+
+                    .row{
+                    }
+
+                    ul.list-inline{
+
+                        .btn-default{
+
+                        }
+                    }
+                }
+
+                > .right{
+                    order: 1;
+
+                    .head{
+
+                    }
+
+                    .body{
+
+                    }
+
+                    .foot{
+                        padding-top: 15px;
+                        ul{
+                            li{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &#tour-request{
+
+            .overlay{
+
+            }
+        }
+
+        &#services{
+            .item{
+                .mask{
+                    height: 280px;
+
+                    .content{
+
+                    }
+                }
+            }
+        }
+
+        &#blogs{
+            .item{
+                .inner{
+
+                    .mask{
+
+                    }
+
+                    .head{
+
+                    }
+
+                    .body{
+
+                    }
+
+                    .foot{
+
+                    }
+                }
+            }
+        }
+
+        &#visa{
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            position: relative;
+
+            padding-top: 200px;
+            padding-bottom: 200px;
+
+            .overlay{
+                width: 100%;
+                height: 100%;
+
+                background-color: rgba(0,0,0,0.5);
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                text-align: center;
+                color: #fff;
+
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+        }
+    }
+}
 

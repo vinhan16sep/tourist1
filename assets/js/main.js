@@ -5,16 +5,22 @@ $(document).ready(function(){
     var i = 0;
 
     $('#brand .container .btn-expand button#btn-expand').click(function(){
-        if (i === 0){
-            $('header.header').animate({
-                left : '0'
-            }, 500);
-            i = 1;
-        } else {
-            $('header.header').animate({
-                left : '-100%'
+        $('#nav-device').animate({
+            left : '0'
         }, 500);
-            i = 0;
-        }
+        $('.main-page').animate({
+            marginLeft : '90%',
+            opacity : '0.5'
+        }, 500);
+    });
+
+    $('#nav-device > .head > #nav-close').click(function() {
+        $('#nav-device').animate({
+            left : '-100%'
+        }, 500);
+        $('.main-page').animate({
+            marginLeft : '0',
+            opacity : '1'
+        }, 500);
     });
 });
