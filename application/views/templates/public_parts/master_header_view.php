@@ -17,6 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
 	<!-- jQuery 3 -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.min.js"></script>
 	<!-- Bootstrap JS -->

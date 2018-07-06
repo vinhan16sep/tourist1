@@ -63,10 +63,9 @@ FONT EMBED
  */
 
 /* Embed font Roboto from Google Fonts Library */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 body{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*
@@ -339,12 +338,12 @@ header.header{
                             }
 
                             a{
-                                color: #fff;
+                                color: #333;
                             }
                         }
 
                         > a{
-                            color: #fff;
+                            color: #333;
                             text-transform: uppercase;
                         }
 
@@ -598,8 +597,8 @@ section.main-page{
 section.main-content{
     .section{
         display: block;
-        padding-top: 100px;
-        padding-bottom: 100px;
+        padding-top: 30px;
+        padding-bottom: 30px;
 
         .section-header{
             margin-bottom: 30px;
