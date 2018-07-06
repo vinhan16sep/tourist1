@@ -7,7 +7,7 @@ class Tours extends Public_Controller {
     private $request_vehicles_icon = array(
         '', 'fa-ban', 'fa-plane', 'fa-ship', 'fa-train', 'fa-bus', 'fa-motorcycle', 'fa-bicycle', 'fa-blind'
     );
-  
+
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
@@ -185,7 +185,7 @@ class Tours extends Public_Controller {
     public function created_captcha(){
         $vals = array(
             'img_path' => './captcha/',
-            'img_url' => 'http://localhost/tourist1/captcha',
+            'img_url' => base_url('captcha'),
             'img_width' => '120',
             'img_height' => 34,
             'expiration' => 0,
