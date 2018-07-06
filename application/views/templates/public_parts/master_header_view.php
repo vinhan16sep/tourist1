@@ -71,11 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--					</li>-->
 					<li>
 						<a href="" class="change-language" data-language="vi">
-							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt</li>
+							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt
 						</a>
 					<li>
 						<a href="" class="change-language" data-language="en">
-							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English</li>
+							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English
 						</a>
 					</li>
 					<li> | </li>
@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<ul>
 					<li class="outline">
 						<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
-						<a href="tel:(024) 1234 5678">(024) 1234 5678</a>
+						<a href="tel:0869 770 333">0869 770 333</a>
 					</li>
 					<li class="outline">
 						<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
@@ -471,7 +471,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="panel-heading" role="tab" id="expand-domestic-heading">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#domestic" aria-expanded="true" aria-controls="expand-domestic-heading">
-                                    <?php echo $this->lang->line('domestic') ?>
+                                    <?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
@@ -501,7 +501,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="panel-heading" role="tab" id="expand-international-heading">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#international" aria-expanded="false" aria-controls="expand-international-heading">
-                                    <?php echo $this->lang->line('international') ?>
+                                    <?php echo $this->lang->line('international') ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
@@ -550,7 +550,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="panel-heading" role="tab" id="expand-services-heading">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#services" aria-expanded="true" aria-controls="expand-services-heading">
-                                    <?php echo $this->lang->line('services') ?>
+                                    <?php echo $this->lang->line('services') ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
@@ -576,7 +576,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="panel-heading" role="tab" id="expand-visa-heading">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#visa" aria-expanded="true" aria-controls="expand-visa-heading">
-                                    <?php echo $this->lang->line('visa') ?>
+                                    <?php echo $this->lang->line('visa') ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
@@ -602,7 +602,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="panel-heading" role="tab" id="expand-blogs-heading">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#blogs" aria-expanded="true" aria-controls="expand-blogs-heading">
-                                    <?php echo $this->lang->line('blog') ?>
+                                    <?php echo $this->lang->line('blog') ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
@@ -628,18 +628,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 
 			<div class="foot">
 				<ul>
 					<li>
+						<a href="" class="change-language" data-language="vi">
+							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt
+					</a>
+					<li>
+						<a href="" class="change-language" data-language="en">
+							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
 						<label>
 							<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
 						</label>
 						<h3>
-							<a href="tel:(024) 1234 5678">(024) 1234 5678</a>
+							<a href="tel:0869 770 333">0869 770 333</a>
 						</h3>
 					</li>
 					<li>

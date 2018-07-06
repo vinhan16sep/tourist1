@@ -18,8 +18,16 @@
 								<div class="outline">
 									<i class="fa fa-phone" aria-hidden="false"></i> Hotline
 									<br>
-									<a class="link-primary" href="tel:(024) 1234 5678">
-										<h2>(024) 1234 5678</h2>
+									<a class="link-primary" href="tel:0869 770 333">
+										<h2>0869 770 333</h2>
+									</a>
+								</div>
+
+								<div class="outline">
+									<i class="fa fa-phone" aria-hidden="false"></i> Tel
+									<br>
+									<a class="link-primary" href="tel:(024) 22 393 599">
+										<h2>(024) 22 393 599</h2>
 									</a>
 								</div>
 

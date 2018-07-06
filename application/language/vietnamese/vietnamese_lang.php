@@ -75,49 +75,49 @@ $lang[''] = '';
 
 //Tour Detail
 
-$lang['tour-detail-duration'] = 'Duration';
-$lang['tour-detail-start'] = 'Starting Day';
-$lang['tour-detail-price'] = 'Price';
-$lang['tour-detail-rating'] = 'Rating';
-$lang['tour-detail-votes'] = 'Votes';
+$lang['tour-detail-duration'] = 'Thời gian';
+$lang['tour-detail-start'] = 'Ngày khởi hành';
+$lang['tour-detail-price'] = 'Chi phí';
+$lang['tour-detail-rating'] = 'Đánh giá';
+$lang['tour-detail-votes'] = 'lượt bình chọn';
 
-$lang['tour-detail-schedule'] = 'Schedule';
+$lang['tour-detail-schedule'] = 'Lịch trình';
 
-$lang['tour-tabs-overview'] = 'Overview';
-$lang['tour-tabs-gallery'] = 'Gallery';
-$lang['tour-tabs-price'] = 'Price';
-$lang['tour-tabs-trip-notes'] = 'Trip Notes';
-$lang['tour-tabs-inquire'] = 'Inquire';
-$lang['tour-tabs-customize'] = 'Customize';
+$lang['tour-tabs-overview'] = 'Tổng quan';
+$lang['tour-tabs-gallery'] = 'Thư viện ảnh';
+$lang['tour-tabs-price'] = 'Chi phí';
+$lang['tour-tabs-trip-notes'] = 'Lưu ý';
+$lang['tour-tabs-inquire'] = 'Đăng ký';
+$lang['tour-tabs-customize'] = 'Tuỳ chỉnh';
 
-$lang['tour-price-adult'] = 'Adult';
-$lang['tour-price-u11'] = 'Children from 2 to 11';
-$lang['tour-price-u2'] = 'Children under 2';
+$lang['tour-price-adult'] = 'Người lớn';
+$lang['tour-price-u11'] = 'Trẻ từ 2 đến 11 tuổi';
+$lang['tour-price-u2'] = 'Trẻ em dưới 2 tuổi';
 
-$lang['inclusion'] = 'Inclusion';
-$lang['exclusion'] = 'Exclusion';
+$lang['inclusion'] = 'Bao gồm';
+$lang['exclusion'] = 'Không bao gồm';
 
 $lang['condition-register'] = 'Tour Registration Conditions';
 $lang['condition-cancel'] = 'Tour Cancellation Conditions';
 $lang['condition-general'] = 'Tour General Conditions';
 
-$lang['customize-program'] = 'Daily Program';
-$lang['customize-change'] = 'Your Change';
+$lang['customize-program'] = 'Chương trình mặc định';
+$lang['customize-change'] = 'Chương trình thay đổi';
 
 //Forms
 
-$lang['form-title'] = 'Title';
-$lang['form-first-name'] = 'First Name';
-$lang['form-last-name'] = 'Last Name';
-$lang['form-email'] = 'Email Address';
-$lang['form-email-confirm'] = 'Confirm Email Address';
-$lang['form-phone-number'] = 'Phone Number';
-$lang['form-departure'] = 'Preferred Departure Date';
-$lang['form-country'] = 'Country';
-$lang['form-adults'] = 'Adults';
-$lang['form-children-u11'] = 'Children (2-11 years old)';
-$lang['form-children-u2'] = 'Children (Under 2 years old)';
-$lang['form-message'] = 'Message';
+$lang['form-title'] = 'Chức danh';
+$lang['form-first-name'] = 'Tên';
+$lang['form-last-name'] = 'Họ';
+$lang['form-email'] = 'Địa chỉ Email';
+$lang['form-email-confirm'] = 'Xác nhận địa chỉ Email';
+$lang['form-phone-number'] = 'Số điện thoại liên hệ';
+$lang['form-departure'] = 'Ngày khởi hành mong muốn';
+$lang['form-country'] = 'Đất nước';
+$lang['form-adults'] = 'Người lớn';
+$lang['form-children-u11'] = 'Trẻ từ 2 đến 11 tuổi';
+$lang['form-children-u2'] = 'Trẻ em dưới 2 tuổi';
+$lang['form-message'] = 'Tin nhắn';
 
 //Contact
 
