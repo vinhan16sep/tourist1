@@ -177,7 +177,7 @@ header.header {
         display: inline-block;
         font-size: 1em; }
         header.header .container-fluid .container#main-nav > ul > li > a {
-          color: #fff;
+          color: #333;
           text-transform: uppercase; }
         header.header .container-fluid .container#main-nav > ul > li:hover ul.menu-expand {
           display: block; }
@@ -393,8 +393,8 @@ section.main-page {
 
 section.main-content .section {
   display: block;
-  padding-top: 100px;
-  padding-bottom: 100px; }
+  padding-top: 30px;
+  padding-bottom: 30px; }
   section.main-content .section .section-header {
     margin-bottom: 30px; }
     section.main-content .section .section-header h1 {
@@ -1041,7 +1041,8 @@ footer.footer {
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical; }
   .section.tour-intro#domestic {
-    background-image: url("../img/vietnam.png"); }
+    background-image: url("../img/vietnam.png");
+    background-size: 460px 460px; }
   .section.tour-intro#international {
     background-image: url("../img/global.png"); }
 .section#tour-request {

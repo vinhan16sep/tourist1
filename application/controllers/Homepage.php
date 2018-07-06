@@ -22,7 +22,7 @@ class Homepage extends Public_Controller {
         $this->get_handbook_data();
         $this->get_destination_data();
         $this->get_domestic_data();
-        $this->get_international_data();
+        $this->get_international_datas();
     }
 
     function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
@@ -55,20 +55,7 @@ class Homepage extends Public_Controller {
             $ids = array();
         }
         array_unshift($ids,$tour_in_category['id']);
-        $check = 0;
-        $tour_all_in_category=array();
-        for ($i=0; $i < count($ids); $i++) {
-            $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
-            if($tour['id'] != ''){
-                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
-                $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id'],array(),$this->data['lang']);
-                $check++;
-                if($check == $number_tour){
-                    break;
-                }
-            }
-        }
-        return $tour_all_in_category;
+        return $this->product_model->get_all_product_category_id_array($ids,$number_tour,$this->data['lang']);
     }
     public function index() {
         //banner
@@ -131,12 +118,12 @@ class Homepage extends Public_Controller {
         }
     }
 
-    public function get_international_data($parent = FIXED_INTERNATIONAL_CATEGORY_ID){
+    public function get_international_datas($parent = FIXED_INTERNATIONAL_CATEGORY_ID){
         $categories = $this->product_category_model->fetch_product_category_menu($parent);
 
         foreach($categories as $key => $category){
             array_push($this->international_category_array, $category['id']);
-            $this->get_international_data($category['id']);
+            $this->get_international_datas($category['id']);
         }
     }
 

@@ -39,7 +39,9 @@ $(document).ready(function(){
         });
     });
     $('#captcha').change(function(){
-    	console.log(word);
+        if($(this).val() == word){
+            $('.btn-rating').prop('disabled', false);
+        }
     })
     $('.btn-rating').click(function(){
     	var product_id = $('.product_id').val();

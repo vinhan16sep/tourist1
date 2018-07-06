@@ -48,7 +48,7 @@
 						<tr>
 							<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
 							<td>
-								<div id="rateit_star" data-productid="123" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
+								<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
 								<input type="hidden" name="re_rateit" id="re_rateit" value="">
 								<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
 							</td>

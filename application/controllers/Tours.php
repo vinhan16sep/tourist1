@@ -48,18 +48,8 @@ class Tours extends Public_Controller {
                 $ids = array();
             }
             array_unshift($ids,$detail['id']);
-            $check = 0;
-            $product_array = array();
-            for ($i=0; $i < count($ids); $i++) {
-                 $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
-                 if($tour['id'] != ''){
-                    $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['lang']);
-                    $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id'],array(),$this->data['lang']);
-                    $check++;
-                 }
-            }
             $this->data['detail'] = $detail;
-            $this->data['product_array'] = $product_array;
+            $this->data['product_array'] = $this->product_model->get_all_product_category_id_array($ids,'',$this->data['lang']);
             $this->render('list_tours_view');
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
@@ -134,10 +124,10 @@ class Tours extends Public_Controller {
             $ip = $_SERVER['SERVER_ADDR'];
             // $this->session->unset_userdata($ip);
             $check_session = false;
-            if($this->session->has_userdata($ip)){
+            if($this->session->has_userdata($ip) && in_array($detail['id'], $this->session->userdata($ip))){
                 $check_session = true;
             }
-            $id = 91;
+            $id = $detail['id'];
             $rating = $this->product_model->rating_by_id($id);
             $count_rating = $rating['count_rating'];
             $total_rating = $rating['total_rating'];
@@ -163,10 +153,10 @@ class Tours extends Public_Controller {
     public function created_rating(){
         $isExits = false;
         $ip = $_SERVER['SERVER_ADDR'];
-        if($this->session->has_userdata($ip)){
+        if($this->session->has_userdata($ip) && in_array($this->input->get('product_id'), $this->session->userdata($ip))){
             $isExits = false;
         }else{
-            $this->session->set_userdata($ip, $ip);
+            $this->session->set_userdata($ip, array($ip, $this->input->get('product_id')));
             $this->session->mark_as_temp($ip, 3600);
             $product_id = $this->input->get('product_id');
             $new_rating = $this->input->get('rating');

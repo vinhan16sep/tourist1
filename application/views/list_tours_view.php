@@ -1,5 +1,5 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')"></section>
 
@@ -32,7 +32,7 @@
 							<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
 							<div class="overview">
 								<div class="head">
-									<span class="sub-header"><?php echo $product_array[$i]['parent']['title'] ?></span>
+									<span class="sub-header"><?php echo $product_array[$i]['parent_title'] ?></span>
 									<h3><?php echo $product_array[$i]['title'] ?></h3>
 								</div>
 								<div class="body">
@@ -41,7 +41,7 @@
 							</div>
 							<div class="content">
 								<div class="head">
-									<a href="<?php echo base_url("danh-muc/".$product_array[$i]['parent']['slug'])?>" class="sub-header" style="color:white"><?php echo $product_array[$i]['parent']['title'] ?></a>
+									<a href="<?php echo base_url("danh-muc/".$product_array[$i]['parent_slug'])?>" class="sub-header" style="color:white"><?php echo $product_array[$i]['parent_title'] ?></a>
 									<h4><?php echo $product_array[$i]['title'] ?></h4>
 									<h3 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h3>
 								</div>

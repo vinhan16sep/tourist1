@@ -16,8 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 	<!-- jQuery 3 -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.min.js"></script>
@@ -169,12 +168,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<ul>
 				<li>
 					<a href="<?php echo base_url('') ?>">
-						<i class="fa fa-home" aria-hidden="true"></i>
+						<i class="fa fa-home" aria-hidden="true" style="font-size: 1.35em"></i>
 					</a>
 				</li>
 				<li class="menu-list">
-					<a href="<?php echo base_url('') ?>" class="nav-link">
-						<?php echo $this->lang->line('domestic') ?> <span class="caret hidden-xs"></span>
+					<a href="<?php echo base_url('danh-muc/tour-trong-nuoc') ?>">
+						<?php echo $this->lang->line('domestic') ?> <span class="caret"></span>
 					</a>
 					<a class="right-caret visible-xs" data-toggle="collapse" data-parent="#main-nav-ul" href="#expand-domestic" aria-expanded="true" aria-controls="expand-domestic"><span class="caret"></span></a>
 					<ul class="menu-list-expand menu-expand collapse list-unstyled" id="expand-domestic">
@@ -231,8 +230,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</ul>
 				</li>
 				<li class="menu-tabs">
-					<a href="<?php echo base_url('') ?>" class="nav-link">
-						<?php echo $this->lang->line('international') ?> <span class="caret hidden-xs"></span>
+					<a href="<?php echo base_url('danh-muc/tour-nuoc-ngoai') ?>">
+						<?php echo $this->lang->line('international') ?> <span class="caret"></span>
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
 					<ul class="menu-tabs-expand menu-expand list-unstyled collapse" id="expand-international">
@@ -244,7 +243,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             foreach($international_menu as $key => $val){
                                 ?>
 								<li>
-									<a href="">
+									<a href="<?php echo base_url('danh-muc/' . $val['slug']); ?>">
                                         <?php echo $val['title']; ?> <span class="glyphicon glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
 									</a>
 									<ul>
