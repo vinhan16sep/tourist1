@@ -104,6 +104,10 @@ class Localtion extends Admin_Controller {
                         rename("assets/upload/localtion/".$this->data['detail']['slug'], "assets/upload/localtion/".$unique_slug);
                     }
                 }
+                if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && (!empty($_FILES['image_localtion']['name']))){
+                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0777);
+                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0777);
+                }
                 if(!empty($_FILES['image_localtion']['name'])){
                     $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
                     $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/localtion/'.$unique_slug, 'assets/upload/localtion/'.$unique_slug.'/thumb');
