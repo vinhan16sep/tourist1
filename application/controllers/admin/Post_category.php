@@ -94,7 +94,7 @@ class Post_category extends Admin_Controller{
                     'updated_at' => $this->author_data['updated_at'],
                     'updated_by' => $this->author_data['updated_by']
                 );
-                if($image){
+                if(isset($image)){
                     $shared_request['image'] = $image;
                 }
                 $this->db->trans_begin();
@@ -175,7 +175,7 @@ class Post_category extends Admin_Controller{
                     'updated_at' => $this->author_data['updated_at'],
                     'updated_by' => $this->author_data['updated_by']
                 );
-                if($image){
+                if(isset($image)){
                     $shared_request['image'] = $image;
                 }
                 $this->db->trans_begin();
@@ -196,7 +196,7 @@ class Post_category extends Admin_Controller{
                 } else {
                     $this->db->trans_commit();
                     $this->session->set_flashdata('message_success', MESSAGE_EDIT_SUCCESS);
-                    if($image != '' && $image != $detail['image'] && file_exists('assets/public/upload/'. $this->controller .'/'.$detail['image'])){
+                    if(isset($image) && $image != $detail['image'] && file_exists('assets/public/upload/'. $this->controller .'/'.$detail['image'])){
                         unlink('assets/public/upload/'. $this->controller .'/'.$detail['image']);
                     }
                     redirect('admin/'. $this->controller .'', 'refresh');

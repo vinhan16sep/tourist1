@@ -132,7 +132,7 @@ $lang['contact-phone'] = 'Số điện thoại';
 $lang['contact-country'] = 'Country of residence';
 $lang['contact-message'] = 'Nội dung';
 $lang['contact-send'] = 'Gửi';
-
+$lang['day'] = 'Ngày';
 
 
 

@@ -86,6 +86,9 @@
 					</div>
                 <?php endfor; ?>
 			</div>
+			<div class="col-md-6 col-md-offset-5 page">
+                    <?php echo (isset($page_links))? $page_links : '';?>
+                </div>
 		</div>
 	</div>
 </section>

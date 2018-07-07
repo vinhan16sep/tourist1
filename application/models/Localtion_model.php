@@ -95,4 +95,15 @@ class Localtion_model extends MY_Model {
         $this->db->where_in($this->table .'.id', $id);
         return $this->db->get()->row_array();
     }
+    public function get_all_localtion_area($area,$id,$limit = '',$lang){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id');
+        $this->db->where($this->table . '.is_deleted', 0);
+        $this->db->where($this->table_lang .'.language', $lang);
+        $this->db->where($this->table.'.area', $area);
+        $this->db->where($this->table.'.id !=', $id);
+        $this->db->limit($limit);
+        return $result = $this->db->get()->result_array();
+    }
 }

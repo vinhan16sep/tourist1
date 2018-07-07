@@ -299,98 +299,109 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php echo $this->lang->line('special-tours') ?>
 					</a>
 				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<?php echo $this->lang->line('mice') ?>
+				<li class="menu-list">
+					<a href="<?php echo base_url('chuyen-muc/'.$mice_menu['slug']) ?>">
+						<?php echo $this->lang->line('mice') ?> <span class="caret"></span>
 					</a>
+					<a class="right-caret visible-xs" data-toggle="collapse" data-parent="#main-nav-ul" href="#expand-domestic" aria-expanded="true" aria-controls="expand-domestic"><span class="caret"></span></a>
+					<ul class="menu-list-expand menu-expand collapse list-unstyled" id="expand-domestic">
+						<!----------------------------------------------->
+						<!-- DOMESTIC MENU -->
+						<!----------------------------------------------->
+
+						<?php
+						if(!empty($mice_menu['sub'])){
+							foreach($mice_menu['sub'] as $key => $val){
+						?>
+							<li class="item col-sm-3 col-xs-12">
+								<div class="head">
+									<a href="<?php echo base_url('chuyen-muc/'. $val['slug']) ?>" style="margin-bottom: 15px;">
+										<h3><?php echo $val['title']; ?></h3>
+									</a>
+								</div>
+								<div class="body">
+									<div class="mask hidden-xs" style="width: 100%;height: 200px;overflow: hidden;position: relative;">
+										<img src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="image first tour">
+									</div>
+								</div>
+							</li>
+						<?php
+							}
+						}
+						?>
+					</ul>
 				</li>
 				<li class="menu-dropdown">
-					<a href="javascript:void(0);" class="nav-link">
+					<a href="<?php echo base_url('chuyen-muc/dich-vu') ?>" class="nav-link">
 						<?php echo $this->lang->line('services') ?> <span class="caret hidden-xs"></span>
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
                     <ul class="menu-dropdown-expand menu-expand collapse" id="expand-services">
 						<div class="row">
-							<li class="media col-sm-6 col-xs-12">
-								<div class="media-left">
-									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
+	                    	<?php
+							if(!empty($service_menu['sub'])){
+								foreach($service_menu['sub'] as $key => $val){
+							?>
+								<li class="media col-sm-6 col-xs-12">
+									<div class="media-left">
+										<div class="mask">
+											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="service hotel">
+										</div>
 									</div>
-								</div>
-								<div class="media-body">
-									<a href="<?php echo base_url('chuyen-muc/khach-san'); ?>">
-										<h3 class="media-heading"><?php echo $this->lang->line('hotel') ?></h3>
-									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="<?php echo base_url('chuyen-muc/khach-san'); ?>" class="btn btn-primary" role="button">
-										<?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</li>
-							<li class="media col-sm-6 col-xs-12">
-								<div class="media-left">
-									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1466691623998-d607fab1ca29?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=460b263580e90456071d56b4fc10eebc&auto=format&fit=crop&w=1400&q=80" alt="service air tickets">
+									<div class="media-body">
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+											<h3 class="media-heading"><?php echo $val['title'] ?></h3>
+										</a>
+										<p><?php echo $val['content'] ?></p>
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>" class="btn btn-primary" role="button">
+											<?php echo $this->lang->line('explore') ?>
+										</a>
 									</div>
-								</div>
-								<div class="media-body">
-									<a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>">
-										<h3 class="media-heading"><?php echo $this->lang->line('ticket') ?></h3>
-									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</li>
+								</li>
+							<?php
+								}
+							}
+							?>
 						</div>
                     </ul>
 				</li>
 				<li class="menu-dropdown">
-					<a href="javascript:void(0);" class="nav-link">
+					<a href="<?php echo base_url('chuyen-muc/visa') ?>" class="nav-link">
 						<?php echo $this->lang->line('visa') ?> <span class="caret hidden-xs"></span>
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
 					<ul class="menu-dropdown-expand menu-expand collapse" id="expand-visa">
 						<div class="row">
-							<li class="media col-sm-6 col-xs-12">
-								<div class="media-left">
-									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service hotel">
+	                    	<?php
+							if(!empty($blog_menu['sub'])){
+								foreach($blog_menu['sub'] as $key => $val){
+							?>
+								<li class="media col-sm-6 col-xs-12">
+									<div class="media-left">
+										<div class="mask">
+											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="service hotel">
+										</div>
 									</div>
-								</div>
-								<div class="media-body">
-									<a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>">
-										<h3 class="media-heading"><?php echo $this->lang->line('visa-procedure') ?></h3>
-									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</li>
-							<li class="media col-sm-6 col-xs-12">
-								<div class="media-left">
-									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=349f0586d07c10fdf29da504276b5407&auto=format&fit=crop&w=1950&q=80" alt="service air tickets">
+									<div class="media-body">
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+											<h3 class="media-heading"><?php echo $val['title'] ?></h3>
+										</a>
+										<p><?php echo $val['content'] ?></p>
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>" class="btn btn-primary" role="button">
+	                                        <?php echo $this->lang->line('explore') ?>
+										</a>
 									</div>
-								</div>
-								<div class="media-body">
-									<a href="javascript:void(0);">
-										<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
-									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="javascript:void(0);" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</li>
+								</li>
+							<?php
+								}
+							}
+							?>
 						</div>
 					</ul>
 
 				</li>
 				<li class="menu-dropdown">
-					<a href="javascript:void(0);" class="nav-link">
+					<a href="<?php echo base_url('chuyen-muc/bai-viet') ?>" class="nav-link">
 						<?php echo $this->lang->line('blog') ?> <span class="caret hidden-xs"></span>
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
@@ -399,51 +410,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/36/xIsiRLngSRWN02yA2BbK_submission-photo-7.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a6696d473e304cb159beb53554186c77&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" alt="service hotel">
+										<?php 
+											if(!empty($location)){
+										?>
+											<img class="media-object" src="<?php echo site_url('assets/upload/localtion/' . $location[0]['slug'] .'/'. $location[0]['image']); ?>" alt="service hotel">
+										<?php 
+											}
+										?>
 									</div>
 								</div>
 								<div class="media-body">
-									<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>">
+									<a href="<?php echo base_url('location'); ?>">
 										<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
 									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
+									<?php 
+										if(!empty($location)){
+									?>
+										<p><?php echo $location[0]['content'] ?></p>
+										<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
+	                                        <?php echo $this->lang->line('explore') ?>
+										</a>
+									<?php 
+										}
+									?>
 								</div>
 							</li>
-							<li class="media col-sm-4 col-xs-12">
-								<div class="media-left">
-									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1502301197179-65228ab57f78?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642af8dddf7f943be34abbc7be686de3&auto=format&fit=crop&w=932&q=80" alt="service air tickets">
+
+	                    	<?php
+							if(!empty($blog_menu['sub'])){
+								foreach($blog_menu['sub'] as $key => $val){
+							?>
+								<li class="media col-sm-4 col-xs-12">
+									<div class="media-left">
+										<div class="mask">
+											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="service air tickets">
+										</div>
 									</div>
-								</div>
-								<div class="media-body">
-									<a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>">
-										<h3 class="media-heading"><?php echo $this->lang->line('handbook') ?></h3>
-									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</li>
-							<li class="media col-sm-4 col-xs-12">
-								<div class="media-left">
-									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80" alt="service air tickets">
+									<div class="media-body">
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+											<h3 class="media-heading"><?php echo $val['title'] ?></h3>
+										</a>
+										<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>" class="btn btn-primary" role="button">
+	                                        <?php echo $this->lang->line('explore') ?>
+										</a>
 									</div>
-								</div>
-								<div class="media-body">
-									<a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>">
-										<h3 class="media-heading"><?php echo $this->lang->line('diary') ?></h3>
-									</a>
-									<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
-									<a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
-							</li>
+								</li>
+							<?php
+								}
+							}
+							?>
 						</div>
 					</ul>
 				</li>
@@ -486,7 +502,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									foreach($domestic_menu as $key => $val){
 									?>
 									<li>
-										<a href="">
+										<a href="<?php echo base_url('danh-muc/'.$val['slug']); ?>">
 											<h3><?php echo $val['title']; ?></h3>
 										</a>
 									</li>
@@ -515,7 +531,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         foreach($international_menu as $key => $val){
                                             ?>
 											<li>
-												<a href="" >
+												<a href="<?php echo base_url('danh-muc/'.$val['slug']); ?>" >
 													<h3><?php echo $val['title']; ?></h3>
 												</a>
 											</li>
@@ -527,48 +543,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 						</div>
 					</div>
-
 					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="special">
+						<div class="panel-heading" role="tab" id="expand-mice-heading">
 							<h4 class="panel-title">
-								<a href="<?php echo site_url('danh-muc/tour-dac-biet') ?>" role="button">
-									<?php echo $this->lang->line('special-tours') ?>
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#mice" aria-expanded="true" aria-controls="expand-mice-heading">
+                                    <?php echo $mice_menu['post_category_title'] ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="mice">
-							<h4 class="panel-title">
-								<a href="<?php echo site_url('') ?>" role="button">
-                                    <?php echo $this->lang->line('mice') ?>
-								</a>
-							</h4>
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="expand-services-heading">
-							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#services" aria-expanded="true" aria-controls="expand-services-heading">
-                                    <?php echo $this->lang->line('services') ?> <span class="caret"></span>
-								</a>
-							</h4>
-						</div>
-						<div id="services" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-services-heading">
+						<div id="mice" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-mice-heading">
 							<div class="panel-body">
 								<ul>
-                                    <li>
-										<a href="<?php echo base_url('chuyen-muc/khach-san'); ?>">
-											<h3><?php echo $this->lang->line('hotel') ?></h3>
-										</a>
-									</li>
+									<?php
+									if($mice_menu['sub']){
+
+									foreach($mice_menu['sub'] as $key => $val){
+									?>
 									<li>
-										<a href="<?php echo base_url('chuyen-muc/ve-may-bay'); ?>">
-											<h3><?php echo $this->lang->line('ticket') ?></h3>
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+											<h3><?php echo $val['title']; ?></h3>
 										</a>
 									</li>
+										<?php
+									}
+									}
+									?>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="expand-service-heading">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#service" aria-expanded="true" aria-controls="expand-service-heading">
+                                    <?php echo $service_menu['post_category_title'] ?> <span class="caret"></span>
+								</a>
+							</h4>
+						</div>
+						<div id="service" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-service-heading">
+							<div class="panel-body">
+								<ul>
+									<?php
+									if($service_menu['sub']){
+
+									foreach($service_menu['sub'] as $key => $val){
+									?>
+									<li>
+										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+											<h3><?php echo $val['title']; ?></h3>
+										</a>
+									</li>
+										<?php
+									}
+									}
+									?>
 								</ul>
 							</div>
 						</div>
@@ -578,23 +607,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="panel-heading" role="tab" id="expand-visa-heading">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#visa" aria-expanded="true" aria-controls="expand-visa-heading">
-                                    <?php echo $this->lang->line('visa') ?> <span class="caret"></span>
+                                    <?php echo $visa_menu['post_category_title'] ?> <span class="caret"></span>
 								</a>
 							</h4>
 						</div>
 						<div id="visa" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-visa-heading">
 							<div class="panel-body">
 								<ul>
-									<li>
-										<a href="<?php echo base_url('chuyen-muc/thu-tuc-xin-visa'); ?>">
-											<h3><?php echo $this->lang->line('visa-procedure') ?></h3>
-										</a>
-									</li>
-									<li>
-										<a href="javascript:void(0);">
-											<h3><?php echo $this->lang->line('registration-form') ?></h3>
-										</a>
-									</li>
+									<?php
+									if($visa_menu['sub']){
+
+									foreach($visa_menu['sub'] as $key => $val){
+									?>
+										<li>
+											<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+												<h3><?php echo $val['title']; ?></h3>
+											</a>
+										</li>
+									<?php
+										}
+										}
+									?>
 								</ul>
 							</div>
 						</div>
@@ -616,16 +649,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<h3><?php echo $this->lang->line('location') ?></h3>
 										</a>
 									</li>
-									<li>
-										<a href="<?php echo base_url('chuyen-muc/cam-nang'); ?>">
-											<h3><?php echo $this->lang->line('handbook') ?></h3>
-										</a>
-									</li>
-									<li>
-										<a href="<?php echo base_url('chuyen-muc/nhat-ky'); ?>">
-											<h3><?php echo $this->lang->line('diary') ?></h3>
-										</a>
-									</li>
+									<?php
+									if($blog_menu['sub']){
+
+									foreach($blog_menu['sub'] as $key => $val){
+									?>
+										<li>
+											<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+												<h3><?php echo $val['title']; ?></h3>
+											</a>
+										</li>
+									<?php
+										}
+										}
+									?>
 								</ul>
 							</div>
 						</div>

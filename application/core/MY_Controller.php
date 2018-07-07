@@ -242,7 +242,9 @@ class Public_Controller extends MY_Controller {
         $this->load->library('ion_auth');
         $this->load->model('product_category_model');
         $this->load->model('product_model');
-
+        $this->load->model('post_category_model');
+        $this->load->model('post_model');
+        $this->load->model('localtion_model');
         $this->langAbbreviation = $this->session->userdata('langAbbreviation') ? $this->session->userdata('langAbbreviation') : 'vi';
 
         if($this->langAbbreviation == 'vi' || $this->langAbbreviation == 'en' || $this->langAbbreviation == ''){
@@ -262,9 +264,17 @@ class Public_Controller extends MY_Controller {
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
-
         $this->data['domestic_menu'] = $this->fetch_menu_categories(FIXED_DOMESTIC_CATEGORY_ID);
         $this->data['international_menu'] = $this->fetch_menu_categories(FIXED_INTERNATIONAL_CATEGORY_ID);
+        $this->data['mice_menu'] = $this->post_category_model->get_by_id(FIXED_MICE,array('title','content'),$this->session->userdata('langAbbreviation'),0);
+        $this->data['mice_menu']['sub'] = $this->post_category_model->get_by_parent_id(FIXED_MICE,'desc',$this->session->userdata('langAbbreviation'),0,4);
+        $this->data['service_menu'] = $this->post_category_model->get_by_id(FIXED_SERVICE,array('title','content'),$this->session->userdata('langAbbreviation'),0);
+        $this->data['service_menu']['sub'] = $this->post_category_model->get_by_parent_id(FIXED_SERVICE,'desc',$this->session->userdata('langAbbreviation'),0,2);
+        $this->data['blog_menu'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),$this->session->userdata('langAbbreviation'),0);
+        $this->data['blog_menu']['sub'] = $this->post_category_model->get_by_parent_id(FIXED_BLOG,'desc',$this->session->userdata('langAbbreviation'),0,2);
+        $this->data['visa_menu'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),$this->session->userdata('langAbbreviation'),0);
+        $this->data['visa_menu']['sub'] = $this->post_category_model->get_by_parent_id(FIXED_VISA,'desc',$this->session->userdata('langAbbreviation'),0,2);
+        $this->data['location'] = $this->localtion_model->get_all_with_pagination_search('desc', $this->session->userdata('langAbbreviation'), 3, 0);
         $this->data['controller'] = $this;
     }
 

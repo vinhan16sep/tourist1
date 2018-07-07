@@ -34,7 +34,7 @@ class MY_Model extends CI_Model {
     }
 
     public function get_all_with_pagination_search($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '') {
-        $this->db->select($this->table .'.*, '. $this->table_lang .'.title');
+        $this->db->select($this->table .'.*, '. $this->table_lang .'.title,'. $this->table_lang .'.content');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->like($this->table_lang .'.title', $keywords);
@@ -76,7 +76,7 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->num_rows();
     }
 
-    public function get_by_id($id, $select = array('title', 'description', 'content'), $lang = '') {
+    public function get_by_id($id, $select = array('title', 'description', 'content'), $lang = '',$activated = 1) {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
         if(in_array('title', $select)){
@@ -124,6 +124,9 @@ class MY_Model extends CI_Model {
             $this->db->where($this->table_lang .'.language', $lang);
         }
         $this->db->where($this->table .'.is_deleted', 0);
+        if($activated == 0){
+            $this->db->where($this->table .'.is_activated', 0);
+        }
         $this->db->where($this->table .'.id', $id);
         $this->db->limit(1);
         

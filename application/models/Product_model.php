@@ -262,7 +262,7 @@ class Product_model extends MY_Model{
         return $this->db->get()->result_array();
     }
 
-    public function get_tours_in_array_category_id($category_array, $lang){
+    public function get_tours_in_array_category_id($category_array, $lang,$activated = 1){
         $this->db->select($this->table . '.*, ' . $this->table_lang . '.*, product_category_lang.title as category_title')
             ->from($this->table)
             ->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id')
@@ -271,24 +271,33 @@ class Product_model extends MY_Model{
             ->where('product_category_lang.language', $lang)
             ->where_in($this->table . '.product_category_id', $category_array)
             ->where($this->table . '.is_deleted', 0);
+            if($activated == 0){
+                $this->db->where($this->table .'.is_activated', 0);
+            }
 
         return $this->db->get()->result_array();
     }
 
-    public function get_all_product_category_id_array($product_category_id=array(),$limit='',$lang='vi',$order='desc') {
+    public function get_all_product_category_id_array($product_category_id=array(),$limit='',$lang='vi',$order='desc',$activated = 1,$start='') {
         $this->db->select('product.*, product_lang.title as title, product_lang.description as description, product_category_lang.title as parent_title, product_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         $this->db->join('product_category', 'product_category.id = product.product_category_id', 'left');
         $this->db->join('product_category_lang', 'product.product_category_id = product_category_lang.product_category_id', 'left');
         $this->db->where($this->table .'.is_deleted', 0);
+        if($activated == 0){
+            $this->db->where($this->table .'.is_activated', 0);
+        }
         $this->db->where_in('product.product_category_id', $product_category_id);
         $this->db->where($this->table_lang .'.language', $lang);
         $this->db->where('product_category_lang.language', $lang);
         $this->db->group_by('product.id');
         $this->db->order_by('product.id', $order);
-        if($limit != ''){
+        if($limit != '' && $start == ''){
             $this->db->limit($limit);
+        }
+        if($limit != '' && $start != ''){
+            $this->db->limit($limit,$start);
         }
         
         return $this->db->get()->result_array();

@@ -56,7 +56,7 @@
 							<a href="<?php echo base_url('about') ?>"><?php echo $this->lang->line('about') ?></a>
 						</li>
 						<li>
-							<a href="<?php echo base_url('services') ?>"><?php echo $this->lang->line('services') ?></a>
+							<a href="<?php echo base_url('chuyen-muc/dich-vu') ?>"><?php echo $this->lang->line('services') ?></a>
 						</li>
 						<li>
 							<a href="<?php echo base_url('contact') ?>"><?php echo $this->lang->line('contact') ?></a>

@@ -126,6 +126,10 @@ defined('FIXED_ABOUT_US')        OR define('FIXED_ABOUT_US', 15);
  */
 defined('FIXED_HANDBOOK')        OR define('FIXED_HANDBOOK', 4);
 defined('FIXED_DESTINATION')        OR define('FIXED_DESTINATION', 8);
+defined('FIXED_MICE')        OR define('FIXED_MICE', 12);
+defined('FIXED_SERVICE')        OR define('FIXED_SERVICE', 11);
+defined('FIXED_BLOG')        OR define('FIXED_BLOG', 3);
+defined('FIXED_VISA')        OR define('FIXED_VISA', 6);
 
 /*
 |--------------------------------------------------------------------------
