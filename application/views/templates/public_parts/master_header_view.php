@@ -328,7 +328,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+										<img class="media-object" src="https://images.unsplash.com/photo-1466691623998-d607fab1ca29?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=460b263580e90456071d56b4fc10eebc&auto=format&fit=crop&w=1400&q=80" alt="service air tickets">
 									</div>
 								</div>
 								<div class="media-body">
@@ -354,7 +354,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
+										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service hotel">
 									</div>
 								</div>
 								<div class="media-body">
@@ -370,7 +370,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-6 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+										<img class="media-object" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=349f0586d07c10fdf29da504276b5407&auto=format&fit=crop&w=1950&q=80" alt="service air tickets">
 									</div>
 								</div>
 								<div class="media-body">
@@ -397,7 +397,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1524932563317-9962c267d8bd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b9dca407a53486feee28d0905f3227&auto=format&fit=crop&w=1000&q=80" alt="service hotel">
+										<img class="media-object" src="https://images.unsplash.com/36/xIsiRLngSRWN02yA2BbK_submission-photo-7.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a6696d473e304cb159beb53554186c77&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" alt="service hotel">
 									</div>
 								</div>
 								<div class="media-body">
@@ -413,7 +413,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+										<img class="media-object" src="https://images.unsplash.com/photo-1502301197179-65228ab57f78?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642af8dddf7f943be34abbc7be686de3&auto=format&fit=crop&w=932&q=80" alt="service air tickets">
 									</div>
 								</div>
 								<div class="media-body">
@@ -429,7 +429,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li class="media col-sm-4 col-xs-12">
 								<div class="media-left">
 									<div class="mask">
-										<img class="media-object" src="https://images.unsplash.com/photo-1454496406107-dc34337da8d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1eba6d2e11ba9969b93d137aa42ae851&auto=format&fit=crop&w=2326&q=80" alt="service air tickets">
+										<img class="media-object" src="https://images.unsplash.com/photo-1482059470115-0aadd6bf6834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=267bba9a4e280ec64388fe8fb01e9d1b&auto=format&fit=crop&w=1950&q=80" alt="service air tickets">
 									</div>
 								</div>
 								<div class="media-body">

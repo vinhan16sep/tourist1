@@ -54,6 +54,11 @@ $lang['booking'] = 'Đặt lịch ngay';
 $lang['see-detail'] = 'Xem chi tiết';
 $lang['submit-message'] = 'Gửi tin nhắn';
 
+//Special Tours Featured
+$lang['transport'] = 'Phương tiện đi lại';
+$lang['trip-guide'] = 'Hướng dẫn về tour';
+$lang['hotel-advisor'] = 'Tư vấn khách sạn';
+
 //Tour Request
 
 $lang['tour-request-title'] = 'Let us help you to find your suitable trip';

@@ -58,6 +58,11 @@ $lang['booking'] = 'Book Now!';
 $lang['see-detail'] = 'See Detail';
 $lang['submit-message'] = 'Submit Message';
 
+//Special Tours Featured
+$lang['transport'] = 'Transport';
+$lang['trip-guide'] = 'Trip Guiding';
+$lang['hotel-advisor'] = 'Hotel Advisor';
+
 //Tour Request
 
 $lang['tour-request-title'] = 'Let us help you to find your suitable trip';

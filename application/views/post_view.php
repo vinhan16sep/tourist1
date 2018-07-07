@@ -26,8 +26,10 @@
 								</div>
 							</div>
 							<div class="body">
-								<h4 class="post-subtitle">Blog SubTitles</h4>
-								<h2 class="post-title"><?php echo $val['title']; ?></h2>
+								<h4 class="post-subtitle">Blogs</h4>
+								<a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>">
+									<h2 class="post-title"><?php echo $val['title']; ?></h2>
+								</a>
 								<p class="post-description"><?php echo $val['description']; ?></p>
 							</div>
 							<div class="foot">

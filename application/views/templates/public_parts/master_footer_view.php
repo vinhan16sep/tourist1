@@ -10,7 +10,7 @@
 					<table class="table">
 						<tr>
 							<td style="width: 50%">
-								<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
+								<img src="<?php echo site_url('assets/img/')?>logo-W.png" alt="logo Diamond">
 								<br>
 								<p>About us Paragraph</p>
 							</td>
