@@ -43,6 +43,18 @@
 
                     .body{
                         padding: 0 15px 15px;
+
+                        a{
+                            color: $gray-dark;
+
+                            &:hover{
+                                color: $gray-dark;
+                            }
+                        }
+
+                        h2{
+                            font-weight: 700;
+                        }
                     }
 
                     .foot{

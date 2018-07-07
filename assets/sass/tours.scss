@@ -38,6 +38,24 @@
         .breadcrumb{
             padding: 10px 0;
             background-color: transparent;
+
+            a{
+                &:hover{
+                    color: $primary;
+                }
+            }
+        }
+
+        .section-header{
+            h1{
+                font-weight: 700;
+
+                padding-bottom: 30px;
+            }
+
+            p{
+                color: $gray-light;
+            }
         }
     }
 }
@@ -67,17 +85,34 @@
                     height: 50%;
 
                     position: absolute;
-                    top: 50%;
+                    top: 40%;
                     left: 0;
                     z-index: 990;
 
                     padding: 15px;
 
-                    color: #fff;
-
                     opacity: 1;
 
-                    @include transition(0.5s)
+                    text-shadow: 1px 2px 5px #333;
+
+                    @include transition(0.5s);
+
+                    .head{
+
+                        h4.post-subtitle, h2.post-title{
+                            color: #fff;
+                        }
+
+                        h2.post-title{
+                            font-weight: 700;
+                        }
+                    }
+
+                    .body{
+                        h3{
+                            color: #fff;
+                        }
+                    }
                 }
 
                 .content{
@@ -93,11 +128,34 @@
 
                     background-color: rgba(0,0,0,0.5);
 
-                    color: #fff;
-
                     opacity: 0;
 
-                    @include transition(0.5s)
+                    @include transition(0.5s);
+
+                    .head{
+                        h4.post-subtitle, h2.post-title, h3.price{
+                            color: #fff;
+                        }
+
+                        h4.post-subtitle{
+                            font-size: 0.875em;
+                        }
+
+                        h2.post-title{
+                            font-size: 1.5em;
+                            font-weight: 700;
+                        }
+
+                        h3.price{
+                            font-size: 2em;
+                        }
+                    }
+
+                    .body{
+                        table{
+                            color: #fff;
+                        }
+                    }
                 }
             }
 
@@ -125,6 +183,10 @@
 #tour-detail{
     .row{
         .left{
+            h3{
+                font-weight: 700;
+            }
+
             table{
                 width: 100%;
             }
@@ -133,6 +195,10 @@
         .right{
             background-color: $primary;
             color: #fff;
+
+            h3{
+                font-weight: 700;
+            }
 
             table{
                 color: #fff;
@@ -176,7 +242,14 @@
             margin-top: 30px;
 
             .nav-tabs{
-
+                li{
+                    a{
+                        &:hover {
+                            color: #fff;
+                            background-color: $primary-hover;
+                        }
+                    }
+                }
             }
 
             .tab-content{

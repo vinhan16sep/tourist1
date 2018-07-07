@@ -51,20 +51,16 @@
 
 <section id="tour-intro" class="container-fluid section">
 	<div class="container">
-		<div class="row">
-			<div class="section-header col-xs-12">
-				<div class="row">
-					<div class="col-xs-12">
-						<h3><?php echo $specialtour['product_category_title']; ?></h3>
-						<div class="line">
-							<div class="line-primary"></div>
-						</div>
-					</div>
-				</div>
+		<div class="section-header">
+			<h1><?php echo $specialtour['product_category_title']; ?></h1>
+			<div class="line">
+				<div class="line-primary"></div>
 			</div>
+		</div>
+		<div class="row">
 			<div class="left col-sm-6 col-xs-12">
 				<p><?php echo $specialtour['product_category_content']; ?></p>
-				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
+				<a href="<?php echo base_url('danh-muc/tour-dac-biet/') ?>" class="btn btn-primary" role="button">
                     <?php echo $this->lang->line('see-all') ?>
 				</a>
 			</div>
@@ -74,19 +70,19 @@
 						<div class="circle-border">
 							<i class="fa fa-plane" aria-hidden="true"></i>
 						</div>
-						<h4>Transport</h4>
+						<h4><?php echo $this->lang->line('transport') ?></h4>
 					</div>
 					<div class="item col-xs-4">
 						<div class="circle-border">
 							<i class="fa fa-compass" aria-hidden="true"></i>
 						</div>
-						<h4>Trip Guiding</h4>
+						<h4><?php echo $this->lang->line('trip-guide') ?></h4>
 					</div>
 					<div class="item col-xs-4">
 						<div class="circle-border">
 							<i class="fa fa-hotel" aria-hidden="true"></i>
 						</div>
-						<h4>Hotel Advisor</h4>
+						<h4><?php echo $this->lang->line('hotel-advisor') ?></h4>
 					</div>
 				</div>
 			</div>
@@ -113,8 +109,8 @@
 											<div class="content">
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-														<h2 class="post-title"><?php echo $value['title']; ?></h2>
-														<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+													<h2 class="post-title"><?php echo $value['title']; ?></h2>
+													<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
 												</div>
 												<div class="body">
 													<table class="table">
@@ -437,17 +433,18 @@
 	</div>
 	<div class="row">
 		<?php foreach ($post_handbook as $key => $value): ?>
+		<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
 			<div class="item col-sm-6 col-xs-12">
 				<div class="mask">
 					<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="blogs image">
+					<div class="overlay"></div>
 					<div class="content">
 						<h4 class="sub-header"><?php echo $value['category_title'];?></h4>
-						<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
-							<h2 class="header"><?php echo $value['title']; ?></h2>
-						</a>
+						<h2 class="header"><?php echo $value['title']; ?></h2>
 					</div>
 				</div>
 			</div>
+		</a>
 		<?php endforeach ?>
 	</div>
 </section>
