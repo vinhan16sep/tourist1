@@ -48,10 +48,10 @@
                                     <a class="btn btn-warning btn-xs" title="Banner không sử dụng">Không sử dụng</a>
                                 <?php endif ?>
                             </div>
-                            <div class="col-md-12" style="margin-top: 5px;">
+                            <!-- <div class="col-md-12" style="margin-top: 5px;"> -->
 
                                 <!-- Nav tabs -->
-                                <ul class="nav nav-pills nav-justified" role="tablist">
+                                <!-- <ul class="nav nav-pills nav-justified" role="tablist">
                                     <?php $i = 0; ?>
                                     <?php foreach ($page_languages as $key => $value): ?>
                                         <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
@@ -61,10 +61,10 @@
                                         </li>
                                         <?php $i++; ?>
                                     <?php endforeach ?>
-                                </ul>
+                                </ul> -->
 
                                 <!-- Tab panes -->
-                                <div class="tab-content">
+                                <!-- <div class="tab-content">
                                     <?php $i = 0; ?>
                                     <?php foreach ($template as $key => $value): ?>
                                         <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
@@ -95,9 +95,9 @@
                                         </div>
                                     <?php $i++; ?>
                                     <?php endforeach ?>
-                                </div>
+                                </div> -->
 
-                            </div>
+                            <!-- </div> -->
 
                         </div>
 

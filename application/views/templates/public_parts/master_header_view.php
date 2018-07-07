@@ -188,7 +188,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						?>
 							<li class="item col-sm-3 col-xs-12">
 								<div class="head">
-									<h3><?php echo $val['title']; ?></h3>
+									<a href="<?php echo base_url('danh-muc/'. $val['slug']) ?>" style="margin-bottom: 15px;">
+										<h3><?php echo $val['title']; ?></h3>
+									</a>
 								</div>
 								<div class="body">
 									<ul class="list-unstyled">

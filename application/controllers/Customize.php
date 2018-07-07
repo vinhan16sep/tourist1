@@ -49,7 +49,8 @@ class Customize extends Public_Controller{
                 'updated_at' => date('Y-m-d H:i:s', now()),
                 'updated_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name')
             );
-            $insert = $this->customize_model->common_insert(array_merge($shared_request,$this->author_data));
+
+            $insert = $this->customize_model->common_insert($shared_request);
             if($insert){
                 $reponse = array(
                     'csrf_hash' => $this->security->get_csrf_hash()

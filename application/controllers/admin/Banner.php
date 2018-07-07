@@ -39,40 +39,35 @@ class Banner extends Admin_Controller{
 
 	public function create(){
 		$this->load->helper('form');
-        if($this->input->post()){
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-            $this->form_validation->set_rules('title_en', 'Title', 'required');
-            if($this->form_validation->run() == TRUE){
-                if(empty($_FILES['image_shared']['name'])){
-                    $this->session->set_flashdata('message_error', MESSAGE_EMPTY_IMAGE_ERROR);
-                    redirect('admin/'.$this->data['controller']);
-                }
-                if(!empty($_FILES['image_shared']['name'])){
-                    $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
-                }
-                if(!empty($_FILES['image_shared']['name'])){
-                    $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'.$this->data['controller'], 'assets/upload/'.$this->data['controller'].'/thumb');
-                }
-                $shared_request['image'] = $image;
-                if($this->banner_model->find_rows(array("is_activated" => 0, "is_deleted" => 0)) == 0){
-                    $shared_request['is_activated'] = 0;
-                }
-                $this->db->trans_begin();
-                $insert = $this->banner_model->common_insert(array_merge($shared_request,$this->author_data));
-                if($insert){
-                    $requests = handle_multi_language_request('banner_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
-                    $this->banner_model->insert_with_language($requests);
-                }
-                if ($this->db->trans_status() === false) {
-                    $this->db->trans_rollback();
-                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
-                    $this->render('admin/banner/create_banner_view');
-                } else {
-                    $this->db->trans_commit();
-                    $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
-                    redirect('admin/'. $this->data['controller'] .'', 'refresh');
-                }
+        if($this->input->post() == TRUE){
+            if(empty($_FILES['image_shared']['name'])){
+                $this->session->set_flashdata('message_error', MESSAGE_EMPTY_IMAGE_ERROR);
+                redirect('admin/'.$this->data['controller']);
+            }
+            if(!empty($_FILES['image_shared']['name'])){
+                $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
+            }
+            if(!empty($_FILES['image_shared']['name'])){
+                $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'.$this->data['controller'], 'assets/upload/'.$this->data['controller'].'/thumb');
+            }
+            $shared_request['image'] = $image;
+            if($this->banner_model->find_rows(array("is_activated" => 0, "is_deleted" => 0)) == 0){
+                $shared_request['is_activated'] = 0;
+            }
+            $this->db->trans_begin();
+            $insert = $this->banner_model->common_insert(array_merge($shared_request,$this->author_data));
+            if($insert){
+                $requests = handle_multi_language_request('banner_id', $insert, $this->request_language_template, $this->input->post(), $this->page_languages);
+                $this->banner_model->insert_with_language($requests);
+            }
+            if ($this->db->trans_status() === false) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                $this->render('admin/banner/create_banner_view');
+            } else {
+                $this->db->trans_commit();
+                $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
+                redirect('admin/'. $this->data['controller'] .'', 'refresh');
             }
         }
         $this->render('admin/banner/create_banner_view');
@@ -156,12 +151,6 @@ class Banner extends Admin_Controller{
             $detail = $this->banner_model->get_by_id($id, array('title','description'));
             $this->data['detail'] = build_language($this->data['controller'], $detail, array('title','description'), $this->page_languages);
             if($this->input->post()){
-                $this->load->library('form_validation');
-                $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-                $this->form_validation->set_rules('title_en', 'Title', 'required');
-                $this->form_validation->set_rules('description_vi', 'Mô tả', 'required');
-                $this->form_validation->set_rules('description_en', 'Description', 'required');
-                if($this->form_validation->run() == TRUE){
                     if(!empty($_FILES['image_shared']['name'])){
                         $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
                     }
@@ -193,7 +182,6 @@ class Banner extends Admin_Controller{
                         }
                         redirect('admin/'. $this->data['controller'] .'', 'refresh');
                     }
-                }
             }
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ID_ERROR);
