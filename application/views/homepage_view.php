@@ -459,7 +459,7 @@
 				<h4><?php echo $visa['content'] ?></h4>
 			</div>
 			<div class="foot">
-				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
+				<a href="<?php echo base_url('chuyen-muc/'.$visa['slug']) ?>" class="btn btn-primary" role="button">
                     <?php echo $this->lang->line('explore') ?>
 				</a>
 			</div>
@@ -471,37 +471,39 @@
 	<div class="section-header">
 		<div class="row">
 			<div class="col-sm-6 col-xs-12">
-				<h3><?php echo $destination['post_category_title']; ?></h3>
+				<h3><?php echo $this->lang->line('location') ?></h3>
 				<div class="line">
 					<div class="line-primary"></div>
 				</div>
-				<p><?php echo $destination['post_category_content']; ?></p>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
-        <?php foreach ($post_destination as $value): ?>
-		<div class="item col-sm-4 col-xs-12">
-			<div class="inner">
-				<div class="mask">
-					<img src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="blogs image">
-				</div>
-				<div class="head">
-					<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-					<h2 class="post-title"><?php echo $value['title']; ?></h2>
-				</div>
-				<div class="body">
-					<p class="post-description"><?php echo $value['description']; ?></p>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('tour-request') ?>
+		<?php if (!empty($location)): ?>
+	        <?php foreach ($location as $value): ?>
+			<div class="item col-sm-4 col-xs-12">
+				<div class="inner">
+					<a href="<?php echo base_url('diem-den/'.$value['slug']) ?>">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
+						</div>
 					</a>
+					<div class="head">
+						<h4 class="post-subtitle"><?php echo $value['title']; ?></h4>
+					</div>
+					<div class="body">
+						<p class="post-description"><?php echo $value['content']; ?></p>
+					</div>
+					<div class="foot">
+						<a href="<?php echo base_url('diem-den/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+	                        <?php echo $this->lang->line('explore') ?>
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
+		<?php endif ?>
 	</div>
 </section>
 

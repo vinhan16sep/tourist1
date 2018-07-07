@@ -67,3 +67,8 @@ $route['created_captcha'] = 'tours/created_captcha';
 
 $route['bai-viet/([a-zA-Z0-9-_]+)'] = 'post/detail/$1';
 $route['chuyen-muc/([a-zA-Z0-9-_]+)'] = 'post/category/$1';
+
+
+$route['diem-den/([a-zA-Z0-9-_]+)'] = 'location/detail/$1';
+
+

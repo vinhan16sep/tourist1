@@ -7,11 +7,14 @@ class Post_category_model extends MY_Model{
 
 	public $table = 'post_category';
 
-	public function get_by_parent_id($parent_id, $order = 'desc',$lang = ''){
-		$this->db->select($this->table .'.*, '. $this->table_lang .'.title');
+	public function get_by_parent_id($parent_id, $order = 'desc',$lang = '',$activated = 1,$limit=''){
+		$this->db->select($this->table .'.*, '. $this->table_lang .'.title, '. $this->table_lang .'.content');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->where($this->table .'.is_deleted', 0);
+        if($activated == 0){
+            $this->db->where($this->table .'.is_activated', 0);
+        }
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
@@ -21,7 +24,9 @@ class Post_category_model extends MY_Model{
 
         $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
         $this->db->order_by($this->table .".sort", $order);
-
+        if($limit != ''){
+            $this->db->limit($limit);
+        }
         return $result = $this->db->get()->result_array();
 	}
 
@@ -82,7 +87,7 @@ class Post_category_model extends MY_Model{
     }
 
     public function fetch_row_by_slug($slug, $lang = ''){
-        $this->db->select('*');
+        $this->db->select($this->table.'.*, '.$this->table_lang.'.title');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->where($this->table .'.is_deleted', 0);

@@ -165,4 +165,5 @@ class Product_category_model extends MY_Model{
         return $result = $this->db->get()->result_array();
     }
 
+
 }

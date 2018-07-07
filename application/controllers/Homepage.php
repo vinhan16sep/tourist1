@@ -61,26 +61,26 @@ class Homepage extends Public_Controller {
         //banner
         $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),$this->data['lang']);
         //tour
-        $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_CATEGORY_ID,array('title','content'),$this->data['lang']);
-        $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_CATEGORY_ID,array('title','content'),$this->data['lang']);
-        $this->data['specialtour'] = $this->product_category_model->get_by_id(FIXED_SPECIAL_CATEGORY_ID,array('title','content'),$this->data['lang']);
+        $this->data['domestic'] = $this->product_category_model->get_by_id(FIXED_DOMESTIC_CATEGORY_ID,array('title','content'),$this->data['lang'],0);
+        $this->data['international'] = $this->product_category_model->get_by_id(FIXED_INTERNATIONAL_CATEGORY_ID,array('title','content'),$this->data['lang'],0);
+        $this->data['specialtour'] = $this->product_category_model->get_by_id(FIXED_SPECIAL_CATEGORY_ID,array('title','content'),$this->data['lang'],0);
         /**
          * GET TOURS IN EACH CATEGORY
          */
-        $this->data['domestic_tours'] = $this->product_model->get_tours_in_array_category_id($this->domestic_category_array, $this->data['lang']);
-        $this->data['international_tours'] = $this->product_model->get_tours_in_array_category_id($this->international_category_array, $this->data['lang']);
-        $this->data['special_tours'] = $this->product_model->get_tours_in_array_category_id(array(FIXED_SPECIAL_CATEGORY_ID), $this->data['lang']);
+        $this->data['domestic_tours'] = $this->product_model->get_tours_in_array_category_id($this->domestic_category_array, $this->data['lang'],0);
+        $this->data['international_tours'] = $this->product_model->get_tours_in_array_category_id($this->international_category_array, $this->data['lang'],0);
+        $this->data['special_tours'] = $this->product_model->get_tours_in_array_category_id(array(FIXED_SPECIAL_CATEGORY_ID), $this->data['lang'],0);
 
         /**
          * GET POSTS IN HANDBOOK
          */
-        $this->data['handbook'] = $this->post_category_model->get_by_id(FIXED_HANDBOOK,array('title','content'),$this->data['lang']);
+        $this->data['handbook'] = $this->post_category_model->get_by_id(FIXED_HANDBOOK,array('title','content'),$this->data['lang'],0);
         $this->data['post_handbook'] = $this->post_model->get_post_in_array_category_id($this->handbook_category_array, $this->data['lang'],2);
         /**
          * GET POSTS IN DESTINATION
 
          */
-        $this->data['destination'] = $this->post_category_model->get_by_id(FIXED_DESTINATION,array('title','content'),$this->data['lang']);
+        $this->data['destination'] = $this->post_category_model->get_by_id(FIXED_DESTINATION,array('title','content'),$this->data['lang'],0);
         $this->data['post_destination'] = $this->post_model->get_post_in_array_category_id($this->destination_category_array, $this->data['lang'],3);
 
         //post

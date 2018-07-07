@@ -47,9 +47,24 @@ class Tours extends Public_Controller {
             if(empty($ids)){
                 $ids = array();
             }
-            array_unshift($ids,$detail['id']);
+            array_unshift($ids,$detail['id']);$total_rows  = 0;
+            $check = $this->product_model->get_all_product_category_id_array($ids,'',$this->data['lang'],'',0);
+            if(!empty($check)){
+                $total_rows  = count($check);
+            }
+            $this->load->library('pagination');
+            $base_url = base_url('tours/category/'.$slug);
+            $uri_segment = 4;
+            $per_page = 9;
+            foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+                $config[$key] = $value;
+            }
+            $this->pagination->initialize($config);
+            $this->data['page_links'] = $this->pagination->create_links();
+            $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+            $product_array = $this->product_model->get_all_product_category_id_array($ids,$per_page,$this->data['lang'],'',0,$this->data['page']);
             $this->data['detail'] = $detail;
-            $this->data['product_array'] = $this->product_model->get_all_product_category_id_array($ids,'',$this->data['lang']);
+            $this->data['product_array'] = $this->product_model->get_all_product_category_id_array($ids,$per_page,$this->data['lang'],'',0,$this->data['page']);
             $this->render('list_tours_view');
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
