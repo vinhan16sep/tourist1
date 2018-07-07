@@ -5,7 +5,7 @@ $("#inquire input,#customize input,#inquire #inquire_title,#customize #customize
 	if($(this).closest('.tab-pane').attr('id') == "inquire"){
 		targetTab = "#customize";
 	}
-	$(targetTab + " [name="+name+"]").val($(this).val());
+	$(targetTab + ' [name="'+name+'"]').val($(this).val());
 });
 
 $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookingsubmit,#customizesubmit",function(){
@@ -95,10 +95,10 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 	}
 	if($("#"+idForm).valid() === true){
 		if(idForm == 'form-customize'){
-			url = "http://diamondtour.vn/customize";
+			url = "http://localhost/tourist1/customize";
 
 		}else{
-			url = "http://diamondtour.vn/booking";
+			url = "http://localhost/tourist1/booking";
 		}
         $.ajax({
             method: "post",
@@ -121,7 +121,6 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
                 csrf_diamondtour_token : csrf_hash
             },
 			success: function(response){
-				console.log(response);
 				if(response.status == 200){
 					csrf_hash = response.reponse.csrf_hash;
 					if (response.isExisted == true) {

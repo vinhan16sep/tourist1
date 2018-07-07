@@ -39,7 +39,7 @@
                             ?>
                             <br>
                         </div>
-                        <div>
+                        <!-- <div>
                             <ul class="nav nav-pills nav-justified" role="tablist">
                                 <?php $i = 0; ?>
                                 <?php foreach ($page_languages as $key => $value): ?>
@@ -79,7 +79,7 @@
                                 <?php $i++; ?>
                                 <?php endforeach ?>
                             </div>
-                        </div>
+                        </div> -->
                         <?php echo form_submit('submit_shared', 'OK', 'class="btn btn-primary"'); ?>
                         <?php echo form_close(); ?>
                     </div>
