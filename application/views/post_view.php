@@ -18,25 +18,25 @@
                 if($result){
                     foreach($result as $key => $val){
                 ?>
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="head">
-                                    <div class="mask">
-                                        <img src="<?php echo site_url('assets/upload/post/' . $val['image']); ?>" alt="image blog">
-                                    </div>
-                                </div>
-                                <div class="body">
-                                    <h4 class="post-subtitle">Blog SubTitles</h4>
-                                    <h2 class="post-title"><?php echo $val['title']; ?></h2>
-                                    <p class="post-description"><?php echo $val['description']; ?></p>
-                                </div>
-                                <div class="foot">
-                                    <a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('see-detail') ?>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+					<div class="item col-md-4 col-sm-6 col-xs-12">
+						<div class="inner">
+							<div class="head">
+								<div class="mask">
+									<img src="<?php echo site_url('assets/upload/post/' . $val['image']); ?>" alt="image blog">
+								</div>
+							</div>
+							<div class="body">
+								<h4 class="post-subtitle">Blog SubTitles</h4>
+								<h2 class="post-title"><?php echo $val['title']; ?></h2>
+								<p class="post-description"><?php echo $val['description']; ?></p>
+							</div>
+							<div class="foot">
+								<a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>" class="btn btn-primary" role="button">
+									<?php echo $this->lang->line('see-detail') ?>
+								</a>
+							</div>
+						</div>
+					</div>
                 <?php
                     }
                 }

@@ -1,5 +1,5 @@
 <!-- Homepage Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.min.css">
 
 <!-- Slider JS -->
 <script src="<?php echo site_url('assets/js/slider.js') ?>"></script>
@@ -405,7 +405,7 @@
 	</div>
 </section>
 
-<section id="tour-request" class="container-fluid section" style="background-image: url('https://images.unsplash.com/photo-1523698157635-f68771d9e761?ixlib=rb-0.3.5&s=332933132e5bfedb487304d4978df2c6&auto=format&fit=crop&w=2690&q=80');">
+<section id="tour-request" class="container-fluid section hidden" style="background-image: url('https://images.unsplash.com/photo-1523698157635-f68771d9e761?ixlib=rb-0.3.5&s=332933132e5bfedb487304d4978df2c6&auto=format&fit=crop&w=2690&q=80');">
 	<div class="overlay">
 		<div class="container">
 			<div class="head">
