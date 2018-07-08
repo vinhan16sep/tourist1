@@ -180,6 +180,7 @@ defined('MESSAGE_REMOVE_ERROR') OR define('MESSAGE_REMOVE_ERROR', 'Xóa thất b
  * Message foreign key link check product category and check product
  */
 defined('MESSAGE_FOREIGN_KEY_LINK_ERROR') OR define('MESSAGE_FOREIGN_KEY_LINK_ERROR', 'Category vẫn còn %s bài viết và có %s category là con nên không thẻ xóa!');
+defined('MESSAGE_FOREIGN_KEY_LINK_ERROR_TOUR') OR define('MESSAGE_FOREIGN_KEY_LINK_ERROR_TOUR', 'Category vẫn còn %s tour và có %s category là con nên không thẻ xóa!');
 
 /**
  * Message foreign key check product category and check product
@@ -280,6 +281,7 @@ defined('MESSAGE_DEACTIVE_ERROR') OR define('MESSAGE_DEACTIVE_ERROR', 'Bạn ph�
 defined('MESSAGE_DEACTIVE_POST_ERROR') OR define('MESSAGE_DEACTIVE_POST_ERROR', 'Bạn phải tắt tất cả danh mục con và bài viết thuộc danh mục!');
 defined('MESSAGE_DEACTIVE_SUCCESS') OR define('MESSAGE_DEACTIVE_SUCCESS', 'Tắt danh mục thành công!');
 defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CATEGORY', 'Danh mục này không thể tắt!');
+defined('MESSAGE_ERROR_REMOVE_CATEGORY') OR define('MESSAGE_ERROR_REMOVE_CATEGORY', 'Danh mục này không thể xóa!');
 
 /**
  * Change Language

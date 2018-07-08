@@ -4,24 +4,24 @@
 * 
 */
 class Post_category extends Admin_Controller{
-	private $request_language_template = array(
+    private $request_language_template = array(
         'title', 'content'
     );
     private $author_data = array();
     private $controller = '';
 
-	function __construct(){
-		parent::__construct();
-		$this->load->model('post_category_model');
-		$this->load->helper('common');
+    function __construct(){
+        parent::__construct();
+        $this->load->model('post_category_model');
+        $this->load->helper('common');
         $this->load->helper('file');
 
         $this->data['template'] = build_template();
         $this->data['request_language_template'] = $this->request_language_template;
         $this->controller = 'post_category';
         $this->data['controller'] = $this->controller;
-		$this->author_data = handle_author_common_data();
-	}
+        $this->author_data = handle_author_common_data();
+    }
 
     public function index(){
         $keywords = '';
@@ -63,8 +63,8 @@ class Post_category extends Admin_Controller{
         $this->render('admin/'. $this->controller .'/list_post_category_view');
     }
 
-	public function create(){
-		$this->load->helper('form');
+    public function create(){
+        $this->load->helper('form');
         $this->load->library('form_validation');
 
         $post_category = $this->post_category_model->get_by_parent_id(null,'asc');
@@ -74,13 +74,17 @@ class Post_category extends Admin_Controller{
         $this->form_validation->set_rules('title_en', 'Title', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-        	$this->render('admin/'. $this->controller .'/create_post_category_view');
+            $this->render('admin/'. $this->controller .'/create_post_category_view');
         } else {
-        	if($this->input->post()){
-        		if(!empty($_FILES['image_shared']['name'])){
+            if($this->input->post()){
+                if($this->input->post('parent_id_shared') == 0){
+                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                    redirect('admin/'. $this->data['controller'], 'refresh');
+                }
+                if(!empty($_FILES['image_shared']['name'])){
                     $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
                 }
-            	$slug = $this->input->post('slug_shared');
+                $slug = $this->input->post('slug_shared');
                 $unique_slug = $this->post_category_model->build_unique_slug($slug);
                 if(!empty($_FILES['image_shared']['name'])){
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
@@ -115,10 +119,10 @@ class Post_category extends Admin_Controller{
                     $this->session->set_flashdata('message_success', MESSAGE_CREATE_SUCCESS);
                     redirect('admin/'. $this->controller .'', 'refresh');
                 }
-        	}
+            }
         }
         
-	}
+    }
 
     public function detail($id){
         $this->load->helper('form');
@@ -149,7 +153,7 @@ class Post_category extends Admin_Controller{
         $this->data['category'] = $category;
         
         $this->data['detail'] = $detail;
-        
+        $this->data['detail']['check_parent_id'] = ($this->data['detail']['parent_id'] == 0)? 'disabled' : '';
 
         $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
@@ -167,14 +171,16 @@ class Post_category extends Admin_Controller{
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
                 }
                 $shared_request = array(
-                    'slug' => $unique_slug,
-                    'parent_id' => $this->input->post('parent_id_shared'),
                     'type' => $this->input->post('type_shared'),
                     'created_at' => $this->author_data['created_at'],
                     'created_by' => $this->author_data['created_by'],
                     'updated_at' => $this->author_data['updated_at'],
                     'updated_by' => $this->author_data['updated_by']
                 );
+                if($this->data['detail']['parent_id'] != 0){
+                    $shared_request['slug'] = $unique_slug;
+                    $shared_request['parent_id'] = $this->input->post('parent_id_shared');
+                }
                 if(isset($image)){
                     $shared_request['image'] = $image;
                 }
@@ -205,40 +211,73 @@ class Post_category extends Admin_Controller{
         }
     }
 
-    public function remove(){
-        $this->load->model('post_model');
+
+    function remove(){
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
-        $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
-        $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
-        $ids = array_unique($ids);
-        $posts = array();
-        $reponse = array(
-            'csrf_hash' => $this->security->get_csrf_hash()
-        );
-        if(isset($ids)){
-            $posts = $this->post_model->get_by_multiple_ids(array_unique($ids), 'vi');
-        }
-        if(!isset($posts)){
-            $data = array('is_deleted' => 1);
-            $update = $this->post_category_model->common_update($id, $data);
-            if($update == 1){
-                return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => true)));
+        $this->load->model('post_model');
+        if($id &&  is_numeric($id) && ($id > 0)){
+            $post_category = $this->post_category_model->get_by_id($id,array('title'));
+            if($post_category['parent_id'] == 0){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_REMOVE_CATEGORY);
             }
-        }else{
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => false)));
+            if($this->post_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
+                return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
+            }
+            $where = array('post_category_id' => $id,'is_deleted' => 0);
+            $post = $this->post_model->find_rows($where);// lấy số bài viết thuộc về category
+            $where = array('parent_id' => $id,'is_deleted' => 0);
+            $parent_id = $this->post_category_model->find_rows($where);//lấy số con của category
+            if($post == 0 && $parent_id == 0){
+                $data = array('is_deleted' => 1);
+                $update = $this->post_category_model->common_update($id, $data);
+                if($update){
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    );
+                    return $this->return_api(HTTP_SUCCESS,MESSAGE_REMOVE_SUCCESS,$reponse);
+                }
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
+            }else{
+                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_FOREIGN_KEY_LINK_ERROR,$post,$parent_id));
+            }
         }
-        return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_BAD_REQUEST)
-                ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
     }
+
+    // public function remove(){
+    //     $this->load->model('post_model');
+    //     $id = $this->input->post('id');
+    //     $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
+    //     $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
+    //     $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
+    //     $ids = array_unique($ids);
+    //     $posts = array();
+    //     $reponse = array(
+    //         'csrf_hash' => $this->security->get_csrf_hash()
+    //     );
+    //     if(isset($ids)){
+    //         $posts = $this->post_model->get_by_multiple_ids(array_unique($ids), 'vi');
+    //     }
+    //     if(!isset($posts)){
+    //         $data = array('is_deleted' => 1);
+    //         $update = $this->post_category_model->common_update($id, $data);
+    //         if($update == 1){
+    //             return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_SUCCESS)
+    //             ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => true)));
+    //         }
+    //     }else{
+    //         return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_SUCCESS)
+    //             ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => false)));
+    //     }
+    //     return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_BAD_REQUEST)
+    //             ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+    // }
     public function active(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
