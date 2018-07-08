@@ -54,14 +54,16 @@
                                 echo form_label('Danh mục', 'parent_id_shared');
                                 echo form_error('parent_id_shared');
                                 ?>
-                                <select name="parent_id_shared" class="form-control">
-                                    <option value="">Danh mục gốc</option>
+                                <select name="parent_id_shared" class="form-control" <?php echo$detail['check_parent_id'];?>>
+                                    <?php if ($detail['parent_id'] == 0): ?>
+                                        <option value="0">Danh mục gốc</option>
+                                    <?php endif ?>
                                     <?php build_new_category($category, 0, $detail['parent_id'],$detail['id'], '') ?>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-12" style ="display: none;">
                             <div class="form-group col-xs-12">
                                 <?php
                                 echo form_label('Kiểu danh mục', 'type_shared');
@@ -95,7 +97,7 @@
                                                     if($k == 'title' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['title_'. $key], 'class="form-control" id="title_'.$key.'"');
+                                                        echo form_input($k .'_'. $key, $detail['title_'. $key], 'class="form-control" id="title_'.$key.'" '.$detail['check_parent_id']);
                                                     }elseif($k == 'description' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
@@ -122,6 +124,11 @@
     </section>
 </div>
 
+<script type="text/javascript">
+    $("[name=submit_shared]").click(function() {
+        $('input,select').removeAttr('disabled');
+    });
+</script>
 <?php 
     function build_new_category($categorie, $parent_id = 0, $detail_parent_id,$detail_id = "",$char = ''){
         $cate_child = array();

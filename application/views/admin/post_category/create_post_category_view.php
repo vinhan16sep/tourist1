@@ -50,13 +50,12 @@
                                 // echo form_dropdown('parent_id_shared', $post_category, 0, 'class="form-control"');
                                 ?>
                                 <select name="parent_id_shared" class="form-control">
-                                    <option value="">Danh mục gốc</option>
                                     <?php build_new_category($post_category, 0, '') ?>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-12" style="display: none;">
                             <div class="form-group col-xs-12">
                                 <?php
                                 echo form_label('Kiểu danh mục', 'type_shared');

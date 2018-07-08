@@ -51,9 +51,10 @@
                             echo form_label('Danh Mục', 'parent_id_shared');
                             echo form_error('parent_id_shared');
                             ?>
-                            <select name="parent_id_shared" class="form-control">
-                                <<option value="0">Danh mục gốc</option>}
-                                option
+                            <select name="parent_id_shared" class="form-control" <?php echo $detail['check_parent_id'];?>>
+                                <?php if ($detail['parent_id'] == 0): ?>
+                                    <option value="0">Danh mục gốc</option>
+                                <?php endif ?>
                                 <?php echo $product_category; ?>
                             </select>
                         </div>
@@ -82,7 +83,7 @@
                                                     if($k == 'title' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'"');
+                                                        echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'" '.$detail['check_parent_id']);
                                                     }elseif($k == 'description' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
@@ -116,6 +117,11 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    $("[name=submit_shared]").click(function() {
+        $('input,select').removeAttr('disabled');
+    });
+</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/admin/script.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/admin/common.js') ?>"></script>
 

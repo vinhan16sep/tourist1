@@ -373,8 +373,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="menu-dropdown-expand menu-expand collapse" id="expand-visa">
 						<div class="row">
 	                    	<?php
-							if(!empty($blog_menu['sub'])){
-								foreach($blog_menu['sub'] as $key => $val){
+							if(!empty($visa_menu['sub'])){
+								foreach($visa_menu['sub'] as $key => $val){
 							?>
 								<li class="media col-sm-6 col-xs-12">
 									<div class="media-left">

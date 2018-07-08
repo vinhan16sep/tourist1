@@ -70,6 +70,10 @@ class Product_category extends Admin_Controller{
         $product_category = $this->product_category_model->get_by_parent_id(null,'asc');
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
+            if($this->input->post('parent_id_shared') == 0){
+                $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                redirect('admin/'. $this->data['controller'], 'refresh');
+            }
             $this->load->library('form_validation');
             $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
             $this->form_validation->set_rules('title_en', 'Title', 'required');
@@ -130,6 +134,7 @@ class Product_category extends Admin_Controller{
             $detail = $this->product_category_model->get_by_id($id, array('title', 'content', 'metakeywords', 'metadescription'));
             $this->build_new_category($product_category,0,$this->data['product_category'],$detail['parent_id'],$id);
             $this->data['detail'] = build_language($this->data['controller'], $detail, array('title', 'content', 'metakeywords', 'metadescription'), $this->page_languages);
+            $this->data['detail']['check_parent_id'] = ($this->data['detail']['parent_id'] == 0)? 'disabled' : '';
             if($this->input->post()){
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
@@ -139,9 +144,8 @@ class Product_category extends Admin_Controller{
                         $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
                     }
                     $unique_slug = $this->data['detail']['slug'];
-                    if($unique_slug !== $this->input->post('slug_shared')){
+                    if($unique_slug !== $this->input->post('slug_shared') && $this->data['detail']['parent_id'] != 0){
                         $unique_slug = $this->product_category_model->build_unique_slug($this->input->post('slug_shared'));
-
                         if(file_exists("assets/upload/product_category/".$this->data['detail']['slug'])) {
                             rename("assets/upload/product_category/".$detail['slug'], "assets/upload/product_category/".$unique_slug);
                         }
@@ -154,9 +158,10 @@ class Product_category extends Admin_Controller{
                     if(!empty($_FILES['image_shared']['name'])){
                         $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'.$this->data['controller']."/".$unique_slug, 'assets/upload/'.$this->data['controller']."/".$unique_slug .'/thumb');
                     }
-                    $shared_request = array(
-                        'parent_id' => $this->input->post('parent_id_shared')
-                    );
+                    $shared_request = array();
+                    if($this->data['detail']['parent_id'] != 0){
+                        $shared_request['parent_id'] = $this->input->post('parent_id_shared');
+                    }
                     if($unique_slug != $this->data['detail']['slug']){
                         $shared_request['slug'] = $unique_slug;
                     }
@@ -196,6 +201,10 @@ class Product_category extends Admin_Controller{
         $id = $this->input->post('id');
         $this->load->model('product_model');
         if($id &&  is_numeric($id) && ($id > 0)){
+            $product_category = $this->product_category_model->get_by_id($id,array('title'));
+            if($product_category['parent_id'] == 0){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_REMOVE_CATEGORY);
+            }
             if($this->product_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
                 return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
             }
@@ -214,7 +223,7 @@ class Product_category extends Admin_Controller{
                 }
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
             }else{
-                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_FOREIGN_KEY_LINK_ERROR,$product,$parent_id));
+                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_FOREIGN_KEY_LINK_ERROR_TOUR,$product,$parent_id));
             }
         }
         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
@@ -273,7 +282,7 @@ class Product_category extends Admin_Controller{
             return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_ERROR);
         }else{
             $product_category = $this->product_category_model->get_by_id($id,array('title'));
-            if($product_category['parent_id'] == 0 && ($product_category['slug'] == 'tour-dac-biet' || $product_category['slug'] == 'trong-nuoc' || $product_category['slug'] == 'nuoc-ngoai')){
+            if($product_category['parent_id'] == 0){
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_DEACTIVE_CATEGORY);
             }
             if(!empty($this->product_model->get_by_product_category_id($id))){
