@@ -103,7 +103,7 @@
                             <a href="<?php echo base_url('admin/booking/success') ?>"><i class="fa fa-list"></i> Đã Hoàn Thành</a>
                         </li>
                         <li class="<?php echo ($this->uri->segment(2) == 'booking' && $this->uri->segment(3) == 'cancel')? 'active' : '' ?>">
-                            <a href="<?php echo base_url('admin/booking/cancel') ?>"><i class="fa fa-list"></i> Đã Hoàn Thành</a>
+                            <a href="<?php echo base_url('admin/booking/cancel') ?>"><i class="fa fa-list"></i> Đã Hủy</a>
                         </li>
                     </ul>
                 </li>
@@ -126,7 +126,7 @@
                             <a href="<?php echo base_url('admin/customize/success') ?>"><i class="fa fa-list"></i> Đã Hoàn Thành</a>
                         </li>
                         <li class="<?php echo ($this->uri->segment(2) == 'customize' && $this->uri->segment(3) == 'cancel')? 'active' : '' ?>">
-                            <a href="<?php echo base_url('admin/customize/cancel') ?>"><i class="fa fa-list"></i> Đã Hoàn Thành</a>
+                            <a href="<?php echo base_url('admin/customize/cancel') ?>"><i class="fa fa-list"></i> Đã Hủy</a>
                         </li>
                     </ul>
                 </li>
