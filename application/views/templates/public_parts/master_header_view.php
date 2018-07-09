@@ -450,7 +450,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
 											<h3 class="media-heading"><?php echo $val['title'] ?></h3>
 										</a>
-										<p>Aenean porttitor diam non orci viverra, ut gravida justo mattis. Phasellus mollis leo vitae mi consectetur, eget ultrices metus aliquam. Sed consectetur dui lectus, eget dignissim ipsum feugiat eu. In consectetur tortor nec interdum posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus auctor eros arcu, ac accumsan justo semper nec. Aliquam imperdiet lorem dolor, eu porta velit convallis maximus.</p>
+										<p><?php echo $val['content']; ?></p>
 										<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>" class="btn btn-primary" role="button">
 	                                        <?php echo $this->lang->line('explore') ?>
 										</a>
