@@ -301,7 +301,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 				<li class="menu-list">
 					<a href="<?php echo base_url('chuyen-muc/'.$mice_menu['slug']) ?>">
-						<?php echo $this->lang->line('mice') ?> <span class="caret"></span>
+						<?php echo $this->lang->line('mice') ?>
+						<?php if(!empty($mice_menu['sub'])): ?>
+							<span class="caret"></span>
+						<?php endif; ?>
+						
 					</a>
 					<a class="right-caret visible-xs" data-toggle="collapse" data-parent="#main-nav-ul" href="#expand-domestic" aria-expanded="true" aria-controls="expand-domestic"><span class="caret"></span></a>
 					<ul class="menu-list-expand menu-expand collapse list-unstyled" id="expand-domestic">
@@ -333,7 +337,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 				<li class="menu-dropdown">
 					<a href="<?php echo base_url('chuyen-muc/dich-vu') ?>" class="nav-link">
-						<?php echo $this->lang->line('services') ?> <span class="caret hidden-xs"></span>
+						<?php echo $this->lang->line('services') ?>
+						<?php if(!empty($service_menu['sub'])): ?>
+							<span class="caret"></span>
+						<?php endif; ?>
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
                     <ul class="menu-dropdown-expand menu-expand collapse" id="expand-services">
@@ -367,7 +374,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 				<li class="menu-dropdown">
 					<a href="<?php echo base_url('chuyen-muc/visa') ?>" class="nav-link">
-						<?php echo $this->lang->line('visa') ?> <span class="caret hidden-xs"></span>
+						<?php echo $this->lang->line('visa') ?>
+						<?php if(!empty($visa_menu['sub'])): ?>
+							<span class="caret"></span>
+						<?php endif; ?>
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
 					<ul class="menu-dropdown-expand menu-expand collapse" id="expand-visa">
@@ -546,8 +556,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="expand-mice-heading">
 							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#mice" aria-expanded="true" aria-controls="expand-mice-heading">
-                                    <?php echo $mice_menu['post_category_title'] ?> <span class="caret"></span>
+								<a class="collapsed" role="button" data-toggle="<?php echo (!empty($mice_menu['sub']))?'collapse':''; ?>" data-parent="#main-nav-side" href="<?php echo (!empty($mice_menu['sub']))?'#mice':base_url('chuyen-muc/'.$mice_menu['slug']);?>" aria-expanded="true" aria-controls="expand-mice-heading">
+                                    <?php echo $mice_menu['post_category_title'] ?>
+                                    <?php if(!empty($mice_menu['sub'])): ?>
+										<span class="caret"></span>
+                                    <?php endif; ?>
 								</a>
 							</h4>
 						</div>
@@ -576,8 +589,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="expand-service-heading">
 							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#service" aria-expanded="true" aria-controls="expand-service-heading">
-                                    <?php echo $service_menu['post_category_title'] ?> <span class="caret"></span>
+								<a class="collapsed" role="button" data-toggle="<?php echo (!empty($service_menu['sub']))?'collapse':''; ?>" data-parent="#main-nav-side" href="<?php echo (!empty($service_menu['sub']))?'#service':base_url('chuyen-muc/'.$service_menu['slug']);?>" aria-expanded="true" aria-controls="expand-service-heading">
+                                    <?php echo $service_menu['post_category_title'] ?>
+                                    <?php if(!empty($service_menu['sub'])): ?>
+										<span class="caret"></span>
+                                    <?php endif; ?>
 								</a>
 							</h4>
 						</div>
@@ -606,8 +622,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="expand-visa-heading">
 							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#visa" aria-expanded="true" aria-controls="expand-visa-heading">
-                                    <?php echo $visa_menu['post_category_title'] ?> <span class="caret"></span>
+								<a class="collapsed" role="button" data-toggle="<?php echo (!empty($visa_menu['sub']))?'collapse':''; ?>" data-parent="#main-nav-side" href="<?php echo (!empty($visa_menu['sub']))?'#visa':base_url('chuyen-muc/'.$visa_menu['slug']);?>" aria-expanded="true" aria-controls="expand-visa-heading">
+                                    <?php echo $visa_menu['post_category_title'] ?>
+                                    <?php if(!empty($visa_menu['sub'])): ?>
+										<span class="caret"></span>
+                                    <?php endif; ?>
 								</a>
 							</h4>
 						</div>
@@ -645,7 +664,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="panel-body">
 								<ul>
 									<li>
-										<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>">
+										<a href="<?php echo base_url('location'); ?>">
 											<h3><?php echo $this->lang->line('location') ?></h3>
 										</a>
 									</li>

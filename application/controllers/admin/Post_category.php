@@ -243,41 +243,6 @@ class Post_category extends Admin_Controller{
         }
         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
     }
-
-    // public function remove(){
-    //     $this->load->model('post_model');
-    //     $id = $this->input->post('id');
-    //     $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
-    //     $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
-    //     $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
-    //     $ids = array_unique($ids);
-    //     $posts = array();
-    //     $reponse = array(
-    //         'csrf_hash' => $this->security->get_csrf_hash()
-    //     );
-    //     if(isset($ids)){
-    //         $posts = $this->post_model->get_by_multiple_ids(array_unique($ids), 'vi');
-    //     }
-    //     if(!isset($posts)){
-    //         $data = array('is_deleted' => 1);
-    //         $update = $this->post_category_model->common_update($id, $data);
-    //         if($update == 1){
-    //             return $this->output
-    //             ->set_content_type('application/json')
-    //             ->set_status_header(HTTP_SUCCESS)
-    //             ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => true)));
-    //         }
-    //     }else{
-    //         return $this->output
-    //             ->set_content_type('application/json')
-    //             ->set_status_header(HTTP_SUCCESS)
-    //             ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => false)));
-    //     }
-    //     return $this->output
-    //             ->set_content_type('application/json')
-    //             ->set_status_header(HTTP_BAD_REQUEST)
-    //             ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
-    // }
     public function active(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
@@ -301,7 +266,7 @@ class Post_category extends Admin_Controller{
     public function deactive(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
+        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc','',0);
         $this->get_multiple_posts_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
         if(count($ids)>1){
@@ -311,7 +276,7 @@ class Post_category extends Admin_Controller{
             if(!empty($this->post_model->get_by_post_category_id($id))){
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_POST_ERROR);
             }
-            if($post_category['parent_id'] == 0 && ($post_category['slug'] == 'mice' || $post_category['slug'] == 'visa' || $post_category['slug'] == 'blogs' || $post_category['slug'] == 'dich-vu' || $post_category['slug'] == 'gioi-thieu')){
+            if($post_category['parent_id'] == 0){
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_DEACTIVE_CATEGORY);
             }
         }

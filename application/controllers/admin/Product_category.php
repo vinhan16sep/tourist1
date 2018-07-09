@@ -275,7 +275,7 @@ class Product_category extends Admin_Controller{
     public function deactive(){
         $this->load->model('product_model');
         $id = $this->input->post('id');
-        $list_categories = $this->product_category_model->get_by_parent_id(null, 'asc');
+        $list_categories = $this->product_category_model->get_by_parent_id(null, 'asc','',0);
         $this->get_multiple_products_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
         if(count($ids)>1){

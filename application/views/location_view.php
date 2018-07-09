@@ -32,7 +32,7 @@
 								</div>
 							</div>
 							<div class="body">
-								<h4 class="post-subtitle">Blogs</h4>
+								<h4 class="post-subtitle"><?php echo $val['area']; ?></h4>
 								<a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>">
 									<h2 class="post-title"><?php echo $val['title']; ?></h2>
 								</a>
