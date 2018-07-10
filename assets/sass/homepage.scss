@@ -599,10 +599,7 @@ body, html{
         background-repeat: no-repeat;
         background-attachment: fixed;
 
-        position: relative;
-
-        padding-top: 200px;
-        padding-bottom: 200px;
+        padding: 0;
 
         .overlay {
             width: 100%;
@@ -610,29 +607,13 @@ body, html{
 
             background-color: rgba(0, 0, 0, 0.5);
 
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
+            padding-top: 200px;
+            padding-bottom: 200px;
         }
 
         .container{
             text-align: center;
             color: #fff;
-
-            padding-top: 100px;
-            padding-bottom: 100px;
-
-            position: absolute;
-            top: 0;
-            left: 50%;
-            z-index: 2;
-
-            -webkit-transform: translateX(-50%);
-            -moz-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            -o-transform: translateX(-50%);
-            transform: translateX(-50%);
         }
     }
 }
@@ -831,29 +812,7 @@ body, html{
         }
 
         &#visa{
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-
-            position: relative;
-
-            padding-top: 200px;
-            padding-bottom: 200px;
-
             .overlay{
-                width: 100%;
-                height: 100%;
-
-                background-color: rgba(0,0,0,0.5);
-
-                position: absolute;
-                top: 0;
-                left: 0;
-
-                text-align: center;
-                color: #fff;
-
                 padding-top: 100px;
                 padding-bottom: 100px;
             }

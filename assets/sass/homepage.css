@@ -494,6 +494,64 @@ footer.footer {
     footer.footer .container .row .text-center {
       padding-bottom: 70px; }
 
+#fb-chat-box-area {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 999; }
+  #fb-chat-box-area #button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    -webkit-box-shadow: 2px 2px 5px #333;
+    -moz-box-shadow: 2px 2px 5px #333;
+    box-shadow: 2px 2px 5px #333; }
+    #fb-chat-box-area #button button#open-chat-box {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #fff;
+      border-radius: 50%;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: all ease 500ms;
+      -moz-transition: all ease 500ms;
+      -ms-transition: all ease 500ms;
+      -o-transition: all ease 500ms;
+      transition: all ease 500ms; }
+      #fb-chat-box-area #button button#open-chat-box i {
+        color: #55b73d; }
+      #fb-chat-box-area #button button#open-chat-box:hover {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        -webkit-transition: all ease 500ms;
+        -moz-transition: all ease 500ms;
+        -ms-transition: all ease 500ms;
+        -o-transition: all ease 500ms;
+        transition: all ease 500ms; }
+  #fb-chat-box-area #fb-chat-box {
+    border: 1px solid #fff;
+    position: absolute;
+    bottom: 0px;
+    right: 55px; }
+    #fb-chat-box-area #fb-chat-box .heading {
+      padding: 10px 15px;
+      background-color: #55b73d;
+      color: #fff; }
+      #fb-chat-box-area #fb-chat-box .heading button {
+        background-color: transparent;
+        columns: #fff;
+        border: none; }
+
 @media (max-width: 768px) and (hover: none) {
   #top-nav .container .row .left {
     text-align: center; }
@@ -922,31 +980,16 @@ footer.footer {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  position: relative;
-  padding-top: 200px;
-  padding-bottom: 200px; }
+  padding: 0; }
   .section#visa .overlay {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; }
+    padding-top: 200px;
+    padding-bottom: 200px; }
   .section#visa .container {
     text-align: center;
-    color: #fff;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: 2;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%); }
+    color: #fff; }
 
 /* =======================================================
 *
@@ -1025,24 +1068,8 @@ footer.footer {
         padding-top: 15px; }
   .section#services .item .mask {
     height: 280px; }
-  .section#visa {
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    position: relative;
-    padding-top: 200px;
-    padding-bottom: 200px; }
-    .section#visa .overlay {
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 0;
-      left: 0;
-      text-align: center;
-      color: #fff;
-      padding-top: 100px;
-      padding-bottom: 100px; } }
+  .section#visa .overlay {
+    padding-top: 100px;
+    padding-bottom: 100px; } }
 
 /*# sourceMappingURL=homepage.css.map */

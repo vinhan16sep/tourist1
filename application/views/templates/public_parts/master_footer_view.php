@@ -134,6 +134,35 @@
 	</div>
 </footer>
 
+<div id="fb-chat-box-area">
+	<div id="button">
+		<button id="open-chat-box">
+			<i class="fa fa-comments fa-2x" aria-hidden="false"></i>
+		</button>
+
+		<div id="fb-chat-box">
+			<div class="heading">
+				Talk to us <button class="pull-right" id="close-chat-box"> <i class="fa fa-close"></i> </button>
+			</div>
+			<div class="fb-page" data-href="https://www.facebook.com/Mato-Creative-330391013990260/" data-tabs="messages" data-width="400" data-height="300" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Mato-Creative-330391013990260/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Mato-Creative-330391013990260/">Mato Creative</a></blockquote></div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+
+    $('#fb-chat-box').hide();
+	$(document).ready(function(){
+	    $('#open-chat-box').click(function(){
+	       $('#fb-chat-box').fadeIn();
+		});
+        $('#close-chat-box').click(function(){
+            $('#fb-chat-box').fadeOut();
+        });
+	});
+</script>
+
 
 
 <script src="<?php echo site_url('assets/lib/bootstrap/js/bootstrap-datepicker.min.js') ?>"></script>

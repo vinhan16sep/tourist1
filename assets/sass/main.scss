@@ -874,6 +874,86 @@ footer.footer{
     }
 }
 
+#fb-chat-box-area{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+
+    z-index: 999;
+
+    #button{
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50%;
+
+        position: relative;
+
+        -webkit-box-shadow:  2px 2px 5px #333;
+        -moz-box-shadow:  2px 2px 5px #333;
+        box-shadow:  2px 2px 5px #333;
+
+        button#open-chat-box{
+            width: 50px;
+            height: 50px;
+
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            background-color: #fff;
+
+            border-radius: 50%;
+
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+
+            @include transition(500ms);
+
+            i{
+                color: $primary;
+            }
+
+            &:hover{
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+
+                @include transition(500ms);
+            }
+        }
+    }
+
+    #fb-chat-box{
+        border: 1px solid #fff;
+
+        position: absolute;
+
+        bottom: 0px;
+        right: 55px;
+
+        .heading{
+            padding: 10px 15px;
+
+            background-color: $primary;
+            color: #fff;
+
+            button{
+                background-color: transparent;
+                columns: #fff;
+                border: none;
+            }
+        }
+    }
+
+
+}
+
 @media (max-width: 768px) and (hover: none){
     #top-nav{
         .container{
