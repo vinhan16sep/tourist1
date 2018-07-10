@@ -604,21 +604,35 @@ body, html{
         padding-top: 200px;
         padding-bottom: 200px;
 
-        .overlay{
+        .overlay {
             width: 100%;
             height: 100%;
 
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.5);
 
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
+        }
 
+        .container{
             text-align: center;
             color: #fff;
 
             padding-top: 100px;
             padding-bottom: 100px;
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            z-index: 2;
+
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
         }
     }
 }
