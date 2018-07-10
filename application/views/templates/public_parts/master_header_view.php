@@ -18,6 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
+	<link rel="stylesheet" href="<?php echo site_url('assets/sass/main.min.css') ?>">
+
 	<!-- jQuery 3 -->
 	<script src="<?php echo site_url('assets/lib/') ?>jquery/jquery.min.js"></script>
 	<!-- Bootstrap JS -->
@@ -43,6 +45,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
+
+<!-- Facebook SDK-->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=504743766549751&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 <section id="top-nav" class="container-fluid">
 	<div class="container">
