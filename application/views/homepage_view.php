@@ -449,7 +449,7 @@
 	</div>
 </section>
 
-<section id="visa" class="container-fluid section" style="background-image: url('https://images.unsplash.com/photo-1531092601737-e5b3b6e57365?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=86f0605387ef77c9b88479c4c3d951e1&auto=format&fit=crop&w=934&q=80');">
+<section id="visa" class="container-fluid section" style="background-image: url('<?php echo base_url('assets/upload/post_category/'.$visa['image']); ?>');">
 
 	<div class="overlay">
 		<div class="container">
