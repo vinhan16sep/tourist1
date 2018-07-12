@@ -249,7 +249,7 @@ header.header {
                 color: #666; }
         header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li {
           width: 25%;
-          padding: 30px 15px;
+          padding: 20px 15px;
           font-size: 1.5em;
           border-right: 1px solid #dadada;
           border-bottom: 1px solid #dadada; }
