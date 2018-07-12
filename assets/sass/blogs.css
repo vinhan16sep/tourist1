@@ -211,6 +211,10 @@ header.header {
           header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .item .head h3 {
             font-weight: 700;
             font-size: 1.5em; }
+          header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .item .head a {
+            height: 3.5em; }
+            header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .item .head a:hover {
+              color: #55b73d; }
           header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .item .body ul {
             padding-left: 0; }
             header.header .container-fluid .container#main-nav > ul > li.menu-list .menu-list-expand .item .body ul li .mask {

@@ -35,7 +35,7 @@
 		</div>
 
 		<!--Slider Background-->
-		<div class="slider-background"></div>
+		<!--<div class="slider-background"></div>-->
 
 		<!-- Controls -->
 		<a class="left carousel-control" href="#homepage-slider" role="button" data-slide="prev">
