@@ -12,7 +12,7 @@ switch(window.location.origin){
     default:
         var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
 }
-function to_slug(str){
+function to_slug(str,space="-"){
     str = str.toLowerCase();
 
     str = str.replace(/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/g, 'a');
@@ -25,7 +25,7 @@ function to_slug(str){
 
     str = str.replace(/([^0-9a-z-\s])/g, '');
 
-    str = str.replace(/(\s+)/g, '-');
+    str = str.replace(/(\s+)/g, space);
 
     str = str.replace(/^-+/g, '');
 

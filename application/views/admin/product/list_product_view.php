@@ -37,13 +37,21 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5 col-ms-4 col-sm-3">
                             <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7 col-ms-8 col-sm-9">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                <div class="checkbox col-md-5 col-ms-5 col-sm-6">
+                                    <label style="padding-right: 10px;">
+                                        <input type="checkbox" name="bestselling" <?php echo (!empty($bestselling))? 'checked' : '';?>> Bán Chạy
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="hot" <?php echo (!empty($hot))? 'checked' : '';?>> Hot
+                                    </label>
+                                </div>
+                                <div class="input-group col-md-7 col-ms-7 col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo (!empty($keyword))? $keyword : '';?>">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>

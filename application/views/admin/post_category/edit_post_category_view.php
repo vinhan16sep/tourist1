@@ -126,7 +126,7 @@
 
 <script type="text/javascript">
     $("[name=submit_shared]").click(function() {
-        $('input,select').removeAttr('disabled');
+        $('input[name^=title_],select[name=parent_id_shared]').removeAttr('disabled');
     });
 </script>
 <?php 

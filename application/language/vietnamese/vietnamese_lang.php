@@ -82,6 +82,11 @@ $lang[''] = '';
 
 $lang['tour-detail-duration'] = 'Thời gian';
 $lang['tour-detail-start'] = 'Ngày khởi hành';
+$lang['tour-detail'] = 'Chi tiết Tour';
+$lang['note'] = 'Ghi chú';
+$lang['rate'] = 'Điểm';
+$lang['price'] = 'Giá';
+$lang['no-where-selected-in-the-day'] = 'Không có nơi nào được chọn trong ngày';
 $lang['tour-detail-price'] = 'Chi phí';
 $lang['tour-detail-rating'] = 'Đánh giá';
 $lang['tour-detail-votes'] = 'lượt bình chọn';

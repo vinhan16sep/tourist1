@@ -301,7 +301,7 @@ class Post_category extends Admin_Controller{
     public function deactive(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
+        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc','vi',0);
         $this->get_multiple_posts_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
         if(count($ids)>1){
@@ -311,7 +311,7 @@ class Post_category extends Admin_Controller{
             if(!empty($this->post_model->get_by_post_category_id($id))){
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_POST_ERROR);
             }
-            if($post_category['parent_id'] == 0 && ($post_category['slug'] == 'mice' || $post_category['slug'] == 'visa' || $post_category['slug'] == 'blogs' || $post_category['slug'] == 'dich-vu' || $post_category['slug'] == 'gioi-thieu')){
+            if($post_category['parent_id'] == 0){
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_DEACTIVE_CATEGORY);
             }
         }
