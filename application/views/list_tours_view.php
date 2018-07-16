@@ -13,7 +13,6 @@
 				<?php endforeach ?>
 			<?php endif ?>
 		</div>
-
 		<a class="left carousel-control" href="#head-slider" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			<span class="sr-only">Previous</span>
@@ -24,7 +23,6 @@
 		</a>
 	</div>
 </section>
-<!-- <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')"></section> -->
 
 <section id="page">
 	<div class="container">
