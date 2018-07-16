@@ -97,18 +97,24 @@
 									<div class="inner col-xs-12 col-sm-6 col-md-4">
 
 										<!--BADGE DISCOUNT -->
-										<div class="badge badge-discount">
-											<div class="content">KM<br>-30%</div>
-										</div>
+										<?php if (!empty($value['showpromotion'])): ?>
+											<div class="badge badge-discount">
+												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+											</div>
+										<?php endif ?>
 
 										<!--BADGE SPECIAL -->
 										<div class="badge badge-special">
-											<div id="tour-hot" class="">
-												<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
-											</div>
-											<div id="best-sell" class="">
-												<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
-											</div>
+											<?php if (!empty($value['hot'])): ?>
+												<div id="tour-hot" class="">
+													<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+												</div>
+											<?php endif ?>
+											<?php if (!empty($value['bestselling'])): ?>
+												<div id="best-sell" class="">
+													<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+												</div>
+											<?php endif ?>
 										</div>
 
 										<div class="mask">
@@ -120,10 +126,20 @@
 												</div>
 												<div class="body">
 													<h3 class="price">
-														<?php echo number_format($value['price']); ?> vnd
-														<small class="price-original"><del>999.000.000 vnd</del></small>
+														<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+															<?php echo number_format($value['pricepromotion']); ?> vnd
+															<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+														<?php else: ?>
+															<?php echo number_format($value['price']); ?> vnd
+														<?php endif ?>
 													</h3>
-													<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i></small>
+													<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>:
+														<?php if (empty($value['count_rating'])): ?>
+															<?php echo NO_RATING;?> 
+														<?php else: ?>
+															<?php echo round($value['total_rating']/$value['count_rating'],1);?>/5 
+														<?php endif ?> 
+													<i class="fa fa-star" aria-hidden="true"></i></small>
 												</div>
 											</div>
 											<div class="content">
@@ -131,9 +147,12 @@
 													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 													<h2 class="post-title"><?php echo $value['title']; ?></h2>
 													<h3 class="price">
-														<?php echo number_format($value['price']); ?> vnd
-														<br>
-														<small class="price-original"><del>999.000.000 vnd</del></small>
+														<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+															<?php echo number_format($value['pricepromotion']); ?> vnd
+															<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+														<?php else: ?>
+															<?php echo number_format($value['price']); ?> vnd
+														<?php endif ?>
 													</h3>
 												</div>
 												<div class="body">
@@ -163,7 +182,14 @@
 														</tr>
 														<tr>
 															<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
-															<td>4/5 <i class="fa fa-star" aria-hidden="true"></i></td>
+															<td>
+																<?php if (empty($value['count_rating'])): ?>
+																	<?php echo NO_RATING;?>
+																<?php else: ?>
+																	<?php echo round($value['total_rating']/$value['count_rating'],1);?>/5 
+																<?php endif ?>
+																<i class="fa fa-star" aria-hidden="true"></i>
+															</td>
 														</tr>
 													</table>
 												</div>
@@ -209,18 +235,24 @@
                                             <div class="inner col-xs-12 col-sm-6 col-md-4">
 
 												<!--BADGE DISCOUNT -->
-												<div class="badge badge-discount">
-													<div class="content">KM<br>-30%</div>
-												</div>
+												<?php if (!empty($value['showpromotion'])): ?>
+													<div class="badge badge-discount">
+														<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+													</div>
+												<?php endif ?>
 
 												<!--BADGE SPECIAL -->
 												<div class="badge badge-special">
-													<div id="tour-hot" class="">
-														<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
-													</div>
-													<div id="best-sell" class="">
-														<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
-													</div>
+													<?php if (!empty($value['hot'])): ?>
+														<div id="tour-hot" class="">
+															<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+														</div>
+													<?php endif ?>
+													<?php if (!empty($value['bestselling'])): ?>
+														<div id="best-sell" class="">
+															<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+														</div>
+													<?php endif ?>
 												</div>
 
                                                 <div class="mask">
@@ -238,10 +270,20 @@
                                                         </div>
                                                         <div class="body">
                                                             <h3 class="price">
-																<?php echo number_format($value['price']); ?> vnd
-																<small class="price-original"><del>999.000.000 vnd</del></small>
+																<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																	<?php echo number_format($value['pricepromotion']); ?> vnd
+																	<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																<?php else: ?>
+																	<?php echo number_format($value['price']); ?> vnd
+																<?php endif ?>
 															</h3>
-															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i></small>
+															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>:
+																<?php if (empty($value['count_rating'])): ?>
+																	<?php echo NO_RATING;?> 
+																<?php else: ?>
+																	<?php echo round($value['total_rating']/$value['count_rating'],1);?>/5 
+																<?php endif ?>
+															<i class="fa fa-star" aria-hidden="true"></i></small>
                                                         </div>
                                                     </div>
                                                     <div class="content">
@@ -249,8 +291,12 @@
                                                             <h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
                                                             <h2 class="post-title"><?php echo $value['title']; ?></h2>
                                                             <h3 class="price">
-																<?php echo number_format($value['price']); ?> vnd
-																<small class="price-original"><del>999.000.000 vnd</del></small>
+																<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																	<?php echo number_format($value['pricepromotion']); ?> vnd
+																	<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																<?php else: ?>
+																	<?php echo number_format($value['price']); ?> vnd
+																<?php endif ?>
 															</h3>
                                                         </div>
                                                         <div class="body">
@@ -275,7 +321,15 @@
                                                                 </tr>
 																<tr>
 																	<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
-																	<td>4/5 <i class="fa fa-star" aria-hidden="true"></i></td>
+																	<td>
+																		<?php if (empty($value['count_rating'])): ?>
+																			<?php echo NO_RATING;?>
+																		<?php else: ?>
+																			<?php echo round($value['total_rating']/$value['count_rating'],1);?>/5 
+																		<?php endif ?>
+																		<i class="fa fa-star" aria-hidden="true"></i>
+																		
+																	</td>
 																</tr>
                                                             </table>
                                                         </div>
@@ -354,18 +408,24 @@
 											<div class="inner col-xs-12 col-sm-6 col-md-4">
 
 												<!--BADGE DISCOUNT -->
-												<div class="badge badge-discount">
-													<div class="content">KM<br>-30%</div>
-												</div>
+												<?php if (!empty($value['showpromotion'])): ?>
+													<div class="badge badge-discount">
+														<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+													</div>
+												<?php endif ?>
 
 												<!--BADGE SPECIAL -->
 												<div class="badge badge-special">
-													<div id="tour-hot" class="">
-														<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
-													</div>
-													<div id="best-sell" class="">
-														<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
-													</div>
+													<?php if (!empty($value['hot'])): ?>
+														<div id="tour-hot" class="">
+															<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+														</div>
+													<?php endif ?>
+													<?php if (!empty($value['bestselling'])): ?>
+														<div id="best-sell" class="">
+															<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+														</div>
+													<?php endif ?>
 												</div>
 
 												<div class="mask">
@@ -383,10 +443,20 @@
 														</div>
 														<div class="body">
 															<h3 class="price">
-																<?php echo number_format($value['price']); ?> vnd
-																<small class="price-original"><del>999.000.000 vnd</del></small>
+																<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																	<?php echo number_format($value['pricepromotion']); ?> vnd
+																	<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																<?php else: ?>
+																	<?php echo number_format($value['price']); ?> vnd
+																<?php endif ?>
 															</h3>
-															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i></small>
+															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>:
+																<?php if (empty($value['count_rating'])): ?>
+																	<?php echo NO_RATING;?> 
+																<?php else: ?>
+																	<?php echo round($value['total_rating']/$value['count_rating'],1);?>/5 
+																<?php endif ?>
+																<i class="fa fa-star" aria-hidden="true"></i></small>
 														</div>
 													</div>
 													<div class="content">
@@ -394,8 +464,12 @@
 															<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 																<h2 class="post-title"><?php echo $value['title']; ?></h2>
 																<h3 class="price">
-																	<?php echo number_format($value['price']); ?>vnd
-																	<small class="price-original"><del>999.000.000 vnd</del></small>
+																	<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																		<?php echo number_format($value['pricepromotion']); ?> vnd
+																		<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																	<?php else: ?>
+																		<?php echo number_format($value['price']); ?> vnd
+																	<?php endif ?>
 																</h3>
 														</div>
 														<div class="body">
@@ -420,7 +494,14 @@
 																</tr>
 																<tr>
 																	<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
-																	<td>4/5 <i class="fa fa-star" aria-hidden="true"></i></td>
+																	<td>
+																		<?php if (empty($value['count_rating'])): ?>
+																			<?php echo NO_RATING;?>
+																		<?php else: ?>
+																			<?php echo round($value['total_rating']/$value['count_rating'],1);?>/5 
+																		<?php endif ?>
+																		<i class="fa fa-star" aria-hidden="true"></i>
+																	</td>
 																</tr>
 															</table>
 														</div>

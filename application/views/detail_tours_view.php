@@ -20,9 +20,15 @@
 					<h1>
 						<?php echo $detail['title'] ?>
 						<br>
-						<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell') ?> </span>
-						<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot') ?> </span>
-						<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount') ?> </span>
+						<?php if (!empty($detail['bestselling'])): ?>
+							<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell') ?> </span>
+						<?php endif ?>
+						<?php if (!empty($detail['hot'])): ?>
+							<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot') ?> </span>
+						<?php endif ?>
+						<?php if (!empty($detail['showpromotion']) && !empty($detail['pricepromotion']) && !empty($detail['percen'])): ?>
+							<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount') ?> </span>
+						<?php endif ?>
 					</h1>
 					<p><?php echo $detail['description'] ?></p>
 				</div>
@@ -49,8 +55,12 @@
 							<td><?php echo $this->lang->line('tour-detail-price') ?></td>
 							<td>
 								<h3>
-									<?php echo number_format($detail['price']) ?> vnd
-									<small class="price-original"><del>999.000.000 vnd</del></small>
+									<?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
+										<?php echo number_format($detail['pricepromotion']); ?> vnd
+										<small class="price-original"><del><?php echo number_format($detail['price']);?> vnd</del></small>
+									<?php else: ?>
+										<?php echo number_format($detail['price']); ?> vnd
+									<?php endif ?>
 								</h3>
 							</td>
 						</tr>
@@ -83,7 +93,7 @@
 								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
 								<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']; ?>">
 								<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
-                                    <?php echo $this->lang->line('booking') ?>
+                                    <?php echo $this->lang->line('tour-detail-rating') ?>
 								</button>
 							</td>
 						</tr>

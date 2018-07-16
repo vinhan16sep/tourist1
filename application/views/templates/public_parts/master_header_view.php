@@ -288,9 +288,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>" alt="image example">
 														</div>
 														<a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
-														<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell-short') ?> </span>
-														<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot-short') ?> </span>
-														<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount-short') ?> </span>
+														<?php if (!empty($tour['bestselling'])): ?>
+															<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell-short') ?> </span>
+														<?php endif ?>
+														<?php if (!empty($tour['hot'])): ?>
+															<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot-short') ?> </span>
+														<?php endif ?>
+														<?php if (!empty($tour['showpromotion']) && !empty($tour['percen']) && !empty($tour['pricepromotion'])): ?>
+															<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount-short') ?> </span>
+														<?php endif ?>
 													</li>
                                                     <?php
                                                 }

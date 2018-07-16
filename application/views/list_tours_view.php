@@ -1,25 +1,18 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
-
-<!--
-<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')"></section>
--->
 <section id="head-slider-section">
 	<div id="head-slider" class="carousel slide" data-ride="carousel">
-
 		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<div class="mask">
-					<img src="https://images.unsplash.com/photo-1484544808355-8ec84e534d75?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fc1407c2a550b0ebf3def8b81fa7b4a2&auto=format&fit=crop&w=1966&q=80" alt="...">
-				</div>
-			</div>
-			<div class="item">
-				<div class="mask">
-					<img src="https://images.unsplash.com/photo-1484544808355-8ec84e534d75?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fc1407c2a550b0ebf3def8b81fa7b4a2&auto=format&fit=crop&w=1966&q=80" alt="...">
-				</div>
-			</div>
+			<?php if (!empty(json_decode($detail['image']))): ?>
+				<?php foreach (json_decode($detail['image']) as $key => $value): ?>
+					<div class="item <?php echo ($key == 0)?'active':'';?>">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/product_category/'.$detail['slug'].'/'.$value);?>" alt="...">
+						</div>
+					</div>
+				<?php endforeach ?>
+			<?php endif ?>
 		</div>
-
 		<a class="left carousel-control" href="#head-slider" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			<span class="sr-only">Previous</span>
@@ -59,18 +52,24 @@
 						<div class="inner">
 
 							<!--BADGE DISCOUNT -->
-							<div class="badge badge-discount">
-								<div class="content">KM<br>-30%</div>
-							</div>
+							<?php if (!empty($product_array[$i]['showpromotion'])): ?>
+								<div class="badge badge-discount">
+									<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
+								</div>
+							<?php endif ?>
 
 							<!--BADGE SPECIAL -->
 							<div class="badge badge-special">
-								<div id="tour-hot" class="">
-									<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
-								</div>
-								<div id="best-sell" class="">
-									<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
-								</div>
+								<?php if (!empty($product_array[$i]['hot'])): ?>
+									<div id="tour-hot" class="">
+										<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+									</div>
+								<?php endif ?>
+								<?php if (!empty($product_array[$i]['bestselling'])): ?>
+									<div id="best-sell" class="">
+										<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+									</div>
+								<?php endif ?>
 							</div>
 
 							<div class="mask">
@@ -82,9 +81,21 @@
 									</div>
 									<div class="body">
 										<h3 class="price">
-											<?php echo number_format($product_array[$i]['price']) ?> vnd
-											<small class="price-original"><del>999.000.000 vnd</del></small>
+											<?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+												<?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+												<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+											<?php else: ?>
+												<?php echo number_format($product_array[$i]['price']); ?> vnd
+											<?php endif ?>
 										</h3>
+										<small class="rating" style="color: white;"><?php echo $this->lang->line('tour-detail-rating') ?>:
+											<?php if (empty($product_array[$i]['count_rating'])): ?>
+												<?php echo NO_RATING;?> 
+											<?php else: ?>
+												<?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5 
+											<?php endif ?>
+											<i class="fa fa-star" aria-hidden="true"></i>
+										</small>
 									</div>
 								</div>
 								<div class="content">
@@ -96,8 +107,12 @@
 										</a>
 										<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
 										<h3 class="price">
-											<?php echo number_format($product_array[$i]['price']) ?> vnd
-											<small class="price-original"><del>999.000.000 vnd</del></small>
+											<?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+												<?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+												<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+											<?php else: ?>
+												<?php echo number_format($product_array[$i]['price']); ?> vnd
+											<?php endif ?>
 										</h3>
 									</div>
 									<div class="body">
@@ -123,6 +138,17 @@
                                                     }
                                                     echo $product_array[$i]['date'];
                                                     ?>
+												</td>
+											</tr>
+											<tr>
+												<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+												<td>
+													<?php if (empty($product_array[$i]['count_rating'])): ?>
+														<?php echo NO_RATING;?>
+													<?php else: ?>
+														<?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5 
+													<?php endif ?>
+													<i class="fa fa-star" aria-hidden="true"></i>
 												</td>
 											</tr>
 										</table>
