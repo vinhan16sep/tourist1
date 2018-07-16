@@ -269,8 +269,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 ?>
 												<li>
 													<div class="mask">
-														<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
-															 alt="image example">
+														<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image example">
 													</div>
 													<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
 												</li>
@@ -286,10 +285,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     ?>
 													<li>
 														<div class="mask">
-															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
-																 alt="image example">
+															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>" alt="image example">
 														</div>
 														<a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
+														<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell-short') ?> </span>
+														<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot-short') ?> </span>
+														<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount-short') ?> </span>
 													</li>
                                                     <?php
                                                 }

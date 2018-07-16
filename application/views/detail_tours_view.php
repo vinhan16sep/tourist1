@@ -17,7 +17,13 @@
 		<div class="section-header">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1><?php echo $detail['title'] ?></h1>
+					<h1>
+						<?php echo $detail['title'] ?>
+						<br>
+						<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell') ?> </span>
+						<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot') ?> </span>
+						<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount') ?> </span>
+					</h1>
 					<p><?php echo $detail['description'] ?></p>
 				</div>
 			</div>
@@ -42,7 +48,10 @@
 						<tr>
 							<td><?php echo $this->lang->line('tour-detail-price') ?></td>
 							<td>
-								<h3><?php echo number_format($detail['price']) ?> vnd</h3>
+								<h3>
+									<?php echo number_format($detail['price']) ?> vnd
+									<small class="price-original"><del>999.000.000 vnd</del></small>
+								</h3>
 							</td>
 						</tr>
 						<tr>

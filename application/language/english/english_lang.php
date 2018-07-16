@@ -137,3 +137,13 @@ $lang['contact-message'] = 'Message';
 $lang['contact-send'] = 'Send';
 $lang['day'] = 'Day';
 
+//Badge
+
+$lang['tour-best-sell'] = 'Best Sell Tour';
+$lang['tour-hot'] = 'Hot Tour';
+$lang['tour-discount'] = 'Sale Off Tour';
+
+$lang['tour-best-sell-short'] = 'Best Sell';
+$lang['tour-hot-short'] = 'Hot';
+$lang['tour-discount-short'] = 'Sale Off';
+

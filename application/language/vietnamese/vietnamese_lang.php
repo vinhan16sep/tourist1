@@ -134,6 +134,15 @@ $lang['contact-message'] = 'Nội dung';
 $lang['contact-send'] = 'Gửi';
 $lang['day'] = 'Ngày';
 
+//Badge
+
+$lang['tour-best-sell'] = 'Tour bán chạy';
+$lang['tour-hot'] = 'Tour Hot';
+$lang['tour-discount'] = 'Tour khuyến mại';
+
+$lang['tour-best-sell-short'] = 'BC';
+$lang['tour-hot-short'] = 'Hot';
+$lang['tour-discount-short'] = 'KM';
 
 
 
