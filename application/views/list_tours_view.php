@@ -1,7 +1,35 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
+<!--
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')"></section>
+-->
+<section id="head-slider-section">
+	<div id="head-slider" class="carousel slide" data-ride="carousel">
+
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<div class="mask">
+					<img src="https://images.unsplash.com/photo-1484544808355-8ec84e534d75?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fc1407c2a550b0ebf3def8b81fa7b4a2&auto=format&fit=crop&w=1966&q=80" alt="...">
+				</div>
+			</div>
+			<div class="item">
+				<div class="mask">
+					<img src="https://images.unsplash.com/photo-1484544808355-8ec84e534d75?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fc1407c2a550b0ebf3def8b81fa7b4a2&auto=format&fit=crop&w=1966&q=80" alt="...">
+				</div>
+			</div>
+		</div>
+
+		<a class="left carousel-control" href="#head-slider" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#head-slider" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</section>
 
 <section id="page">
 	<div class="container">
