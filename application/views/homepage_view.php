@@ -49,7 +49,7 @@
 	</div>
 </section>
 
-<section id="tour-intro" class="container-fluid section">
+<section id="tour-special" class="container-fluid section">
 	<div class="container">
 		<div class="section-header">
 			<h1><?php echo $specialtour['product_category_title']; ?></h1>
@@ -95,6 +95,22 @@
                             <?php foreach ($special_tours as $key => $value): ?>
 								<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 									<div class="inner col-xs-12 col-sm-6 col-md-4">
+
+										<!--BADGE DISCOUNT -->
+										<div class="badge badge-discount">
+											<div class="content">KM<br>-30%</div>
+										</div>
+
+										<!--BADGE SPECIAL -->
+										<div class="badge badge-special">
+											<div id="tour-hot" class="">
+												<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+											</div>
+											<div id="best-sell" class="">
+												<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+											</div>
+										</div>
+
 										<div class="mask">
 											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 											<div class="overview">
@@ -103,14 +119,22 @@
 													<h2 class="post-title"><?php echo $value['title']; ?></h2>
 												</div>
 												<div class="body">
-													<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+													<h3 class="price">
+														<?php echo number_format($value['price']); ?> vnd
+														<small class="price-original"><del>999.000.000 vnd</del></small>
+													</h3>
+													<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i></small>
 												</div>
 											</div>
 											<div class="content">
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 													<h2 class="post-title"><?php echo $value['title']; ?></h2>
-													<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+													<h3 class="price">
+														<?php echo number_format($value['price']); ?> vnd
+														<br>
+														<small class="price-original"><del>999.000.000 vnd</del></small>
+													</h3>
 												</div>
 												<div class="body">
 													<table class="table">
@@ -136,6 +160,10 @@
                                                                 echo $value['date'];
                                                                 ?>
 															</td>
+														</tr>
+														<tr>
+															<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+															<td>4/5 <i class="fa fa-star" aria-hidden="true"></i></td>
 														</tr>
 													</table>
 												</div>
@@ -179,6 +207,22 @@
                                     <?php foreach ($domestic_tours as $key => $value): ?>
                                         <div class="item <?php echo ($key == 0)?'active' : ''; ?>">
                                             <div class="inner col-xs-12 col-sm-6 col-md-4">
+
+												<!--BADGE DISCOUNT -->
+												<div class="badge badge-discount">
+													<div class="content">KM<br>-30%</div>
+												</div>
+
+												<!--BADGE SPECIAL -->
+												<div class="badge badge-special">
+													<div id="tour-hot" class="">
+														<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+													</div>
+													<div id="best-sell" class="">
+														<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+													</div>
+												</div>
+
                                                 <div class="mask">
                                                     <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
                                                         <?php if($value['image']){ ?>
@@ -193,14 +237,21 @@
                                                             <h2 class="post-title"><?php echo $value['title']; ?></h2>
                                                         </div>
                                                         <div class="body">
-                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                            <h3 class="price">
+																<?php echo number_format($value['price']); ?> vnd
+																<small class="price-original"><del>999.000.000 vnd</del></small>
+															</h3>
+															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i></small>
                                                         </div>
                                                     </div>
                                                     <div class="content">
                                                         <div class="head">
                                                             <h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
                                                             <h2 class="post-title"><?php echo $value['title']; ?></h2>
-                                                            <h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+                                                            <h3 class="price">
+																<?php echo number_format($value['price']); ?> vnd
+																<small class="price-original"><del>999.000.000 vnd</del></small>
+															</h3>
                                                         </div>
                                                         <div class="body">
                                                             <table class="table">
@@ -222,6 +273,10 @@
                                                                         ?>
                                                                     </td>
                                                                 </tr>
+																<tr>
+																	<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+																	<td>4/5 <i class="fa fa-star" aria-hidden="true"></i></td>
+																</tr>
                                                             </table>
                                                         </div>
                                                         <div class="foot">
@@ -297,6 +352,22 @@
                                     <?php foreach ($international_tours as $key => $value): ?>
 										<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 											<div class="inner col-xs-12 col-sm-6 col-md-4">
+
+												<!--BADGE DISCOUNT -->
+												<div class="badge badge-discount">
+													<div class="content">KM<br>-30%</div>
+												</div>
+
+												<!--BADGE SPECIAL -->
+												<div class="badge badge-special">
+													<div id="tour-hot" class="">
+														<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+													</div>
+													<div id="best-sell" class="">
+														<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+													</div>
+												</div>
+
 												<div class="mask">
 													<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
                                                         <?php if($value['image']){ ?>
@@ -311,14 +382,21 @@
 															<h2 class="post-title"><?php echo $value['title']; ?></h2>
 														</div>
 														<div class="body">
-															<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+															<h3 class="price">
+																<?php echo number_format($value['price']); ?> vnd
+																<small class="price-original"><del>999.000.000 vnd</del></small>
+															</h3>
+															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i></small>
 														</div>
 													</div>
 													<div class="content">
 														<div class="head">
 															<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
 																<h2 class="post-title"><?php echo $value['title']; ?></h2>
-																<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+																<h3 class="price">
+																	<?php echo number_format($value['price']); ?>vnd
+																	<small class="price-original"><del>999.000.000 vnd</del></small>
+																</h3>
 														</div>
 														<div class="body">
 															<table class="table">
@@ -339,6 +417,10 @@
                                                                         }
                                                                         ?>
 																	</td>
+																</tr>
+																<tr>
+																	<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+																	<td>4/5 <i class="fa fa-star" aria-hidden="true"></i></td>
 																</tr>
 															</table>
 														</div>
@@ -508,4 +590,10 @@
 		<?php endif ?>
 	</div>
 </section>
+
+<script>
+	$(document).ready(function(){
+		$('.section .item .inner').addClass('');
+	});
+</script>
 

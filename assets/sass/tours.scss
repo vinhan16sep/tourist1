@@ -65,6 +65,20 @@
         .item{
             margin-bottom: 30px;
 
+            .inner{
+                .badge{
+                    &.badge-special{
+                        right: -8px;
+                    }
+
+                    &.badge-discount{
+                        .content{
+
+                        }
+                    }
+                }
+            }
+
             .mask{
                 width: 100%;
                 height: 400px;
@@ -111,6 +125,10 @@
                     .body{
                         h3{
                             color: #fff;
+
+                            small.price-original{
+                                color: #eee;
+                            }
                         }
                     }
                 }
@@ -148,6 +166,10 @@
 
                         h3.price{
                             font-size: 2em;
+
+                            small.price-original{
+                                color: #eee;
+                            }
                         }
                     }
 
@@ -202,6 +224,10 @@
 
             table{
                 color: #fff;
+
+                small.price-original{
+                    color: #ccc;
+                }
 
                 .rating{
                     unicode-bidi: bidi-override;
