@@ -25,15 +25,15 @@
 		<div id="tour-detail" class="section">
 			<div class="row">
 				<div class="left col-sm-6 col-xs-12">
-					<h3>Note</h3>
+					<h3><?php echo $this->lang->line('note');?></h3>
 					<p><?php echo $detail['content'] ?></p>
 				</div>
 				<div class="right col-sm-6 col-xs-12">
-					<h3>Tour Detail</h3>
+					<h3><?php echo $this->lang->line('tour-detail');?></h3>
 					<table class="table">
 						<tr>
 							<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-							<td><?php echo count($detail['datetitle'])?> Ngày</td>
+							<td><?php echo count($detail['datetitle'])?> <?php echo $this->lang->line('day');?></td>
 						</tr>
 						<tr>
 							<td><?php echo $this->lang->line('tour-detail-start') ?></td>
@@ -50,7 +50,7 @@
 							<td>
 								<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
 								<input type="hidden" name="re_rateit" id="re_rateit" value="">
-								<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
+								<p class="number"><?php echo $rating ?> / 5 <?php echo $this->lang->line('rate');?> <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
 							</td>
 						</tr>
 						<tr>
@@ -126,7 +126,7 @@
 												<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
 													<h4 class="panel-title">
 														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
-															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+															<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 													</h4>
@@ -167,7 +167,7 @@
 												<div class="panel-heading" role="tab" id="day-1-heading">
 													<h4 class="panel-title">
 														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
-															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+															<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 													</h4>
@@ -190,7 +190,7 @@
 																</div>
 			                                                <?php else: ?>
 			                                                    <div style="padding:20px;">
-			                                                        Không có nơi nào được chọn trong ngày    
+			                                                        <?php echo $this->lang->line('no-where-selected-in-the-day');?>  
 			                                                    </div>
 			                                                <?php endif;?>
                                                             <?php if ($j+1 < count($detail['librarylocaltion'][$i])): ?>
@@ -220,9 +220,9 @@
 										</thead>
 										<tbody>
 										<tr>
-											<td><?php echo $detail['priceadults'];?>% price</td>
-											<td><?php echo $detail['pricechildren'];?>% price</td>
-											<td><?php echo $detail['priceinfants'];?>% price</td>
+											<td><?php echo $detail['priceadults'];?>% <?php echo $this->lang->line('price');?></td>
+											<td><?php echo $detail['pricechildren'];?>% <?php echo $this->lang->line('price');?></td>
+											<td><?php echo $detail['priceinfants'];?>% <?php echo $this->lang->line('price');?></td>
 										</tr>
 										</tbody>
 									</table>
@@ -362,7 +362,7 @@
 				                                <?php for ($i = 0;$i< count($detail['dateimg']);$i++): ?>
 													<tr>
 														<td>
-															Day <?php echo $i+1; ?>
+															<?php echo $this->lang->line('rate');?> <?php echo $i+1; ?>
 														</td>
 														<td>
 			                                                <?php

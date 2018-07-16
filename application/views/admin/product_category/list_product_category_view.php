@@ -110,7 +110,11 @@
                 <tr style="background: #DFFDE0" class="remove_<?php echo $value['id'] ?>" >
                     <td>
                         <div class="mask_sm">
-                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/'.$value['image']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
+                            <?php if (!empty(json_decode($value['image']))): ?>
+                                <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .json_decode($value['image'])[0]) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width="150px" >
+                            <?php else: ?>
+                                Không có dữ liệu
+                            <?php endif; ?>
                         </div>
                     </td>
                     <td><?php echo $value['title'] ?></td>

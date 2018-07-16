@@ -115,11 +115,11 @@
 												<div class="body">
 													<table class="table">
 														<tr>
-															<td>Time</td>
+															<td><?php echo $this->lang->line('tour-detail-duration');?></td>
 															<td><?php echo count(json_decode($value['dateimg'])) ?></td>
 														</tr>
 														<tr>
-															<td>Start</td>
+															<td><?php echo $this->lang->line('tour-detail-start');?></td>
 															<td>
                                                                 <?php
                                                                 if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
@@ -205,11 +205,11 @@
                                                         <div class="body">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td>Time</td>
+                                                                    <td><?php echo $this->lang->line('tour-detail-duration');?></td>
                                                                     <td><?php echo count(json_decode($value['dateimg'])) ?></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Start</td>
+                                                                    <td><?php echo $this->lang->line('tour-detail-start');?></td>
                                                                     <td>
                                                                         <?php
                                                                         if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
@@ -323,11 +323,11 @@
 														<div class="body">
 															<table class="table">
 																<tr>
-																	<td>Time</td>
+																	<td><?php echo $this->lang->line('tour-detail-duration');?></td>
 																	<td><?php echo count(json_decode($value['dateimg'])) ?></td>
 																</tr>
 																<tr>
-																	<td>Start</td>
+																	<td><?php echo $this->lang->line('tour-detail-start');?></td>
 																	<td>
                                                                         <?php
                                                                         if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
