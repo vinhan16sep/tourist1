@@ -426,7 +426,7 @@ section.main-content .section {
   section.main-content .section .item h4.post-subtitle {
     font-size: 1em;
     text-transform: uppercase;
-    margin-top: 1px;
+    margin-top: 15px;
     color: #999;
     overflow: hidden;
     text-overflow: ellipsis;
