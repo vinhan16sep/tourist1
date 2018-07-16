@@ -117,6 +117,10 @@ defined('INTERNATIONAL_TOUR')  OR define('INTERNATIONAL_TOUR', 'nuoc-ngoai');
 defined('SPECIAL_TOUR')        OR define('SPECIAL_TOUR', 'tour-dac-biet');
 
 /**
+ * Rating default
+ */
+defined('NO_RATING')        OR define('NO_RATING', '4/5');
+/**
  * FIXED POST CATEGORIES ID
  */
 defined('FIXED_ABOUT_US')        OR define('FIXED_ABOUT_US', 15);
