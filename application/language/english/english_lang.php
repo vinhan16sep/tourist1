@@ -161,3 +161,18 @@ $lang['tour-discount-short'] = 'Sale Off';
 
 $lang['weather'] = 'Weather';
 
+$lang['thu_do_ha_noi'] = 'Ha Noi';
+$lang['beijing'] = 'Beijing';
+$lang['shanghai'] = 'Shanghai';
+$lang['taipei'] = 'Taipei';
+$lang['tokyo'] = 'Tokyo';
+$lang['seoul'] = 'Seoul';
+$lang['delhi'] = 'Delhi';
+$lang['bangkok'] = 'Bangkok';
+$lang['Vientiane'] = 'Vientiane';
+$lang['kuala_lumpur'] = 'Kuala Lumpur';
+$lang['phnompenh'] = 'Phnompenh';
+$lang['jakarta'] = 'Jakarta';
+$lang['singapore'] = 'Singapore';
+
+

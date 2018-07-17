@@ -91,6 +91,9 @@ class Homepage extends Public_Controller {
         $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),$this->data['lang'],3);
         $this->render('homepage_view');
     }
+    public function ajax_home(){
+        return $this->return_api(HTTP_SUCCESS,'',$this->lang->line($this->input->get('key')));
+    }
 
     public function get_handbook_data($parent = FIXED_HANDBOOK){
         $categories = $this->post_category_model->fetch_post_category_menu($parent);
