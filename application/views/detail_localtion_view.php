@@ -16,9 +16,8 @@
                     <?php echo $detail['content'] ?>
                 </div>
                 <div class="section-footer">
-                    <p>Shared:</p>
                     <ul class="list-inline">
-                        <li><a href=""><i class="fa fa-facebook-f"></i> Facebook </a></li>
+                        <div class="fb-share-button" data-href="" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdiamondtour.matocreative.vn%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                     </ul>
                 </div>
             </div>
