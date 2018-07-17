@@ -104,6 +104,8 @@ $lang['tour-price-adult'] = 'Người lớn';
 $lang['tour-price-u11'] = 'Trẻ từ 2 đến 11 tuổi';
 $lang['tour-price-u2'] = 'Trẻ em dưới 2 tuổi';
 
+$lang['tour-related'] = 'Tour liên quan';
+
 $lang['inclusion'] = 'Bao gồm';
 $lang['exclusion'] = 'Không bao gồm';
 
@@ -149,5 +151,8 @@ $lang['tour-best-sell-short'] = 'BC';
 $lang['tour-hot-short'] = 'Hot';
 $lang['tour-discount-short'] = 'KM';
 
+//Weather
+
+$lang['weather'] = 'Thời tiết';
 
 
