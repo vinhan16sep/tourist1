@@ -494,135 +494,126 @@
 				<h3><?php echo $this->lang->line('tour-related') ?></h3>
 
 				<div class="row">
-					<div class="item col-xs-12">
-						<div class="inner">
+					<?php for ($i=0;$i< count($product_array);$i++): ?>
+						<div class="item col-xs-12">
+							<div class="inner">
 
-							<!--BADGE DISCOUNT -->
-                            <?php if (!empty($product_array[$i]['showpromotion'])): ?>
-								<div class="badge badge-discount">
-									<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
+								<!--BADGE DISCOUNT -->
+	                            <?php if (!empty($product_array[$i]['showpromotion'])): ?>
+									<div class="badge badge-discount">
+										<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
+									</div>
+	                            <?php endif ?>
+
+								<!--BADGE SPECIAL -->
+								<div class="badge badge-special">
+	                                <?php if (!empty($product_array[$i]['hot'])): ?>
+										<div id="tour-hot" class="">
+											<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+										</div>
+	                                <?php endif ?>
+	                                <?php if (!empty($product_array[$i]['bestselling'])): ?>
+										<div id="best-sell" class="">
+											<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+										</div>
+	                                <?php endif ?>
 								</div>
-                            <?php endif ?>
 
-							<!--BADGE SPECIAL -->
-							<div class="badge badge-special">
-                                <?php if (!empty($product_array[$i]['hot'])): ?>
-									<div id="tour-hot" class="">
-										<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+								<div class="mask">
+									<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
+									<div class="overview">
+										<div class="head">
+											<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
+											<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
+										</div>
+										<div class="body">
+											<h3 class="price">
+	                                          <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+	                                              <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+													<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+	                                          <?php else: ?>
+	                                              <?php echo number_format($product_array[$i]['price']); ?> vnd
+	                                          <?php endif ?>
+											</h3>
+											<small class="rating" style="color: white;"><?php echo $this->lang->line('tour-detail-rating') ?><!--:-->
+	                                          <?php if (empty($product_array[$i]['count_rating'])): ?>
+	                                              <?php echo NO_RATING;?>
+	                                          <?php else: ?>
+	                                              <?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5
+	                                          <?php endif ?>
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</small>
+										</div>
 									</div>
-                                <?php endif ?>
-                                <?php if (!empty($product_array[$i]['bestselling'])): ?>
-									<div id="best-sell" class="">
-										<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
-									</div>
-                                <?php endif ?>
-							</div>
-
-							<div class="mask">
-<!--								<img src="--><?php //echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?><!--" alt="image">-->
-								<img src="<?php echo base_url('assets/img/horizontal.jpg') ?>" alt="image ralated tour">
-								<div class="overview">
-									<div class="head">
-<!--										<h4 class="post-subtitle">--><?php //echo $product_array[$i]['parent_title'] ?><!--</h4>-->
-<!--										<h2 class="post-title">--><?php //echo $product_array[$i]['title'] ?><!--</h2>-->
-										<h4 class="post-subtitle">Parent Title</h4>
-										<h2 class="post-title">Tour Name Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
-									</div>
-									<div class="body">
-										<h3 class="price">
-<!--                                            --><?php //if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-<!--                                                --><?php //echo number_format($product_array[$i]['pricepromotion']); ?><!-- vnd-->
-<!--												<small class="price-original"><del>--><?php //echo number_format($product_array[$i]['price']);?><!-- vnd</del></small>-->
-<!--                                            --><?php //else: ?>
-<!--                                                --><?php //echo number_format($product_array[$i]['price']); ?><!-- vnd-->
-<!--                                            --><?php //endif ?>
-											999.000.000vnd
-											<small class="price-original"><del>999.000.000 vnd</del></small>
-										</h3>
-<!--										<small class="rating" style="color: white;">--><?php //echo $this->lang->line('tour-detail-rating') ?><!--:-->
-<!--                                            --><?php //if (empty($product_array[$i]['count_rating'])): ?>
-<!--                                                --><?php //echo NO_RATING;?>
-<!--                                            --><?php //else: ?>
-<!--                                                --><?php //echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?><!--/5-->
-<!--                                            --><?php //endif ?>
-<!--											<i class="fa fa-star" aria-hidden="true"></i>-->
-<!--										</small>-->
-										<small class="rating" style="color: white;"><?php echo $this->lang->line('tour-detail-rating') ?>: 4/5 <i class="fa fa-star" aria-hidden="true"></i>
-										</small>
-									</div>
-								</div>
-								<div class="content">
-									<div class="head">
-										<a href="#" class="sub-header" style="color:white">
-											<h4 class="post-subtitle">
-<!--                                                --><?php //echo $product_array[$i]['parent_title'] ?>
-												Parent Title
-											</h4>
-										</a>
-										<h2 class="post-title">
-<!--											--><?php //echo $product_array[$i]['title'] ?>
-											Tour Name Lorem ipsum dolor sit amet, consectetur adipiscing elit
-										</h2>
-										<h3 class="price">
-<!--                                            --><?php //if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-<!--                                                --><?php //echo number_format($product_array[$i]['pricepromotion']); ?><!-- vnd-->
-<!--												<small class="price-original"><del>--><?php //echo number_format($product_array[$i]['price']);?><!-- vnd</del></small>-->
-<!--                                            --><?php //else: ?>
-<!--                                                --><?php //echo number_format($product_array[$i]['price']); ?><!-- vnd-->
-<!--                                            --><?php //endif ?>
-											999.000.000vnd
-											<small class="price-original"><del>999.000.000 vnd</del></small>
-										</h3>
-									</div>
-									<div class="body">
-										<table class="table">
-											<tr>
-												<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-<!--												<td>--><?php //echo count(json_decode($product_array[$i]['dateimg'])) ?><!--</td>-->
-												<td>4d 5n</td>
-											</tr>
-											<tr>
-												<td><?php echo $this->lang->line('tour-detail-start') ?></td>
-<!--												<td>-->
-<!--                                                    --><?php
-//                                                    if($product_array[$i]['date'] != "0000-00-00 00:00:00" && $product_array[$i]['date'] != "1970-01-01 08:00:00"){
-//                                                        $rmtime = str_replace(" 00:00:00","",$product_array[$i]['date']);
-//                                                        $date= explode("-",$rmtime);
-//                                                        if(count($date) == 3){
-//                                                            $product_array[$i]['date'] = $date[2]."/".$date[1]."/".$date[0];
-//                                                        }else{
-//                                                            $product_array[$i]['date'] = "";
-//                                                        }
-//                                                    }else{
-//                                                        $product_array[$i]['date'] = "";
-//                                                    }
-//                                                    echo $product_array[$i]['date'];
-//                                                    ?>
-<!--												</td>-->
-												<td>04-04-4444</td>
-											</tr>
-											<tr>
-												<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
-												<td>
-                                                    <?php if (empty($product_array[$i]['count_rating'])): ?>
-                                                        <?php echo NO_RATING;?>
-                                                    <?php else: ?>
-                                                        <?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5
-                                                    <?php endif ?>
-													<i class="fa fa-star" aria-hidden="true"></i>
-												</td>
-											</tr>
-										</table>
-									</div>
-									<div class="foot">
-										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
-                                            <?php echo $this->lang->line('explore') ?>
-										</a>
+									<div class="content">
+										<div class="head">
+											<a href="#" class="sub-header" style="color:white">
+												<h4 class="post-subtitle">
+	                                              <?php echo $product_array[$i]['parent_title'] ?>
+													Parent Title
+												</h4>
+											</a>
+											<h2 class="post-title">
+												<?php echo $product_array[$i]['title'] ?>
+												Tour Name Lorem ipsum dolor sit amet, consectetur adipiscing elit
+											</h2>
+											<h3 class="price">
+	                                          <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+	                                              <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+													<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+	                                          <?php else: ?>
+	                                              <?php echo number_format($product_array[$i]['price']); ?> vnd
+	                                          <?php endif ?>
+											</h3>
+										</div>
+										<div class="body">
+											<table class="table">
+												<tr>
+													<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
+													<td><?php echo count(json_decode($product_array[$i]['dateimg'])) ?></td>
+												</tr>
+												<tr>
+													<td><?php echo $this->lang->line('tour-detail-start') ?></td>
+													<td>
+	                                                  <?php
+	                                                   if($product_array[$i]['date'] != "0000-00-00 00:00:00" && $product_array[$i]['date'] != "1970-01-01 08:00:00"){
+	                                                       $rmtime = str_replace(" 00:00:00","",$product_array[$i]['date']);
+	                                                       $date= explode("-",$rmtime);
+	                                                       if(count($date) == 3){
+	                                                           $product_array[$i]['date'] = $date[2]."/".$date[1]."/".$date[0];
+	                                                       }else{
+	                                                           $product_array[$i]['date'] = "";
+	                                                       }
+	                                                   }else{
+	                                                       $product_array[$i]['date'] = "";
+	                                                   }
+	                                                   echo $product_array[$i]['date'];
+	                                                   ?>
+													</td>
+												</tr>
+												<tr>
+													<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+													<td>
+	                                                    <?php if (empty($product_array[$i]['count_rating'])): ?>
+	                                                        <?php echo NO_RATING;?>
+	                                                    <?php else: ?>
+	                                                        <?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5
+	                                                    <?php endif ?>
+														<i class="fa fa-star" aria-hidden="true"></i>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<div class="foot">
+											<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
+	                                            <?php echo $this->lang->line('explore') ?>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					<?php endfor; ?>
 				</div>
 			</div>
 
