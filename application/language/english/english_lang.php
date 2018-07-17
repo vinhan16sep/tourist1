@@ -111,6 +111,8 @@ $lang['tour-price-adult'] = 'Adult';
 $lang['tour-price-u11'] = 'Children from 2 to 11';
 $lang['tour-price-u2'] = 'Children under 2';
 
+$lang['tour-related'] = 'Related Tours';
+
 $lang['inclusion'] = 'Inclusion';
 $lang['exclusion'] = 'Exclusion';
 
@@ -154,4 +156,8 @@ $lang['tour-discount'] = 'Sale Off Tour';
 $lang['tour-best-sell-short'] = 'Best Sell';
 $lang['tour-hot-short'] = 'Hot';
 $lang['tour-discount-short'] = 'Sale Off';
+
+//Weather
+
+$lang['weather'] = 'Weather';
 

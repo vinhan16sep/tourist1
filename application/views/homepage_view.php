@@ -583,33 +583,53 @@
 </section>
 
 <section id="services" class="section container">
-	<div class="section-header">
-		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<h1><?php echo $handbook['post_category_title'];?></h1>
-				<div class="line">
-					<div class="line-primary"></div>
-				</div>
-				<p><?php echo $handbook['post_category_content'];?></p>
-			</div>
-		</div>
-	</div>
 	<div class="row">
-		<?php foreach ($post_handbook as $key => $value): ?>
-		<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
-			<div class="item col-sm-6 col-xs-12">
-				<div class="mask">
-					<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="blogs image">
-					<div class="overlay"></div>
-					<div class="content">
-						<h4 class="sub-header"><?php echo $value['category_title'];?></h4>
-						<h2 class="header"><?php echo $value['title']; ?></h2>
+		<div class="col-sm-9 col-xs-12">
+			<div class="section-header">
+				<div class="row">
+					<div class="col-xs-12">
+						<h1><?php echo $handbook['post_category_title'];?></h1>
+						<div class="line">
+							<div class="line-primary"></div>
+						</div>
+						<p><?php echo $handbook['post_category_content'];?></p>
 					</div>
 				</div>
 			</div>
-		</a>
-		<?php endforeach ?>
+			<div class="row">
+                <?php foreach ($post_handbook as $key => $value): ?>
+					<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
+						<div class="item col-sm-6 col-xs-12">
+							<div class="mask">
+								<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="blogs image">
+								<div class="overlay"></div>
+								<div class="content">
+									<h4 class="sub-header"><?php echo $value['category_title'];?></h4>
+									<h2 class="header"><?php echo $value['title']; ?></h2>
+								</div>
+							</div>
+						</div>
+					</a>
+                <?php endforeach ?>
+			</div>
+		</div>
+
+		<div class="col-sm-3 col-xs-12">
+			<div id="banner-weather">
+				<div class="section-header">
+					<div class="row">
+						<div class="col-xs-12">
+							<h1><?php echo $this->lang->line('weather') ?></h1>
+							<div class="line">
+								<div class="line-primary"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </section>
 
 <section id="visa" class="container-fluid section" style="background-image: url('<?php echo base_url('assets/upload/post_category/'.$visa['image']); ?>');">
