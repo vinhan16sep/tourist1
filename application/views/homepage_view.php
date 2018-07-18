@@ -42,7 +42,7 @@
 	        .fail(function() {
 	            console.log("error");
 	        });
-        	$('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="img col-md-3" style="padding:0px;"><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9" style="padading:0px;paddidng-left:5px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div>');
+    		$('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="row"><div class="img col-md-3 col-ms-12 col-sm-12 col-xs-6" ><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9 col-ms-12 col-sm-12 col-xs-6" style="padding-left:25px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div></div>');
             $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
             $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
         })
