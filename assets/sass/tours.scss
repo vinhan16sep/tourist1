@@ -636,7 +636,69 @@
         .container{
         }
     }
+    #page{
+        .container{
+            .row{
+                #tour-detail{
+                    .row{
+                        .tabs{
+                            .nav-tabs{
+                                li{
+                                        display: inline-block;
+                                }
+                            }
+                            .tab-content{
+                                #overview{
+                                    .row{
+                                        .schedule{
+                                            .panel-group{
+                                                .panel-primary{
+                                                    .panel-body{
+                                                        .media{
+                                                            width: 100%;
+                                                            .media-left{
+                                                                display: block;
+                                                                width: 100%;
+                                                                padding-right: 0px;
+                                                                .mask{
+                                                                    width: 100%;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 
+                                #gallery {
+                                    .row{
+                                        .panel-group{
+                                            .panel-primary{
+                                                .panel-body{
+                                                    .media{
+                                                        .media-left{
+                                                            display: block;
+                                                            width: 100%;
+                                                            padding-right: 0px;
+                                                            .mask{
+                                                                width: 100%;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } 
     #tours{
         .row{
             .item{
