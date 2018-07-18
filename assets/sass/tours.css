@@ -989,6 +989,23 @@ footer.footer {
     transition: all ease 0.5s; }
 
 @media (max-width: 768px) {
+  #page .container .row #tour-detail .row .tabs .nav-tabs li {
+    display: inline-block; }
+  #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media {
+    width: 100%; }
+    #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left {
+      display: block;
+      width: 100%;
+      padding-right: 0px; }
+      #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left .mask {
+        width: 100%; }
+  #page .container .row #tour-detail .row .tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left {
+    display: block;
+    width: 100%;
+    padding-right: 0px; }
+    #page .container .row #tour-detail .row .tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left .mask {
+      width: 100%; }
+
   #tours .row .item {
     margin-bottom: 30px; }
     #tours .row .item .mask {
