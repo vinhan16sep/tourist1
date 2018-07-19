@@ -141,7 +141,9 @@ class Product_category extends Admin_Controller{
                 $this->form_validation->set_rules('title_en', 'Title', 'required');
                 if($this->form_validation->run() == TRUE){
                     if(!empty($_FILES['image_shared']['name'])){
-                        $this->check_imgs($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
+                        if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
+                            $this->check_imgs($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
+                        }
                     }
                     $unique_slug = $this->data['detail']['slug'];
                     if($unique_slug !== $this->input->post('slug_shared') && $this->data['detail']['parent_id'] != 0){
@@ -156,9 +158,11 @@ class Product_category extends Admin_Controller{
                         mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0755);
                     }
                     if(!empty($_FILES['image_shared']['name'])){
-                        $image = $this->upload_file('assets/upload/product_category/'.$unique_slug, 'image_shared', 'assets/upload/product_category/'. $unique_slug .'/thumb');
-                        if(!empty(json_decode($this->data['detail']['image']))){
-                            $image = array_merge(json_decode($this->data['detail']['image']),$image);
+                        if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
+                            $image = $this->upload_file('assets/upload/product_category/'.$unique_slug, 'image_shared', 'assets/upload/product_category/'. $unique_slug .'/thumb');
+                            if(!empty(json_decode($this->data['detail']['image']))){
+                                $image = array_merge(json_decode($this->data['detail']['image']),$image);
+                            }
                         }
                     }
                     $shared_request = array();
