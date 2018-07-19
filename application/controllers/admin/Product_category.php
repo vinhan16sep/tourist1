@@ -87,8 +87,10 @@ class Product_category extends Admin_Controller{
                 
                 $unique_slug = $this->product_category_model->build_unique_slug($slug);
                 if(!file_exists("assets/upload/".$this->data['controller']."/".$unique_slug) && !empty($_FILES['image_shared']['name'])){
-                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0755);
-                    mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0755);
+                    if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
+                        mkdir("assets/upload/".$this->data['controller']."/".$unique_slug, 0755);
+                        mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0755);
+                    }
                 }
                 if(!empty($_FILES['image_shared']['name'])){
                     if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
@@ -158,8 +160,10 @@ class Product_category extends Admin_Controller{
 
                     }
                     if(!file_exists("assets/upload/product_category/".$unique_slug) && !empty($_FILES['image_shared']['name'])){
-                        mkdir("assets/upload/product_category/".$unique_slug, 0755);
-                        mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0755);
+                        if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
+                            mkdir("assets/upload/product_category/".$unique_slug, 0755);
+                            mkdir("assets/upload/".$this->data['controller']."/".$unique_slug.'/thumb', 0755);
+                        }
                     }
                     if(!empty($_FILES['image_shared']['name'])){
                         if (count($_FILES['image_shared']['name'])>0 && !empty($_FILES['image_shared']['name'][0])) {
