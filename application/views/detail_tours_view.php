@@ -74,7 +74,7 @@
 							</tr>
 							<tr>
 								<td>
-									<div class="captcha-image image col-md-6"></div>
+									<div class="captcha-image image col-md-6" style="padding-left: 0;"></div>
 
 									<div class="captcha-input input-group col-md-6">
 										<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
