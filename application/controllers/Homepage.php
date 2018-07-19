@@ -92,7 +92,15 @@ class Homepage extends Public_Controller {
         $this->render('homepage_view');
     }
     public function ajax_home(){
-        return $this->return_api(HTTP_SUCCESS,'',$this->lang->line($this->input->get('key')));
+        $request = json_decode($this->input->get('key'));
+        $array_request = explode(',', $request);
+        print_r($array_request);die;
+        $result = array();
+        foreach($array_request as $key => $val){
+            echo $val;die;
+            $result[$val] = $this->lang->line('weather_city')[$val];
+        }
+        return $this->return_api(HTTP_SUCCESS,'', $result);
     }
 
     public function get_handbook_data($parent = FIXED_HANDBOOK){
