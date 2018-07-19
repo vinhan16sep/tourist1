@@ -271,7 +271,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 ?>
 												<li>
 													<div class="mask">
-														<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image example">
+														<?php if (!empty(json_decode($sub_val['image']))): ?>
+															<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . json_decode($sub_val['image'])[0]); ?>" alt="image example">
+														<?php endif; ?>
 													</div>
 													<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
 												</li>

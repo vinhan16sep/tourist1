@@ -38,10 +38,10 @@
                             <?php
                                 switch ($this->uri->segment(3)) {
                                     case 'success':
-                                        echo 'Thành công';
+                                        echo 'Đặt tour thành công';
                                         break;
                                     case 'cancel':
-                                        echo 'Hủy bỏ';
+                                        echo 'Tour đã hủy bỏ';
                                         break;
                                     default:
                                         echo 'Chờ xác nhận';
@@ -68,17 +68,19 @@
                     <div class="box-body">
                         <div class="table-responsive">
                             <table id="table" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Họ Tên</th>
-                                        <th>Thời gian</th>
-                                        <th>Tour</th>
-                                        <th>Xem thêm</th>
-                                        <th>Tình trạng</th>
-                                        <th>Hủy bỏ</th>
-                                    </tr>
-                                </thead>
+                                <?php if (!empty($booking)): ?>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Họ Tên</th>
+                                            <th>Thời gian</th>
+                                            <th>Tour</th>
+                                            <th>Xem thêm</th>
+                                            <th>Tình trạng</th>
+                                            <th>Hủy bỏ</th>
+                                        </tr>
+                                    </thead>
+                                <?php endif ?>
                                 <tbody>
                                     <?php if ($booking): ?>
                                         <?php foreach ($booking as $key => $value): ?>
@@ -149,21 +151,24 @@
                                         <?php endforeach ?>
                                     <?php else: ?>
                                         <tr>
-                                            Chưa có khách đặt tour
+                                            <h4><?php echo NO_DATA;?></h4>
                                         </tr>
                                     <?php endif ?>
                                 </tbody>
-                                <tfooter>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Họ Tên</th>
-                                        <th>Thời gian</th>
-                                        <th>Tour</th>
-                                        <th>Xem thêm</th>
-                                        <th>Tình trạng</th>
-                                        <th>Hủy bỏ</th>
-                                    </tr>
-                                </tfooter>
+
+                                <?php if (!empty($booking)): ?>
+                                    <tfooter>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Họ Tên</th>
+                                            <th>Thời gian</th>
+                                            <th>Tour</th>
+                                            <th>Xem thêm</th>
+                                            <th>Tình trạng</th>
+                                            <th>Hủy bỏ</th>
+                                        </tr>
+                                    </tfooter>
+                                <?php endif ?>
                             </table>
                         </div>
 						<div class="col-md-6 col-md-offset-5 page">

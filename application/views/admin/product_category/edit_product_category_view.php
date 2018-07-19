@@ -28,9 +28,9 @@
                             <label class="col-xs-12" for="image_shared">Hình ảnh đang dùng</label>
                             <br>
                             <?php foreach (json_decode($detail['image']) as $key => $value): ?>
-                                <div class="col-xs-6 row_<?php echo $key; ?>">
+                                <div class="<?php echo (count(json_decode($detail['image']))>2)?'col-md-3 ':'';?>col-xs-6 row_<?php echo $key; ?>" style="margin-bottom: 10px;">
                                     <div  style="background-color: #363636;position: relative;">
-                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $value); ?> " width=100% style="padding: 13px;height: 300px;">
+                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $value); ?> " width=100% style="padding: 13px;height: <?php echo (count(json_decode($detail['image']))>2)?'200':'300';?>px;">
                                         <span class="glyphicon glyphicon-remove" style="position: absolute;right:0%;color: white; cursor: pointer;" onclick="remove_image('product_category','<?php echo $detail['id'] ?>','<?php echo $value; ?>','<?php echo $key;?>')"></span>
                                     </div>
                                 </div>
