@@ -13,10 +13,10 @@
                 <?php
                     switch ($this->uri->segment(3)) {
                         case 'success':
-                            echo 'Thành công';
+                            echo 'Đặt tour thành công';
                             break;
                         case 'cancel':
-                            echo 'Hủy bỏ';
+                            echo 'Tour đã hủy bỏ';
                             break;
                         default:
                             echo 'Chờ xác nhận';
@@ -51,11 +51,18 @@
                         </h3>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <?php $action = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 'index' ?>
                             <form action="<?php echo base_url('admin/booking/'. $action) ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                <div class="input-group col-md-6" style="float: left;border-right: 5px solid white;">
+                                  <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" value="<?php echo (isset($date))? $date : '';  ?>" class="form-control pull-right" id="reservation" name="date" readonly>
+                                </div>
+
+                                <div class="input-group col-md-6" style="float: left;">
+                                    <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>
@@ -188,14 +195,18 @@
 
 <!-- DataTables -->
 <script>
-    $(function () {
-        $('#table').DataTable({
-            'paging'      : false,
-            'lengthChange': false,
-            'searching'   : false,
-            'bookinging'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-    })
+$(function () {
+    $('#reservation').mouseup(function() {
+        $('#reservation').daterangepicker({
+           format: 'DD/MM/YYYY',
+        });
+        $(".ranges").css("display","none");
+        $(".calendar").mouseover(function(){
+           $("#reservation").val($("input[name=daterangepicker_start]").val()+" - "+$("input[name=daterangepicker_end]").val());
+           $(".second.right tbody .available").mousedown(function(){
+               $(".daterangepicker.dropdown-menu.show-calendar.opensleft").css("display","none");
+           });
+        });
+    });
+});
 </script>
