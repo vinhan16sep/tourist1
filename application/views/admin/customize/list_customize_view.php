@@ -13,10 +13,10 @@
                 <?php
                     switch ($this->uri->segment(3)) {
                         case 'success':
-                            echo 'Thành công';
+                            echo 'Đặt tour thành công';
                             break;
                         case 'cancel':
-                            echo 'Hủy bỏ';
+                            echo 'Tour đã hủy bỏ';
                             break;
                         default:
                             echo 'Chờ xác nhận';
@@ -52,24 +52,24 @@
                     </div>
                         <?php $action = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 'index' ?>
                         <form action="<?php echo base_url('admin/customize/' .$action) ?>" method="get">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tour ..." name="search" value="<?php echo $keywords; ?>">
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="text" class="form-control pull-right" id="reservation" name="search_date" value="<?php echo $date ?>">
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="input-group-btn">
-                                        <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
-                                    </span>
-                                </div>
+                            <div class="input-group col-md-6" style="float: left;border-right: 5px solid white;">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" value="<?php echo (isset($date))? $date : '';  ?>" class="form-control pull-right" id="reservation" name="date" readonly>
+                            </div>
+
+                            <div class="input-group col-md-6" style="float: left;">
+                                <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
+                                </span>
                             </div>
                         </form>
 
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <div class="table-responsive">
+                        <div class="" style="margin-top: 40px;">
                             <table id="table" class="table table-hover">
                                 <?php if (!empty($booking)): ?>
                                     <thead>
@@ -192,3 +192,19 @@
         <!-- END ACCORDION & CAROUSEL-->
     </section>
 </div>
+<script>
+$(function () {
+    $('#reservation').mouseup(function() {
+        $('#reservation').daterangepicker({
+           format: 'DD/MM/YYYY',
+        });
+        $(".ranges").css("display","none");
+        $(".calendar").mouseover(function(){
+           $("#reservation").val($("input[name=daterangepicker_start]").val()+" - "+$("input[name=daterangepicker_end]").val());
+           $(".second.right tbody .available").mousedown(function(){
+               $(".daterangepicker.dropdown-menu.show-calendar.opensleft").css("display","none");
+           });
+        });
+    });
+});
+</script>

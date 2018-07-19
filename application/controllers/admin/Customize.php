@@ -25,25 +25,22 @@ class Customize extends Admin_Controller {
 
     function temp ($status, $page){
         $keywords = '';
-        $date_from = '';
-        $date_to = '';
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        if($this->input->get('search_date')){
-            $date = $this->input->get('search_date');
-            $date = explode(' - ', $date);
-            $date_from = date_format(date_create($date[0]),"Y-m-d 00:00:00");
-            $date_to = date_format(date_create($date[1]),"Y-m-d 23:59:59");
+        $datetime = array();
+        if($this->input->get('date')){
+            $this->data['date'] = $this->input->get('date');
+            $date = explode(" - ", $this->input->get('date'));
+            foreach ($date as $key => $value) {
+                $date= explode("/",$value);
+                $datetime[$key]=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                if($key == 1){
+                    $datetime[$key]=date('Y-m-d 23:59:59', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                }
+            }
         }
-        $total_rows  = $this->customize_model->count_search_customize($status);
-        if($keywords != ''){
-            $total_rows  = $this->customize_model->count_search_customize($status, $keywords);
-        }
-        if($this->input->get('search_date') != ''){
-            $total_rows  = $this->customize_model->count_search_customize($status, $keywords, $date_from, $date_to);
-        }
-
+        $total_rows  = $this->customize_model->count_search_customize($status, $keywords,$datetime);
         $this->load->library('pagination');
         $config = array();
         $base_url = base_url('admin/booking/' .$page);
@@ -57,19 +54,13 @@ class Customize extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $result = $this->customize_model->get_all_customize_with_pagination_search($status, $per_page, $this->data['page']);
-        if($keywords != ''){
-            $result = $this->customize_model->get_all_customize_with_pagination_search($status, $per_page, $this->data['page'], $keywords);
-        }
-        if($this->input->get('search_date') != ''){
-            $result = $this->customize_model->get_all_customize_with_pagination_search($status, $per_page, $this->data['page'], $keywords, $date_from, $date_to);
-        }
+        $result = $this->customize_model->get_all_customize_with_pagination_search($status, $per_page, $this->data['page'], $keywords,$datetime);
         foreach($result as $key => $value){
             $array_date = array_combine(json_decode($value['datetitle']), json_decode($value['content']));
             $result[$key]['array_date'] = $array_date;
         }
         $this->data['booking'] = $result;
-        $this->data['date'] = $this->input->get('search_date');
+        $this->data['date'] = $this->input->get('date');
         $this->data['keywords'] = $keywords;
         $this->render('admin/customize/list_customize_view');
     }
