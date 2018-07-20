@@ -158,7 +158,7 @@ $lang['weather'] = 'Thời tiết';
 
 $lang['weather_city']['thu_do_ha_noi'] = 'Hà Nội';
 $lang['weather_city']['beijing'] = 'Bắc Kinh';
-$lang['weather_city']['shanghai'] = 'Thượng hải';
+$lang['weather_city']['shanghai'] = 'Thượng Hải';
 $lang['weather_city']['taipei'] = 'Đài Bắc';
 $lang['weather_city']['tokyo'] = 'Tokyo';
 $lang['weather_city']['seoul'] = 'Seoul';
