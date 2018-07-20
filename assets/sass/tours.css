@@ -279,7 +279,12 @@ header.header {
               header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li > ul > li .mask {
                 width: 100%;
                 height: 160px;
-                margin-bottom: 15px; }
+                margin-bottom: 15px;
+                position: relative; }
+                header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li > ul > li .mask .tour-badge {
+                  position: absolute;
+                  top: 5px;
+                  left: 10px; }
               header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li > ul > li a {
                 font-weight: 400;
                 text-transform: uppercase; }
@@ -678,8 +683,7 @@ footer.footer {
 
 #head-slider-section {
   width: 100%;
-  height: 60vh;
-  z-index: -1; }
+  height: 60vh; }
   #head-slider-section #head-slider {
     height: 100%; }
     #head-slider-section #head-slider .carousel-inner {
@@ -881,87 +885,127 @@ footer.footer {
     #tour-detail .row .tabs .tab-content #customize .row .form-horizontal textarea {
       resize: none; }
 
-#tour-related .row .item .inner .badge.badge-special {
-  right: -8px; }
-#tour-related .row .item .mask {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 7px; }
-  #tour-related .row .item .mask img {
+#tour-related .row .item {
+  margin-bottom: 15px; }
+  #tour-related .row .item .inner {
+    position: relative; }
+    #tour-related .row .item .inner .badge {
+      position: absolute;
+      z-index: 990;
+      background-color: transparent; }
+      #tour-related .row .item .inner .badge.badge-special {
+        top: 5px;
+        right: -22px; }
+      #tour-related .row .item .inner .badge.badge-discount {
+        top: 0px;
+        left: 15px;
+        padding: 0 5px 5px;
+        background-color: #ff7300;
+        color: #fff;
+        border-radius: 0;
+        font-size: 1.5em;
+        font-weight: 700; }
+        #tour-related .row .item .inner .badge.badge-discount .content {
+          position: relative;
+          padding: 50px 15px 30px;
+          border: 1px solid #fff;
+          border-top: none; }
+  #tour-related .row .item .mask {
     width: 100%;
-    height: 100%;
-    object-fit: cover; }
-  #tour-related .row .item .mask .overview {
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    top: 35%;
-    left: 0;
-    z-index: 990;
-    padding: 15px;
-    opacity: 1;
-    text-shadow: 1px 2px 5px #333;
-    -webkit-transition: all ease 0.5s;
-    -moz-transition: all ease 0.5s;
-    -ms-transition: all ease 0.5s;
-    -o-transition: all ease 0.5s;
-    transition: all ease 0.5s; }
-    #tour-related .row .item .mask .overview .head h4.post-subtitle, #tour-related .row .item .mask .overview .head h2.post-title {
-      color: #fff; }
-    #tour-related .row .item .mask .overview .head h2.post-title {
-      font-weight: 700; }
-    #tour-related .row .item .mask .overview .body h3 {
-      color: #fff; }
-      #tour-related .row .item .mask .overview .body h3 small.price-original {
-        color: #eee; }
-  #tour-related .row .item .mask .content {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 991;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 7px; }
+    #tour-related .row .item .mask img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    #tour-related .row .item .mask .overview {
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      top: 35%;
+      left: 0;
+      z-index: 990;
+      padding: 15px;
+      opacity: 1;
+      text-shadow: 1px 2px 5px #333;
+      -webkit-transition: all ease 0.5s;
+      -moz-transition: all ease 0.5s;
+      -ms-transition: all ease 0.5s;
+      -o-transition: all ease 0.5s;
+      transition: all ease 0.5s; }
+      #tour-related .row .item .mask .overview .head h4.post-subtitle, #tour-related .row .item .mask .overview .head h2.post-title {
+        color: #fff; }
+      #tour-related .row .item .mask .overview .head h2.post-title {
+        font-weight: 700; }
+      #tour-related .row .item .mask .overview .body h3 {
+        color: #fff; }
+        #tour-related .row .item .mask .overview .body h3 small.price-original {
+          color: #eee; }
+    #tour-related .row .item .mask .content {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 991;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      -webkit-transition: all ease 0.5s;
+      -moz-transition: all ease 0.5s;
+      -ms-transition: all ease 0.5s;
+      -o-transition: all ease 0.5s;
+      transition: all ease 0.5s; }
+      #tour-related .row .item .mask .content .head h4.post-subtitle, #tour-related .row .item .mask .content .head h2.post-title, #tour-related .row .item .mask .content .head h3.price {
+        color: #fff; }
+      #tour-related .row .item .mask .content .head h4.post-subtitle {
+        font-size: 0.875em; }
+      #tour-related .row .item .mask .content .head h2.post-title {
+        font-size: 1.5em;
+        font-weight: 700; }
+      #tour-related .row .item .mask .content .head h3.price {
+        font-size: 2em; }
+        #tour-related .row .item .mask .content .head h3.price small.price-original {
+          color: #eee; }
+      #tour-related .row .item .mask .content .body table {
+        color: #fff; }
+  #tour-related .row .item:hover .mask .overview {
+    top: 0;
     opacity: 0;
     -webkit-transition: all ease 0.5s;
     -moz-transition: all ease 0.5s;
     -ms-transition: all ease 0.5s;
     -o-transition: all ease 0.5s;
     transition: all ease 0.5s; }
-    #tour-related .row .item .mask .content .head h4.post-subtitle, #tour-related .row .item .mask .content .head h2.post-title, #tour-related .row .item .mask .content .head h3.price {
-      color: #fff; }
-    #tour-related .row .item .mask .content .head h4.post-subtitle {
-      font-size: 0.875em; }
-    #tour-related .row .item .mask .content .head h2.post-title {
-      font-size: 1.5em;
-      font-weight: 700; }
-    #tour-related .row .item .mask .content .head h3.price {
-      font-size: 2em; }
-      #tour-related .row .item .mask .content .head h3.price small.price-original {
-        color: #eee; }
-    #tour-related .row .item .mask .content .body table {
-      color: #fff; }
-#tour-related .row .item:hover .mask .overview {
-  top: 0;
-  opacity: 0;
-  -webkit-transition: all ease 0.5s;
-  -moz-transition: all ease 0.5s;
-  -ms-transition: all ease 0.5s;
-  -o-transition: all ease 0.5s;
-  transition: all ease 0.5s; }
-#tour-related .row .item:hover .mask .content {
-  top: 0;
-  opacity: 1;
-  -webkit-transition: all ease 0.5s;
-  -moz-transition: all ease 0.5s;
-  -ms-transition: all ease 0.5s;
-  -o-transition: all ease 0.5s;
-  transition: all ease 0.5s; }
+  #tour-related .row .item:hover .mask .content {
+    top: 0;
+    opacity: 1;
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -ms-transition: all ease 0.5s;
+    -o-transition: all ease 0.5s;
+    transition: all ease 0.5s; }
 
 @media (max-width: 768px) {
+  #page .container .row #tour-detail .row .tabs .nav-tabs li {
+    display: inline-block; }
+  #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media {
+    width: 100%; }
+    #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left {
+      display: block;
+      width: 100%;
+      padding-right: 0px; }
+      #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left .mask {
+        width: 100%; }
+  #page .container .row #tour-detail .row .tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left {
+    display: block;
+    width: 100%;
+    padding-right: 0px; }
+    #page .container .row #tour-detail .row .tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left .mask {
+      width: 100%; }
+
   #tours .row .item {
     margin-bottom: 30px; }
     #tours .row .item .mask {

@@ -28,10 +28,19 @@ class Booking extends Admin_Controller {
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->booking_model->count_search_booking($status);
-        if($keywords != ''){
-            $total_rows  = $this->booking_model->count_search_booking($status, $keywords);
+        $datetime = array();
+        if($this->input->get('date')){
+            $this->data['date'] = $this->input->get('date');
+            $date = explode(" - ", $this->input->get('date'));
+            foreach ($date as $key => $value) {
+                $date= explode("/",$value);
+                $datetime[$key]=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                if($key == 1){
+                    $datetime[$key]=date('Y-m-d 23:59:59', strtotime($date[1]."/".$date[0]."/".$date[2]));
+                }
+            }
         }
+        $total_rows  = $this->booking_model->count_search_booking($status, $keywords,$datetime);
 
         $this->load->library('pagination');
         $config = array();
@@ -46,12 +55,10 @@ class Booking extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $result = $this->booking_model->get_all_booking_with_pagination_search($status, $per_page, $this->data['page']);
-        if($keywords != ''){
-            $result = $this->booking_model->get_all_booking_with_pagination_search($status, $per_page, $this->data['page'], $keywords);
-        }
+        $result = $this->booking_model->get_all_booking_with_pagination_search($status, $per_page, $this->data['page'], $keywords,$datetime);
 
         $this->data['booking'] = $result;
+        $this->data['keywords'] = $keywords;
         $this->render('admin/booking/list_booking_view');
     }
 

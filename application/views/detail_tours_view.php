@@ -1,5 +1,5 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['image']) ?>')"></section>
 
@@ -74,7 +74,7 @@
 							</tr>
 							<tr>
 								<td>
-									<div class="captcha-image image col-md-6"></div>
+									<div class="captcha-image image col-md-6" style="padding-left: 0;"></div>
 
 									<div class="captcha-input input-group col-md-6">
 										<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
