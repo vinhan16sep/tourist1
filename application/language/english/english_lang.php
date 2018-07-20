@@ -163,18 +163,18 @@ $lang['tour-discount-short'] = 'Sale Off';
 
 $lang['weather'] = 'Weather';
 
-$lang['thu_do_ha_noi'] = 'Ha Noi';
-$lang['beijing'] = 'Beijing';
-$lang['shanghai'] = 'Shanghai';
-$lang['taipei'] = 'Taipei';
-$lang['tokyo'] = 'Tokyo';
-$lang['seoul'] = 'Seoul';
-$lang['delhi'] = 'Delhi';
-$lang['bangkok'] = 'Bangkok';
-$lang['Vientiane'] = 'Vientiane';
-$lang['kuala_lumpur'] = 'Kuala Lumpur';
-$lang['phnompenh'] = 'Phnompenh';
-$lang['jakarta'] = 'Jakarta';
-$lang['singapore'] = 'Singapore';
+$lang['weather_city']['thu_do_ha_noi'] = 'Ha Noi';
+$lang['weather_city']['beijing'] = 'Beijing';
+$lang['weather_city']['shanghai'] = 'Shanghai';
+$lang['weather_city']['taipei'] = 'Taipei';
+$lang['weather_city']['tokyo'] = 'Tokyo';
+$lang['weather_city']['seoul'] = 'Seoul';
+$lang['weather_city']['delhi'] = 'Delhi';
+$lang['weather_city']['bangkok'] = 'Bangkok';
+$lang['weather_city']['vientiane'] = 'Vientiane';
+$lang['weather_city']['kuala_lumpur'] = 'Kuala Lumpur';
+$lang['weather_city']['phnom_penh'] = 'Phnompenh';
+$lang['weather_city']['jakarta'] = 'Jakarta';
+$lang['weather_city']['singapore'] = 'Singapore';
 
 

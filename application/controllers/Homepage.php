@@ -95,6 +95,15 @@ class Homepage extends Public_Controller {
         return $this->return_api(HTTP_SUCCESS,'',$this->lang->line($this->input->get('key')));
     }
 
+    public function fetch_weather_language(){
+        $result = [];
+        $data = json_decode($this->input->get('data'));
+        foreach($data as $key => $value){
+            $result[$key] = $this->lang->line('weather_city')[$value];
+        }
+        return $this->return_api(HTTP_SUCCESS,'', $result);
+    }
+
     public function get_handbook_data($parent = FIXED_HANDBOOK){
         $categories = $this->post_category_model->fetch_post_category_menu($parent);
 
