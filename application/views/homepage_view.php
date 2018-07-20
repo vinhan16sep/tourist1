@@ -58,7 +58,7 @@
     temperature('1642911','<?php echo $lang;?>');
     temperature('1880252','<?php echo $lang;?>');
     $.ajax({
-        url: 'http://localhost/tourist1/homepage/fetch_weather_language?data=' + JSON.stringify(list),
+        url: '<?php echo base_url(); ?>homepage/fetch_weather_language?data=' + JSON.stringify(list),
         type: 'GET',
         success: function(response){
             var array = $.map(response.reponse, function(value, index) {
