@@ -25,51 +25,24 @@
 	    // return
 	    return str;
 	}
-	var list = [];
-	var result = '';
+	var list = {};
+	var apiData = {};
+	var i = 0;
     function temperature(id,lang){
         $.ajax({
             url: 'http://api.openweathermap.org/data/2.5/forecast?id='+id+'&mode=json&lang='+lang+'&APPID=279b4be6d54c8bf6ea9b12275a567156&cnt=3',
             type: 'GET',
+            async: false,
         })
         .done(function(data) {
     		var key = to_slug(data.city.name);
-    		$.ajax({
-	            url: 'http://localhost/tourist1/homepage/ajax_home?key='+key,
-	            type: 'GET',
-	        })
-	        .done(function(datas) {
-            	$("#banner-weather .line ."+id+" h3").text(datas.reponse);
-	        })
-	        .fail(function() {
-	            console.log("error");
-	        });
-    		$('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="row"><div class="img col-md-3 col-ms-12 col-sm-12 col-xs-6" ><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9 col-ms-12 col-sm-12 col-xs-6" style="padding-left:25px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div></div>');
-            $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
-            $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
+            list[id] = key;
+            apiData[id] = data;
+            i++;
         })
         .fail(function() {
             console.log("error");
         });
-//        .done(function(data) {
-//    		var key = to_slug(data.city.name);
-//    		$.ajax({
-//	            url: 'http://localhost/tourist1/homepage/ajax_home?key='+key,
-//	            type: 'GET',
-//	        })
-//	        .done(function(datas) {
-//            	$("#banner-weather .line ."+id+" h3").text(datas.reponse);
-//	        })
-//	        .fail(function() {
-//	            console.log("error");
-//	        });
-//        	$('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="img col-md-3" style="padding:0px;"><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9" style="padading:0px;paddidng-left:5px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div>');
-//            $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
-//            $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
-//        })
-//        .fail(function() {
-//            console.log("error");
-//        });
     }
     temperature('1581129','<?php echo $lang;?>');
     temperature('1816670','<?php echo $lang;?>');
@@ -84,15 +57,22 @@
     temperature('1821306','<?php echo $lang;?>');
     temperature('1642911','<?php echo $lang;?>');
     temperature('1880252','<?php echo $lang;?>');
-    console.log(JSON.stringify(result));
-
     $.ajax({
-        url: 'http://localhost/tourist1/homepage/ajax_home?key=' + JSON.stringify(result),
+        url: '<?php echo base_url(); ?>homepage/fetch_weather_language?data=' + JSON.stringify(list),
         type: 'GET',
         success: function(response){
-
+            var array = $.map(response.reponse, function(value, index) {
+                return [value];
+            });
+            var count = 0;
+            $.each(apiData, function(index, data){
+                $('#banner-weather .line .content-weather').append('<div class="col-md-12 '+index+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="row"><div class="img col-md-3 col-ms-12 col-sm-12 col-xs-6" ><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9 col-ms-12 col-sm-12 col-xs-6" style="padding-left:25px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;">' + array[count] + '</h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div></div>');
+                $("#banner-weather .line ."+index+" p.description").text(data.list[2].weather[0].description);
+                $("#banner-weather .line ."+index+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
+                count++;
+            })
         }
-    })
+    });
 </script>
 <!-- Slider JS -->
 <script src="<?php echo site_url('assets/js/slider.js') ?>"></script>

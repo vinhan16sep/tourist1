@@ -169,9 +169,9 @@ $lang['weather_city']['tokyo'] = 'Tokyo';
 $lang['weather_city']['seoul'] = 'Seoul';
 $lang['weather_city']['delhi'] = 'Delhi';
 $lang['weather_city']['bangkok'] = 'Bangkok';
-$lang['weather_city']['Vientiane'] = 'Vientiane';
+$lang['weather_city']['vientiane'] = 'Vientiane';
 $lang['weather_city']['kuala_lumpur'] = 'Kuala Lumpur';
-$lang['weather_city']['phnompenh'] = 'Phnompenh';
+$lang['weather_city']['phnom_penh'] = 'Phnompenh';
 $lang['weather_city']['jakarta'] = 'Jakarta';
 $lang['weather_city']['singapore'] = 'Singapore';
 
