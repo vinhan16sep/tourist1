@@ -22,7 +22,9 @@ $lang['visa'] = 'VISA';
 $lang['visa-procedure'] = 'Thủ tục xin visa';
 $lang['registration-form'] = 'Form thông tin';
 $lang['blog'] = 'Bài viết';
+$lang['relative-blog'] = 'Bài viết liên quan';
 $lang['location'] = 'Điểm đến';
+$lang['relative-location'] = 'Điểm đến liên quan';
 $lang['handbook'] = 'Cẩm nang';
 $lang['diary'] = 'Nhật ký';
 
@@ -169,3 +171,6 @@ $lang['kuala_lumpur'] = 'Kuala Lumpur';
 $lang['phnom_penh'] = 'Phnompenh';
 $lang['jakarta'] = 'Jakarta';
 $lang['singapore'] = 'Singapore';
+
+
+$lang['share'] = 'share';
