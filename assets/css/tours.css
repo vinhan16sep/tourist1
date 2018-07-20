@@ -425,6 +425,15 @@ section.main-content p.post-description {
   height: 7.5em;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical; }
+section.main-content .body div.post-description {
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.5;
+  height: 7.5em;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical; }
 section.main-content .section {
   display: block;
   padding-top: 30px;
@@ -989,15 +998,21 @@ footer.footer {
     transition: all ease 0.5s; }
 
 @media (max-width: 768px) {
-  #detail .container .row .left .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left {
+  #page .container .row #tour-detail .row .tabs .nav-tabs li {
+    display: inline-block; }
+  #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media {
+    width: 100%; }
+    #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left {
+      display: block;
+      width: 100%;
+      padding-right: 0px; }
+      #page .container .row #tour-detail .row .tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left .mask {
+        width: 100%; }
+  #page .container .row #tour-detail .row .tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left {
+    display: block;
     width: 100%;
     padding-right: 0px; }
-    #detail .container .row .left .row.tabs .tab-content #overview .row .schedule .panel-group .panel-primary .panel-body .media .media-left .mask {
-      width: 100%; }
-  #detail .container .row .left .row.tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left {
-    width: 100%;
-    padding-right: 0px; }
-    #detail .container .row .left .row.tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left .mask {
+    #page .container .row #tour-detail .row .tabs .tab-content #gallery .row .panel-group .panel-primary .panel-body .media .media-left .mask {
       width: 100%; }
 
   #tours .row .item {

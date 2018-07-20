@@ -14,52 +14,119 @@
 
 .cover{
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     overflow: hidden;
+
+    position: relative;
 
     img{
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
+
+    .overlay{
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background-color: $primary-hover;
+        opacity: 0.2;
+    }
 }
 
 .content{
     .container{
         .row{
-            .item{
-                margin-bottom: 30px;
+            .left{
+                .row{
+                    .item{
+                        padding: 15px;
 
-                .inner{
-                    background-color: #fff;
+                        .wrapper{
+                            background-color: #fff;
 
-                    .head{
-                        .mask{
-                            width: 100%;
-                            height: 230px;
-                            overflow: hidden;
-                        }
-                    }
+                            @include transition(500ms);
 
-                    .body{
-                        padding: 0 15px 15px;
+                            .mask{
+                                width: 100%;
+                                height: 250px;
+                                overflow: hidden;
+                            }
 
-                        a{
-                            color: $gray-dark;
+                            .head{
+                                padding-left: 15px;
+                                padding-right: 15px;
 
-                            &:hover{
-                                color: $gray-dark;
+
+                                h4.post-subtitle{
+                                    padding: 7px 15px;
+                                    background-color: $primary;
+                                    color: white;
+
+                                    height: auto;
+
+                                    border-radius: 4px;
+
+                                    display: inline-block;
+
+                                    margin-bottom: 15px;
+                                }
+
+                                h2.post-title{
+                                    font-weight: 700;
+                                }
+                            }
+
+                            .body{
+                                color: $gray-light;
+
+                                padding-left: 15px;
+                                padding-right: 15px;
+                            }
+
+                            .foot{
+                                padding-left: 15px;
+                                padding-right: 15px;
+
+                                border-top: 1px solid #eee;
                             }
                         }
 
-                        h2{
-                            font-weight: 700;
+
+                        &:hover{
+                            .wrapper{
+                                -webkit-box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
+                                -moz-box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
+                                box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
+
+                                @include transition(500ms);
+                            }
                         }
                     }
+                }
+            }
 
-                    .foot{
-                        padding: 15px 15px 0;
-                        border-top: 1px solid #eaeaea;
+            .right{
+
+            }
+
+            .page{
+                text-align: center;
+                padding-top: 30px;
+
+                a, strong{
+                    padding: 5px 10px;
+                }
+
+                a{
+                    color: $gray-light;
+
+                    &:hover{
+                        color: $primary;
                     }
                 }
             }
@@ -68,7 +135,134 @@
     }
 }
 
-.detail{
-    padding-top: 30px;
-    padding-bottom: 50px;
+#detail-post{
+    .container{
+        .row{
+            .left{
+                background-color: #fff;
+                border-top: 10px solid $primary;
+
+                .big-title{
+                    h1.title{
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+
+                article{
+                    img{
+                        width: 80%;
+                        margin-left: 10%;
+                        padding-top: 15px;
+                        padding-bottom: 30px;
+
+                        &:first-of-type{
+                            width: 100%;
+                            margin-left: 0;
+                        }
+                    }
+
+                    p{
+                        color: $gray;
+                        font-size: 1em;
+                    }
+                }
+            }
+
+            .right{
+                .section-header{
+                    h1{
+                        margin-top: 0px;
+                    }
+                    .row{
+                        .left{
+                            border-top: none;
+                            background-color: transparent;
+
+                            h1{
+                                font-size: 1.5em;
+                            }
+                        }
+                    }
+                }
+                .row{
+                    .item{
+                        padding: 15px;
+
+                        .wrapper{
+                            background-color: #fff;
+
+                            @include transition(500ms);
+
+                            .mask{
+                                width: 100%;
+                                height: 200px;
+                                overflow: hidden;
+                            }
+
+                            .head{
+                                padding-left: 15px;
+                                padding-right: 15px;
+
+                                h4.post-subtitle{
+                                    padding: 7px 15px;
+                                    background-color: $primary;
+                                    color: white;
+
+                                    height: auto;
+
+                                    border-radius: 4px;
+
+                                    display: inline-block;
+
+                                    margin-bottom: 15px;
+
+                                    font-size: 1em;
+                                }
+
+                                h2.post-title{
+                                    font-weight: 700;
+                                    margin-top: 0;
+
+                                    font-size: 1.25em;
+                                }
+                            }
+
+                            .body{
+                                color: $gray-light;
+
+                                padding-left: 15px;
+                                padding-right: 15px;
+
+                                p.post-description{
+                                    overflow: hidden;
+                                    line-height: 1.5;
+                                    max-height: 4.5em;
+                                    -webkit-line-clamp: 3;
+                                }
+                            }
+
+                            .foot{
+                                padding-left: 15px;
+                                padding-right: 15px;
+                            }
+                        }
+
+
+                        &:hover{
+                            .wrapper{
+                                -webkit-box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
+                                -moz-box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
+                                box-shadow:  0px 4px 15px rgba(0, 0, 0, 0.5);
+
+                                @include transition(500ms);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
 }

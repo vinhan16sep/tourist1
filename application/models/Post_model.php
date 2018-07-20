@@ -146,4 +146,34 @@ class Post_model extends MY_Model{
 
         return $result = $this->db->get()->result_array();
     }
+    public function get_by_post_category_id_and_not_id($post_category_id=array(),$id,$limit=0,$order='asc',$lang='vi') {
+        $this->db->select('post.*, post_category_lang.title as parent_title, post_category.slug as parent_slug, post_lang.title as title, post_lang.description as description, post_lang.content as content');
+        $this->db->from($this->table);
+        $this->db->join('post_lang', 'post_lang.post_id = post.id');
+        $this->db->join('post_category', 'post_category.id = post.post_category_id');
+        $this->db->join('post_category_lang', 'post_category_lang.post_category_id = post.post_category_id');
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
+        $this->db->where_in('post.post_category_id', $post_category_id);
+        $this->db->where($this->table_lang .'.language', $lang);
+        $this->db->where('post_category_lang.language', $lang);
+        $this->db->where("post.id !=",$id);
+        $this->db->group_by('post.id');
+        $this->db->order_by('rand()');
+        $this->db->limit($limit);
+        return $this->db->get()->result_array();
+    }
+    public function fetch_row_by_slug($slug,$lang ='en'){
+        $this->db->select('post.*, post_category_lang.title as parent_title, post_category.slug as parent_slug, post_lang.title as title, post_lang.description as description, post_lang.content as content');
+        $this->db->from($this->table);
+        $this->db->join('post_lang', 'post_lang.post_id = post.id');
+        $this->db->join('post_category', 'post_category.id = post.post_category_id');
+        $this->db->join('post_category_lang', 'post_category_lang.post_category_id = post.post_category_id');
+        $this->db->where('post.is_deleted', 0);
+        $this->db->where('post.slug', $slug);
+        $this->db->where('post_lang.language', $lang);
+        $this->db->where('post_category_lang.language', $lang);
+
+        return $this->db->get()->row_array();
+    }
 }
