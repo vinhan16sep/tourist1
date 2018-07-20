@@ -22,7 +22,9 @@ $lang['visa'] = 'VISA';
 $lang['visa-procedure'] = 'Thủ tục xin visa';
 $lang['registration-form'] = 'Form thông tin';
 $lang['blog'] = 'Bài viết';
+$lang['relative-blog'] = 'Bài viết liên quan';
 $lang['location'] = 'Điểm đến';
+$lang['relative-location'] = 'Điểm đến liên quan';
 $lang['handbook'] = 'Cẩm nang';
 $lang['diary'] = 'Nhật ký';
 
@@ -154,7 +156,6 @@ $lang['tour-discount-short'] = 'KM';
 //Weather
 
 $lang['weather'] = 'Thời tiết';
-
 
 $lang['weather_city']['thu_do_ha_noi'] = 'Hà Nội';
 $lang['weather_city']['beijing'] = 'Bắc Kinh';

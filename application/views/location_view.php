@@ -15,7 +15,7 @@
         <div class="row">
             <div class="left col-md-12 col-sm-12 col-xs-12">
                 <div class="section-header">
-                    <h1>Kho thư viện</h1>
+                    <h1><?php echo $this->lang->line('location');?></h1>
                     <div class="line">
                         <div class="line-primary"></div>
                     </div>
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="foot">
                                     <a href="<?php echo base_url('diem-den/' . $val['slug']) ?>" class="btn btn-primary" role="button">
-                                        Xem chi tiết
+                                        <?php echo $this->lang->line('see-detail'); ?>
                                     </a>
                                 </div>
                             </div>

@@ -25,7 +25,9 @@ $lang['visa'] = 'Visa';
 $lang['visa-procedure'] = 'Visa procedure';
 $lang['registration-form'] = 'Registration form';
 $lang['blog'] = 'Blog';
+$lang['relative-blog'] = 'Relative Blog';
 $lang['location'] = 'Location';
+$lang['relative-location'] = 'Relative Location';
 $lang['handbook'] = 'Handbook';
 $lang['diary'] = 'Diary';
 
@@ -55,7 +57,7 @@ $lang['branch-2-address'] = 'Address 2';
 //.btn
 
 $lang['see-all'] = 'See all';
-$lang['explore'] = 'Expore Now';
+$lang['explore'] = 'Explore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
 $lang['see-detail'] = 'See Detail';
