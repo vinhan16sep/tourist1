@@ -91,7 +91,16 @@
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
                                                 <td><?php echo $value['product_title'] ?></td>
-                                                <td><?php echo $value['time'] ?></td>
+                                                <td>
+                                                    <?php
+                                                        if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
+                                                            $time = explode("-",str_replace(" 00:00:00","",$value['time']));
+                                                            if(count($time) == 3){
+                                                                echo $time[2]."/".$time[1]."/".$time[0];
+                                                            }
+                                                        }
+                                                    ?>
+                                                </td>
 
                                                 <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['customize_id']; ?>" aria-expanded="false" aria-controls="collapseExample">
                                                     Chi Tiết
@@ -115,43 +124,54 @@
                                                     <div class="collapse" id="collapse_<?php echo $value['customize_id']; ?>">
                                                         <div class="well">
                                                             <table class="table">
-                                                                <tr>
-                                                                    <td style="width: 20%"><strong>Email : </strong></td>
-                                                                    <td><?php echo $value['email'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Số Điện Thoại : </strong></td>
-                                                                    <td><?php echo $value['phone'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Số người lớn : </strong></td>
-                                                                    <td><?php echo $value['adults'] ?></td>
-                                                                <tr>
-                                                                    <td><strong>Trẻ em (2 - 11 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['children'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Em bé (dưới 2 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['infants'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Quốc Gia : </strong></td>
-                                                                    <td><?php echo $value['country'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Lời Nhắn : </strong></td>
-                                                                    <td><?php echo $value['message'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <?php foreach ($value['array_date'] as $k => $val): ?>
-                                                                            <?php if ($val != ''): ?>
-                                                                                <label><?php echo $k ?> : </label>
-                                                                                <p><?php echo $val ?></p>
-                                                                            <?php endif ?>
-                                                                        <?php endforeach ?>
-                                                                    </td>
-                                                                </tr>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Email</th>
+                                                                        <th>Số Điện Thoại</th>
+                                                                        <th>Số người lớn</th>
+                                                                        <th>Trẻ em (2 - 11 tuổi)</th>
+                                                                        <th>Em bé (dưới 2 tuổi)</th>
+                                                                        <th>Quốc Gia</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><?php echo $value['email'] ?></td>
+                                                                        <td><?php echo $value['phone'] ?></td>
+                                                                        <td><?php echo $value['adults'] ?></td>
+                                                                        <td><?php echo $value['children'] ?></td>
+                                                                        <td><?php echo $value['infants'] ?></td>
+                                                                        <td><?php echo $value['country'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th colspan="6">Lời Nhắn: </th>
+                                                                        <td><?php echo $value['message'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Ngày</th>
+                                                                        <th>Chương trình mặc định</th>
+                                                                        <th>Chương trình thay đổi</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php $h=1; ?>
+                                                                    <?php foreach ($value['array_date'] as $k => $val): ?>
+                                                                        <tr>
+                                                                            <td><?php echo $h;?></td>
+                                                                            <td><?php echo $k; ?></td>
+                                                                            <td><?php echo $val; ?></td>
+                                                                        </tr>
+                                                                        <?php $h++;?>
+                                                                    <?php endforeach ?>
+                                                                </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
