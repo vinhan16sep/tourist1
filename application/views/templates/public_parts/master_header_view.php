@@ -260,7 +260,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         if($international_menu){
                             foreach($international_menu as $key => $val){
                                 ?>
-								<li>
+								<li class = "menu-href">
 									<a href="<?php echo base_url('danh-muc/' . $val['slug']); ?>">
                                         <?php echo $val['title']; ?> <span class="glyphicon glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
 									</a>
