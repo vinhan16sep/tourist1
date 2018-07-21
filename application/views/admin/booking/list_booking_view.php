@@ -95,7 +95,16 @@
                                             <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
-                                                <td><?php echo $value['time'] ?></td>
+                                                <td>
+                                                    <?php
+                                                        if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
+                                                            $time = explode("-",str_replace(" 00:00:00","",$value['time']));
+                                                            if(count($time) == 3){
+                                                                echo $time[2]."/".$time[1]."/".$time[0];
+                                                            }
+                                                        }
+                                                    ?>
+                                                </td>
                                                 <td><a href="<?php echo base_url('admin/product/detail/' .$value['product_id']) ?>"><?php echo $value['product_title'] ?></a></td>
 												<!--
 												<td><?php echo $value['address'] ?></td>
@@ -115,9 +124,9 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($value['status'] == 2): ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="pointer-events: none; cursor: pointer;" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>"  data-controller="booking" style="pointer-events: none; cursor: pointer;" >Hủy bỏ</span>
                                                     <?php else: ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>"  data-controller="booking" style="cursor: pointer;" >Hủy bỏ</span>
                                                     <?php endif ?>
                                                     
                                                 </td>
@@ -127,29 +136,35 @@
                                                     <div class="collapse" id="collapse_<?php echo $value['booking_id']; ?>">
                                                         <div class="well">
                                                             <table class="table">
-                                                                <tr>
-                                                                    <td style="width: 20%"><strong>Số điện thoại : </strong></td>
-                                                                    <td><?php echo $value['phone'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Email : </strong></td>
-                                                                    <td><?php echo $value['email'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Số người lớn : </strong></td>
-                                                                    <td><?php echo $value['adults'] ?></td>
-                                                                <tr>
-                                                                    <td><strong>Trẻ em (2 - 11 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['children'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Em bé (dưới 2 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['infants'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Nội dung: </strong></td>
-                                                                    <td><?php echo $value['content'] ?></td>
-                                                                </tr>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Email</th>
+                                                                        <th>Số Điện Thoại</th>
+                                                                        <th>Số người lớn</th>
+                                                                        <th>Trẻ em (2 - 11 tuổi)</th>
+                                                                        <th>Em bé (dưới 2 tuổi)</th>
+                                                                        <th>Quốc Gia</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><?php echo $value['email'] ?></td>
+                                                                        <td><?php echo $value['phone'] ?></td>
+                                                                        <td><?php echo $value['adults'] ?></td>
+                                                                        <td><?php echo $value['children'] ?></td>
+                                                                        <td><?php echo $value['infants'] ?></td>
+                                                                        <td><?php echo $value['country'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <hr>
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th colspan="6">Nội dung: </th>
+                                                                        <td><?php echo $value['content'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
