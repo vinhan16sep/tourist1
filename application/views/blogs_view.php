@@ -1,5 +1,5 @@
 <!-- Blogs Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
 	<img src="https://images.unsplash.com/photo-1516974882164-2136160d59c6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4b9e1d39ed76f884d4d640f17d00a0c&auto=format&fit=crop&w=1950&q=80" alt="cover">
