@@ -288,13 +288,13 @@ header.header {
               header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li > ul > li a {
                 font-weight: 400;
                 text-transform: uppercase; }
-          header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover {
+          header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active {
             background-color: #eaeaea; }
-            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover a {
+            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active a {
               color: #666; }
-              header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover a:hover {
+              header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active a:hover {
                 color: #666; }
-            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover > ul {
+            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active > ul {
               display: block; }
         header.header .container-fluid .container#main-nav > ul > li.menu-dropdown .menu-dropdown-expand {
           padding: 15px; }
@@ -417,6 +417,15 @@ section.main-content h4.post-subtitle {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical; }
 section.main-content p.post-description {
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.5;
+  height: 7.5em;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical; }
+section.main-content .body div.post-description {
   font-size: 1em;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -708,7 +717,7 @@ footer.footer {
       .content .container .row .left .row .item .wrapper .head h4.post-subtitle {
         padding: 7px 15px;
         background-color: #55b73d;
-        color: #666;
+        color: white;
         height: auto;
         border-radius: 4px;
         display: inline-block;
@@ -785,7 +794,7 @@ footer.footer {
       #detail-post .container .row .right .row .item .wrapper .head h4.post-subtitle {
         padding: 7px 15px;
         background-color: #55b73d;
-        color: #666;
+        color: white;
         height: auto;
         border-radius: 4px;
         display: inline-block;

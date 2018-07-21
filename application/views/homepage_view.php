@@ -1,5 +1,5 @@
 <!-- Homepage Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.css">
 
 
 <script type="text/javascript">
