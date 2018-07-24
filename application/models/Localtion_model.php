@@ -96,14 +96,24 @@ class Localtion_model extends MY_Model {
         return $this->db->get()->row_array();
     }
     public function get_all_localtion_area($area,$id,$limit = '',$lang){
-        $this->db->select('*');
+        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.content as content,  localtion_lang.language as language');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id');
         $this->db->where($this->table . '.is_deleted', 0);
         $this->db->where($this->table_lang .'.language', $lang);
         $this->db->where($this->table.'.area', $area);
-        $this->db->where($this->table.'.id !=', $id);
+        $this->db->where_not_in($this->table.'.id', $id);
         $this->db->limit($limit);
         return $result = $this->db->get()->result_array();
+    }
+    public function fetch_row_by_slugs($slug, $lang){
+        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.content as content,  localtion_lang.language as language')
+            ->from($this->table)
+            ->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id')
+            ->where($this->table . '.is_deleted', 0)
+            ->where($this->table_lang .'.language', $lang)
+            ->where($this->table .'.slug', $slug);
+
+        return $this->db->get()->row_array();
     }
 }

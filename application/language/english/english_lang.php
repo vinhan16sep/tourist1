@@ -25,9 +25,14 @@ $lang['visa'] = 'Visa';
 $lang['visa-procedure'] = 'Visa procedure';
 $lang['registration-form'] = 'Registration form';
 $lang['blog'] = 'Blog';
+$lang['relative-blog'] = 'Relative Blog';
 $lang['location'] = 'Location';
+$lang['relative-location'] = 'Relative Location';
 $lang['handbook'] = 'Handbook';
 $lang['diary'] = 'Diary';
+
+
+$lang['hotline'] = 'Hotline';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';
@@ -52,7 +57,7 @@ $lang['branch-2-address'] = 'Address 2';
 //.btn
 
 $lang['see-all'] = 'See all';
-$lang['explore'] = 'Expore Now';
+$lang['explore'] = 'Explore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
 $lang['see-detail'] = 'See Detail';
@@ -85,6 +90,11 @@ $lang[''] = '';
 //Tour Detail
 
 $lang['tour-detail-duration'] = 'Duration';
+$lang['tour-detail'] = 'Tour Detail';
+$lang['note'] = 'Note';
+$lang['rate'] = 'Rate';
+$lang['price'] = 'Price';
+$lang['no-where-selected-in-the-day'] = 'No location has selected';
 $lang['tour-detail-start'] = 'Starting Day';
 $lang['tour-detail-price'] = 'Price';
 $lang['tour-detail-rating'] = 'Rating';
@@ -102,6 +112,8 @@ $lang['tour-tabs-customize'] = 'Customize';
 $lang['tour-price-adult'] = 'Adult';
 $lang['tour-price-u11'] = 'Children from 2 to 11';
 $lang['tour-price-u2'] = 'Children under 2';
+
+$lang['tour-related'] = 'Related Tours';
 
 $lang['inclusion'] = 'Inclusion';
 $lang['exclusion'] = 'Exclusion';
@@ -137,5 +149,34 @@ $lang['contact-message'] = 'Message';
 $lang['contact-send'] = 'Send';
 $lang['day'] = 'Day';
 $lang['comments'] = 'Comments';
+
+
+//Badge
+
+$lang['tour-best-sell'] = 'Best Sell Tour';
+$lang['tour-hot'] = 'Hot Tour';
+$lang['tour-discount'] = 'Sale Off Tour';
+
+$lang['tour-best-sell-short'] = 'Best Sell';
+$lang['tour-hot-short'] = 'Hot';
+$lang['tour-discount-short'] = 'Sale Off';
+
+//Weather
+
+$lang['weather'] = 'Weather';
+
+$lang['weather_city']['thu_do_ha_noi'] = 'Ha Noi';
+$lang['weather_city']['beijing'] = 'Beijing';
+$lang['weather_city']['shanghai'] = 'Shanghai';
+$lang['weather_city']['taipei'] = 'Taipei';
+$lang['weather_city']['tokyo'] = 'Tokyo';
+$lang['weather_city']['seoul'] = 'Seoul';
+$lang['weather_city']['delhi'] = 'Delhi';
+$lang['weather_city']['bangkok'] = 'Bangkok';
+$lang['weather_city']['vientiane'] = 'Vientiane';
+$lang['weather_city']['kuala_lumpur'] = 'Kuala Lumpur';
+$lang['weather_city']['phnom_penh'] = 'Phnompenh';
+$lang['weather_city']['jakarta'] = 'Jakarta';
+$lang['weather_city']['singapore'] = 'Singapore';
 
 

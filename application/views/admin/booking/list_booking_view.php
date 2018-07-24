@@ -13,10 +13,10 @@
                 <?php
                     switch ($this->uri->segment(3)) {
                         case 'success':
-                            echo 'Thành công';
+                            echo 'Đặt tour thành công';
                             break;
                         case 'cancel':
-                            echo 'Hủy bỏ';
+                            echo 'Tour đã hủy bỏ';
                             break;
                         default:
                             echo 'Chờ xác nhận';
@@ -38,10 +38,10 @@
                             <?php
                                 switch ($this->uri->segment(3)) {
                                     case 'success':
-                                        echo 'Thành công';
+                                        echo 'Đặt tour thành công';
                                         break;
                                     case 'cancel':
-                                        echo 'Hủy bỏ';
+                                        echo 'Tour đã hủy bỏ';
                                         break;
                                     default:
                                         echo 'Chờ xác nhận';
@@ -51,11 +51,18 @@
                         </h3>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <?php $action = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 'index' ?>
                             <form action="<?php echo base_url('admin/booking/'. $action) ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                <div class="input-group col-md-6" style="float: left;border-right: 5px solid white;">
+                                  <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </div>
+                                  <input type="text" value="<?php echo (isset($date))? $date : '';  ?>" class="form-control pull-right" id="reservation" name="date" readonly>
+                                </div>
+
+                                <div class="input-group col-md-6" style="float: left;">
+                                    <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>
@@ -68,17 +75,19 @@
                     <div class="box-body">
                         <div class="table-responsive">
                             <table id="table" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Họ Tên</th>
-                                        <th>Thời gian</th>
-                                        <th>Tour</th>
-                                        <th>Xem thêm</th>
-                                        <th>Tình trạng</th>
-                                        <th>Hủy bỏ</th>
-                                    </tr>
-                                </thead>
+                                <?php if (!empty($booking)): ?>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Họ Tên</th>
+                                            <th>Thời gian</th>
+                                            <th>Tour</th>
+                                            <th>Xem thêm</th>
+                                            <th>Tình trạng</th>
+                                            <th>Hủy bỏ</th>
+                                        </tr>
+                                    </thead>
+                                <?php endif ?>
                                 <tbody>
                                     <?php if ($booking): ?>
                                         <?php foreach ($booking as $key => $value): ?>
@@ -86,7 +95,16 @@
                                             <tr class="row-status-<?php echo $value['booking_id']; ?>">
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $value['first_name']. ' ' .$value['last_name'] ?></td>
-                                                <td><?php echo $value['time'] ?></td>
+                                                <td>
+                                                    <?php
+                                                        if($value['time'] != "0000-00-00 00:00:00" && $value['time'] != "1970-01-01 08:00:00"){
+                                                            $time = explode("-",str_replace(" 00:00:00","",$value['time']));
+                                                            if(count($time) == 3){
+                                                                echo $time[2]."/".$time[1]."/".$time[0];
+                                                            }
+                                                        }
+                                                    ?>
+                                                </td>
                                                 <td><a href="<?php echo base_url('admin/product/detail/' .$value['product_id']) ?>"><?php echo $value['product_title'] ?></a></td>
 												<!--
 												<td><?php echo $value['address'] ?></td>
@@ -106,9 +124,9 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($value['status'] == 2): ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="pointer-events: none; cursor: pointer;" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>"  data-controller="booking" style="pointer-events: none; cursor: pointer;" >Hủy bỏ</span>
                                                     <?php else: ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>"  data-controller="booking" style="cursor: pointer;" >Hủy bỏ</span>
                                                     <?php endif ?>
                                                     
                                                 </td>
@@ -118,29 +136,35 @@
                                                     <div class="collapse" id="collapse_<?php echo $value['booking_id']; ?>">
                                                         <div class="well">
                                                             <table class="table">
-                                                                <tr>
-                                                                    <td style="width: 20%"><strong>Số điện thoại : </strong></td>
-                                                                    <td><?php echo $value['phone'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Email : </strong></td>
-                                                                    <td><?php echo $value['email'] ?></td>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td><strong>Số người lớn : </strong></td>
-                                                                    <td><?php echo $value['adults'] ?></td>
-                                                                <tr>
-                                                                    <td><strong>Trẻ em (2 - 11 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['children'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Em bé (dưới 2 tuổi) : </strong></td>
-                                                                    <td><?php echo $value['infants'] ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>Nội dung: </strong></td>
-                                                                    <td><?php echo $value['content'] ?></td>
-                                                                </tr>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Email</th>
+                                                                        <th>Số Điện Thoại</th>
+                                                                        <th>Số người lớn</th>
+                                                                        <th>Trẻ em (2 - 11 tuổi)</th>
+                                                                        <th>Em bé (dưới 2 tuổi)</th>
+                                                                        <th>Quốc Gia</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><?php echo $value['email'] ?></td>
+                                                                        <td><?php echo $value['phone'] ?></td>
+                                                                        <td><?php echo $value['adults'] ?></td>
+                                                                        <td><?php echo $value['children'] ?></td>
+                                                                        <td><?php echo $value['infants'] ?></td>
+                                                                        <td><?php echo $value['country'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <hr>
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th colspan="6">Nội dung: </th>
+                                                                        <td><?php echo $value['content'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
@@ -149,21 +173,24 @@
                                         <?php endforeach ?>
                                     <?php else: ?>
                                         <tr>
-                                            Chưa có khách đặt tour
+                                            <h4><?php echo NO_DATA;?></h4>
                                         </tr>
                                     <?php endif ?>
                                 </tbody>
-                                <tfooter>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Họ Tên</th>
-                                        <th>Thời gian</th>
-                                        <th>Tour</th>
-                                        <th>Xem thêm</th>
-                                        <th>Tình trạng</th>
-                                        <th>Hủy bỏ</th>
-                                    </tr>
-                                </tfooter>
+
+                                <?php if (!empty($booking)): ?>
+                                    <tfooter>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Họ Tên</th>
+                                            <th>Thời gian</th>
+                                            <th>Tour</th>
+                                            <th>Xem thêm</th>
+                                            <th>Tình trạng</th>
+                                            <th>Hủy bỏ</th>
+                                        </tr>
+                                    </tfooter>
+                                <?php endif ?>
                             </table>
                         </div>
 						<div class="col-md-6 col-md-offset-5 page">
@@ -183,14 +210,18 @@
 
 <!-- DataTables -->
 <script>
-    $(function () {
-        $('#table').DataTable({
-            'paging'      : false,
-            'lengthChange': false,
-            'searching'   : false,
-            'bookinging'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-    })
+$(function () {
+    $('#reservation').mouseup(function() {
+        $('#reservation').daterangepicker({
+           format: 'DD/MM/YYYY',
+        });
+        $(".ranges").css("display","none");
+        $(".calendar").mouseover(function(){
+           $("#reservation").val($("input[name=daterangepicker_start]").val()+" - "+$("input[name=daterangepicker_end]").val());
+           $(".second.right tbody .available").mousedown(function(){
+               $(".daterangepicker.dropdown-menu.show-calendar.opensleft").css("display","none");
+           });
+        });
+    });
+});
 </script>

@@ -360,6 +360,14 @@ header.header{
                                             font-weight: 700;
                                             font-size: 1.5em;
                                         }
+
+                                        a{
+                                            height: 3.5em;
+
+                                            &:hover{
+                                                color: $primary;
+                                            }
+                                        }
                                     }
 
                                     .body{
@@ -424,7 +432,7 @@ header.header{
                                 > li{
                                     width: 25%;
 
-                                    padding: 30px 15px;
+                                    padding: 20px 15px;
                                     font-size: 1.5em;
 
                                     border-right: 1px solid #dadada;
@@ -466,6 +474,14 @@ header.header{
                                                 height: 160px;
 
                                                 margin-bottom: 15px;
+
+                                                position: relative;
+
+                                                .tour-badge{
+                                                    position: absolute;
+                                                    top: 5px;
+                                                    left: 10px;
+                                                }
                                             }
 
                                             a{
@@ -476,7 +492,7 @@ header.header{
                                         }
                                     }
 
-                                    &:hover{
+                                    &.active{
                                         background-color: #eaeaea;
 
                                         a{
@@ -682,6 +698,59 @@ section.main-page{
 }
 
 section.main-content{
+    h2.post-title{
+        font-size: 2em;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 1.168;
+        height: 2.3em;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    h4.post-subtitle{
+        font-size: 1em;
+        text-transform: uppercase;
+
+        margin-top: 15px;
+        color: $gray-light;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 1.168;
+        height: 1.5em;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    p.post-description{
+        font-size: 1em;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 1.5;
+        height: 7.5em;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
+    .body{
+        div.post-description{
+            font-size: 1em;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            line-height: 1.5;
+            height: 7.5em;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+        }
+    }
+
     .section{
         display: block;
         padding-top: 30px;
@@ -720,44 +789,48 @@ section.main-content{
         }
 
         .item{
-            h2.post-title{
-                font-size: 2em;
+            .inner{
+                position: relative;
 
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                line-height: 1.168;
-                height: 2.3em;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-            }
+                .badge{
+                    position: absolute;
 
-            h4.post-subtitle{
-                font-size: 1em;
-                text-transform: uppercase;
+                    z-index: 990;
 
-                margin-top: 30px;
-                color: $gray-light;
+                    background-color: transparent;
 
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                line-height: 1.168;
-                height: 1.5em;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-            }
+                    &.badge-special{
+                        width: 130px;
+                        height: 50px;
 
-            p.post-description{
-                font-size: 1em;
+                        top: 15px;
+                        right: 7px;
+                    }
 
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                line-height: 1.5;
-                height: 7.5em;
-                -webkit-line-clamp: 5;
-                -webkit-box-orient: vertical;
+                    &.badge-discount{
+                        top: 0px;
+                        left: 35px;
+
+                        padding: 0 5px 5px;
+
+                        background-color: #ff7300;
+                        color: #fff;
+
+                        border-radius: 0;
+
+                        font-size: 1.5em;
+                        font-weight: 700;
+
+                        .content{
+                            position: relative;
+
+                            padding: 50px 15px 30px;
+
+                            border: 1px solid #fff;
+                            border-top: none;
+                        }
+                    }
+                }
             }
         }
     }

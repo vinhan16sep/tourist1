@@ -26,10 +26,32 @@
     z-index: -1;
 }
 
+#head-slider-section{
+    width: 100%;
+    height: 60vh;
+
+        #head-slider{
+            height: 100%;
+
+            .carousel-inner{
+                height: 100%;
+
+                .mask{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+}
+
 #page{
     width: 100%;
 
-    margin-top: -20vh;
+    -webkit-transform: translateY(-150px);
+    -moz-transform: translateY(-150px);
+    -ms-transform: translateY(-150px);
+    -o-transform: translateY(-150px);
+    transform: translateY(-150px);
 
     .container{
         background-color: #fff;
@@ -64,6 +86,20 @@
     .row{
         .item{
             margin-bottom: 30px;
+
+            .inner{
+                .badge{
+                    &.badge-special{
+                        right: -8px;
+                    }
+
+                    &.badge-discount{
+                        .content{
+
+                        }
+                    }
+                }
+            }
 
             .mask{
                 width: 100%;
@@ -111,6 +147,10 @@
                     .body{
                         h3{
                             color: #fff;
+
+                            small.price-original{
+                                color: #eee;
+                            }
                         }
                     }
                 }
@@ -148,6 +188,10 @@
 
                         h3.price{
                             font-size: 2em;
+
+                            small.price-original{
+                                color: #eee;
+                            }
                         }
                     }
 
@@ -203,6 +247,10 @@
             table{
                 color: #fff;
 
+                small.price-original{
+                    color: #ccc;
+                }
+
                 .rating{
                     unicode-bidi: bidi-override;
                     direction: ltr;
@@ -238,7 +286,7 @@
             }
         }
 
-        &.tabs{
+        .tabs{
             margin-top: 30px;
 
             .nav-tabs{
@@ -411,6 +459,174 @@
     }
 }
 
+#tour-related{
+    .row{
+        .item{
+            margin-bottom: 15px;
+
+            .inner{
+                position: relative;
+
+                .badge{
+                    position: absolute;
+                    z-index: 990;
+
+                    background-color: transparent;
+
+                    &.badge-special{
+                        top: 5px;
+                        right: -22px;
+                    }
+
+                    &.badge-discount{
+                        top: 0px;
+                        left: 15px;
+
+                        padding: 0 5px 5px;
+
+                        background-color: #ff7300;
+                        color: #fff;
+
+                        border-radius: 0;
+
+                        font-size: 1.5em;
+                        font-weight: 700;
+
+                        .content{
+                            position: relative;
+
+                            padding: 50px 15px 30px;
+
+                            border: 1px solid #fff;
+                            border-top: none;
+                        }
+                    }
+                }
+            }
+
+            .mask{
+                width: 100%;
+                height: 400px;
+                overflow: hidden;
+
+                position: relative;
+
+                border-radius: 7px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .overview{
+                    width: 100%;
+                    height: 50%;
+
+                    position: absolute;
+                    top: 35%;
+                    left: 0;
+                    z-index: 990;
+
+                    padding: 15px;
+
+                    opacity: 1;
+
+                    text-shadow: 1px 2px 5px #333;
+
+                    @include transition(0.5s);
+
+                    .head{
+
+                        h4.post-subtitle, h2.post-title{
+                            color: #fff;
+                        }
+
+                        h2.post-title{
+                            font-weight: 700;
+                        }
+                    }
+
+                    .body{
+                        h3{
+                            color: #fff;
+
+                            small.price-original{
+                                color: #eee;
+                            }
+                        }
+                    }
+                }
+
+                .content{
+                    width: 100%;
+                    height: 100%;
+
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    z-index: 991;
+
+                    padding: 15px;
+
+                    background-color: rgba(0,0,0,0.5);
+
+                    opacity: 0;
+
+                    @include transition(0.5s);
+
+                    .head{
+                        h4.post-subtitle, h2.post-title, h3.price{
+                            color: #fff;
+                        }
+
+                        h4.post-subtitle{
+                            font-size: 0.875em;
+                        }
+
+                        h2.post-title{
+                            font-size: 1.5em;
+                            font-weight: 700;
+                        }
+
+                        h3.price{
+                            font-size: 2em;
+
+                            small.price-original{
+                                color: #eee;
+                            }
+                        }
+                    }
+
+                    .body{
+                        table{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            &:hover{
+                .mask{
+                    .overview{
+                        top: 0;
+                        opacity: 0;
+
+                        @include transition(0.5s)
+                    }
+
+                    .content{
+                        top: 0;
+                        opacity: 1;
+
+                        @include transition(0.5s)
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 768px){
     #head-cover{
 
@@ -420,7 +636,69 @@
         .container{
         }
     }
+    #page{
+        .container{
+            .row{
+                #tour-detail{
+                    .row{
+                        .tabs{
+                            .nav-tabs{
+                                li{
+                                        display: inline-block;
+                                }
+                            }
+                            .tab-content{
+                                #overview{
+                                    .row{
+                                        .schedule{
+                                            .panel-group{
+                                                .panel-primary{
+                                                    .panel-body{
+                                                        .media{
+                                                            width: 100%;
+                                                            .media-left{
+                                                                display: block;
+                                                                width: 100%;
+                                                                padding-right: 0px;
+                                                                .mask{
+                                                                    width: 100%;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 
+                                #gallery {
+                                    .row{
+                                        .panel-group{
+                                            .panel-primary{
+                                                .panel-body{
+                                                    .media{
+                                                        .media-left{
+                                                            display: block;
+                                                            width: 100%;
+                                                            padding-right: 0px;
+                                                            .mask{
+                                                                width: 100%;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } 
     #tours{
         .row{
             .item{

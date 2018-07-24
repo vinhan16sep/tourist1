@@ -121,7 +121,30 @@ function remove_image(controller, id, image, key){
             }
         });
     }
-}function active(controller, id, question) {
+}
+function active_image(controller, id, image, key){
+    var url = HOSTNAMEADMIN + '/' + controller + '/active_image';
+    if(confirm('Chắc chắn chọn ảnh này làm anh đại diện?')){
+        $.ajax({
+            method: "post",
+            url: url,
+            data: {
+                id : id, csrf_diamondtour_token : csrf_hash, image : image
+            },
+            success: function(response){
+                if(response.status == 200){
+                    csrf_hash = response.reponse.csrf_hash;
+                    $('.row_' + key).fadeOut();
+                    $("input[name='csrf_diamondtour_token']").val(csrf_hash);
+                }
+            },
+            error: function(jqXHR, exception){
+                location.reload();
+            }
+        });
+    }
+}
+function active(controller, id, question) {
     var url = HOSTNAMEADMIN + '/' + controller + '/active';
     if(confirm(question)){
         $.ajax({

@@ -49,13 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Facebook SDK-->
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>
+    (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=504743766549751&autoLogAppEvents=1';
+        js.src = 'https://connect.facebook.net/<?php echo ($lang == 'vi') ? 'vi_VN' : 'en_US'; ?>/sdk.js#xfbml=1&version=v3.0&appId=139238366917004&autoLogAppEvents=1';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <section id="top-nav" class="container-fluid">
 	<div class="container">
@@ -163,6 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             data: {
                 lang: $(this).data('language')
             },
+            async:false,
             success: function(res){
                 if(res.message == 'changed'){
                     window.location.reload();
@@ -257,7 +260,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         if($international_menu){
                             foreach($international_menu as $key => $val){
                                 ?>
-								<li>
+								<li class = "menu-href">
 									<a href="<?php echo base_url('danh-muc/' . $val['slug']); ?>">
                                         <?php echo $val['title']; ?> <span class="glyphicon glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
 									</a>
@@ -269,8 +272,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 ?>
 												<li>
 													<div class="mask">
-														<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>"
-															 alt="image example">
+														<?php if (!empty(json_decode($sub_val['image']))): ?>
+															<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . json_decode($sub_val['image'])[0]); ?>" alt="image example">
+														<?php endif; ?>
 													</div>
 													<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
 												</li>
@@ -286,8 +290,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     ?>
 													<li>
 														<div class="mask">
-															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>"
-																 alt="image example">
+															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>" alt="image example">
+
+															<div class="tour-badge">
+                                                                <?php if (!empty($tour['bestselling'])): ?>
+																	<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell-short') ?> </span>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($tour['hot'])): ?>
+																	<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot-short') ?> </span>
+                                                                <?php endif ?>
+                                                                <?php if (!empty($tour['showpromotion']) && !empty($tour['percen']) && !empty($tour['pricepromotion'])): ?>
+																	<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount-short') ?> </span>
+                                                                <?php endif ?>
+															</div>
+
 														</div>
 														<a href="<?php echo base_url('tours/' . $tour['slug']); ?>"><?php echo $tour['title']; ?></a>
 													</li>

@@ -38,9 +38,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
-                        </div>
+                        </div><!-- 
                         <div class="col-md-6">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
                                 <div class="input-group">
@@ -50,7 +50,7 @@
                                     </span>
                                 </div>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- /.box-header -->
@@ -110,7 +110,11 @@
                 <tr style="background: #DFFDE0" class="remove_<?php echo $value['id'] ?>" >
                     <td>
                         <div class="mask_sm">
-                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/'.$value['image']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
+                            <?php if (!empty(json_decode($value['image']))): ?>
+                                <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .json_decode($value['image'])[0]) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width="150px" >
+                            <?php else: ?>
+                                Không có dữ liệu
+                            <?php endif; ?>
                         </div>
                     </td>
                     <td><?php echo $value['title'] ?></td>

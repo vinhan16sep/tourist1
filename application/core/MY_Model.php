@@ -33,12 +33,22 @@ class MY_Model extends CI_Model {
         return $this->db->insert_batch($this->table_lang, $data);
     }
 
-    public function get_all_with_pagination_search($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '') {
+    public function get_all_with_pagination_search($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '',$bestselling = '',$hot = '',$promotion = '') {
         $this->db->select($this->table .'.*, '. $this->table_lang .'.title,'. $this->table_lang .'.content');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->like($this->table_lang .'.title', $keywords);
         $this->db->where($this->table .'.is_deleted', 0);
+        if($bestselling != ''){
+            $this->db->where($this->table .'.bestselling', $bestselling);
+        }
+        if($hot != ''){
+            $this->db->where($this->table .'.hot', $hot);
+        }
+        if($promotion != '' && $promotion == 1){
+            $this->db->where($this->table .'.percen !=', 0);
+            $this->db->where($this->table .'.pricepromotion !=', 0);
+        }
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
@@ -65,11 +75,21 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function count_search($keyword = ''){
+    public function count_search($keyword = '',$bestselling = '',$hot = '',$promotion = ''){
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->like($this->table_lang .'.title', $keyword);
+        if($bestselling != ''){
+            $this->db->where($this->table .'.bestselling', $bestselling);
+        }
+        if($hot != ''){
+            $this->db->where($this->table .'.hot', $hot);
+        }
+        if($promotion != '' && $promotion == 1){
+            $this->db->where($this->table .'.percen !=', 0);
+            $this->db->where($this->table .'.pricepromotion !=', 0);
+        }
         $this->db->group_by($this->table_lang .'.'.$this->table.'_id');
         $this->db->where($this->table .'.is_deleted', 0);
 

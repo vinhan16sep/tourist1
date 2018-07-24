@@ -148,7 +148,8 @@ class Product_category_model extends MY_Model{
         $this->db->select('*')
             ->from('product_category')
             ->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id')
-            ->where($where);
+            ->where($where)
+            ->order_by('product_category.sort','desc');
 
         return $this->db->get()->result_array();
     }

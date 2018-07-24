@@ -35,7 +35,7 @@
                             <?php
                             echo form_label('Ảnh đại diện', 'image_shared');
                             echo form_error('image_shared');
-                            echo form_upload('image_shared', set_value('image_shared'), 'class="form-control"');
+                            echo form_upload('image_shared[]', set_value('image_shared'), 'class="form-control" multiple');
                             ?>
                             <br>
                         </div>

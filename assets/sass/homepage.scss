@@ -132,6 +132,14 @@ body, html{
                             .body{
                                 h3{
                                     color: #fff;
+
+                                    small.price-original{
+                                        color: #ddd;
+                                    }
+                                }
+
+                                .rating{
+                                    color: #fff;
                                 }
                             }
                         }
@@ -169,6 +177,10 @@ body, html{
 
                                 h3.price{
                                     font-size: 2em;
+
+                                    small.price-original{
+                                            color: #ddd;
+                                    }
                                 }
                             }
 
@@ -377,7 +389,7 @@ body, html{
         }
     }
 
-    &#tour-intro{
+    &#tour-special{
         background-color: #fff;
 
         .container{
@@ -511,6 +523,10 @@ body, html{
 
             padding-top: 100px;
             padding-bottom: 100px;
+        }
+
+        #banner-weather{
+            background-color: #ccc;
         }
     }
 

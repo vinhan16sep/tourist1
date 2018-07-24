@@ -22,7 +22,9 @@ $lang['visa'] = 'VISA';
 $lang['visa-procedure'] = 'Thủ tục xin visa';
 $lang['registration-form'] = 'Form thông tin';
 $lang['blog'] = 'Bài viết';
+$lang['relative-blog'] = 'Bài viết liên quan';
 $lang['location'] = 'Điểm đến';
+$lang['relative-location'] = 'Điểm đến liên quan';
 $lang['handbook'] = 'Cẩm nang';
 $lang['diary'] = 'Nhật ký';
 
@@ -82,6 +84,11 @@ $lang[''] = '';
 
 $lang['tour-detail-duration'] = 'Thời gian';
 $lang['tour-detail-start'] = 'Ngày khởi hành';
+$lang['tour-detail'] = 'Chi tiết Tour';
+$lang['note'] = 'Ghi chú';
+$lang['rate'] = 'Điểm';
+$lang['price'] = 'Giá';
+$lang['no-where-selected-in-the-day'] = 'Không có nơi nào được chọn trong ngày';
 $lang['tour-detail-price'] = 'Chi phí';
 $lang['tour-detail-rating'] = 'Đánh giá';
 $lang['tour-detail-votes'] = 'lượt bình chọn';
@@ -98,6 +105,8 @@ $lang['tour-tabs-customize'] = 'Tuỳ chỉnh';
 $lang['tour-price-adult'] = 'Người lớn';
 $lang['tour-price-u11'] = 'Trẻ từ 2 đến 11 tuổi';
 $lang['tour-price-u2'] = 'Trẻ em dưới 2 tuổi';
+
+$lang['tour-related'] = 'Tour liên quan';
 
 $lang['inclusion'] = 'Bao gồm';
 $lang['exclusion'] = 'Không bao gồm';
@@ -135,6 +144,30 @@ $lang['contact-send'] = 'Gửi';
 $lang['day'] = 'Ngày';
 $lang['comments'] = 'Bình Luận';
 
+//Badge
 
+$lang['tour-best-sell'] = 'Tour bán chạy';
+$lang['tour-hot'] = 'Tour Hot';
+$lang['tour-discount'] = 'Tour khuyến mại';
 
+$lang['tour-best-sell-short'] = 'BC';
+$lang['tour-hot-short'] = 'Hot';
+$lang['tour-discount-short'] = 'KM';
 
+//Weather
+
+$lang['weather'] = 'Thời tiết';
+
+$lang['weather_city']['thu_do_ha_noi'] = 'Hà Nội';
+$lang['weather_city']['beijing'] = 'Bắc Kinh';
+$lang['weather_city']['shanghai'] = 'Thượng Hải';
+$lang['weather_city']['taipei'] = 'Đài Bắc';
+$lang['weather_city']['tokyo'] = 'Tokyo';
+$lang['weather_city']['seoul'] = 'Seoul';
+$lang['weather_city']['delhi'] = 'Delhi';
+$lang['weather_city']['bangkok'] = 'Bangkok';
+$lang['weather_city']['vientiane'] = 'Vientiane';
+$lang['weather_city']['kuala_lumpur'] = 'Kuala Lumpur';
+$lang['weather_city']['phnom_penh'] = 'Phnompenh';
+$lang['weather_city']['jakarta'] = 'Jakarta';
+$lang['weather_city']['singapore'] = 'Singapore';

@@ -117,6 +117,10 @@ defined('INTERNATIONAL_TOUR')  OR define('INTERNATIONAL_TOUR', 'nuoc-ngoai');
 defined('SPECIAL_TOUR')        OR define('SPECIAL_TOUR', 'tour-dac-biet');
 
 /**
+ * Rating default
+ */
+defined('NO_RATING')        OR define('NO_RATING', '4/5');
+/**
  * FIXED POST CATEGORIES ID
  */
 defined('FIXED_ABOUT_US')        OR define('FIXED_ABOUT_US', 15);
@@ -288,3 +292,4 @@ defined('MESSAGE_ERROR_REMOVE_CATEGORY') OR define('MESSAGE_ERROR_REMOVE_CATEGOR
  */
 defined('MESSAGE_CHANGE_LANGUAGE_SUCCESS') OR define('MESSAGE_CHANGE_LANGUAGE_SUCCESS', 'changed');
 defined('MESSAGE_CHANGE_LANGUAGE_FAIL') OR define('MESSAGE_CHANGE_LANGUAGE_FAIL', 'keep');
+defined('NO_DATA') OR define('NO_DATA', 'Không có dữ liệu');

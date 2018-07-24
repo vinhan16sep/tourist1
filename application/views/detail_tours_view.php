@@ -539,6 +539,7 @@
 </section>
 
 <script>
+
 	$(function () {
 		//Date picker
 		$('.datepicker').datepicker({

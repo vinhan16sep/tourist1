@@ -13,6 +13,19 @@ switch(window.location.origin){
     default:
         var HOSTNAMEADMIN = 'http://localhost/tourist1/admin';
 }
+$("#box-promotion").fadeOut();
+if(window.location.pathname.indexOf("/product/edit/") != '-1' && $('#promotion').is(':checked') == true){
+	$("#box-promotion").fadeIn();
+}
+$('#promotion').click(function(){
+	if($('#promotion').is(':checked') == true){
+		$("#box-promotion").fadeIn();
+	}else{
+		$("#box-promotion").fadeOut();
+		$("#box-promotion input").val('');
+		$('#showpromotion').prop('checked',false);
+	}
+});
 $("#nav-product #submit-shared").css("display","none");
 $("#nav-product li#content-home").css("float","left");
 $("#content-home").css("display","none");
@@ -20,7 +33,7 @@ $("#go-back").css("display","inline");
 $("#nav-product li#add-date").css("float","right");
 $("#nav-product li#add-date").click(function(){
 	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
+		ignore: ":hidden:not('.title-content-date.date input')"
 	});
 	$('#register-form').validate({
 		errorElement: 'span',
@@ -140,7 +153,7 @@ $("#submit-shared,#content-home").click(function(event) {
 		return this.optional(element) || (value>0);
 	}, "Bạn phải chọn phương tiện.");
 	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
+		ignore: ":hidden:not('.title-content-date.date input')"
 	});
 	$('#register-form').validate({
 		highlight: function(element, errorClass, validClass) {
@@ -239,6 +252,13 @@ $("#submit-shared,#content-home").click(function(event) {
 				post.append('datecontent_vi[]',tinymce.get("content_date_vi_"+k).getContent());
 				post.append('datecontent_en[]',tinymce.get("content_date_en_"+k).getContent());
 			}
+
+			post.append('hot',$('#hot').is(':checked'));
+			post.append('bestselling',$('#bestselling').is(':checked'));
+			
+			post.append('pricepromotion',$('#pricepromotion').val());
+			post.append('showpromotion',$('#showpromotion').is(':checked'));
+
 			post.append('price',$('#price').val());
 			post.append('date',$('#datepicker').val());
 			post.append('priceadults',$('#priceadults').val());

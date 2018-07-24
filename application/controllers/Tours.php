@@ -17,7 +17,7 @@ class Tours extends Public_Controller {
         $this->load->library('image_lib');
         $this->load->helper('captcha');
         $this->load->helper('common');
-
+        $this->get_all = $this->product_category_model->get_all();
         $this->data['request_vehicles_icon'] = $this->request_vehicles_icon;
     }
 
@@ -133,6 +133,12 @@ class Tours extends Public_Controller {
                     $this->data['detail']['dateimg'] = json_decode($this->data['detail']['dateimg']);
             }
 
+            $this->get_multiple_products_with_category_id($this->get_all, $detail['product_category_id'], $ids);
+            if(empty($ids)){
+                $ids = array();
+            }
+            array_unshift($ids,$detail['product_category_id']);
+            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],3,'desc',$this->data['lang']);
             /**
              * RATING SYSTEM
              * [$ip description]

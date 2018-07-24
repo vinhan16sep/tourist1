@@ -79,6 +79,18 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Tour bán chạy</th>
+                                                    <td><i class="<?php echo ($detail['bestselling'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Tour hot</th>
+                                                    <td><i class="<?php echo ($detail['hot'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Hiển thị khuyến mãi</th>
+                                                    <td><i class="<?php echo ($detail['showpromotion'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
+                                                <tr>
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
                                                 </tr>
@@ -87,16 +99,33 @@
                                                     <td><?php echo $detail['parent_title'] ?></td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Ngày khởi hành</th>
+                                                    <td>
+                                                        <?php
+                                                            if($detail['date'] != "0000-00-00 00:00:00" && $detail['date'] != "1970-01-01 08:00:00"){
+                                                                $time = explode("-",str_replace(" 00:00:00","",$detail['date']));
+                                                                if(count($time) == 3){
+                                                                    echo $time[2]."/".$time[1]."/".$time[0];
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>Số ngày tour</th>
                                                     <td><?php echo count($detail['datetitle_vi']) ?></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Giá</th>
-                                                    <td><?php echo $detail['price'] ?></td>
+                                                    <td><?php echo number_format($detail['price']); ?> VND</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Giám giá</th>
-                                                    <td><?php echo $detail['percen'] ?></td>
+                                                    <th>Giảm giá</th>
+                                                    <td><?php echo $detail['percen'] ?>%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Giá sau khi giảm giá</th>
+                                                    <td><?php echo number_format(($detail['pricepromotion'] != 0)?$detail['pricepromotion']:$detail['price']); ?> VND</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Những nơi đi</th>
