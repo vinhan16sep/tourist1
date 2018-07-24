@@ -114,6 +114,11 @@
                                 <?php echo $this->lang->line('tour-tabs-customize') ?>
 							</a>
 						</li>
+						<li role="presentation" id="commentTab">
+							<a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('comments') ?>
+							</a>
+						</li>
 					</ul>
 
 					<div class="tab-content">
@@ -466,6 +471,66 @@
                                 <?php echo form_close(); ?>
 							</div>
 						</div>
+
+						<div role="tabpanel" class="tab-pane" id="comment">
+							<div class="row">
+								<div class="schedule col-sm-12 col-xs-12">
+									<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
+										<form action="" method="post" accept-charset="utf-8">
+											<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash() ?>" id="csrf" />      
+											<div class="row">
+												<div class="form-group col-md-6 col-sm-6 col-xs-12">
+													<label for="name">Họ và Tên</label><input type="text" name="name" value="" class="form-control" id="name" placeholder="Họ và tên">
+													<span class="name_error" style="color: red"></span>
+												</div>
+												<div class="form-group col-md-6 col-sm-6 col-xs-12">
+													<label for="email">Email</label><input type="text" name="email" value="" class="form-control" id="email" placeholder="Email">
+													<span class="email_error" style="color: red"></span>
+												</div>
+												<div class="form-group col-md-12 col-sm-12 col-xs-12">
+													<label for="content">Ý kiến nhận xét</label><textarea name="content" cols="40" rows="10" class="form-control" id="content"></textarea>
+													<span class="content_error" style="color: red"></span>
+												</div>
+												<div class="form-group col-md-12 col-sm-12 col-xs-12">
+													<input type="hidden" name="product_id" id="product_id" value="<?php echo $detail['id'];?>">
+													<input type="submit" name="submit" value="Gửi nhận xét" class="btn btn-primary hvr-icon-forward submit-comment" style="">
+												</div>
+											</div>
+										</form>
+										
+										<div id="comment">
+											<?php if (isset($comment)): ?>
+												<div class="show-comment">
+												<?php foreach ($comment as $key => $value): ?>
+													<div class="media cmt">
+														<div class="media-left">
+															<img class="media-object" src="<?php echo site_url('assets/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
+														</div>
+														<div class="media-body">
+															<h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
+															<span><?php echo $value['content'] ?></span>
+															<span style="float: right; font-size: 1em"><?php echo date_format(date_create($value['created_at']), 'd-m-Y') ?></span>
+														</div>
+													</div>
+												<?php endforeach ?>
+												</div>
+											<?php else: ?>
+												<div class="media cmt">
+													<p class="cmt_error">Chưa có bình luận cho Tour này</p>
+												</div>
+											<?php endif ?>
+											<div id="comment_readmore" style="display: none;">
+												<input type="hidden" name="count-comment" id="count-comment" value="<?php echo $count_comment ?>">
+												<button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -474,12 +539,15 @@
 </section>
 
 <script>
-  $(function () {
-    //Date picker
-    $('.datepicker').datepicker({
-      autoclose: true,
-      format: 'dd/mm/yyyy',
-    })
-  })
+	$(function () {
+		//Date picker
+		$('.datepicker').datepicker({
+			autoclose: true,
+			format: 'dd/mm/yyyy',
+		})
+	})
+
+	
 </script>
 <script src="<?php echo base_url('assets/js/rating.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/detail_product.js') ?>"></script>

@@ -136,4 +136,6 @@ $lang['contact-country'] = 'Country of residence';
 $lang['contact-message'] = 'Message';
 $lang['contact-send'] = 'Send';
 $lang['day'] = 'Day';
+$lang['comments'] = 'Comments';
+
 

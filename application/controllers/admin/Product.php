@@ -158,8 +158,21 @@ class Product extends Admin_Controller{
     }
     public function detail($id){
         $this->load->model('rating_model');
+        $this->load->model('comment_model');
         if($id &&  is_numeric($id) && ($id > 0)){
             if($this->product_model->find_rows(array('id' => $id,'is_deleted' => 0)) != 0){
+
+                $this->load->library('pagination');
+                $per_page = 5;
+                $total_rows  = $this->comment_model->count_search_without_by_product_id($id);
+                $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/detail/'. $id), $total_rows, $per_page, 5);
+                $this->data['page'] = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+                $this->pagination->initialize($config);
+                $this->data['page_links'] = $this->pagination->create_links();
+                $this->data['comments'] = $this->comment_model->get_all_by_product_id($id , $per_page, $this->data['page']);
+                // echo '<pre>';
+                // print_r($this->data['comments']);die;
+
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 $product = $this->product_model->get_by_id($id, array('title', 'description', 'content','metakeywords','metadescription','tripnodes','detailsprice','datetitle','datecontent'));
