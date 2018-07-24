@@ -115,6 +115,8 @@ class Tours extends Public_Controller {
             }else{
                 $detail['librarylocaltion'] = $librarylocaltion;
             }
+            $this->data['comment'] = $this->comment($detail['id']);
+            $this->data['count_comment'] = $this->count_comment($detail['id']);
             $this->data['detail'] = $detail;
             if($this->data['detail']['date'] != "0000-00-00 00:00:00" && $this->data['detail']['date'] != "1970-01-01 08:00:00"){
                 $rmtime = str_replace(" 00:00:00","",$this->data['detail']['date']);
@@ -226,6 +228,20 @@ class Tours extends Public_Controller {
             ->set_content_type('application/json')
             ->set_status_header(200)
             ->set_output(json_encode(array('status' => 200, 'captcha' => $captcha)));
+    }
+
+    protected function comment($product_id) {
+        $this->load->model('comment_model');
+        $comment = $this->comment_model->get_all_by_product_id($product_id, 5, 0);
+        if($comment){
+            return $comment;
+        }
+    }
+
+    protected function count_comment($product_id){
+        $this->load->model('comment_model');
+        $count_comment = $this->comment_model->count_all_by_product_id($product_id);
+        return $count_comment;
     }
 
 }

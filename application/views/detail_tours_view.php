@@ -1,371 +1,359 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
 
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['image']) ?>')"></section>
 
 <section id="page">
 	<div class="container">
-		<div class="row">
+		<ol class="breadcrumb hidden-xs">
+			<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
+			<?php if (!empty($detail['sub'])): ?>
+				<?php for($i=0;$i<count($detail['sub']);$i++): ?>
+					<li><a href="<?php echo base_url('/danh-muc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
+				<?php endfor; ?>
+			<?php endif ?>
+			<li class="active"><?php echo $detail['title'];?></li>
+		</ol>
+		<div class="section-header">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1><?php echo $detail['title'] ?></h1>
+					<p><?php echo $detail['description'] ?></p>
+				</div>
+			</div>
+		</div>
+		<div id="tour-detail" class="section">
+			<div class="row">
+				<div class="left col-sm-6 col-xs-12">
+					<h3>Note</h3>
+					<p><?php echo $detail['content'] ?></p>
+				</div>
+				<div class="right col-sm-6 col-xs-12">
+					<h3>Tour Detail</h3>
+					<table class="table">
+						<tr>
+							<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
+							<td><?php echo count($detail['datetitle'])?> Ngày</td>
+						</tr>
+						<tr>
+							<td><?php echo $this->lang->line('tour-detail-start') ?></td>
+							<td><?php echo $detail['date'] ?></td>
+						</tr>
+						<tr>
+							<td><?php echo $this->lang->line('tour-detail-price') ?></td>
+							<td>
+								<h3><?php echo number_format($detail['price']) ?> vnd</h3>
+							</td>
+						</tr>
+						<tr>
+							<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
+							<td>
+								<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
+								<input type="hidden" name="re_rateit" id="re_rateit" value="">
+								<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="captcha-image image col-md-6"></div>
 
+								<div class="captcha-input input-group col-md-6">
+									<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
+									<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style="border: none;margin-right: 5%; color: black;height: 35px;">
+									<span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+								</div>
+								<div class="captcha-input col-md-7">
 
-			<!-- GET DETAIL OF TOUR -->
-			<div id="tour-detail" class="col-sm-9 col-xs-12">
-				<ol class="breadcrumb hidden-xs">
-					<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
-                    <?php if (!empty($detail['sub'])): ?>
-                        <?php for($i=0;$i<count($detail['sub']);$i++): ?>
-							<li><a href="<?php echo base_url('/danh-muc/'.$detail['sub'][$i]['slug']) ?>"><?php echo $detail['sub'][$i]['title'] ?></a></li>
-                        <?php endfor; ?>
-                    <?php endif ?>
-					<li class="active"><?php echo $detail['title'];?></li>
-				</ol>
+								</div>
+								<div>
+									<span class="message"></span>
+								</div>
+							</td>
+							<td rowspan="2">
+								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
+								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
+								<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']; ?>">
+								<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
+                                    <?php echo $this->lang->line('booking') ?>
+								</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row tabs">
+				<div class="col-xs-12">
+					<ul class="nav nav-tabs nav-justified" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('tour-tabs-overview') ?>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('tour-tabs-gallery') ?>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#price" aria-controls="price" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('tour-tabs-price') ?>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#trip-notes" aria-controls="trip-notes" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('tour-tabs-trip-notes') ?>
+							</a>
+						</li>
+						<li role="presentation" id="inquireTab">
+							<a href="#inquire" aria-controls="inquire" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('tour-tabs-inquire') ?>
+							</a>
+						</li>
+						<li role="presentation" id="customizeTab">
+							<a href="#customize" aria-controls="customize" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('tour-tabs-customize') ?>
+							</a>
+						</li>
+						<li role="presentation" id="commentTab">
+							<a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">
+                                <?php echo $this->lang->line('comments') ?>
+							</a>
+						</li>
+					</ul>
 
-				<h1>
-                    <?php echo $detail['title'] ?>
-					<br>
-                    <?php if (!empty($detail['bestselling'])): ?>
-						<span class="badge "><i class="fa fa-star" aria-hidden="true"></i> <?php echo $this->lang->line('tour-best-sell') ?> </span>
-                    <?php endif ?>
-                    <?php if (!empty($detail['hot'])): ?>
-						<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i> <?php echo $this->lang->line('tour-hot') ?> </span>
-                    <?php endif ?>
-                    <?php if (!empty($detail['showpromotion']) && !empty($detail['pricepromotion']) && !empty($detail['percen'])): ?>
-						<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i> <?php echo $this->lang->line('tour-discount') ?> </span>
-                    <?php endif ?>
-				</h1>
-				<p><?php echo $detail['description'] ?></p>
-
-				<div class="row">
-					<div class="left col-sm-6 col-xs-12">
-						<h3><?php echo $this->lang->line('note');?></h3>
-						<p><?php echo $detail['content'] ?></p>
-					</div>
-					<div class="right col-sm-6 col-xs-12">
-						<h3><?php echo $this->lang->line('tour-detail');?></h3>
-						<table class="table">
-							<tr>
-								<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-								<td><?php echo count($detail['datetitle'])?> <?php echo $this->lang->line('day');?></td>
-							</tr>
-							<tr>
-								<td><?php echo $this->lang->line('tour-detail-start') ?></td>
-								<td><?php echo $detail['date'] ?></td>
-							</tr>
-							<tr>
-								<td><?php echo $this->lang->line('tour-detail-price') ?></td>
-								<td>
-									<h3>
-                                        <?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
-                                            <?php echo number_format($detail['pricepromotion']); ?> vnd
-											<small class="price-original"><del><?php echo number_format($detail['price']);?> vnd</del></small>
-                                        <?php else: ?>
-                                            <?php echo number_format($detail['price']); ?> vnd
-                                        <?php endif ?>
-									</h3>
-								</td>
-							</tr>
-							<tr>
-								<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
-								<td>
-									<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
-									<input type="hidden" name="re_rateit" id="re_rateit" value="">
-									<p class="number"><?php echo $rating ?> / 5 <?php echo $this->lang->line('rate');?> <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="captcha-image image col-md-6" style="padding-left: 0;"></div>
-
-									<div class="captcha-input input-group col-md-6">
-										<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
-										<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style="border: none;margin-right: 5%; color: black;height: 35px;">
-										<span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
-									</div>
-									<div class="captcha-input col-md-7">
-
-									</div>
-									<div>
-										<span class="message"></span>
-									</div>
-								</td>
-								<td rowspan="2">
-									<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
-									<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
-									<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']; ?>">
-									<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
-                                        <?php echo $this->lang->line('tour-detail-rating') ?>
-									</button>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="tabs col-xs-12">
-						<ul class="nav nav-tabs nav-justified" role="tablist">
-							<li role="presentation" class="active">
-								<a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-overview') ?>
-								</a>
-							</li>
-							<li role="presentation">
-								<a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-gallery') ?>
-								</a>
-							</li>
-							<li role="presentation">
-								<a href="#price" aria-controls="price" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-price') ?>
-								</a>
-							</li>
-							<li role="presentation">
-								<a href="#trip-notes" aria-controls="trip-notes" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-trip-notes') ?>
-								</a>
-							</li>
-							<li role="presentation" id="inquireTab">
-								<a href="#inquire" aria-controls="inquire" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-inquire') ?>
-								</a>
-							</li>
-							<li role="presentation" id="customizeTab">
-								<a href="#customize" aria-controls="customize" role="tab" data-toggle="tab">
-                                    <?php echo $this->lang->line('tour-tabs-customize') ?>
-								</a>
-							</li>
-						</ul>
-
-						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="overview">
-								<div class="row">
-									<div class="schedule col-sm-8 col-xs-12">
-										<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
-                                            <?php for($i = 0; $i < count($detail['dateimg']); $i++): ?>
-												<div class="panel panel-primary">
-													<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
-														<h4 class="panel-title">
-															<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
-                                                                <?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
-															</a>
-															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
-														</h4>
-													</div>
-													<div id="day-<?php echo $i+1; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $i+1; ?>-heading">
-														<div class="panel-body">
-															<div class="media">
-																<div class="media-left">
-																	<div class="mask">
-																		<img class="media-object" src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['dateimg'][$i]); ?>" alt="daily schedule image">
-																	</div>
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="overview">
+							<div class="row">
+								<div class="schedule col-sm-8 col-xs-12">
+									<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
+                                        <?php for($i = 0; $i < count($detail['dateimg']); $i++): ?>
+											<div class="panel panel-primary">
+												<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
+													<h4 class="panel-title">
+														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
+															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+														</a>
+														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
+													</h4>
+												</div>
+												<div id="day-<?php echo $i+1; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $i+1; ?>-heading">
+													<div class="panel-body">
+														<div class="media">
+															<div class="media-left">
+																<div class="mask">
+																	<img class="media-object" src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['dateimg'][$i]); ?>" alt="daily schedule image">
 																</div>
-																<div class="media-body">
-																	<h4 class="media-heading"><?php echo $detail['datetitle'][$i]; ?></h4>
-																	<p>
-                                                                        <?php echo $detail['datecontent'][$i]; ?>
-																	</p>
-																</div>
+															</div>
+															<div class="media-body">
+																<h4 class="media-heading"><?php echo $detail['datetitle'][$i]; ?></h4>
+																<p>
+																	<?php echo $detail['datecontent'][$i]; ?>
+																</p>
 															</div>
 														</div>
 													</div>
 												</div>
-                                            <?php endfor; ?>
-										</div>
+											</div>
+                                        <?php endfor; ?>
+									</div>
 
-									</div>
-									<div class="map col-sm-4 col-xs-12">
-										<img src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['imglocaltion']);?>" alt="tour map">
-									</div>
+								</div>
+								<div class="map col-sm-4 col-xs-12">
+									<img src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['imglocaltion']);?>" alt="tour map">
 								</div>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="gallery">
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
-                                            <?php for($i = 0; $i < count($detail['librarylocaltion']); $i++): ?>
-												<div class="panel panel-primary">
-													<div class="panel-heading" role="tab" id="day-1-heading">
-														<h4 class="panel-title">
-															<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
-                                                                <?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
-															</a>
-															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
-														</h4>
-													</div>
-													<div id="gallery-<?php echo $i+1; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="gallery-<?php echo $i+1; ?>-heading">
-														<div class="panel-body">
-                                                            <?php if (!empty($detail['librarylocaltion'][$i])): ?>
-                                                                <?php for($j = 0; $j < count($detail['librarylocaltion'][$i]); $j++): ?>
-                                                                    <?php if (!empty($detail['librarylocaltion'][$i][$j])): ?>
-																		<div class="media">
-																			<div class="media-left">
-																				<div class="mask">
-																					<img class="media-object" src="<?php echo base_url('/assets/upload/localtion/'.$detail['librarylocaltion'][$i][$j]['slug'].'/'.$detail['librarylocaltion'][$i][$j]['image']); ?>" alt="daily schedule image">
-																				</div>
-																			</div>
-																			<div class="media-body">
-																				<h4 class="media-heading"><?php echo $detail['librarylocaltion'][$i][$j]['title'] ?></h4>
-																				<p><?php echo $detail['librarylocaltion'][$i][$j]['content'] ?></p>
-																			</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="gallery">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
+                                        <?php for($i = 0; $i < count($detail['librarylocaltion']); $i++): ?>
+											<div class="panel panel-primary">
+												<div class="panel-heading" role="tab" id="day-1-heading">
+													<h4 class="panel-title">
+														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
+															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+														</a>
+														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
+													</h4>
+												</div>
+												<div id="gallery-<?php echo $i+1; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="gallery-<?php echo $i+1; ?>-heading">
+													<div class="panel-body">
+													<?php if (!empty($detail['librarylocaltion'][$i])): ?>
+														<?php for($j = 0; $j < count($detail['librarylocaltion'][$i]); $j++): ?>
+															<?php if (!empty($detail['librarylocaltion'][$i][$j])): ?>
+																<div class="media">
+																	<div class="media-left">
+																		<div class="mask">
+																			<img class="media-object" src="<?php echo base_url('/assets/upload/localtion/'.$detail['librarylocaltion'][$i][$j]['slug'].'/'.$detail['librarylocaltion'][$i][$j]['image']); ?>" alt="daily schedule image">
 																		</div>
-                                                                    <?php else: ?>
-																		<div style="padding:20px;">
-                                                                            <?php echo $this->lang->line('no-where-selected-in-the-day');?>
-																		</div>
-                                                                    <?php endif;?>
-                                                                    <?php if ($j+1 < count($detail['librarylocaltion'][$i])): ?>
-																		<div style="border:1px solid #999" class="col-md-12"> </div>
-                                                                    <?php endif ?>
-                                                                <?php endfor; ?>
-                                                            <?php endif;?>
-														</div>
+																	</div>
+																	<div class="media-body">
+																		<h4 class="media-heading"><?php echo $detail['librarylocaltion'][$i][$j]['title'] ?></h4>
+																		<p><?php echo $detail['librarylocaltion'][$i][$j]['content'] ?></p>
+																	</div>
+																</div>
+			                                                <?php else: ?>
+			                                                    <div style="padding:20px;">
+			                                                        Không có nơi nào được chọn trong ngày    
+			                                                    </div>
+			                                                <?php endif;?>
+                                                            <?php if ($j+1 < count($detail['librarylocaltion'][$i])): ?>
+                                                                <div style="border:1px solid #999" class="col-md-12"> </div>
+                                                            <?php endif ?> 
+														<?php endfor; ?>
+                                    				<?php endif;?>
 													</div>
 												</div>
-                                            <?php endfor; ?>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<div role="tabpanel" class="tab-pane" id="price">
-								<div class="row">
-									<div class="col-xs-12">
-										<table class="table table-bordered">
-											<thead>
-											<tr>
-												<th><?php echo $this->lang->line('tour-price-adult') ?></th>
-												<th><?php echo $this->lang->line('tour-price-u11') ?></th>
-												<th><?php echo $this->lang->line('tour-price-u2') ?></th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr>
-												<td><?php echo $detail['priceadults'];?>% <?php echo $this->lang->line('price');?></td>
-												<td><?php echo $detail['pricechildren'];?>% <?php echo $this->lang->line('price');?></td>
-												<td><?php echo $detail['priceinfants'];?>% <?php echo $this->lang->line('price');?></td>
-											</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">
-                                        <?php echo $detail['detailsprice'];?>
-									</div>
-								</div>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="trip-notes">
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="table-responsive">
-                                            <?php echo $detail['tripnodes'];?>
-										</div>
+											</div>
+                                        <?php endfor; ?>
 									</div>
 								</div>
 							</div>
 
-							<input type="hidden" name="product_id" id="product_id" value="<?php echo $detail['id']?>">
+						</div>
+						<div role="tabpanel" class="tab-pane" id="price">
+							<div class="row">
+								<div class="col-xs-12">
+									<table class="table table-bordered">
+										<thead>
+										<tr>
+											<th><?php echo $this->lang->line('tour-price-adult') ?></th>
+											<th><?php echo $this->lang->line('tour-price-u11') ?></th>
+											<th><?php echo $this->lang->line('tour-price-u2') ?></th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td><?php echo $detail['priceadults'];?>% price</td>
+											<td><?php echo $detail['pricechildren'];?>% price</td>
+											<td><?php echo $detail['priceinfants'];?>% price</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<?php echo $detail['detailsprice'];?>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="trip-notes">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="table-responsive">
+                                        <?php echo $detail['tripnodes'];?>
+									</div>
+								</div>
+							</div>
+						</div>
 
-							<div role="tabpanel" class="tab-pane" id="inquire">
-								<div class="row">
+						<input type="hidden" name="product_id" id="product_id" value="<?php echo $detail['id']?>">
+
+						<div role="tabpanel" class="tab-pane" id="inquire">
+							<div class="row">
+                                <?php
+                                echo form_open_multipart('', array('class' => 'form-horizontal','id' => 'form-booking'));
+                                ?>
+								<div class="form-group col-sm-4 col-xs-12">
                                     <?php
-                                    echo form_open_multipart('', array('class' => 'form-horizontal','id' => 'form-booking'));
+                                    echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
+                                    echo form_error('inquire_title');
+                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title"')
                                     ?>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
-                                        echo form_error('inquire_title');
-                                        echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title"')
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
-                                        echo form_error('inquire_first_name');
-                                        echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
-                                        echo form_error('inquire_last_name');
-                                        echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
-                                        echo form_error('inquire_email');
-                                        echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
-                                        echo form_error('inquire_email_confirm');
-                                        echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
-                                        echo form_error('inquire_phone_number');
-                                        echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-6 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
-                                        echo form_error('datepicker');
-                                        echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly ');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-6 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
-                                        echo form_error('inquire_country');
-                                        echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
-                                        echo form_error('inquire_number_adults');
-                                        echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0">';
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
-                                        echo form_error('inquire_number_children_u11');
-                                        echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0">';
-                                        ?>
-									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
-                                        echo form_error('inquire_number_children_u2');
-                                        echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0">';
-                                        ?>
-									</div>
-
-									<div class="form-group col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-message') .' (*)', 'inquire_message');
-                                        echo form_error('inquire_message');
-                                        echo form_textarea('inquire_message', set_value('inquire_message'), 'class="form-control" id="inquire_message"')
-                                        ?>
-									</div>
-
-									<div class="col-xs-12">
-										<input id="bookingsubmit" class="btn btn-primary" type="button" value="Book Now!">
-									</div>
-
-                                    <?php echo form_close(); ?>
 								</div>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="customize">
-								<div class="row">
+								<div class="form-group col-sm-4 col-xs-12">
                                     <?php
-                                    echo form_open_multipart('', array('class' => 'form-horizontal','id' => 'form-customize'));
+                                    echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
+                                    echo form_error('inquire_first_name');
+                                    echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
                                     ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
+                                    echo form_error('inquire_last_name');
+                                    echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
+                                    ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
+                                    echo form_error('inquire_email');
+                                    echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
+                                    ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
+                                    echo form_error('inquire_email_confirm');
+                                    echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
+                                    ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
+                                    echo form_error('inquire_phone_number');
+                                    echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
+                                    ?>
+								</div>
+								<div class="form-group col-sm-6 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
+                                    echo form_error('datepicker');
+                                    echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly ');
+                                    ?>
+								</div>
+								<div class="form-group col-sm-6 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
+                                    echo form_error('inquire_country');
+                                    echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
+                                    ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
+                                    echo form_error('inquire_number_adults');
+                                    echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0">';
+                                    ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
+                                    echo form_error('inquire_number_children_u11');
+                                    echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0">';
+                                    ?>
+								</div>
+								<div class="form-group col-sm-4 col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
+                                    echo form_error('inquire_number_children_u2');
+                                    echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0">';
+                                    ?>
+								</div>
+
+								<div class="form-group col-xs-12">
+                                    <?php
+                                    echo form_label($this->lang->line('form-message') .' (*)', 'inquire_message');
+                                    echo form_error('inquire_message');
+                                    echo form_textarea('inquire_message', set_value('inquire_message'), 'class="form-control" id="inquire_message"')
+                                    ?>
+								</div>
+
+								<div class="col-xs-12">
+                                    <input id="bookingsubmit" class="btn btn-primary" type="button" value="Book Now!">
+								</div>
+
+                                <?php echo form_close(); ?>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="customize">
+							<div class="row">
+                                <?php
+                                echo form_open_multipart('', array('class' => 'form-horizontal','id' => 'form-customize'));
+                                ?>
 									<div class="col-xs-12">
 										<table class="table">
 											<thead>
@@ -376,262 +364,191 @@
 											</thead>
 
 											<tbody>
-                                            <?php for ($i = 0;$i< count($detail['dateimg']);$i++): ?>
-												<tr>
-													<td>
-                                                        <?php echo $this->lang->line('rate');?> <?php echo $i+1; ?>
-													</td>
-													<td>
-                                                        <?php
-                                                        echo form_error('inquire_message[]');
-                                                        echo form_textarea(array('name' => 'tour_change[]','rows' => '4'), set_value('tour_change'), array('class' =>'form-control','id' => 'tour_change_'.$i,))
-                                                        ?>
-													</td>
-												</tr>
-                                            <?php endfor ?>
+				                                <?php for ($i = 0;$i< count($detail['dateimg']);$i++): ?>
+													<tr>
+														<td>
+															Day <?php echo $i+1; ?>
+														</td>
+														<td>
+			                                                <?php
+			                                                echo form_error('inquire_message[]');
+			                                                echo form_textarea(array('name' => 'tour_change[]','rows' => '4'), set_value('tour_change'), array('class' =>'form-control','id' => 'tour_change_'.$i,))
+			                                                ?>
+														</td>
+													</tr>
+				                                <?php endfor ?>
 											</tbody>
 										</table>
 									</div>
-									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
-                                        echo form_error('inquire_title');
-                                        echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="customize_title"')
-                                        ?>
+	                                <div class="form-group col-sm-4 col-xs-12">
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
+	                                    echo form_error('inquire_title');
+	                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="customize_title"')
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
-                                        echo form_error('inquire_first_name');
-                                        echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-first-name') .' (*)', 'inquire_first_name');
+	                                    echo form_error('inquire_first_name');
+	                                    echo form_input('inquire_first_name', set_value('inquire_first_name'), 'class="form-control" id="inquire_first_name"');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
-                                        echo form_error('inquire_last_name');
-                                        echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-last-name') .' (*)', 'inquire_last_name');
+	                                    echo form_error('inquire_last_name');
+	                                    echo form_input('inquire_last_name', set_value('inquire_last_name'), 'class="form-control" id="inquire_last_name"');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
-                                        echo form_error('inquire_email');
-                                        echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-email') .' (*)', 'inquire_email');
+	                                    echo form_error('inquire_email');
+	                                    echo form_input('inquire_email', set_value('inquire_email'), 'class="form-control" id="inquire_email"');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
-                                        echo form_error('inquire_email_confirm');
-                                        echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-email-confirm') .' (*)', 'inquire_email_confirm');
+	                                    echo form_error('inquire_email_confirm');
+	                                    echo form_input('inquire_email_confirm', set_value('inquire_email_confirm'), 'class="form-control" id="inquire_email_confirm"');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
-                                        echo form_error('inquire_phone_number');
-                                        echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-phone-number') .' (*)', 'inquire_phone_number');
+	                                    echo form_error('inquire_phone_number');
+	                                    echo form_input('inquire_phone_number', set_value('inquire_phone_number'), 'class="form-control" id="inquire_phone_number"');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
-                                        echo form_error('datepicker');
-                                        echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-departure') .' (*)', 'datepicker');
+	                                    echo form_error('datepicker');
+	                                    echo form_input('datepicker', set_value('datepicker'), 'class="form-control datepicker" readonly');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-6 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
-                                        echo form_error('inquire_country');
-                                        echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-country') .' (*)', 'inquire_country');
+	                                    echo form_error('inquire_country');
+	                                    echo form_input('inquire_country', set_value('inquire_country'), 'class="form-control" id="inquire_country"');
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
-                                        echo form_error('inquire_number_adults');
-                                        echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0" >';
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-adults') .' (*)', 'inquire_number_adults');
+	                                    echo form_error('inquire_number_adults');
+	                                    echo '<input type="number" class="form-control" id="inquire_number_adults" name="inquire_number_adults" min="0" placeholder="0" >';
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
-                                        echo form_error('inquire_number_children_u11');
-                                        echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0" >';
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-children-u11') .' (*)', 'inquire_number_children_u11');
+	                                    echo form_error('inquire_number_children_u11');
+	                                    echo '<input type="number" class="form-control" id="inquire_number_children_u11" name="inquire_number_children_u11" min="0" placeholder="0" >';
+	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
-                                        echo form_error('inquire_number_children_u2');
-                                        echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0" >';
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-children-u2') .' (*)', 'inquire_number_children_u2');
+	                                    echo form_error('inquire_number_children_u2');
+	                                    echo '<input type="number" class="form-control" id="inquire_number_children_u2" name="inquire_number_children_u2" min="0" placeholder="0" >';
+	                                    ?>
 									</div>
 
 									<div class="form-group col-xs-12">
-                                        <?php
-                                        echo form_label($this->lang->line('form-message') .' (*)', 'inquire_message');
-                                        echo form_error('inquire_message');
-                                        echo form_textarea('inquire_message', set_value('inquire_message'), 'class="form-control" id="inquire_message"')
-                                        ?>
+	                                    <?php
+	                                    echo form_label($this->lang->line('form-message') .' (*)', 'inquire_message');
+	                                    echo form_error('inquire_message');
+	                                    echo form_textarea('inquire_message', set_value('inquire_message'), 'class="form-control" id="inquire_message"')
+	                                    ?>
 									</div>
 									<div class="col-xs-12">
-										<input id="customizesubmit" class="btn btn-primary" type="button" value="Book Now!">
+	                                    <input id="customizesubmit" class="btn btn-primary" type="button" value="Book Now!">
 									</div>
-                                    <?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
+							</div>
+						</div>
+
+						<div role="tabpanel" class="tab-pane" id="comment">
+							<div class="row">
+								<div class="schedule col-sm-12 col-xs-12">
+									<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
+										<form action="" method="post" accept-charset="utf-8">
+											<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash() ?>" id="csrf" />      
+											<div class="row">
+												<div class="form-group col-md-6 col-sm-6 col-xs-12">
+													<label for="name">Họ và Tên</label><input type="text" name="name" value="" class="form-control" id="name" placeholder="Họ và tên">
+													<span class="name_error" style="color: red"></span>
+												</div>
+												<div class="form-group col-md-6 col-sm-6 col-xs-12">
+													<label for="email">Email</label><input type="text" name="email" value="" class="form-control" id="email" placeholder="Email">
+													<span class="email_error" style="color: red"></span>
+												</div>
+												<div class="form-group col-md-12 col-sm-12 col-xs-12">
+													<label for="content">Ý kiến nhận xét</label><textarea name="content" cols="40" rows="10" class="form-control" id="content"></textarea>
+													<span class="content_error" style="color: red"></span>
+												</div>
+												<div class="form-group col-md-12 col-sm-12 col-xs-12">
+													<input type="hidden" name="product_id" id="product_id" value="<?php echo $detail['id'];?>">
+													<input type="submit" name="submit" value="Gửi nhận xét" class="btn btn-primary hvr-icon-forward submit-comment" style="">
+												</div>
+											</div>
+										</form>
+										
+										<div id="comment">
+											<?php if (isset($comment)): ?>
+												<div class="show-comment">
+												<?php foreach ($comment as $key => $value): ?>
+													<div class="media cmt">
+														<div class="media-left">
+															<img class="media-object" src="<?php echo site_url('assets/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
+														</div>
+														<div class="media-body">
+															<h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
+															<span><?php echo $value['content'] ?></span>
+															<span style="float: right; font-size: 1em"><?php echo date_format(date_create($value['created_at']), 'd-m-Y') ?></span>
+														</div>
+													</div>
+												<?php endforeach ?>
+												</div>
+											<?php else: ?>
+												<div class="media cmt">
+													<p class="cmt_error">Chưa có bình luận cho Tour này</p>
+												</div>
+											<?php endif ?>
+											<div id="comment_readmore" style="display: none;">
+												<input type="hidden" name="count-comment" id="count-comment" value="<?php echo $count_comment ?>">
+												<button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
+											</div>
+										</div>
+
+									</div>
+
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
-
 			</div>
-
-			<!-- GET RELATED TOURS -->
-			<div id="tour-related" class="col-sm-3 col-xs-12">
-				<h3><?php echo $this->lang->line('tour-related') ?></h3>
-
-				<div class="row">
-					<?php for ($i=0;$i< count($product_array);$i++): ?>
-						<div class="item col-xs-12">
-							<div class="inner">
-
-								<!--BADGE DISCOUNT -->
-	                            <?php if (!empty($product_array[$i]['showpromotion'])): ?>
-									<div class="badge badge-discount">
-										<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
-									</div>
-	                            <?php endif ?>
-
-								<!--BADGE SPECIAL -->
-								<div class="badge badge-special">
-	                                <?php if (!empty($product_array[$i]['hot'])): ?>
-										<div id="tour-hot" class="">
-											<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
-										</div>
-	                                <?php endif ?>
-	                                <?php if (!empty($product_array[$i]['bestselling'])): ?>
-										<div id="best-sell" class="">
-											<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
-										</div>
-	                                <?php endif ?>
-								</div>
-
-								<div class="mask">
-									<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
-									<div class="overview">
-										<div class="head">
-											<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
-											<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
-										</div>
-										<div class="body">
-											<h3 class="price">
-	                                          <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-	                                              <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
-													<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
-	                                          <?php else: ?>
-	                                              <?php echo number_format($product_array[$i]['price']); ?> vnd
-	                                          <?php endif ?>
-											</h3>
-											<small class="rating" style="color: white;"><?php echo $this->lang->line('tour-detail-rating') ?><!--:-->
-	                                          <?php if (empty($product_array[$i]['count_rating'])): ?>
-	                                              <?php echo NO_RATING;?>
-	                                          <?php else: ?>
-	                                              <?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5
-	                                          <?php endif ?>
-												<i class="fa fa-star" aria-hidden="true"></i>
-											</small>
-										</div>
-									</div>
-									<div class="content">
-										<div class="head">
-											<a href="#" class="sub-header" style="color:white">
-												<h4 class="post-subtitle">
-	                                              <?php echo $product_array[$i]['parent_title'] ?>
-													Parent Title
-												</h4>
-											</a>
-											<h2 class="post-title">
-												<?php echo $product_array[$i]['title'] ?>
-												Tour Name Lorem ipsum dolor sit amet, consectetur adipiscing elit
-											</h2>
-											<h3 class="price">
-	                                          <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-	                                              <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
-													<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
-	                                          <?php else: ?>
-	                                              <?php echo number_format($product_array[$i]['price']); ?> vnd
-	                                          <?php endif ?>
-											</h3>
-										</div>
-										<div class="body">
-											<table class="table">
-												<tr>
-													<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-													<td><?php echo count(json_decode($product_array[$i]['dateimg'])) ?></td>
-												</tr>
-												<tr>
-													<td><?php echo $this->lang->line('tour-detail-start') ?></td>
-													<td>
-	                                                  <?php
-	                                                   if($product_array[$i]['date'] != "0000-00-00 00:00:00" && $product_array[$i]['date'] != "1970-01-01 08:00:00"){
-	                                                       $rmtime = str_replace(" 00:00:00","",$product_array[$i]['date']);
-	                                                       $date= explode("-",$rmtime);
-	                                                       if(count($date) == 3){
-	                                                           $product_array[$i]['date'] = $date[2]."/".$date[1]."/".$date[0];
-	                                                       }else{
-	                                                           $product_array[$i]['date'] = "";
-	                                                       }
-	                                                   }else{
-	                                                       $product_array[$i]['date'] = "";
-	                                                   }
-	                                                   echo $product_array[$i]['date'];
-	                                                   ?>
-													</td>
-												</tr>
-												<tr>
-													<td><?php echo $this->lang->line('tour-detail-rating') ?></td>
-													<td>
-	                                                    <?php if (empty($product_array[$i]['count_rating'])): ?>
-	                                                        <?php echo NO_RATING;?>
-	                                                    <?php else: ?>
-	                                                        <?php echo round($product_array[$i]['total_rating']/$product_array[$i]['count_rating'],1);?>/5
-	                                                    <?php endif ?>
-														<i class="fa fa-star" aria-hidden="true"></i>
-													</td>
-												</tr>
-											</table>
-										</div>
-										<div class="foot">
-											<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
-	                                            <?php echo $this->lang->line('explore') ?>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endfor; ?>
-				</div>
-			</div>
-
 		</div>
-		<div class="section-header">
-
-		</div>
-
 	</div>
 </section>
 
 <script>
-  $(function () {
-    //Date picker
-    $('.datepicker').datepicker({
-      autoclose: true,
-      format: 'dd/mm/yyyy',
-    })
-  })
+
+	$(function () {
+		//Date picker
+		$('.datepicker').datepicker({
+			autoclose: true,
+			format: 'dd/mm/yyyy',
+		})
+	})
+
+	
 </script>
 <script src="<?php echo base_url('assets/js/rating.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/detail_product.js') ?>"></script>

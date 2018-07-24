@@ -18,25 +18,27 @@
             </li>
         </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash() ?>" id="csrf" />
+        <input type="hidden" name="product-id" value="<?php echo $detail['id'] ?>" id="product-id" />
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
                         <ul class="nav nav-tabs" role="tablist" id="nav-product">
-                            <li role="presentation" class="active"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
+                            <li role="presentation" class="<?php echo ($this->uri->segment(5) == '' && !isset($_GET['active']))? 'active' : '' ?>"><a href="#tour" class="btn btn-primary" aria-controls="tour" role="tab" data-toggle="tab">Tour</a></li>
                             <li role="presentation"><a href="#date-tour" class="btn btn-primary" aria-controls="date-tour" role="tab" data-toggle="tab">Date tour</a></li>
-                            <li role="presentation"><a href="#img-tour" class="btn btn-primary" aria-controls="img-tour" role="tab" data-toggle="tab">Nơi đến các ngày của tour</a></li>
+                            <li role="presentation"><a href="#img-tour" class="btn btn-primary" aria-controls="img-tour" role="tab" data-toggle="tab">Nơi đến các 
+                            ngày của tour</a></li>
+                            <li role="presentation" class="<?php echo ($this->uri->segment(5) != '' || isset($_GET['active']))? 'active' : '' ?>" id="btn-active-comment"><a href="#comment" class="btn btn-primary" aria-controls="comment" role="tab" data-toggle="tab">Bình luận</a></li>
                         </ul>
                         <h3 class="box-title">Chi tiết</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="tour">
+                        <div role="tabpanel" class="tab-pane fade <?php echo ($this->uri->segment(5) == '' && !isset($_GET['active']))? 'in active' : '' ?>" id="tour">
                             <div class="box-body">
                                 <div class="row">
                                     <?php if (!empty($detail['imglocaltion'])): ?>
@@ -365,6 +367,44 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div role="tabpanel" class="tab-pane fade <?php echo ($this->uri->segment(5) != '' || isset($_GET['active']))? 'in active' : '' ?>" id="comment">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-bordered table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 150px"><b><a href="#">Email</a></b></td>
+                                                    <td style="width: 100px"><b><a href="#">Họ tên</a></b></td>
+                                                    <td><b><a href="#">Nội dung</a></b></td>
+                                                    <td style="width: 100px"><b>Operations</b></td>
+                                                </tr>
+                                                <?php foreach ($comments as $key => $value): ?>
+                                                    <tr class="remove_<?php echo $value['id'] ?>">
+                                                        <td><?php echo $value['email'] ?></td>
+                                                        <td><?php echo $value['name'] ?></td>
+                                                        <td><?php echo $value['content'] ?></td>
+                                                        <td>
+                                                            <form class="form_ajax">
+                                                                <a href="javascript:void(0)" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>" data-controller="comment" >
+                                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                </a>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                        <div class="col-md-6 col-md-offset-5 page">
+                                            <?php echo $page_links ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -384,3 +424,10 @@
         <!-- END ACCORDION & CAROUSEL-->
     </section>
 </div>
+<script type="text/javascript">
+    var product_id = $('#product-id').val();
+    $('#btn-active-comment').click(function(){
+        window.location.replace("http://localhost/tourist1/admin/product/detail/"+ product_id +"?active=true");
+        
+    });
+</script>
