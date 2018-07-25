@@ -185,7 +185,7 @@ $lang['create_errors_email'] = 'Vui lòng nhập trường Email và xác nhận
 $lang['booking_require'] = 'Vui lòng nhập thông tin đầy đủ.';
 
 
-$lang['there-are-no-comments-for-this-tour-yet'] = 'Chưa có bình luận nào cho chuyến tham quan này';
+$lang['there-are-no-comments-for-this-tour-yet'] = 'Chưa có bình luận nào.';
 $lang['see-more-comments'] = 'Xem thêm bình luận';
 $lang['send-comments'] = 'Gửi nhận xét';
 

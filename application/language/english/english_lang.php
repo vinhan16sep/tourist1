@@ -194,7 +194,7 @@ $lang['booking_require'] = 'Please enter full information';
 
 
 
-$lang['there-are-no-comments-for-this-tour-yet'] = 'There are no comments for this tour yet';
+$lang['there-are-no-comments-for-this-tour-yet'] = 'No comments yet';
 $lang['see-more-comments'] = 'See more comments';
 $lang['send-comments'] = 'Comment';
 

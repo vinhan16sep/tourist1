@@ -53,11 +53,12 @@ class Comment extends CI_Controller{
 	public function see_more_comment(){
         $this->load->model('comment_model');
         $product_id = $_GET['product_id'];
+        $type = $_GET['type'];
         $page = $_GET['page'];
         $limit  = 5;
         $start = ($page - 1)*5;
-        $count = $this->comment_model->count_all_by_product_id($product_id);
-        $comment = $this->comment_model->get_all_by_product_id($product_id, $limit, $start);
+        $count = $this->comment_model->count_all_by_product_id($product_id,$type);
+        $comment = $this->comment_model->get_all_by_product_id($product_id, $limit, $start,$type);
         foreach ($comment as $key => $value) {
             $comment[$key]['created_at'] = date_format(date_create($value['created_at']), 'd-m-Y');
         };
