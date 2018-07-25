@@ -124,11 +124,12 @@
                     </td>
                     <td><strong style="color: blue">Danh mục cấp <?php echo $sort ?></strong></td>
                     <td>
-                       <button class="btn btn-primary collapsed btn-margin btn-dropdown-cate" type="button" data-toggle="collapse" href="#<?php echo $value['id'] ?>" aria-expanded="true" aria-controls="messageContent">Xem</button>
+                       <button class="btn btn-primary collapsed btn-margin btn-dropdown-cate btn-sm" type="button" data-toggle="collapse" href="#<?php echo $value['id'] ?>" aria-expanded="true" aria-controls="messageContent">Xem</button>
                    </td>
                    <td>
-                    <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
-                        <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">See Detail</button>
+                        <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>">
+                            <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">Xem chi tiết</button>
+                        </a>
                     </td>
                     <td>
                         <?php if ($value['is_activated'] == 0): ?>
@@ -138,9 +139,9 @@
                         <?php endif ?>
                         
                         &nbsp&nbsp&nbsp
-                        <a href="<?php echo base_url('admin/'.$controller.'/edit/'. $value['id']) ?>" class="dataActionEdit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                        <a href="<?php echo base_url('admin/'.$controller.'/edit/'. $value['id']) ?>" class="dataActionEdit" title="Sửa danh mục"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
                         &nbsp&nbsp&nbsp
-                        <a href="javascript:void(0);" onclick="remove('product_category', <?php echo $value['id'] ?>)" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a>
+                        <a href="javascript:void(0);" onclick="remove('product_category', <?php echo $value['id'] ?>)" class="dataActionDelete" title="Xóa danh mục"><i class="fa fa-remove" aria-hidden="true"></i> </a>
                     </td>
                 </tr>
                 <tr>

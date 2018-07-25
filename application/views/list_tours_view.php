@@ -54,7 +54,7 @@
 							<!--BADGE DISCOUNT -->
 							<?php if (!empty($product_array[$i]['showpromotion'])): ?>
 								<div class="badge badge-discount">
-									<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
+									<div class="content"><?php echo $this->lang->line('promotion');?><br>-<?php echo $product_array[$i]['percen']; ?>%</div>
 								</div>
 							<?php endif ?>
 

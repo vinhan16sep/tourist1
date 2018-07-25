@@ -5,7 +5,7 @@
         <h1>
             Chi tiết
             <small>
-                Localtion
+                Danh Mục
             </small>
         </h1>
         <ol class="breadcrumb">
@@ -37,16 +37,18 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <label class="col-xs-12" for="image_shared">Hình ảnh đang dùng</label>
-                            <br>
-                            <?php foreach (json_decode($detail['image']) as $key => $value): ?>
-                                <div class="col-xs-4 row_<?php echo $key; ?>"  style="margin-bottom: 10px;">
-                                    <div  style="background-color: #363636;position: relative;">
-                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $value); ?> " width=100% style="padding: 13px;height: 200px;">
-                                        <span class="glyphicon glyphicon-remove" style="position: absolute;right:0%;color: white; cursor: pointer;" onclick="remove_image('product_category','<?php echo $detail['id'] ?>','<?php echo $value; ?>','<?php echo $key;?>')"></span>
+                            <?php if (!empty(json_decode($detail['image']))): ?>
+                                <label class="col-xs-12" for="image_shared">Hình ảnh đang dùng</label>
+                                <br>
+                                <?php foreach (json_decode($detail['image']) as $key => $value): ?>
+                                    <div class="col-xs-4 row_<?php echo $key; ?>"  style="margin-bottom: 10px;">
+                                        <div  style="background-color: #363636;position: relative;">
+                                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $value); ?> " width=100% style="padding: 13px;height: 200px;">
+                                            <span class="glyphicon glyphicon-remove" style="position: absolute;right:0%;color: white; cursor: pointer;" onclick="remove_image('product_category','<?php echo $detail['id'] ?>','<?php echo $value; ?>','<?php echo $key;?>')"></span>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php endforeach ?>
+                                <?php endforeach ?>
+                            <?php endif ?>
                             <div class="detail-info col-md-12">
                                 <div class="table-responsive">
                                     <label>Thông tin</label>
@@ -168,7 +170,6 @@
                     <div class="box-body">
                         <a href="<?php echo base_url('admin/'.$controller.'/edit/'.$detail['id']) ?>" class="btn btn-warning" role="button">Chỉnh sửa</a>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <a href="<?php echo base_url('admin/'.$controller.'/create/'.$detail['id']) ?>" class="btn btn-success" role="button">Thêm mới danh mục con</a>
                     </div>
                 </div>
                 <div class="box box-primary">

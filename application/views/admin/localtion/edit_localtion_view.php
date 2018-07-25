@@ -3,9 +3,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Thêm mới
+            Cập nhật
             <small>
-                Tour
+                Địa điểm
             </small>
         </h1>
     </section>
@@ -32,6 +32,12 @@
                                 </div>
                                 <div class="row">
                                     <span><?php echo $this->session->flashdata('message'); ?></span>
+                                </div>
+                                <div class="col-xs-12">
+                                    <label for="image_shared">Hình ảnh đang dùng</label>
+                                    <br>
+                                    <img src="<?php echo base_url('assets/upload/localtion/'.$detail['slug'].'/'. $detail['image']); ?>" width=250px>
+                                    <br>
                                 </div>
                                 <div class="col-xs-12">
                                     <?php

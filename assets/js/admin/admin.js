@@ -33,7 +33,7 @@ $("#go-back").css("display","inline");
 $("#nav-product li#add-date").css("float","right");
 $("#nav-product li#add-date").click(function(){
 	$.validator.setDefaults({
-		ignore: ":hidden:not('.title-content-date.date input')"
+		ignore: ":hidden:not('.col-xs-12.date input')"
 	});
 	$('#register-form').validate({
 		errorElement: 'span',
@@ -152,9 +152,9 @@ $("#submit-shared,#content-home").click(function(event) {
 	$.validator.addMethod("vehicles", function(value, element) {
 		return this.optional(element) || (value>0);
 	}, "Bạn phải chọn phương tiện.");
-	$.validator.setDefaults({
-		ignore: ":hidden:not('.title-content-date.date input')"
-	});
+	// $.validator.setDefaults({
+	// 	ignore: ":hidden:not('.title-content-date.date input')"
+	// });
 	$('#register-form').validate({
 		highlight: function(element, errorClass, validClass) {
 			$(element).closest('.col-xs-12').addClass("has-errors");

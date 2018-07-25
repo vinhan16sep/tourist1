@@ -154,7 +154,7 @@
                                         </ul>
                                     </div>
                                     <hr>
-                                    <div class="tab-content">
+                                    <div class="tab-content col-xs-12 date" style="padding: 0px;">
                                         <?php $i = 0; ?>
                                         <?php foreach ($template as $key => $value): ?>
                                             <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">

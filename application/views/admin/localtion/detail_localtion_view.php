@@ -7,14 +7,14 @@
         <h1>
             Chi tiết
             <small>
-                Localtion
+                Địa điểm
             </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-dashboard"></i> Chi tiết</a></li>
             <li class="active">
-                Localtion
+                Địa điểm
             </li>
         </ol>
     </section>

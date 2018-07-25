@@ -209,8 +209,8 @@ class Tours extends Public_Controller {
         $vals = array(
             'img_path' => './captcha/',
             'img_url' => base_url('captcha'),
-            'img_width' => '120',
-            'img_height' => 34,
+            'img_width' => '110',
+            'img_height' => 35,
             'expiration' => 0,
             'word_length' => 6,
             'font_size' => 25,

@@ -172,7 +172,7 @@
 										<!--BADGE DISCOUNT -->
 										<?php if (!empty($value['showpromotion'])): ?>
 											<div class="badge badge-discount">
-												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+												<div class="content"><?php echo $this->lang->line('promotion');?><br>-<?php echo $value['percen']; ?>%</div>
 											</div>
 										<?php endif ?>
 
@@ -310,7 +310,7 @@
 												<!--BADGE DISCOUNT -->
 												<?php if (!empty($value['showpromotion'])): ?>
 													<div class="badge badge-discount">
-														<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+														<div class="content"><?php echo $this->lang->line('promotion');?><br>-<?php echo $value['percen']; ?>%</div>
 													</div>
 												<?php endif ?>
 
@@ -483,7 +483,7 @@
 												<!--BADGE DISCOUNT -->
 												<?php if (!empty($value['showpromotion'])): ?>
 													<div class="badge badge-discount">
-														<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+														<div class="content"><?php echo $this->lang->line('promotion');?><br>-<?php echo $value['percen']; ?>%</div>
 													</div>
 												<?php endif ?>
 
