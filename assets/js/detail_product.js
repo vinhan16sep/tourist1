@@ -1,29 +1,43 @@
 if($('#count-comment').val() > 5){
 	$('#comment_readmore').css('display', 'block');
 }
-
+switch(window.location.origin){
+    case 'http://diamondtour.vn':
+        var HOSTNAME = 'http://diamondtour.vn/';
+        break;
+    default:
+        var HOSTNAME = 'http://localhost/tourist1/';
+}
+var language = $("#language").val();
+var required_comment = {
+		required_name:{vi:'Họ và Tên không được trống!', en:'First and last name'},
+		required_email:{vi:'Email không được trống!', en:'Please enter email!'},
+		required_content:{vi:'Nội dung không được trống!', en:'Please enter comment.'},
+		required_format_email:{vi:'Định dạng email không đúng, Vui lòng kiểm tra lại!', en:'Invalid email format, Please check again!'},
+	};
 $('.submit-comment').click(function(e){
 	e.preventDefault();
 	var name = $('#name').val();
 	var email = $('#email').val();
 	var content = $('#content').val();
 	var product_id = $('#product_id').val();
+	var comment_type = $('#comment_type').val();
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	if(name.length == 0){
-		$('.name_error').text('Họ và Tên không được trống!');
+		$('.name_error').text(required_comment.required_name[language]);
 	}else{
 		$('.name_error').text('');
 	}
 
 	if(email.length == 0){
-		$('.email_error').text('Email không được trống!');
+		$('.email_error').text(required_comment.required_email[language]);
 	}
 	else{
 		$('.email_error').text('');
 	}
 
 	if(content.length == 0){
-		$('.content_error').text('Nội dung không được trống!');
+		$('.content_error').text(required_comment.required_content[language]);
 	}
 	else{
 		$('.content_error').text('');
@@ -36,8 +50,8 @@ $('.submit-comment').click(function(e){
 			jQuery.ajax({
 				type: "get",
 	                // url: "http://localhost/tourist1/comment/create_comment",
-	                url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tourist1/comment/create_comment",
-	                data: {name : name, email : email, content : content, product_id : product_id},
+	                url: HOSTNAME+"comment/create_comment",
+	                data: {name : name, email : email, content : content, product_id : product_id,comment_type : comment_type},
 	                success: function(result){
 	                	if ($('#count-comment').val() != 0) {
 	                		$('#comment > .show-comment > .cmt:first-child').before(JSON.parse(result).comment);
@@ -52,7 +66,7 @@ $('.submit-comment').click(function(e){
 	                }
 	            })
 		}else{
-			$('.email_error').text('Định dạng email không đúng, Vui lòng kiểm tra lại!');
+			$('.email_error').text(required_comment.required_format_email[language]);
 		}
 
 	}

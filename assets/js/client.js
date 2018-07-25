@@ -7,7 +7,19 @@ $("#inquire input,#customize input,#inquire #inquire_title,#customize #customize
 	}
 	$(targetTab + ' [name="'+name+'"]').val($(this).val());
 });
-
+var language = $("#language").val();
+var inquire_required = {
+		inquire_email:{vi:'Vui lòng nhập Email.', en:'Please enter Email.'},
+		inquire_email_confirm:{vi:'Vui lòng nhập lại Email.', en:'The Confirmation Email must match your Email Address.'},
+		inquire_first_name:{vi:'Vui lòng nhập Họ của ban.', en:'Please enter first name.'},
+		inquire_last_name:{vi:'Vui lòng nhập Tên của ban.', en:'Please enter last name.'},
+		inquire_phone_number:{vi:'Vui lòng nhập số điện thoại.', en:'Please enter your phone number.'},
+		datepicker:{vi:'Vui lòng nhập ngày sẵn sàng.', en:'Please enter preferred departure date.'},
+		inquire_country:{vi:'Vui lòng nhập quốc tịch.', en:'Please enter Country.'},
+		inquire_number_adults:{vi:'Vui lòng nhập số người lớn đi.', en:'Please enter Adults.'},
+		inquire_number_children_u11:{vi:'Vui lòng nhập số trẻ em đi.', en:'Please enter Children (2-11 years old).'},
+		inquire_number_children_u2:{vi:'Vui lòng nhập số em bé đi.', en:'Please enter Children (Under 2 years old).'}
+	};
 $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookingsubmit,#customizesubmit",function(){
 	var idForm = $(this).parents('form')[0].id;
 	$('#'+idForm).validate({
@@ -55,34 +67,34 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 		},
 		messages: {
 			inquire_email: {
-				required: "Vui lòng nhập Email."
+				required: inquire_required.inquire_email[language]
 			},
 			inquire_first_name: {
-				required: "Vui lòng nhập first name."
+				required: inquire_required.inquire_first_name[language]
 			},
 			inquire_last_name: {
-				required: "Vui lòng nhập last name."
+				required: inquire_required.inquire_last_name[language]
 			},
 			inquire_email_confirm: {
-				required: "Vui lòng nhập lại Email."
+				required: inquire_required.inquire_email_confirm[language]
 			},
 			inquire_phone_number: {
-				required: "Vui lòng nhập số điện thoại."
+				required: inquire_required.inquire_phone_number[language]
 			},
 			datepicker: {
-				required: "Vui lòng nhập ngày sẵn sàng."
+				required: inquire_required.datepicker[language]
 			},
 			inquire_country: {
-				required: "Vui lòng nhập quốc tịch."
+				required: inquire_required.inquire_country[language]
 			},
 			inquire_number_adults: {
-				required: "Vui lòng nhập số người lớn đi."
+				required: inquire_required.inquire_number_adults[language]
 			},
 			inquire_number_children_u11: {
-				required: "Vui lòng nhập số trẻ em đi."
+				required: inquire_required.inquire_number_children_u11[language]
 			},
 			inquire_number_children_u2: {
-				required: "Vui lòng nhập số em bé đi."
+				required: inquire_required.inquire_number_children_u2[language]
 			}
 		},
 

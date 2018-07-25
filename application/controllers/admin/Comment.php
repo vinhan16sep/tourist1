@@ -21,8 +21,10 @@ class Comment extends Admin_Controller{
 
     public function remove(){
         $id = $this->input->post('id');
+        $type = $this->input->post('type');
+        $comment = $this->comment_model->find_array(array('id' => $id,'type' => $type));
         $data = array('is_deleted' => 1);
-        $update = $this->comment_model->common_update($id, $data);
+        $update = $this->comment_model->common_update($comment['id'], $data);
         if($update == 1){
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()

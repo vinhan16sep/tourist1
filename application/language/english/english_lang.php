@@ -125,6 +125,12 @@ $lang['condition-general'] = 'Tour General Conditions';
 $lang['customize-program'] = 'Daily Program';
 $lang['customize-change'] = 'Your Change';
 
+//comment
+$lang['comments'] = 'Comments';
+$lang['first-and-last-name'] = 'First and last name';
+$lang['insert-code'] = 'Insert code';
+$lang['this-school'] = 'Vui Lòng Nhập Trường Này';
+
 //Forms
 $lang['form-title'] = 'Title';
 $lang['form-first-name'] = 'First Name';
@@ -180,3 +186,16 @@ $lang['weather_city']['jakarta'] = 'Jakarta';
 $lang['weather_city']['singapore'] = 'Singapore';
 
 
+
+$lang['booking_success'] = 'Make a successful tour please wait for confirmation';
+$lang['booking_errors'] = 'Can not book a new tour please wait a moment';
+$lang['create_errors_email'] = 'Please enter the same email and email confirmation fields';
+$lang['booking_require'] = 'Please enter full information';
+
+
+
+$lang['there-are-no-comments-for-this-tour-yet'] = 'There are no comments for this tour yet';
+$lang['see-more-comments'] = 'See more comments';
+$lang['send-comments'] = 'Comment';
+
+$lang['promotion'] = 'SO';

@@ -133,6 +133,12 @@ $lang['form-children-u11'] = 'Trẻ từ 2 đến 11 tuổi';
 $lang['form-children-u2'] = 'Trẻ em dưới 2 tuổi';
 $lang['form-message'] = 'Tin nhắn';
 
+//comment
+$lang['comments'] = 'Ý kiến khách hàng';
+$lang['first-and-last-name'] = 'Họ và tên';
+$lang['insert-code'] = 'Nhập mã';
+$lang['this-school'] = 'Please enter this school';
+
 //Contact
 
 $lang['contact-name'] = 'Họ tên';
@@ -171,3 +177,16 @@ $lang['weather_city']['kuala_lumpur'] = 'Kuala Lumpur';
 $lang['weather_city']['phnom_penh'] = 'Phnompenh';
 $lang['weather_city']['jakarta'] = 'Jakarta';
 $lang['weather_city']['singapore'] = 'Singapore';
+
+
+$lang['booking_success'] = 'Đặt tour thành công vui lòng chờ xác nhận.';
+$lang['booking_errors'] = 'Không thể đặt tour vui lòng thử lại.';
+$lang['create_errors_email'] = 'Vui lòng nhập trường Email và xác nhận Email giống nhau.';
+$lang['booking_require'] = 'Vui lòng nhập thông tin đầy đủ.';
+
+
+$lang['there-are-no-comments-for-this-tour-yet'] = 'Chưa có bình luận nào cho chuyến tham quan này';
+$lang['see-more-comments'] = 'Xem thêm bình luận';
+$lang['send-comments'] = 'Gửi nhận xét';
+
+$lang['promotion'] = 'KM';

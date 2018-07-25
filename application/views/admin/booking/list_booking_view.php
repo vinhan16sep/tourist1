@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="input-group col-md-6" style="float: left;">
-                                    <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                    <input type="text" value="<?php echo (isset($keywords))? $keywords : '';  ?>" class="form-control" placeholder="Tìm kiếm theo tên hoặc họ khách hàng..." name="search" value="">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>

@@ -53,6 +53,8 @@ class Post extends Public_Controller {
     public function detail($slug){
         if($this->post_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $this->data['detail'] = $this->post_model->fetch_row_by_slug($slug, $this->data['lang']);
+            $this->data['comment'] = $this->comment($this->data['detail']['id']);
+            $this->data['count_comment'] = $this->count_comment($this->data['detail']['id']);
             $get_all = $this->post_category_model->get_all(array('title','content'),$this->data['lang']);
             $this->get_multiple_posts_with_category_id($get_all, $this->data['detail']['post_category_id'], $ids);
             if(empty($ids)){
@@ -65,5 +67,17 @@ class Post extends Public_Controller {
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
             redirect('/', 'refresh');
         }
+    }
+    protected function comment($product_id, $type = 1) {
+        $this->load->model('comment_model');
+        $comment = $this->comment_model->get_all_by_product_id($product_id, 5, 0,$type);
+        if($comment){
+            return $comment;
+        }
+    }
+    protected function count_comment($product_id, $type = 1){
+        $this->load->model('comment_model');
+        $count_comment = $this->comment_model->count_all_by_product_id($product_id,$type);
+        return $count_comment;
     }
 }

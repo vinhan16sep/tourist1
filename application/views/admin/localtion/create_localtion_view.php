@@ -5,7 +5,7 @@
         <h1>
             Thêm mới
             <small>
-                Tour
+                Địa điểm
             </small>
         </h1>
     </section>

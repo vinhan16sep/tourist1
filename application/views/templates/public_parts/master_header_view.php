@@ -59,6 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }(document, 'script', 'facebook-jssdk'));
 </script>
 
+<input type="hidden" name="language" id="language" value="<?php echo $lang;?>">
 <section id="top-nav" class="container-fluid">
 	<div class="container">
 		<div class="row">

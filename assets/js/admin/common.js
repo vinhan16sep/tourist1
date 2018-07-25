@@ -277,3 +277,30 @@ function errorHandle(jqXHR, exception){
         }); 
     });
     
+    $('.input-group-addon').click(function(){
+        $(this).next().val('');
+    });
+    $('.btn-removes').click(function(){
+        var controller = $(this).data('controller');
+        var id = $(this).data('id');
+        var type = $(this).data('type');
+        var url = HOSTNAME + 'admin/' + controller + '/remove';
+        if(confirm('Chắc chắn xóa?')){
+            $.ajax({
+                method: "post",
+                url: url,
+                data: {
+                    id : id, type : type, csrf_diamondtour_token : csrf_hash
+                },
+                success: function(response){
+                    if(response.status == 200){
+                        csrf_hash = response.reponse.csrf_hash;
+                        $('.remove_' + id).fadeOut();
+                    }
+                },
+                error: function(jqXHR, exception){
+                    console.log(errorHandle(jqXHR, exception));
+                }
+            });
+        }
+    });

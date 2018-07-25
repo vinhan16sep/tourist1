@@ -7,14 +7,14 @@
         <h1>
             Chi tiết
             <small>
-                Thực Đơn
+                Tour
             </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-dashboard"></i> Chi tiết</a></li>
             <li class="active">
-                Thực Đơn
+                Tour
             </li>
         </ol>
     </section>
@@ -352,7 +352,7 @@
                                                                         <?php endif ?>       
                                                                     <?php else: ?>
                                                                         <div style="padding:20px;">
-                                                                            Không có nơi nào được chọn trong ngày    
+                                                                            Không có nơi nào được chọn trong ngày 
                                                                         </div>
                                                                     <?php endif;?>
                                                                 <?php endforeach ?>
@@ -387,7 +387,7 @@
                                                         <td><?php echo $value['content'] ?></td>
                                                         <td>
                                                             <form class="form_ajax">
-                                                                <a href="javascript:void(0)" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>" data-controller="comment" >
+                                                                <a href="javascript:void(0)" title="Xóa" class="btn-removes" data-id="<?php echo $value['id'] ?>" data-controller="comment" data-type="<?php echo $value['type'] ?>">
                                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                                 </a>
                                                             </form>
@@ -425,9 +425,8 @@
     </section>
 </div>
 <script type="text/javascript">
-    var product_id = $('#product-id').val();
     $('#btn-active-comment').click(function(){
-        window.location.replace("http://localhost/tourist1/admin/product/detail/"+ product_id +"?active=true");
+        window.location.replace(window.location.href+"?active=true");
         
     });
 </script>

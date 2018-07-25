@@ -9,7 +9,8 @@ class Comment extends CI_Controller{
 		$name = $_GET['name'];
 		$email = $_GET['email'];
 		$content = nl2br($_GET['content']);
-		$product_id = $_GET['product_id'];
+        $product_id = $_GET['product_id'];
+		$comment_type = $_GET['comment_type'];
 		// echo date(DATE_RFC822, time());die;
 //		 print_r($name);die;
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -19,7 +20,8 @@ class Comment extends CI_Controller{
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
         }
 		$data = array(
-				'name' => $name,
+                'name' => $name,
+				'type' => $comment_type,
 				'email' => $email,
 				'content' => $content,
 				'product_id' => $product_id,

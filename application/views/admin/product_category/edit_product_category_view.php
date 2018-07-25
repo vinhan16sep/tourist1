@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group col-xs-12">
                             <?php
-                            echo form_label('Ảnh đại diện', 'image_shared');
+                            echo form_label('Hình ảnh', 'image_shared');
                             echo form_error('image_shared');
                             echo form_upload('image_shared[]', set_value('image_shared'), 'class="form-control" multiple');
                             ?>
@@ -102,11 +102,11 @@
                                                     }elseif($k == 'metakeywords' && in_array($k,$request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['metakeywords_'. $key], 'class="form-control"');
+                                                        echo form_input($k .'_'. $key, trim($detail['metakeywords_'. $key]), 'class="form-control"');
                                                     }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, $detail['metadescription_'. $key], 'class="form-control"');
+                                                        echo form_input($k .'_'. $key, trim($detail['metadescription_'. $key]), 'class="form-control"');
                                                     }
                                                 ?>
                                             </div>
