@@ -79,12 +79,13 @@ $('.submit-comment').click(function(e){
 	var page = 1;
 	$('#comment_readmore').click(function () {
 		var product_id = $('#product_id').val();
+		var type = $('#comment_type').val();
 		page ++;
 		jQuery.ajax({
 			type: "get",
             // url: "http://localhost/tuoithantien/comment/see_more_comment",
-            url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tourist1/comment/see_more_comment",
-            data: {page : page, product_id : product_id},
+            url: HOSTNAME+"comment/see_more_comment",
+            data: {page : page, product_id : product_id, type : type},
             success: function(result){
             	console.log(result);
             	comment = result.comment;
@@ -92,7 +93,7 @@ $('.submit-comment').click(function(e){
             	$.each(comment, function(key, value) {
             		html = '<div class="media cmt">'
             		+ '<div class="media-left">'
-            		+ '<img class="media-object" src="' + location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + '/tourist1/assets/img/comment_ava.png" alt="Comment Avatar" width="64">'
+            		+ '<img class="media-object" src="' + HOSTNAME+'assets/img/comment_ava.png" alt="Comment Avatar" width="64">'
             		+ '</div>'
             		+ '<div class="media-body">'
             		+ '<h3 class="media-heading" style="color: #f4aa1c">'+ value.name +':</h3>'

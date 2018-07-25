@@ -231,6 +231,8 @@
 
 <script type="text/javascript">
     $('#btn-active-comment').click(function(){
-        window.location.replace(window.location.href+"?active=true");
+        if(window.location.search != '?active=true'){
+            window.location.replace(window.location.href+"?active=true");
+        }
     });
 </script>

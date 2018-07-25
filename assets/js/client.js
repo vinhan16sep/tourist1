@@ -107,10 +107,10 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 	}
 	if($("#"+idForm).valid() === true){
 		if(idForm == 'form-customize'){
-			url = "http://localhost/tourist1/customize";
+			url = HOSTNAME+"customize";
 
 		}else{
-			url = "http://localhost/tourist1/booking";
+			url = HOSTNAME+"booking";
 		}
         $.ajax({
             method: "post",

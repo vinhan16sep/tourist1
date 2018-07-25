@@ -84,7 +84,7 @@
                                     <div class="captcha-input col-md-7">
 
                                     </div>
-                                    <div>
+                                    <div class="col-xs-12">
                                         <span class="message"></span>
                                     </div>
                                 </td>

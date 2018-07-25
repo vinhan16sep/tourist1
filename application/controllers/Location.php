@@ -37,7 +37,21 @@ class Location extends Public_Controller {
     }
     public function detail($slug){
         $this->data['detail'] = $this->localtion_model->fetch_row_by_slugs($slug,$this->data['lang']);
+        $this->data['comment'] = $this->comment($this->data['detail']['id']);
+        $this->data['count_comment'] = $this->count_comment($this->data['detail']['id']);
         $this->data['localtion_array'] = $this->localtion_model->get_all_localtion_area($this->data['detail']['area'],array($this->data['detail']['id']),3,$this->data['lang']);
         $this->render('detail_localtion_view');
+    }
+    protected function comment($product_id, $type = 2) {
+        $this->load->model('comment_model');
+        $comment = $this->comment_model->get_all_by_product_id($product_id, 5, 0,$type);
+        if($comment){
+            return $comment;
+        }
+    }
+    protected function count_comment($product_id, $type = 2){
+        $this->load->model('comment_model');
+        $count_comment = $this->comment_model->count_all_by_product_id($product_id,$type);
+        return $count_comment;
     }
 }

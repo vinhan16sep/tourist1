@@ -27,6 +27,7 @@ $(document).ready(function(){
             success: function(res) {
 	            if (res.captcha){
 	                jQuery("div.image").html(res.captcha.image);
+                    jQuery("div.image img").css({'height':'35px','padding':'0px','padding-left':'5px','width':'97%'});
 	                word = res.captcha.word;
 	            }
             }
@@ -39,7 +40,9 @@ $(document).ready(function(){
             url: url_captcha,
             success: function(res) {
 	            if (res.captcha){
-	                jQuery("div.image").html(res.captcha.image);
+                    jQuery("div.image").html(res.captcha.image);
+                    console.log(res.captcha.image);
+	                jQuery("div.image img").css({'height':'35px','padding':'0px','padding-left':'5px','width':'97%'});
 	                word = res.captcha.word;
 	            }
             }
