@@ -74,9 +74,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="captcha-image image col-md-6" style="padding-left: 0;"></div>
+                                    
 
-                                    <div class="captcha-input input-group col-md-6">
+                                    <div class="captcha-input input-group col-md-12">
                                         <input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
                                         <input placeholder="<?php echo $this->lang->line('insert-code');?>" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style="border: none;margin-right: 5%; color: black;height: 35px;">
                                         <span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
@@ -88,7 +88,12 @@
                                         <span class="message"></span>
                                     </div>
                                 </td>
-                                <td rowspan="2">
+                                <td>
+                                    <div class="captcha-image image col-md-12"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
                                     <input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
                                     <input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']; ?>">

@@ -9,7 +9,6 @@ $(function () {
 	});
 });
 var language = $("#language").val();
-console.log(language);
 var ratings = {
         thank:{vi:'Cám ơn bạn đã đánh giá!', en:'Thanks for your review!'},
         thank_you:{vi:'Bạn đã đánh giá cho sản phẩm này rồi, không thể đánh giá thêm. Cảm ơn!', en:'You have already rated this product, you can not add it. Thank you!'},
@@ -27,7 +26,7 @@ $(document).ready(function(){
             success: function(res) {
 	            if (res.captcha){
 	                jQuery("div.image").html(res.captcha.image);
-                    jQuery("div.image img").css({'height':'35px','padding':'0px','padding-left':'5px','width':'97%'});
+                    jQuery("div.image img").css({'height':'35px','padding':'0px','padding-left':'5px','width':'100%'});
 	                word = res.captcha.word;
 	            }
             }
@@ -42,7 +41,7 @@ $(document).ready(function(){
 	            if (res.captcha){
                     jQuery("div.image").html(res.captcha.image);
                     console.log(res.captcha.image);
-	                jQuery("div.image img").css({'height':'35px','padding':'0px','padding-left':'5px','width':'97%'});
+	                jQuery("div.image img").css({'height':'35px','padding':'0px','padding-left':'5px','width':'100%'});
 	                word = res.captcha.word;
 	            }
             }
