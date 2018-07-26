@@ -57,7 +57,7 @@ class Localtion extends Admin_Controller {
                 }
                 $localtion_request = array(
                     'slug' => $unique_slug,
-                    'area' => $this->input->post('area'),
+                    'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'localtion' => $this->input->post('localtion'),
                 );
                 if(isset($localtionimage)){
@@ -113,7 +113,7 @@ class Localtion extends Admin_Controller {
                     $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/localtion/'.$unique_slug, 'assets/upload/localtion/'.$unique_slug.'/thumb');
                 }
                 $localtion_request = array(
-                    'area' => $this->input->post('area'),
+                    'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'localtion' => $this->input->post('localtion')
                 );
                 if($unique_slug != $this->data['detail']['slug']){
