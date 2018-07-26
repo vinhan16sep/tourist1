@@ -84,7 +84,7 @@
 			<?php if (!empty($banner)): ?>
 				<?php foreach ($banner as $key => $value): ?>
 
-					<li data-target="#homepage-slider" data-slide-to="0" class="<?php echo ($key == 0)?'active' : ''; ?>"></li>
+					<li data-target="#homepage-slider" data-slide-to="<?php echo $key; ?>" class="<?php echo ($key == 0)?'active' : ''; ?>"></li>
 				<?php endforeach ?>
 			<?php endif ?>
 		</ol>
