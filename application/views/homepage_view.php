@@ -195,15 +195,19 @@
 											<div class="overview">
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-													<h2 class="post-title"><?php echo $value['title']; ?></h2>
+													<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 												</div>
 												<div class="body">
 													<h3 class="price">
-														<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-															<?php echo number_format($value['pricepromotion']); ?> vnd
-															<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+														<?php if (!empty($value['price'])): ?>
+															<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																<?php echo number_format($value['pricepromotion']); ?> vnd
+																<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+															<?php else: ?>
+																<?php echo number_format($value['price']); ?> vnd
+															<?php endif ?>
 														<?php else: ?>
-															<?php echo number_format($value['price']); ?> vnd
+															<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contacts');?>
 														<?php endif ?>
 													</h3>
 													<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>:
@@ -218,18 +222,26 @@
 											<div class="content">
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-													<h2 class="post-title"><?php echo $value['title']; ?></h2>
+													<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 													<h3 class="price">
-														<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-															<?php echo number_format($value['pricepromotion']); ?> vnd
-															<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
-														<?php else: ?>
-															<?php echo number_format($value['price']); ?> vnd
+														<?php if (!empty($value['price'])): ?>
+															<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																<?php echo number_format($value['pricepromotion']); ?> vnd
+																<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+															<?php else: ?>
+																<?php echo number_format($value['price']); ?> vnd
+															<?php endif ?>
 														<?php endif ?>
 													</h3>
 												</div>
 												<div class="body">
 													<table class="table">
+														<?php if (empty($value['price'])): ?>
+															<tr>
+																<td><?php echo $this->lang->line('price');?></td>
+																<td><?php echo $this->lang->line('contacts');?></td>
+															</tr>
+														<?php endif ?>
 														<tr>
 															<td><?php echo $this->lang->line('tour-detail-duration');?></td>
 															<td><?php echo count(json_decode($value['dateimg'])) ?></td>
@@ -238,18 +250,15 @@
 															<td><?php echo $this->lang->line('tour-detail-start');?></td>
 															<td>
                                                                 <?php
+                                                                $datetime = $this->lang->line('contacts');
                                                                 if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
                                                                     $rmtime = str_replace(" 00:00:00","",$value['date']);
                                                                     $date= explode("-",$rmtime);
                                                                     if(count($date) == 3){
-                                                                        $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                    }else{
-                                                                        $value['date'] = "";
+                                                                        $datetime = $date[2]."/".$date[1]."/".$date[0];
                                                                     }
-                                                                }else{
-                                                                    $value['date'] = "";
                                                                 }
-                                                                echo $value['date'];
+                                                                echo $datetime;
                                                                 ?>
 															</td>
 														</tr>
@@ -339,15 +348,19 @@
                                                     <div class="overview">
                                                         <div class="head">
                                                             <h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                            <h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
                                                         </div>
                                                         <div class="body">
                                                             <h3 class="price">
-																<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-																	<?php echo number_format($value['pricepromotion']); ?> vnd
-																	<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+                                                            	<?php if (!empty($value['price'])): ?>
+																	<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																		<?php echo number_format($value['pricepromotion']); ?> vnd
+																		<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																	<?php else: ?>
+																		<?php echo number_format($value['price']); ?> vnd
+																	<?php endif ?>
 																<?php else: ?>
-																	<?php echo number_format($value['price']); ?> vnd
+																	<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contacts');?>
 																<?php endif ?>
 															</h3>
 															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>:
@@ -362,18 +375,26 @@
                                                     <div class="content">
                                                         <div class="head">
                                                             <h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-                                                            <h2 class="post-title"><?php echo $value['title']; ?></h2>
+                                                            <h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
                                                             <h3 class="price">
-																<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-																	<?php echo number_format($value['pricepromotion']); ?> vnd
-																	<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
-																<?php else: ?>
-																	<?php echo number_format($value['price']); ?> vnd
+                                                            	<?php if (!empty($value['price'])): ?>
+																	<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																		<?php echo number_format($value['pricepromotion']); ?> vnd
+																		<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																	<?php else: ?>
+																		<?php echo number_format($value['price']); ?> vnd
+																	<?php endif ?>
 																<?php endif ?>
 															</h3>
                                                         </div>
                                                         <div class="body">
                                                             <table class="table">
+																<?php if (empty($value['price'])): ?>
+																	<tr>
+																		<td><?php echo $this->lang->line('price');?></td>
+																		<td><?php echo $this->lang->line('contacts');?></td>
+																	</tr>
+																<?php endif ?>
                                                                 <tr>
                                                                     <td><?php echo $this->lang->line('tour-detail-duration');?></td>
                                                                     <td><?php echo count(json_decode($value['dateimg'])) ?></td>
@@ -381,15 +402,17 @@
                                                                 <tr>
                                                                     <td><?php echo $this->lang->line('tour-detail-start');?></td>
                                                                     <td>
-                                                                        <?php
-                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
-                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
-                                                                            $date= explode("-",$rmtime);
-                                                                            if(count($date) == 3){
-                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                            }
-                                                                        }
-                                                                        ?>
+		                                                                <?php
+			                                                                $datetime = $this->lang->line('contacts');
+			                                                                if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
+			                                                                    $rmtime = str_replace(" 00:00:00","",$value['date']);
+			                                                                    $date= explode("-",$rmtime);
+			                                                                    if(count($date) == 3){
+			                                                                        $datetime = $date[2]."/".$date[1]."/".$date[0];
+			                                                                    }
+			                                                                }
+			                                                                echo $datetime;
+		                                                                ?>
                                                                     </td>
                                                                 </tr>
 																<tr>
@@ -512,15 +535,19 @@
 													<div class="overview">
 														<div class="head">
 															<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-															<h2 class="post-title"><?php echo $value['title']; ?></h2>
+															<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 														</div>
 														<div class="body">
 															<h3 class="price">
-																<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-																	<?php echo number_format($value['pricepromotion']); ?> vnd
-																	<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																<?php if (!empty($value['price'])): ?>
+																	<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																		<?php echo number_format($value['pricepromotion']); ?> vnd
+																		<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																	<?php else: ?>
+																		<?php echo number_format($value['price']); ?> vnd
+																	<?php endif ?>
 																<?php else: ?>
-																	<?php echo number_format($value['price']); ?> vnd
+																	<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contacts');?>
 																<?php endif ?>
 															</h3>
 															<small class="rating"><?php echo $this->lang->line('tour-detail-rating') ?>:
@@ -535,18 +562,26 @@
 													<div class="content">
 														<div class="head">
 															<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
-																<h2 class="post-title"><?php echo $value['title']; ?></h2>
+																<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 																<h3 class="price">
-																	<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-																		<?php echo number_format($value['pricepromotion']); ?> vnd
-																		<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
-																	<?php else: ?>
-																		<?php echo number_format($value['price']); ?> vnd
+																	<?php if (!empty($value['price'])): ?>
+																		<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+																			<?php echo number_format($value['pricepromotion']); ?> vnd
+																			<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+																		<?php else: ?>
+																			<?php echo number_format($value['price']); ?> vnd
+																		<?php endif ?>
 																	<?php endif ?>
 																</h3>
 														</div>
 														<div class="body">
 															<table class="table">
+																<?php if (empty($value['price'])): ?>
+																	<tr>
+																		<td><?php echo $this->lang->line('price');?></td>
+																		<td><?php echo $this->lang->line('contacts');?></td>
+																	</tr>
+																<?php endif ?>
 																<tr>
 																	<td><?php echo $this->lang->line('tour-detail-duration');?></td>
 																	<td><?php echo count(json_decode($value['dateimg'])) ?></td>
@@ -554,15 +589,17 @@
 																<tr>
 																	<td><?php echo $this->lang->line('tour-detail-start');?></td>
 																	<td>
-                                                                        <?php
-                                                                        if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
-                                                                            $rmtime = str_replace(" 00:00:00","",$value['date']);
-                                                                            $date= explode("-",$rmtime);
-                                                                            if(count($date) == 3){
-                                                                                $value['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                                            }
-                                                                        }
-                                                                        ?>
+																		<?php
+			                                                                $datetime = $this->lang->line('contacts');
+			                                                                if($value['date'] != "0000-00-00 00:00:00" && $value['date'] != "1970-01-01 08:00:00"){
+			                                                                    $rmtime = str_replace(" 00:00:00","",$value['date']);
+			                                                                    $date= explode("-",$rmtime);
+			                                                                    if(count($date) == 3){
+			                                                                        $datetime = $date[2]."/".$date[1]."/".$date[0];
+			                                                                    }
+			                                                                }
+			                                                                echo $datetime;
+		                                                                ?>
 																	</td>
 																</tr>
 																<tr>
@@ -678,7 +715,7 @@
 								<div class="overlay"></div>
 								<div class="content">
 									<h4 class="sub-header"><?php echo $value['category_title'];?></h4>
-									<h2 class="header"><?php echo $value['title']; ?></h2>
+									<h2 class="header" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 								</div>
 							</div>
 						</div>
@@ -752,7 +789,7 @@
 						<h4 class="post-subtitle"><?php echo $value['title']; ?></h4>
 					</div>
 					<div class="body">
-						<p class="post-description"><?php echo $value['content']; ?></p>
+						<p class="post-description"><?php echo $value['description']; ?></p>
 					</div>
 					<div class="foot">
 						<a href="<?php echo base_url('diem-den/'.$value['slug']) ?>" class="btn btn-primary" role="button">

@@ -107,10 +107,10 @@
                                 </div>
                                 <div class="head">
                                     <h4 class="post-subtitle"><?php echo $value['area'];?></h4>
-                                    <h2 class="post-title"><?php echo $value['title'];?></h2>
+                                    <h2 class="post-title" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></h2>
                                 </div>
                                 <div class="body">
-                                    <p class="post-description"><?php echo $value['content'];?></p>
+                                    <p class="post-description"><?php echo $value['description'];?></p>
                                 </div>
                                 <div class="foot">
                                     <a href="<?php echo base_url('diem-den/' . $value['slug']) ?>" class="btn btn-primary" role="button">

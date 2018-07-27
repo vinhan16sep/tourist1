@@ -30,7 +30,7 @@
     							<div class="head">
                                     <h4 class="post-subtitle"><?php echo $val['parent_title']; ?></h4>
                                     <a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>">
-                                        <h2 class="post-title"><?php echo $val['title']; ?></h2>
+                                        <h2 class="post-title" title="<?php echo $val['title']; ?>"><?php echo $val['title']; ?></h2>
                                     </a>
     							</div>
     							<div class="body">

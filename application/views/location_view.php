@@ -14,10 +14,34 @@
     <div class="container">
         <div class="row">
             <div class="left col-md-12 col-sm-12 col-xs-12">
-                <div class="section-header">
-                    <h1><?php echo $this->lang->line('location');?></h1>
-                    <div class="line">
-                        <div class="line-primary"></div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="section-header">
+                            <h1><?php echo $this->lang->line('location');?></h1>
+                            <div class="line">
+                                <div class="line-primary"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <form action="<?php echo base_url('location') ?>" method="get">
+                            <div class="col-sm-5" style="padding-bottom: 10px;">
+                                <select name="category" class="form-control">
+                                    <option value="">Tìm kiếm theo khu vực</option>
+                                    <?php foreach ($area as $key => $value): ?>
+                                        <option value="<?php echo $value['area']; ?>" <?php echo ($category == $value['area'])?'selected':''; ?>><?php echo $value['area']; ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo $keyword ?>">
+                                    <span class="input-group-btn">
+                                        <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm" style="margin: 0px;">
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -35,10 +59,10 @@
                                 </div>
                                 <div class="head">
                                     <h4 class="post-subtitle"><?php echo $val['area']; ?></h4>
-                                    <h2 class="post-title"><?php echo $val['title']; ?></h2>
+                                    <h2 class="post-title" title="<?php echo $val['title']; ?>"><?php echo $val['title']; ?></h2>
                                 </div>
                                 <div class="body">
-                                    <p class="post-description"><?php echo $val['content']; ?></p>
+                                    <p class="post-description"><?php echo $val['description']; ?></p>
                                 </div>
                                 <div class="foot">
                                     <a href="<?php echo base_url('diem-den/' . $val['slug']) ?>" class="btn btn-primary" role="button">

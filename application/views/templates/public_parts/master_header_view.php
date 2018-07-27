@@ -456,7 +456,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<?php 
 										if(!empty($location)){
 									?>
-										<p><?php echo $location[0]['content'] ?></p>
+										<p><?php echo $location[0]['description'] ?></p>
 										<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
 	                                        <?php echo $this->lang->line('explore') ?>
 										</a>

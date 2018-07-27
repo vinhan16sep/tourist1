@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="head">
                                     <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-                                    <h2 class="post-title"><?php echo $value['title'];?></h2>
+                                    <h2 class="post-title" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></h2>
                                 </div>
                                 <div class="body">
                                     <div class="post-description"><?php echo $value['content'];?></div>

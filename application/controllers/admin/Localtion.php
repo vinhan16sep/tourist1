@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Localtion extends Admin_Controller {
 
     private $request_language_template = array(
-        'title', 'content'
+        'title', 'description', 'content'
     );
     private $author_data = array();
 
@@ -23,17 +23,22 @@ class Localtion extends Admin_Controller {
 
     public function index() {
         $this->data['keyword'] = '';
+        $this->data['category'] = '';
         if($this->input->get('search')){
             $this->data['keyword'] = $this->input->get('search');
         }
+        if($this->input->get('category')){
+            $this->data['category'] = $this->input->get('category');
+        }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->localtion_model->count_search($this->data['keyword']);
+        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['category']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $this->data['location'] = $this->localtion_model->get_all_group_by();
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page'], $this->data['keyword']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc','vi' , $per_page, $this->data['page'], $this->data['keyword'],$this->data['category']);
         $this->render('admin/localtion/list_localtion_view');
     }
     public function create(){
@@ -71,12 +76,14 @@ class Localtion extends Admin_Controller {
                 }
                 if ($this->db->trans_status() === false) {
                     $this->db->trans_rollback();
+                    $this->session->set_flashdata('message_error', 'Thêm mới thất bại!');
                     $this->render('admin/'. $this->data['controller'] .'/edit_localtion_view');
                 } else {
                     $this->db->trans_commit();
                     $reponse = array(
                         'csrf_hash' => $this->security->get_csrf_hash()
                     );
+                    $this->session->set_flashdata('message_success', 'Thêm mới thành công!');
                     redirect('admin/'. $this->data['controller'] .'', 'refresh');
                 }
             }
@@ -84,7 +91,7 @@ class Localtion extends Admin_Controller {
         $this->render('admin/localtion/create_localtion_view');
     }
     public function edit($id = null){
-        $detail = $this->localtion_model->get_by_id($id,array('title', 'content'));
+        $detail = $this->localtion_model->get_by_id($id,array('title', 'description','content'));
         if(empty($detail['id'])){
             redirect('admin/localtion/index','refresh');
         }
@@ -167,7 +174,7 @@ class Localtion extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['comments'] = $this->comment_model->get_all_by_product_id($id , $per_page, $this->data['page'],2);
 
-        $detail = $this->localtion_model->get_by_id($id,array('title', 'content'));
+        $detail = $this->localtion_model->get_by_id($id,array('title', 'description','content'));
         $detail = build_language('localtion', $detail, $this->request_language_template, $this->page_languages);
         $this->data['detail'] = $detail;
 
