@@ -11,7 +11,15 @@ class Location extends Public_Controller {
     }
 
     public function index() {
-        $total_rows  = $this->localtion_model->count_search();
+        $this->data['keyword'] = '';
+        $this->data['category'] = '';
+        if($this->input->get('search')){
+            $this->data['keyword'] = $this->input->get('search');
+        }
+        if($this->input->get('category')){
+            $this->data['category'] = $this->input->get('category');
+        }
+        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['category']);
         $this->load->library('pagination');
         $base_url = base_url('location/index');
         $uri_segment = 3;
@@ -23,7 +31,8 @@ class Location extends Public_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
 
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_search('desc', $this->data['lang'], $per_page, $this->data['page']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc', $this->data['lang'], $per_page, $this->data['page'],$this->data['keyword'],$this->data['category']);
+        $this->data['area'] = $this->localtion_model->get_all_group_by();
         $this->render('location_view');
     }
     public function get_multiple_posts_with_category_id($categories, $parent_id = 0, &$id_array){

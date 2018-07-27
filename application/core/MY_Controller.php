@@ -275,7 +275,7 @@ class Public_Controller extends MY_Controller {
         $this->data['blog_menu']['sub'] = $this->post_category_model->get_by_parent_id(FIXED_BLOG,'desc',$this->session->userdata('langAbbreviation'),0,2);
         $this->data['visa_menu'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),$this->session->userdata('langAbbreviation'),0);
         $this->data['visa_menu']['sub'] = $this->post_category_model->get_by_parent_id(FIXED_VISA,'desc',$this->session->userdata('langAbbreviation'),0,2);
-        $this->data['location'] = $this->localtion_model->get_all_with_pagination_search('desc', $this->session->userdata('langAbbreviation'), 3, 0);
+        $this->data['location'] = $this->localtion_model->get_all_with_pagination_searchs('desc', $this->session->userdata('langAbbreviation'), 3, 0);
         $this->data['controller'] = $this;
     }
 

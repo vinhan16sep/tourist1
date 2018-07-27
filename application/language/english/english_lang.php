@@ -199,3 +199,4 @@ $lang['see-more-comments'] = 'See more comments';
 $lang['send-comments'] = 'Comment';
 
 $lang['promotion'] = 'SO';
+$lang['contacts'] = 'Contact';

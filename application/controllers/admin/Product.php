@@ -418,7 +418,8 @@ class Product extends Admin_Controller{
                     'localtion' => $this->input->post('localtion'),
                     'product_category_id' => $this->input->post('parent_id_shared'),
                     'vehicles' => json_encode($this->input->post('vehicles')),
-                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
+                    'date' => ''
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $shared_request['slug'] = $unique_slug;
@@ -670,7 +671,7 @@ class Product extends Admin_Controller{
         $detail = $this->localtion_model->get_by_slug_localtion($area);
         $result = '';
         foreach ($this->localtion_model->get_by_area($detail['area']) as $key => $value) {
-            $result .= '<option value="'.$value['id'].'">'.$value['localtion'].'</option>';
+            $result .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
         }
         $reponse = array(
             'csrf_hash' => $this->security->get_csrf_hash(),

@@ -49,19 +49,29 @@
                             </tr>
                             <tr>
                                 <td><?php echo $this->lang->line('tour-detail-start') ?></td>
-                                <td><?php echo $detail['date'] ?></td>
+                                <td>
+                                    <?php if (!empty($detail['date'])): ?>
+                                        <?php echo $detail['date'] ?>
+                                    <?php else: ?>
+                                        <?php echo $this->lang->line('contacts');?>
+                                    <?php endif ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td><?php echo $this->lang->line('tour-detail-price') ?></td>
                                 <td>
-                                    <h3>
-                                        <?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
-                                            <?php echo number_format($detail['pricepromotion']); ?> vnd
-                                            <small class="price-original"><del><?php echo number_format($detail['price']);?> vnd</del></small>
-                                        <?php else: ?>
-                                            <?php echo number_format($detail['price']); ?> vnd
-                                        <?php endif ?>
-                                    </h3>
+                                    <?php if (!empty($detail['price'])): ?>
+                                        <h3>
+                                            <?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
+                                                <?php echo number_format($detail['pricepromotion']); ?> vnd
+                                                <small class="price-original"><del><?php echo number_format($detail['price']);?> vnd</del></small>
+                                            <?php else: ?>
+                                                <?php echo number_format($detail['price']); ?> vnd
+                                            <?php endif ?>
+                                        </h3>
+                                    <?php else: ?>
+                                        <?php echo $this->lang->line('contacts');?>
+                                    <?php endif ?>
                                 </td>
                             </tr>
                             <tr>
@@ -211,8 +221,10 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="media-body">
-                                                                                <h4 class="media-heading"><?php echo $detail['librarylocaltion'][$i][$j]['title'] ?></h4>
-                                                                                <p><?php echo $detail['librarylocaltion'][$i][$j]['content'] ?></p>
+                                                                                <a href="<?php echo base_url('diem-den/'.$detail['librarylocaltion'][$i][$j]['slug']); ?>" target="_blank">
+                                                                                    <h4 class="media-heading"><?php echo $detail['librarylocaltion'][$i][$j]['title'] ?></h4>
+                                                                                </a>
+                                                                                <p><?php echo $detail['librarylocaltion'][$i][$j]['description'] ?></p>
                                                                             </div>
                                                                         </div>
                                                                     <?php else: ?>
@@ -597,11 +609,15 @@
                                         </div>
                                         <div class="body">
                                             <h3 class="price">
-                                                <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-                                                    <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
-                                                    <small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+                                                <?php if (!empty($product_array[$i]['price'])): ?>
+                                                    <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+                                                        <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+                                                        <small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+                                                    <?php else: ?>
+                                                        <?php echo number_format($product_array[$i]['price']); ?> vnd
+                                                    <?php endif ?>
                                                 <?php else: ?>
-                                                    <?php echo number_format($product_array[$i]['price']); ?> vnd
+                                                    <span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contacts');?>
                                                 <?php endif ?>
                                             </h3>
                                             <small class="rating" style="color: white;"><?php echo $this->lang->line('tour-detail-rating') ?><!--:-->
@@ -621,20 +637,28 @@
                                                     <?php echo $product_array[$i]['parent_title'] ?>
                                                 </h4>
                                             </a>
-                                            <h2 class="post-title">
+                                            <h2 class="post-title" title="<?php echo $product_array[$i]['title'] ?>">
                                                 <?php echo $product_array[$i]['title'] ?>
                                             </h2>
                                             <h3 class="price">
-                                                <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-                                                    <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
-                                                    <small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
-                                                <?php else: ?>
-                                                    <?php echo number_format($product_array[$i]['price']); ?> vnd
+                                                <?php if (!empty($product_array[$i]['price'])): ?>
+                                                    <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+                                                        <?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+                                                        <small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+                                                    <?php else: ?>
+                                                        <?php echo number_format($product_array[$i]['price']); ?> vnd
+                                                    <?php endif ?>
                                                 <?php endif ?>
                                             </h3>
                                         </div>
                                         <div class="body">
                                             <table class="table">
+                                                <?php if (empty($product_array[$i]['price'])): ?>
+                                                    <tr>
+                                                        <td><?php echo $this->lang->line('price'); ?></td>
+                                                        <td><?php echo $this->lang->line('contacts'); ?></td>
+                                                    </tr>
+                                                <?php endif ?>
                                                 <tr>
                                                     <td><?php echo $this->lang->line('tour-detail-duration') ?></td>
                                                     <td><?php echo count(json_decode($product_array[$i]['dateimg'])) ?></td>
@@ -643,18 +667,15 @@
                                                     <td><?php echo $this->lang->line('tour-detail-start') ?></td>
                                                     <td>
                                                         <?php
-                                                        if($product_array[$i]['date'] != "0000-00-00 00:00:00" && $product_array[$i]['date'] != "1970-01-01 08:00:00"){
-                                                            $rmtime = str_replace(" 00:00:00","",$product_array[$i]['date']);
-                                                            $date= explode("-",$rmtime);
-                                                            if(count($date) == 3){
-                                                                $product_array[$i]['date'] = $date[2]."/".$date[1]."/".$date[0];
-                                                            }else{
-                                                                $product_array[$i]['date'] = "";
+                                                            $datetime = $this->lang->line('contacts');
+                                                            if($product_array[$i]['date'] != "0000-00-00 00:00:00" && $product_array[$i]['date'] != "1970-01-01 08:00:00"){
+                                                                $rmtime = str_replace(" 00:00:00","",$product_array[$i]['date']);
+                                                                $date= explode("-",$rmtime);
+                                                                if(count($date) == 3){
+                                                                    $datetime = $date[2]."/".$date[1]."/".$date[0];
+                                                                }
                                                             }
-                                                        }else{
-                                                            $product_array[$i]['date'] = "";
-                                                        }
-                                                        echo $product_array[$i]['date'];
+                                                            echo $datetime;
                                                         ?>
                                                     </td>
                                                 </tr>

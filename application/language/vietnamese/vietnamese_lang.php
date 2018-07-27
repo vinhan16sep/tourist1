@@ -190,3 +190,4 @@ $lang['see-more-comments'] = 'Xem thêm bình luận';
 $lang['send-comments'] = 'Gửi nhận xét';
 
 $lang['promotion'] = 'KM';
+$lang['contacts'] = 'Liên hệ';

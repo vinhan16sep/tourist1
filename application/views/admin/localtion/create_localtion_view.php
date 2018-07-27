@@ -47,14 +47,14 @@
                                     echo form_input('slug_localtion', set_value('slug_localtion'), 'class="form-control" id="slug_shared" readonly');
                                     ?>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
                                     echo form_label('Tên khu vực đến', 'area');
                                     echo form_error('area');
                                     echo form_input('area', set_value('area'), 'class="form-control" id="area" placeholder ="VD:Hà Nội"');
                                     ?>
                                 </div>
-                                <div class="col-xs-12" style="margin-bottom: 5px;">
+                                <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
                                     <?php
                                     echo form_label('Tên vị trí đến trong khu vực', 'localtion');
                                     echo form_error('localtion');
@@ -87,6 +87,10 @@
                                                             echo form_label($val, $k .'_'. $key);
                                                             echo form_error($k .'_'. $key);
                                                             echo form_input($k .'_'. $key, set_value($k .'_'. $key), 'class="form-control" id="title_'.$key.'"');
+                                                        }elseif($k == 'description' && in_array($k, $request_language_template)){
+                                                            echo form_label($val, $k .'_'. $key);
+                                                            echo form_error($k .'_'. $key);
+                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control"');
                                                         }elseif($k == 'content' && in_array($k, $request_language_template)){
                                                             echo form_label($val, $k .'_'. $key);
                                                             echo form_error($k .'_'. $key);
