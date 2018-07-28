@@ -43,10 +43,10 @@
                         <div class="col-md-9">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
                                 <div class="col-md-5">
-                                    <select name="category" class="form-control">
+                                    <select name="area_id" class="form-control">
                                         <option value="">Tìm kiếm theo khu vực</option>
-                                        <?php foreach ($location as $key => $value): ?>
-                                            <option value="<?php echo $value['area']; ?>" <?php echo ($category == $value['area'])?'selected':''; ?>><?php echo $value['area']; ?></option>
+                                        <?php foreach ($area as $key => $value): ?>
+                                            <option value="<?php echo $value['id']; ?>" <?php echo ($area_id == $value['id'])?'selected':''; ?>><?php echo $value['vi']; ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -93,7 +93,7 @@
                                             </div>
                                         </td>
                                         <td><?php echo $value['title'] ?></td>
-                                        <td><?php echo $value['area'] ?></td>
+                                        <td><?php echo $value['vi'] ?></td>
                                         <td>
                                             <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
                                             <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">Xem chi tiết</button>

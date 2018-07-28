@@ -47,20 +47,31 @@
                                     echo form_input('slug_localtion', set_value('slug_localtion'), 'class="form-control" id="slug_shared" readonly');
                                     ?>
                                 </div>
-                                <div class="col-xs-12" style="margin-bottom: 5px;">
+                                <!-- <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
                                     <?php
                                     echo form_label('Tên khu vực đến', 'area');
                                     echo form_error('area');
                                     echo form_input('area', set_value('area'), 'class="form-control" id="area" placeholder ="VD:Hà Nội"');
                                     ?>
+                                </div> -->
+                                <div class="col-xs-12" style="margin-bottom: 5px;">
+                                    <?php
+                                    echo form_label('Tên khu vực đến', 'area_id');
+                                    echo form_error('area_id');
+                                    ?>
+                                    <select name="area_id" class="form-control">
+                                        <?php foreach ($area as $key => $value): ?>
+                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
-                                <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
+                               <!--  <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
                                     <?php
                                     echo form_label('Tên vị trí đến trong khu vực', 'localtion');
                                     echo form_error('localtion');
                                     echo form_input('localtion', set_value('localtion'), 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
                                     ?>
-                                </div>
+                                </div> -->
                                 <div>
                                     <div class="col-xs-12">
                                         <ul class="col-xs-12 nav nav-pills nav-justified language" role="tablist">

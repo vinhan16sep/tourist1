@@ -29,7 +29,7 @@
                                 <select name="category" class="form-control">
                                     <option value="">Tìm kiếm theo khu vực</option>
                                     <?php foreach ($area as $key => $value): ?>
-                                        <option value="<?php echo $value['area']; ?>" <?php echo ($category == $value['area'])?'selected':''; ?>><?php echo $value['area']; ?></option>
+                                        <option value="<?php echo $value['id']; ?>" <?php echo ($category == $value['id'])?'selected':''; ?>><?php echo $value[$lang]; ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -58,7 +58,7 @@
                                     </a>
                                 </div>
                                 <div class="head">
-                                    <h4 class="post-subtitle"><?php echo $val['area']; ?></h4>
+                                    <h4 class="post-subtitle"><?php echo $val[$lang]; ?></h4>
                                     <h2 class="post-title" title="<?php echo $val['title']; ?>"><?php echo $val['title']; ?></h2>
                                 </div>
                                 <div class="body">
