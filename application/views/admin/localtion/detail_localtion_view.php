@@ -67,10 +67,7 @@
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <th>Khu vực</th>
-                                                    <td><?php echo $detail['area'] ?></td>
-                                                </tr>
+                                                
 
                                             </table>
                                         </div>
@@ -89,7 +86,6 @@
                                                 <?php $i++; ?>
                                             <?php endforeach ?>
                                         </ul>
-
                                         <!-- Tab panes -->
                                         <div class="tab-content">
                                             <?php $i = 0; ?>
@@ -100,6 +96,12 @@
                                                             <div class="table-responsive">
                                                                 <table class="table table-striped">
                                                                     <tbody>
+                                                                        <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
+                                                                            <tr>
+                                                                                <th style="width: 120px">Khu vực: </th>
+                                                                                <td><?php echo $area[$key] ?></td>
+                                                                            </tr>
+                                                                        <?php endif ?>
                                                                         <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
                                                                                 <th style="width: 120px">Tiêu đề: </th>

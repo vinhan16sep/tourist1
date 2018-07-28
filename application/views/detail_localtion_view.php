@@ -12,7 +12,7 @@
                 <div>
                     <div class="big-title">
                         <h4 class="subtitle">
-                            <?php echo $detail['area'] ?>
+                            <?php echo $detail[$lang] ?>
                         </h4>
                         <h1 class="title">
                             <?php echo $detail['title'] ?>
@@ -106,7 +106,7 @@
                                     </a>
                                 </div>
                                 <div class="head">
-                                    <h4 class="post-subtitle"><?php echo $value['area'];?></h4>
+                                    <h4 class="post-subtitle"><?php echo $value[$lang];?></h4>
                                     <h2 class="post-title" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></h2>
                                 </div>
                                 <div class="body">

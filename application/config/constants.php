@@ -275,6 +275,7 @@ defined('MESSAGE_ERROR_TURN_ON_POST_FOR_SELECTED') OR define('MESSAGE_ERROR_TURN
 /*=====  End of Message for Create  ======*/
 
 defined('MESSAGE_ERROR_REMOVE_LOCALTION') OR define('MESSAGE_ERROR_REMOVE_LOCALTION', 'Bạn có %u tour đang chọn địa điểm đến này nên bạn không thể xóa.');
+defined('MESSAGE_ERROR_REMOVE_AREA') OR define('MESSAGE_ERROR_REMOVE_AREA', 'Bạn có %u địa điểm đang chọn khu vực đến này nên bạn không thể xóa.');
 defined('MESSAGE_CREATE_BOOKING_SUCCESS') OR define('MESSAGE_CREATE_BOOKING_SUCCESS', 'Đặt Tour thành công bạn vui lòng chờ xác nhận.');
 defined('MESSAGE_CREATE_ERROR_EMAIL') OR define('MESSAGE_CREATE_ERROR_EMAIL', 'Vui lòng nhập trường Email và email confirm giống nhau.');
 defined('MESSAGE_CREATE_BOOKING_ERROR') OR define('MESSAGE_CREATE_BOOKING_ERROR', 'Không thể tạo tour mới vui lòng chờ trong giây lát.');

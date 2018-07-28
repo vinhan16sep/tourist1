@@ -20,6 +20,7 @@ class Product extends Admin_Controller{
 		$this->load->model('product_model');
         $this->load->model('product_category_model');
         $this->load->model('localtion_model');
+        $this->load->model('area_model');
         $this->load->model('tour_date_model');
 		$this->load->helper('common');
         $this->load->helper('file');
@@ -307,7 +308,7 @@ class Product extends Admin_Controller{
     }
     public function edit($id){
         if($id &&  is_numeric($id) && ($id > 0)){
-            $this->data['area_selected'] = $this->localtion_model->get_all_group_by();
+            $this->data['area_selected'] = $this->area_model->get_all_area();
             $this->data['localtion_all'] = $this->localtion_model->get_all_localtion();
             $product_category = $this->product_category_model->get_by_parent_id_when_active(null,'asc');
             $this->load->helper('form');
@@ -336,13 +337,16 @@ class Product extends Admin_Controller{
                 $this->data['detail']['date'] = "";
             }
             $librarylocaltion = json_decode($this->data['detail']['librarylocaltion']);
+            // echo '<pre>';
+            // print_r($this->data['detail']);
+            // echo '</pre>';die;
             $notlibrary = array();
             if(!empty($librarylocaltion)){
                 for($i=0;$i < count($librarylocaltion);$i++){
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
                     $library[$i] = $this->localtion_model->get_librarylocaltion_by_id_array($librarylocaltions);
                     if(!empty($library[$i])){
-                        $notlibrary[$i] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions,$library[$i][0]['area']);
+                        $notlibrary[$i] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions,$library[$i][0]['area_id']);
                     }
                 }
                 $this->data['detail']['librarylocaltion'] = $library;
@@ -661,16 +665,15 @@ class Product extends Admin_Controller{
     }
     function area_selected($type='create'){
         $result = '<option>Chọn khu vực</option>';
-        foreach ($this->localtion_model->get_all_group_by() as $key => $value) {
-            $result .= '<option value="'.$value['slug'].'">'.$value['area'].'</option>';
+        foreach ($this->area_model->get_all_area() as $key => $value) {
+            $result .= '<option value="'.$value['id'].'">'.$value['vi'].'</option>';
         }
         return $result;
     }
     function ajax_area_selected(){
         $area =$this->input->post('area');
-        $detail = $this->localtion_model->get_by_slug_localtion($area);
         $result = '';
-        foreach ($this->localtion_model->get_by_area($detail['area']) as $key => $value) {
+        foreach ($this->localtion_model->get_by_area_id($area) as $key => $value) {
             $result .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
         }
         $reponse = array(

@@ -95,9 +95,28 @@
                         </li>
                     </ul>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'localtion')? 'active' : '' ?>">
+                <!-- <li class="<?php echo ($this->uri->segment(2) == 'localtion')? 'active' : '' ?>">
                     <a href="<?php echo base_url('admin/localtion') ?>"><i class="fa fa-globe"></i> Địa điểm</a>
+                </li> -->
+
+                <li class="<?php echo ($this->uri->segment(2) == 'localtion' || $this->uri->segment(2) == 'area')? 'active' : 'treeview' ?>">
+                    <a href="">
+                        <i class="fa fa-globe"></i>
+                        <span>Địa điểm</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php echo ($this->uri->segment(2) == 'area')? 'active' : '' ?>">
+                            <a href="<?php echo base_url('admin/area') ?>"><i class="fa fa-filter"></i> Danh mục địa điểm</a>
+                        </li>
+                        <li class="<?php echo ($this->uri->segment(2) == 'localtion')? 'active' : '' ?>">
+                            <a href="<?php echo base_url('admin/localtion') ?>"><i class="fa fa-list"></i> Danh sách địa điểm</a>
+                        </li>
+                    </ul>
                 </li>
+
                 <li class="<?php echo ($this->uri->segment(2) == 'customize')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-newspaper-o"></i>
