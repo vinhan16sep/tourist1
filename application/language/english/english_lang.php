@@ -200,3 +200,11 @@ $lang['send-comments'] = 'Comment';
 
 $lang['promotion'] = 'SO';
 $lang['contacts'] = 'Contact';
+
+$lang['next'] = 'Next';
+$lang['last'] = 'Last';
+$lang['first'] = 'First';
+$lang['prev'] = 'Prev';
+
+$lang['search-by-area-name'] = 'Search by area name';
+$lang['search'] = 'Search';

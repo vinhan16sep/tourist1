@@ -27,7 +27,7 @@
                         <form action="<?php echo base_url('location') ?>" method="get">
                             <div class="col-sm-5" style="padding-bottom: 10px;">
                                 <select name="category" class="form-control">
-                                    <option value="">Tìm kiếm theo khu vực</option>
+                                    <option value=""><?php echo $this->lang->line('search-by-area-name'); ?></option>
                                     <?php foreach ($area as $key => $value): ?>
                                         <option value="<?php echo $value['id']; ?>" <?php echo ($category == $value['id'])?'selected':''; ?>><?php echo $value[$lang]; ?></option>
                                     <?php endforeach ?>
@@ -35,9 +35,9 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo $keyword ?>">
+                                    <input type="text" class="form-control" placeholder="<?php echo $this->lang->line('search'); ?> ..." name="search" value="<?php echo $keyword ?>">
                                     <span class="input-group-btn">
-                                        <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm" style="margin: 0px;">
+                                        <input type="submit" class="btn btn-block btn-primary" value="<?php echo $this->lang->line('search'); ?>" style="margin: 0px;">
                                     </span>
                                 </div>
                             </div>

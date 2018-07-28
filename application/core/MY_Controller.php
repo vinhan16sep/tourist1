@@ -26,12 +26,14 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    protected function pagination_config($base_url, $total_rows, $per_page, $uri_segment) {
+    protected function pagination_config($base_url, $total_rows, $per_page, $uri_segment,$next = 'Trước',$prev = 'Sau',$last = 'Cuôi',$first = 'Đầu') {
         $config['base_url'] = $base_url;
         $config['per_page'] = $per_page;
         $config['uri_segment'] = $uri_segment;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
+        $config['prev_link'] = $prev;
+        $config['next_link'] = $next;
+        $config['last_link'] = $last;
+        $config['first_link'] = $first;
         $config['total_rows'] = $total_rows;
         $config['reuse_query_string'] = true;
         $config ['reuse_query_string'] = true;

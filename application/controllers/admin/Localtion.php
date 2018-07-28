@@ -80,7 +80,7 @@ class Localtion extends Admin_Controller {
                 if ($this->db->trans_status() === false) {
                     $this->db->trans_rollback();
                     $this->session->set_flashdata('message_error', 'Thêm mới thất bại!');
-                    $this->render('admin/'. $this->data['controller'] .'/edit_localtion_view');
+                    $this->render('admin/'. $this->data['controller'] .'/create_localtion_view');
                 } else {
                     $this->db->trans_commit();
                     $reponse = array(

@@ -191,3 +191,11 @@ $lang['send-comments'] = 'Gửi nhận xét';
 
 $lang['promotion'] = 'KM';
 $lang['contacts'] = 'Liên hệ';
+
+$lang['next'] = 'Sau';
+$lang['last'] = 'Cuối';
+$lang['first'] = 'Đầu';
+$lang['prev'] = 'Trước';
+
+$lang['search-by-area-name'] = 'Tìm kiếm theo tên khu vực';
+$lang['search'] = 'Tìm kiếm';
