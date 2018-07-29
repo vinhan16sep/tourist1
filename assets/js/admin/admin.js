@@ -396,16 +396,15 @@ $("#button-numberdate,#append-date").click(function(){
 		 		var stt = $($(this)[0])[0].dataset.idlocaltion;
 		 		var url = HOSTNAMEADMIN + '/product/ajax_area_selected';
 		        $.ajax({
-		            method: "post",
+		            method: "get",
 		            url: url,
 		            data: {
-		                area : $($(this)[0]).val(), csrf_diamondtour_token : csrf_hash
+		                area : $($(this)[0]).val()
 		            },
 		            success: function(response){
 		            	console.log(response)
 		                csrf_hash = response.reponse.csrf_hash;
 		                if(response.status == 200 && response.isExisted == true){
-		                    $("input[name='csrf_diamondtour_token']").val(csrf_hash);
 		                    $("#go-place_"+stt).html(response.reponse.content);
 		                }
 		            },

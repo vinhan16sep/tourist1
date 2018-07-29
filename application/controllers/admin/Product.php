@@ -671,13 +671,12 @@ class Product extends Admin_Controller{
         return $result;
     }
     function ajax_area_selected(){
-        $area =$this->input->post('area');
+        $area =$this->input->get('area');
         $result = '';
         foreach ($this->localtion_model->get_by_area_id($area) as $key => $value) {
             $result .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
         }
         $reponse = array(
-            'csrf_hash' => $this->security->get_csrf_hash(),
             'content' => $result
         );
         return $this->return_api(HTTP_SUCCESS,'',$reponse);
