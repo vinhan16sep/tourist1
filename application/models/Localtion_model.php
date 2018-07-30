@@ -124,7 +124,7 @@ class Localtion_model extends MY_Model {
         $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.description as description, localtion_lang.content as content,  localtion_lang.language as language, area.' . $lang . ' as ' . $lang);
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id');
-        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id', 'left');
         $this->db->where($this->table . '.is_deleted', 0);
         $this->db->where($this->table_lang .'.language', $lang);
         $this->db->where($this->table.'.area_id', $area);
@@ -136,7 +136,7 @@ class Localtion_model extends MY_Model {
         $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.content as content,  localtion_lang.language as language, area.' . $lang . ' as ' . $lang)
             ->from($this->table)
             ->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id')
-            ->join('area', 'area.id = '.$this->table .'.'. 'area_id')
+            ->join('area', 'area.id = '.$this->table .'.'. 'area_id', 'left')
             ->where($this->table . '.is_deleted', 0)
             ->where($this->table_lang .'.language', $lang)
             ->where($this->table .'.slug', $slug);
