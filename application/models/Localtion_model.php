@@ -144,7 +144,7 @@ class Localtion_model extends MY_Model {
         return $this->db->get()->row_array();
     }
 
-    public function get_all_with_pagination_searchs($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '',$area_id = '') {
+    public function get_all_with_pagination_searchs($order = 'desc',$lang = 'vi', $limit = NULL, $start = NULL, $keywords = '',$area_id = '') {
         $this->db->select($this->table .'.*, '. $this->table_lang .'.title as title,'. $this->table_lang .'.description,'. $this->table_lang .'.content, area.vi as vi, area.en as en');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
@@ -162,7 +162,7 @@ class Localtion_model extends MY_Model {
 
         return $this->db->get()->result_array();
     }
-    public function count_searchs($keyword = '',$area_id = '',$lang = ''){
+    public function count_searchs($keyword = '',$area_id = '',$lang = 'vi'){
         $this->db->select($this->table . '.*');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
