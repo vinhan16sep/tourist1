@@ -148,7 +148,7 @@ class Localtion_model extends MY_Model {
         $this->db->select($this->table .'.*, '. $this->table_lang .'.title as title,'. $this->table_lang .'.description,'. $this->table_lang .'.content, area.vi as vi, area.en as en');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
-        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id', 'left');
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
@@ -166,7 +166,7 @@ class Localtion_model extends MY_Model {
         $this->db->select($this->table . '.*');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
-        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id', 'left');
         $this->db->like($this->table_lang .'.title', $keyword);
         if($area_id != ''){
             $this->db->where($this->table .'.area_id', $area_id);
