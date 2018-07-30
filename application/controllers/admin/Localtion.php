@@ -33,7 +33,7 @@ class Localtion extends Admin_Controller {
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['area_id']);
+        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['area_id'],'vi');
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->data['area'] = $this->area_model->get_all_area();
