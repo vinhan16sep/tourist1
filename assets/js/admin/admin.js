@@ -1,4 +1,3 @@
-var csrf_hash = $("input[name='csrf_diamondtour_token']").val();
 switch(window.location.origin){
     case 'http://diamondtour.vn':
         var HOSTNAME = 'http://diamondtour.vn/';
