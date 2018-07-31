@@ -67,6 +67,10 @@
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
                                                 </tr>
+                                                <tr>
+                                                    <th>Địa điểm nổi bật</th>
+                                                    <td><i class="<?php echo ($detail['is_hot'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
                                                 
 
                                             </table>

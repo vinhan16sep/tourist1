@@ -47,13 +47,6 @@
                                     echo form_input('slug_localtion', set_value('slug_localtion'), 'class="form-control" id="slug_shared" readonly');
                                     ?>
                                 </div>
-                                <!-- <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
-                                    <?php
-                                    echo form_label('Tên khu vực đến', 'area');
-                                    echo form_error('area');
-                                    echo form_input('area', set_value('area'), 'class="form-control" id="area" placeholder ="VD:Hà Nội"');
-                                    ?>
-                                </div> -->
                                 <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
                                     echo form_label('Tên khu vực đến', 'area_id');
@@ -65,13 +58,13 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                               <!--  <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
-                                    <?php
-                                    echo form_label('Tên vị trí đến trong khu vực', 'localtion');
-                                    echo form_error('localtion');
-                                    echo form_input('localtion', set_value('localtion'), 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
-                                    ?>
-                                </div> -->
+                                <div class="col-xs-12">
+                                    <div class="checkbox" style="padding-top: 10px;padding-bottom: 10px;">
+                                        <label>
+                                            <input type="checkbox" id="hot" name="is_hot"> Nổi bật
+                                        </label>
+                                    </div>
+                                </div>
                                 <div>
                                     <div class="col-xs-12">
                                         <ul class="col-xs-12 nav nav-pills nav-justified language" role="tablist">

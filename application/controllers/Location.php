@@ -32,7 +32,7 @@ class Location extends Public_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
 
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc', $this->data['lang'], $per_page, $this->data['page'],$this->data['keyword'],$this->data['category']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('asc', $this->data['lang'], $per_page, $this->data['page'],$this->data['keyword'],$this->data['category']);
         $this->data['area'] = $this->area_model->get_all_area();
         $this->render('location_view');
     }

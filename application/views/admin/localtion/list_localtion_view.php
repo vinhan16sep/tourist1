@@ -42,7 +42,12 @@
                         </div>
                         <div class="col-md-9">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
-                                <div class="col-md-5">
+                                <div class="col-md-2" style="margin-top: 5px;">
+                                    <label>
+                                        <input type="checkbox" name="hot" <?php echo (!empty($is_hot))? 'checked' : '';?>> <span>Nổi bật</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
                                     <select name="area_id" class="form-control">
                                         <option value="">Tìm kiếm theo khu vực</option>
                                         <?php foreach ($area as $key => $value): ?>
@@ -50,7 +55,7 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Tìm kiếm theo tên tiêu đề..." name="search" value="<?php echo $keyword ?>">
                                         <span class="input-group-btn">

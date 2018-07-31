@@ -25,6 +25,7 @@ class Localtion extends Admin_Controller {
     public function index() {
         $this->data['keyword'] = '';
         $this->data['area_id'] = '';
+        $this->data['is_hot'] = (!empty($this->input->get('hot')))?'1':'';
         if($this->input->get('search')){
             $this->data['keyword'] = $this->input->get('search');
         }
@@ -33,13 +34,13 @@ class Localtion extends Admin_Controller {
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['area_id'],'vi');
+        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['area_id'],$this->data['is_hot'],'vi');
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->data['area'] = $this->area_model->get_all_area();
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc','vi' , $per_page, $this->data['page'], $this->data['keyword'],$this->data['area_id']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc','vi' , $per_page, $this->data['page'], $this->data['keyword'],$this->data['area_id'],$this->data['is_hot'],1);
         $this->render('admin/localtion/list_localtion_view');
     }
     public function create(){
@@ -62,11 +63,11 @@ class Localtion extends Admin_Controller {
                 if(!empty($_FILES['image_localtion']['name'])){
                     $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/localtion/'.$unique_slug, 'assets/upload/localtion/'.$unique_slug.'/thumb');
                 }
+                $is_hot = (!empty($this->input->post('is_hot')))? '1' : '0'; 
                 $localtion_request = array(
                     'slug' => $unique_slug,
-                    // 'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'area_id' => $this->input->post('area_id'),
-                    // 'localtion' => $this->input->post('localtion'),
+                    'is_hot' => $is_hot,
                 );
                 if(isset($localtionimage)){
                     $localtion_request['image'] = $localtionimage;
@@ -123,10 +124,10 @@ class Localtion extends Admin_Controller {
                     $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
                     $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/localtion/'.$unique_slug, 'assets/upload/localtion/'.$unique_slug.'/thumb');
                 }
+                $is_hot = (!empty($this->input->post('is_hot')))? '1' : '0'; 
                 $localtion_request = array(
-                    // 'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
                     'area_id' => $this->input->post('area_id'),
-                    // 'localtion' => $this->input->post('localtion')
+                    'is_hot' => $is_hot,
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $localtion_request['slug'] = $unique_slug;
