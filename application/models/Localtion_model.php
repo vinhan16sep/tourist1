@@ -144,7 +144,7 @@ class Localtion_model extends MY_Model {
         return $this->db->get()->row_array();
     }
 
-    public function get_all_with_pagination_searchs($order = 'desc',$lang = 'vi', $limit = NULL, $start = NULL, $keywords = '',$area_id = '') {
+    public function get_all_with_pagination_searchs($order = 'asc',$lang = 'vi', $limit = NULL, $start = NULL, $keywords = '',$area_id = '',$is_hot = '', $is_backend = '') {
         $this->db->select($this->table .'.*, '. $this->table_lang .'.title as title,'. $this->table_lang .'.description,'. $this->table_lang .'.content, area.vi as vi, area.en as en');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
@@ -157,12 +157,19 @@ class Localtion_model extends MY_Model {
         if($area_id != ''){
             $this->db->where($this->table .'.area_id', $area_id);
         }
+        if($is_hot != ''){
+            $this->db->where($this->table .'.is_hot', $is_hot);
+        }
         $this->db->limit($limit, $start);
-        $this->db->order_by($this->table .".id", $order);
+        if(empty($is_backend)){
+            $this->db->order_by($this->table .".is_hot desc, " . $this->table_lang . ".title ". $order);
+        }else{
+            $this->db->order_by($this->table .".id", $order);
+        }
 
         return $this->db->get()->result_array();
     }
-    public function count_searchs($keyword = '',$area_id = '',$lang = 'vi'){
+    public function count_searchs($keyword = '',$area_id = '',$is_hot = '',$lang = 'vi'){
         $this->db->select($this->table . '.*');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
@@ -173,6 +180,9 @@ class Localtion_model extends MY_Model {
         }
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
+        }
+        if($is_hot != ''){
+            $this->db->where($this->table .'.is_hot', $is_hot);
         }
         $this->db->where($this->table .'.is_deleted', 0);
 
