@@ -82,6 +82,7 @@ class Post extends Admin_Controller{
                 }
             	$slug = $this->input->post('slug_shared');
                 $unique_slug = $this->post_model->build_unique_slug($slug);
+                $image = '';
                 if(!empty($_FILES['image_shared']['name'])){
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller, 'assets/upload/'.$this->controller.'/thumb');
                 }
