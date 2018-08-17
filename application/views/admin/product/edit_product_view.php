@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/admin/') ?>detail.css">
+<?php
+// echo '<pre>';
+// print_r($area_selected);
+// echo '</pre>';die;
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -256,7 +261,7 @@
                                                                                     <?php if(!empty($detail['librarylocaltion'][$i][0])): ?>
                                                                                         <option <?php echo ($value['id'] == $detail['librarylocaltion'][$i][0]['area_id'])?'selected' :''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
                                                                                     <?php else: ?>
-                                                                                        <option value="<?php echo $value['id']; ?>"><?php echo $value[$lang]; ?></option>
+                                                                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
                                                                                     <?php endif ?>
                                                                                 <?php endforeach ?>
                                                                         </select>

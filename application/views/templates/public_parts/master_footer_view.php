@@ -90,7 +90,7 @@
 				<div class="body">
 					<ul class="list-inline">
 						<li>
-							<a href="" target="_blank">
+							<a href="https://www.facebook.com/100018689910568" target="_blank">
 								<i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i>
 							</a>
 						</li>
