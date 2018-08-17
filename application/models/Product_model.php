@@ -82,11 +82,11 @@ class Product_model extends MY_Model{
         return $this->db->get()->result_array();
     }
     public function get_all_for_remove($id_localtion='') {
-        $this->db->select('id,librarylocaltion');
+        $this->db->select('id,librarylocaltion,is_deleted');
         $this->db->from($this->table);
-        $this->db->like('librarylocaltion', '"'.$id_localtion.'"')->or_like('librarylocaltion', ','.$id_localtion.',')->or_like('librarylocaltion', ','.$id_localtion.'"')->or_like('librarylocaltion', '"'.$id_localtion.',');
-        $this->db->where('is_deleted', 0);
-        return $result = $this->db->get()->result_array();
+        $this->db->where("is_deleted = 0 AND (`librarylocaltion` LIKE  '%\"$id_localtion\"%' OR `librarylocaltion` LIKE  '%,$id_localtion,%' OR `librarylocaltion` LIKE  '%,$id_localtion\"%' OR `librarylocaltion` LIKE  '%\"$id_localtion,%')");
+        // echo $this->db->get_compiled_select();
+        return $this->db->get()->result_array();
     }
 
     public function get_by_slug($slug, $select = array(), $lang = '') {
