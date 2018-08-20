@@ -1030,7 +1030,6 @@ footer.footer {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   padding: 0; }
   .section#visa .overlay {
     width: 100%;

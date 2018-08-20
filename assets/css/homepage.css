@@ -288,13 +288,13 @@ header.header {
               header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li > ul > li a {
                 font-weight: 400;
                 text-transform: uppercase; }
-          header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover {
+          header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active {
             background-color: #eaeaea; }
-            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover a {
+            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active a {
               color: #666; }
-              header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover a:hover {
+              header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active a:hover {
                 color: #666; }
-            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li:hover > ul {
+            header.header .container-fluid .container#main-nav > ul > li.menu-tabs .menu-tabs-expand > li.active > ul {
               display: block; }
         header.header .container-fluid .container#main-nav > ul > li.menu-dropdown .menu-dropdown-expand {
           padding: 15px; }
@@ -1030,7 +1030,6 @@ footer.footer {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   padding: 0; }
   .section#visa .overlay {
     width: 100%;
