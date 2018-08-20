@@ -5,6 +5,7 @@
 // echo '</pre>';die;
 ?>
 <div class="content-wrapper">
+    <div id="encypted_ppbtn_all"></div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -336,6 +337,8 @@
                                         </div>
                                     <?php endfor; ?>
                                 </div>
+
+
                                 <div class="col-md-12 tab-content">
                                     <span class="append-date" id="append-date"><i class="fa-2x fa fa-plus-square"></i></span>
                                 </div>
