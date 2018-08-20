@@ -260,7 +260,7 @@ function errorHandle(jqXHR, exception){
             method: "post",
             url: url,
             data: {
-                area : $($(this)[0]).val(), csrf_diamondtour_token : csrf_hash
+                area : $($(this)[0]).val(), selectlocaltion:$('#go-place_'+stt).val(), csrf_diamondtour_token : csrf_hash
             },
             success: function(response){
                 console.log(response)

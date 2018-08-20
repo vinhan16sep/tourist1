@@ -252,7 +252,7 @@ class Product extends Admin_Controller{
             $reponse .= form_upload('img_date_'.$i.'[]',"",'class="form-control" id="img_date_'.$i.'"');
             $reponse .= form_label('Chọn khu vực ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
 
-            $reponse .= '<select class="form-control" name="parengoplace_'.$i.'" data-idlocaltion="'.$i.'" style="width: 100%;"  id="paren-go-place_'.$i.'">';
+            $reponse .= '<select class="form-control select2 select2-hidden-accessible" name="parengoplace_'.$i.'"   multiple="" readonly data-idlocaltion="'.$i.'" style="width: 100%;" data-placeholder="Select a State" style="width: 100%;min-height:34px;min-width:300px;" tabindex="-1" aria-hidden="true"  id="paren-go-place_'.$i.'">';
             $reponse .= $this->area_selected();
             $reponse .= '</select>';
             $reponse .= form_label('Chọn những nơi đến ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
@@ -337,21 +337,24 @@ class Product extends Admin_Controller{
                 $this->data['detail']['date'] = "";
             }
             $librarylocaltion = json_decode($this->data['detail']['librarylocaltion']);
-            // echo '<pre>';
-            // print_r($this->data['detail']);
-            // echo '</pre>';die;
             $notlibrary = array();
             if(!empty($librarylocaltion)){
                 for($i=0;$i < count($librarylocaltion);$i++){
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
                     $library[$i] = $this->localtion_model->get_librarylocaltion_by_id_array($librarylocaltions);
+                    $selectarea[$i] = $this->localtion_model->get_groupby_area_id_array($librarylocaltions);
                     if(!empty($library[$i])){
-                        $notlibrary[$i] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions,$library[$i][0]['area_id']);
+                        for($j=0;$j < count($selectarea[$i]);$j++){
+                            $array_selectarea[$j] = $selectarea[$i][$j]['area_id'];
+                        }
+                        $notlibrary[$i] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions,$array_selectarea);
                     }
                 }
                 $this->data['detail']['librarylocaltion'] = $library;
+                $this->data['detail']['selectarea'] = $selectarea;
             }else{
                 $this->data['detail']['librarylocaltion'] = $librarylocaltion;
+                $this->data['detail']['selectarea'] = array();
             }
             $this->data['detail']['notlibrarylocaltion'] = $notlibrary;
             $dateimg_array = json_decode($detail['dateimg']);
@@ -664,7 +667,7 @@ class Product extends Admin_Controller{
         }
     }
     function area_selected($type='create'){
-        $result = '<option>Chọn khu vực</option>';
+        $result = '<option value="0">Chọn khu vực</option>';
         foreach ($this->area_model->get_all_area() as $key => $value) {
             $result .= '<option value="'.$value['id'].'">'.$value['vi'].'</option>';
         }
@@ -672,9 +675,15 @@ class Product extends Admin_Controller{
     }
     function ajax_area_selected(){
         $area =$this->input->post('area');
+        $selectlocaltion = !empty($this->input->post('selectlocaltion')) ? $this->input->post('selectlocaltion') : array();
         $result = '';
-        foreach ($this->localtion_model->get_by_area_id($area) as $key => $value) {
-            $result .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
+        if(!empty($area)){
+            foreach ($area as $key => $value) {
+                foreach ($this->localtion_model->get_by_area_id($value) as $key => $val) {
+                    $select = in_array($val['id'], $selectlocaltion) ? 'selected' : '';
+                    $result .= '<option value="'.$val['id'].'" ' . $select . ' >'.$val['title'].'</option>';
+                }
+            }
         }
         $reponse = array(
             'csrf_hash' => $this->security->get_csrf_hash(),

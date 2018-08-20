@@ -394,14 +394,14 @@ $("#button-numberdate,#append-date").click(function(){
 		 	$(document).off("change","[id^=paren-go-place_]").on("change","[id^=paren-go-place_]",function(){
 		 		var stt = $($(this)[0])[0].dataset.idlocaltion;
 		 		var url = HOSTNAMEADMIN + '/product/ajax_area_selected';
+		 		console.log(1);
 		        $.ajax({
 		            method: "post",
 		            url: url,
 		            data: {
-		                area : $($(this)[0]).val(), csrf_diamondtour_token : csrf_hash
+		                area : $($(this)[0]).val(), selectlocaltion:$('#go-place_'+stt).val(), csrf_diamondtour_token : csrf_hash
 		            },
 		            success: function(response){
-		            	console.log(response)
 		                csrf_hash = response.reponse.csrf_hash;
 		                if(response.status == 200 && response.isExisted == true){
 		                    $("input[name='csrf_diamondtour_token']").val(csrf_hash);

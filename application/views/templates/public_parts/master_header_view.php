@@ -196,9 +196,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 					<a class="right-caret visible-xs" data-toggle="collapse" data-parent="#main-nav-ul" href="#expand-domestic" aria-expanded="true" aria-controls="expand-domestic"><span class="caret"></span></a>
 					<ul class="menu-list-expand menu-expand collapse list-unstyled" id="expand-domestic">
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 						<!-- DOMESTIC MENU -->
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 
 						<?php
 						if($domestic_menu){
@@ -245,9 +245,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 						?>
 
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 						<!-- END DOMESTIC MENU -->
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 					</ul>
 				</li>
 				<li class="menu-tabs">
@@ -256,9 +256,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
 					<ul class="menu-tabs-expand menu-expand list-unstyled collapse" id="expand-international">
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 						<!-- INTERNATIONAL MENU -->
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
                         <?php
                         if($international_menu){
                             foreach($international_menu as $key => $val){
@@ -321,9 +321,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             }
                         }
                         ?>
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 						<!-- END INTERNATIONAL MENU -->
-						<!----------------------------------------------->
+						<!---------------------------------------------- -->
 					</ul>
 				</li>
 				<li>
@@ -331,16 +331,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php echo $this->lang->line('special-tours') ?>
 					</a>
 				</li>
-				<li class="menu-list">
+				
+				<li class="menu-list hidden">
 					<a href="<?php echo base_url('chuyen-muc/'.$mice_menu['slug']) ?>">
 						<?php echo $this->lang->line('mice') ?> <span class="caret"></span>
 					</a>
 					<a class="right-caret visible-xs" data-toggle="collapse" data-parent="#main-nav-ul" href="#expand-domestic" aria-expanded="true" aria-controls="expand-domestic"><span class="caret"></span></a>
 					<ul class="menu-list-expand menu-expand collapse list-unstyled" id="expand-domestic">
-						<!----------------------------------------------->
-						<!-- DOMESTIC MENU -->
-						<!----------------------------------------------->
-
 						<?php
 						if(!empty($mice_menu['sub'])){
 							foreach($mice_menu['sub'] as $key => $val){
@@ -363,6 +360,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						?>
 					</ul>
 				</li>
+				
 				<li class="menu-dropdown">
 					<a href="<?php echo base_url('chuyen-muc/dich-vu') ?>" class="nav-link">
 						<?php echo $this->lang->line('services') ?> <span class="caret hidden-xs"></span>

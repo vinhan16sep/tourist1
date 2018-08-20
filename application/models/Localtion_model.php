@@ -47,6 +47,16 @@ class Localtion_model extends MY_Model {
         $this->db->where($this->table_lang . '.language', $lang);
         return $result = $this->db->get()->result_array();
     }
+    public function get_groupby_area_id_array($librarylocaltion = array(), $lang ='vi'){
+        $this->db->select($this->table . '.area_id');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        $this->db->where_in($this->table . '.id', $librarylocaltion);
+        $this->db->where($this->table_lang . '.language', $lang);
+        $this->db->where('is_deleted', 0);
+        $this->db->group_by('area_id');
+        return $result = $this->db->get()->result_array();
+    }
     public function get_librarylocaltion_by_id_array($librarylocaltion = array(), $lang ='vi'){
         $this->db->select($this->table . '.*, ' . $this->table_lang . '.title as title');
         $this->db->from($this->table);
@@ -56,11 +66,11 @@ class Localtion_model extends MY_Model {
         $this->db->where('is_deleted', 0);
         return $result = $this->db->get()->result_array();
     }
-    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area, $lang ='vi'){
+    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area = array(), $lang ='vi'){
         $this->db->select($this->table . '.*, ' . $this->table_lang . '.title as title');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
-        $this->db->where($this->table . '.area_id', $area);
+        $this->db->where_in($this->table . '.area_id', $area);
         $this->db->where('is_deleted', 0);
         $this->db->where($this->table_lang . '.language', $lang);
         $this->db->where_not_in($this->table . '.id', $notlibrarylocaltion);
