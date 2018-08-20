@@ -1,5 +1,6 @@
 
 <div class="content-wrapper" id="create-product-view">
+    <div id="encypted_ppbtn_all"></div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
