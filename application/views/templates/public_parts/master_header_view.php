@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</li>
 					<li> | </li>
 					<li>
-						<a href="" target="_blank">
+						<a href="https://www.facebook.com/100018689910568" target="_blank">
 							<i class="fa fa-facebook-square" aria-hidden="true"></i>
 						</a>
 					</li>

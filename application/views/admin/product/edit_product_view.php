@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/admin/') ?>detail.css">
+<?php
+// echo '<pre>';
+// print_r($area_selected);
+// echo '</pre>';die;
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -252,7 +257,6 @@
                                                                             echo form_label('Chọn khu vực ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
                                                                         ?>
                                                                         <select class="form-control select2 select2-hidden-accessible" name="parengoplace_<?php echo $i; ?>"  multiple="" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;" data-placeholder="Select a State" style="width: 100%;min-height:34px;min-width:300px;" tabindex="-1" aria-hidden="true"  id="paren-go-place_<?php echo $i; ?>">
-                                                                        <!-- <select class="form-control" name="parengoplace_<?php echo $i; ?>" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;"  id="paren-go-place_<?php echo $i; ?>">'; -->
                                                                                 <?php foreach ($area_selected as $key => $value): ?>
                                                                                         <option <?php 
                                                                                             if(count($detail['selectarea'][$i]) > 0){
@@ -262,7 +266,7 @@
                                                                                                     }
                                                                                                 }
                                                                                             }?> value="<?php echo $value['id']; ?>"><?php echo $value['vi']; ?></option>
-                                                                                    
+                                                                                  
                                                                                 <?php endforeach ?>
                                                                         </select>
                                                                         <?php echo form_label('Chọn những nơi đến ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
