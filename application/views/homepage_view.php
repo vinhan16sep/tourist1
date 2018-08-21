@@ -94,9 +94,7 @@
 			<?php if (!empty($banner)): ?>
 				<?php foreach ($banner as $key => $value): ?>
 					<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
-						<div class="mask">
-							<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
-						</div>
+						<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
 						<!--
 						<div class="carousel-caption">
 							<?php echo $value['title']; ?>

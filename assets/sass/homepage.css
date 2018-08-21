@@ -684,7 +684,7 @@ footer.footer {
   padding-left: 0;
   padding-right: 0; }
   #slider .slide {
-    height: 75vh; }
+    height: auto; }
     #slider .slide .carousel-inner {
       height: 100%; }
       #slider .slide .carousel-inner .item {
