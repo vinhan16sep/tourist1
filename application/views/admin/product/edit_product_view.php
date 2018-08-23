@@ -239,7 +239,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12" id="content-full-date">
-                                    <?php for ($i=0; $i < count($detail['datecontent_vi']); $i++): ?>
+                                    <?php for ($i=0; $i < count($detail['datetitle_vi']); $i++): ?>
                                         <div class="vi">
                                             <div role="tabpanel" class="tab-pane active" id="<?php echo $i; ?>">
                                                 <div class="title-content-date showdate <?php echo $i; ?>">
@@ -293,7 +293,12 @@
                                                                     </div>
                                                                     <div class="col-md-5" style="padding:0px;">
                                                                         <b>Hình ảnh ngày <?php echo $i+1;?> đang sử dụng</b>
-                                                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. json_decode($detail['dateimg'])[$i]); ?>" style="width: 95%; height: 220px;padding-top: 6px;">
+                                                                        <?php if(count(json_decode($detail['dateimg'])) == 1 && json_decode($detail['dateimg'])[0] == ''): ?>
+                                                                            <?php $image = ''; ?>
+                                                                        <?php else: ?>
+                                                                            <?php $image = json_decode($detail['dateimg'])[$i]; ?>
+                                                                        <?php endif; ?>
+                                                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. $image); ?>" style="width: 95%; height: 220px;padding-top: 6px;">
                                                                     </div>
                                                                 </div>
                                                                 <div style="margin-top: 10px;">
