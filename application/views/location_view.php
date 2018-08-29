@@ -4,9 +4,9 @@
 <section class="cover">
 	<div class="overlay"></div>
     <?php if (count($result) >0 ): ?>
-        <img src="<?php echo base_url('/assets/upload/localtion/' . $result[count($result)-1]['slug'] . '/' . $result[count($result)-1]['image']) ?>" alt="cover">
+        <img src="<?php echo base_url('/assets/upload/localtion/' . $result[count($result)-1]['slug'] . '/' . $result[count($result)-1]['image']) ?>" alt="<?php echo $result[count($result)-1]['title']; ?>">
     <?php else: ?>
-        <img src="<?php echo base_url('/assets/image/horizontal.jpg') ?>" alt="cover">
+        <img src="<?php echo base_url('/assets/image/horizontal.jpg') ?>" alt="<?php echo $result[count($result)-1]['title']; ?>">
     <?php endif ?>
 	
 </section>
@@ -54,7 +54,7 @@
                             <div class="wrapper">
                                 <div class="mask">
                                     <a href="<?php echo base_url('diem-den/' . $val['slug']) ?>">
-                                        <img src="<?php echo site_url('assets/upload/localtion/' . $val['slug'] . '/' . $val['image']); ?>" alt="image">
+                                        <img src="<?php echo site_url('assets/upload/localtion/' . $val['slug'] . '/' . $val['image']); ?>" alt="<?php echo $val['title']; ?>">
                                     </a>
                                 </div>
                                 <div class="head">

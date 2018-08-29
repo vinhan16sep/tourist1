@@ -25,7 +25,7 @@
     					<div class="item col-md-4 col-sm-6 col-xs-12">
     						<div class="wrapper">
                                 <div class="mask">
-                                    <img src="<?php echo site_url('assets/upload/post/' . $val['image']); ?>" alt="image blog">
+                                    <img src="<?php echo site_url('assets/upload/post/' . $val['image']); ?>" alt="<?php echo $val['title']; ?>">
                                 </div>
     							<div class="head">
                                     <h4 class="post-subtitle"><?php echo $val['parent_title']; ?></h4>

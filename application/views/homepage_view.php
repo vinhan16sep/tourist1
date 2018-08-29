@@ -94,7 +94,7 @@
 			<?php if (!empty($banner)): ?>
 				<?php foreach ($banner as $key => $value): ?>
 					<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
-						<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
+						<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="<?php echo $value['title']?>">
 						<!--
 						<div class="carousel-caption">
 							<?php echo $value['title']; ?>
@@ -119,7 +119,6 @@
 		</a>
 	</div>
 </section>
-
 <section id="tour-special" class="container-fluid section">
 	<div class="container">
 		<div class="section-header">
@@ -189,7 +188,7 @@
 										</div>
 
 										<div class="mask">
-											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="<?php echo $value['title']; ?>">
 											<div class="overview">
 												<div class="head">
 													<h4 class="post-subtitle"><?php echo $value['category_title']; ?></h4>
@@ -338,9 +337,9 @@
                                                 <div class="mask">
                                                     <a href="<?php echo base_url('tours/' . $value['slug']) ?>">
                                                         <?php if($value['image']){ ?>
-                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="<?php echo $value['title']; ?>">
                                                         <?php }else{ ?>
-                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="<?php echo $value['title']; ?>">
                                                         <?php } ?>
                                                     </a>
                                                     <div class="overview">
@@ -525,9 +524,9 @@
 												<div class="mask">
 													<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
                                                         <?php if($value['image']){ ?>
-                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+                                                            <img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="<?php echo $value['title']; ?>">
                                                         <?php }else{ ?>
-                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+                                                            <img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="<?php echo $value['title']; ?>">
                                                         <?php } ?>
 													</a>
 													<div class="overview">
@@ -709,7 +708,7 @@
 					<a href="<?php echo base_url('bai-viet/').$value['slug'] ?>">
 						<div class="item col-sm-6 col-xs-12">
 							<div class="mask">
-								<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="blogs image">
+								<img src="<?php echo base_url('/assets/upload/post/'.$value['image']);?>" alt="<?php echo $value['title']; ?>">
 								<div class="overlay"></div>
 								<div class="content">
 									<h4 class="sub-header"><?php echo $value['category_title'];?></h4>
@@ -780,7 +779,7 @@
 				<div class="inner">
 					<a href="<?php echo base_url('diem-den/'.$value['slug']) ?>">
 						<div class="mask">
-							<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="blogs image">
+							<img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="<?php echo $value['title']; ?>">
 						</div>
 					</a>
 					<div class="head">

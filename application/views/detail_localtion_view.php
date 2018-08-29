@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
-	<img src="<?php echo site_url('assets/upload/localtion/' . $detail['slug'] .'/'. $detail['image']); ?>" alt="image blog">
+	<img src="<?php echo site_url('assets/upload/localtion/' . $detail['slug'] .'/'. $detail['image']); ?>" alt="<?php echo $detail['title'] ?>">
 </section>
 
 <div id="detail-post" class="container-fluid">
@@ -20,7 +20,7 @@
                     </div>
 
                     <article>
-                        <img src="<?php echo base_url('assets/upload/localtion/'.$detail['slug'].'/'.$detail['image']) ?>" alt="" style="width: 100%;">
+                        <img src="<?php echo base_url('assets/upload/localtion/'.$detail['slug'].'/'.$detail['image']) ?>" alt="<?php echo $detail['title'] ?>" style="width: 100%;">
 
                         <p><?php echo $detail['content'] ?></p>
                     </article>
@@ -102,7 +102,7 @@
                             <div class="wrapper">
                                 <div class="mask">
                                     <a href="<?php echo base_url('diem-den/'.$value['slug']) ?>">
-                                        <img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']) ?>" alt="" style="width: 100%;">
+                                        <img src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']) ?>" alt="<?php echo $value['title'];?>" style="width: 100%;">
                                     </a>
                                 </div>
                                 <div class="head">
