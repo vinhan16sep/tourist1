@@ -223,7 +223,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												?>
 																<li>
 																	<div class="mask hidden-xs">
-																		<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="image first tour">
+																		<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . $sub_val['image']); ?>" alt="<?php echo $sub_val['title']; ?>">
 
 																		<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
 																	</div>
@@ -276,7 +276,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<li>
 													<div class="mask">
 														<?php if (!empty(json_decode($sub_val['image']))): ?>
-															<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . json_decode($sub_val['image'])[0]); ?>" alt="image example">
+															<img src="<?php echo site_url('assets/upload/product_category/' . $sub_val['slug'] . '/' . json_decode($sub_val['image'])[0]); ?>" alt="<?php echo $sub_val['title']; ?>">
 														<?php endif; ?>
 													</div>
 													<a href="<?php echo base_url('danh-muc/' . $sub_val['slug']); ?>"><?php echo $sub_val['title']; ?></a>
@@ -293,7 +293,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     ?>
 													<li>
 														<div class="mask">
-															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>" alt="image example">
+															<img src="<?php echo site_url('assets/upload/product/' . $tour['slug'] . '/' . $tour['image']); ?>" alt="<?php echo $tour['title']; ?>">
 
 															<div class="tour-badge">
                                                                 <?php if (!empty($tour['bestselling'])): ?>
@@ -350,7 +350,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="body">
 									<div class="mask hidden-xs" style="width: 100%;height: 200px;overflow: hidden;position: relative;">
-										<img src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="image first tour">
+										<img src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="<?php echo $val['title']; ?>">
 									</div>
 								</div>
 							</li>
@@ -375,7 +375,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<li class="media col-sm-6 col-xs-12">
 									<div class="media-left">
 										<div class="mask">
-											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="service hotel">
+											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="<?php echo $val['title'] ?>">
 										</div>
 									</div>
 									<div class="media-body">
@@ -409,7 +409,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<li class="media col-sm-6 col-xs-12">
 									<div class="media-left">
 										<div class="mask">
-											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="service hotel">
+											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="<?php echo $val['title'] ?>">
 										</div>
 									</div>
 									<div class="media-body">
@@ -443,7 +443,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<?php 
 											if(!empty($location)){
 										?>
-											<img class="media-object" src="<?php echo site_url('assets/upload/localtion/' . $location[0]['slug'] .'/'. $location[0]['image']); ?>" alt="service hotel">
+											<img class="media-object" src="<?php echo site_url('assets/upload/localtion/' . $location[0]['slug'] .'/'. $location[0]['image']); ?>" alt="<?php echo $location[0]['title']; ?>">
 										<?php 
 											}
 										?>
@@ -473,7 +473,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<li class="media col-sm-4 col-xs-12">
 									<div class="media-left">
 										<div class="mask">
-											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="service air tickets">
+											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="<?php echo $val['title'] ?>">
 										</div>
 									</div>
 									<div class="media-body">

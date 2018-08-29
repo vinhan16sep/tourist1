@@ -3,7 +3,7 @@
 
 <section class="cover">
     <div class="overlay"></div>
-    <img src="<?php echo base_url('/assets/upload/post/' . $detail['image']) ?>" alt="cover">
+    <img src="<?php echo base_url('/assets/upload/post/' . $detail['image']) ?>" alt="<?php echo $detail['title'] ?>">
 </section>
 <div id="detail-post" class="container-fluid">
     <div class="container">
@@ -20,7 +20,7 @@
                     </div>
 
                     <article>
-                        <img src="<?php echo base_url('assets/upload/post/' . $detail['image']) ?>" alt="" style="width: 100%;">
+                        <img src="<?php echo base_url('assets/upload/post/' . $detail['image']) ?>" alt="<?php echo $detail['title'] ?>" style="width: 100%;">
 
                         <p><?php echo $detail['content'] ?></p>
                     </article>
@@ -103,7 +103,7 @@
                             <div class="wrapper">
                                 <div class="mask">
                                     <a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>">
-                                        <img src="<?php echo base_url('assets/upload/post/' . $value['image']) ?>" alt="" style="width: 100%;">
+                                        <img src="<?php echo base_url('assets/upload/post/' . $value['image']) ?>" alt="<?php echo $value['title'];?>" style="width: 100%;">
                                     </a>
                                 </div>
                                 <div class="head">

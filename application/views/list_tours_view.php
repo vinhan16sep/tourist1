@@ -7,7 +7,7 @@
 				<?php foreach (json_decode($detail['image']) as $key => $value): ?>
 					<div class="item <?php echo ($key == 0)?'active':'';?>">
 						<div class="mask">
-							<img src="<?php echo base_url('assets/upload/product_category/'.$detail['slug'].'/'.$value);?>" alt="...">
+							<img src="<?php echo base_url('assets/upload/product_category/'.$detail['slug'].'/'.$value);?>" alt="<?php echo $detail['title'] ?>">
 						</div>
 					</div>
 				<?php endforeach ?>
@@ -73,7 +73,7 @@
 							</div>
 
 							<div class="mask">
-								<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
+								<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="<?php echo $product_array[$i]['title'] ?>">
 								<div class="overview">
 									<div class="head">
 										<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>

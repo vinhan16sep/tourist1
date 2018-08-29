@@ -1,13 +1,9 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
-
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['image']) ?>')"></section>
-
 <section id="page">
     <div class="container">
         <div class="row">
-
-
             <!-- GET DETAIL OF TOUR -->
             <div id="tour-detail" class="col-sm-9 col-xs-12">
                 <ol class="breadcrumb hidden-xs">
@@ -173,7 +169,7 @@
                                                             <div class="media">
                                                                 <div class="media-left">
                                                                     <div class="mask">
-                                                                        <img class="media-object" src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['dateimg'][$i]); ?>" alt="daily schedule image">
+                                                                        <img class="media-object" src="<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['dateimg'][$i]); ?>" alt="<?php echo $detail['datetitle'][$i]; ?>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="media-body">
@@ -217,7 +213,7 @@
                                                                         <div class="media">
                                                                             <div class="media-left">
                                                                                 <div class="mask">
-                                                                                    <img class="media-object" src="<?php echo base_url('/assets/upload/localtion/'.$detail['librarylocaltion'][$i][$j]['slug'].'/'.$detail['librarylocaltion'][$i][$j]['image']); ?>" alt="daily schedule image">
+                                                                                    <img class="media-object" src="<?php echo base_url('/assets/upload/localtion/'.$detail['librarylocaltion'][$i][$j]['slug'].'/'.$detail['librarylocaltion'][$i][$j]['image']); ?>" alt="<?php echo $detail['librarylocaltion'][$i][$j]['title'] ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="media-body">
@@ -601,7 +597,7 @@
                                 </div>
 
                                 <div class="mask">
-                                    <img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
+                                    <img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="<?php echo $product_array[$i]['title'] ?>">
                                     <div class="overview">
                                         <div class="head">
                                             <h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>

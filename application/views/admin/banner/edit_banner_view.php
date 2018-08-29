@@ -26,8 +26,8 @@
                             <span><?php echo $this->session->flashdata('message'); ?></span>
                         </div>
                         <div class="form-group col-xs-12">
-                            <label for="image_shared">Hình ảnh đang dùng</label>
-                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['image']); ?>" alt="anh-mo-ta" width=150>
+                            <label for="image_shared">Hình ảnh đang dùng</label></br>
+                            <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$detail['image']); ?>" alt="anh-mo-ta" width=150>
                         </div>
                         <div class="form-group col-xs-12">
                             <?php
@@ -37,7 +37,7 @@
                             ?>
                             <br>
                         </div>
-                        <!-- <div>
+                        <div>
                             <ul class="nav nav-pills nav-justified" role="tablist">
                                 <?php $i = 0; ?>
                                 <?php foreach ($page_languages as $key => $value): ?>
@@ -62,15 +62,16 @@
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
                                                         echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'"');
-                                                    }elseif($k == 'description' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_textarea($k .'_'. $key,  trim($detail['description_'. $key]), 'class="form-control" rows="5"');
-                                                    }elseif($k == 'content' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_textarea($k .'_'. $key,  trim($detail['content_'. $key]), 'class="tinymce-area form-control" rows="5"');
                                                     }
+                                                    // elseif($k == 'description' && in_array($k, $request_language_template)){
+                                                    //     echo form_label($val, $k .'_'. $key);
+                                                    //     echo form_error($k .'_'. $key);
+                                                    //     echo form_textarea($k .'_'. $key,  trim($detail['description_'. $key]), 'class="form-control" rows="5"');
+                                                    // }elseif($k == 'content' && in_array($k, $request_language_template)){
+                                                    //     echo form_label($val, $k .'_'. $key);
+                                                    //     echo form_error($k .'_'. $key);
+                                                    //     echo form_textarea($k .'_'. $key,  trim($detail['content_'. $key]), 'class="tinymce-area form-control" rows="5"');
+                                                    // }
                                                 ?>
                                             </div>
                                         <?php endforeach ?>
@@ -78,7 +79,7 @@
                                 <?php $i++; ?>
                                 <?php endforeach ?>
                             </div>
-                        </div> -->
+                        </div>
                         <?php echo form_submit('submit_shared', 'OK', 'class="btn btn-primary"'); ?>
                         <?php echo form_close(); ?>
                     </div>
