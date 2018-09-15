@@ -5,7 +5,7 @@
 */
 class Post extends Admin_Controller{
 	private $request_language_template = array(
-        'title', 'description', 'content'
+        'title', 'description', 'content','metakeywords', 'metadescription'
     );
     private $author_data = array();
     private $controller = '';
@@ -132,10 +132,10 @@ class Post extends Admin_Controller{
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['comments'] = $this->comment_model->get_all_by_product_id($id , $per_page, $this->data['page'],1);
 
-        $detail = $this->post_model->get_by_id($id, array('title', 'description', 'content'));
+        $detail = $this->post_model->get_by_id($id, $this->request_language_template);
         
 
-        $detail = build_language($this->controller, $detail, array('title', 'description', 'content'), $this->page_languages);
+        $detail = build_language($this->controller, $detail, $this->request_language_template, $this->page_languages);
         $parent_title = $this->build_parent_title($detail['post_category_id']);
         $detail['parent_title'] = $parent_title;
 
@@ -150,8 +150,8 @@ class Post extends Admin_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $detail = $this->post_model->get_by_id($id, array('title', 'description', 'content'));
-        $detail = build_language($this->controller, $detail, array('title', 'description', 'content'), $this->page_languages);
+        $detail = $this->post_model->get_by_id($id, $this->request_language_template);
+        $detail = build_language($this->controller, $detail, $this->request_language_template, $this->page_languages);
         $category = $this->post_category_model->get_by_parent_id(null,'asc');
         
         $this->data['category'] = $category;

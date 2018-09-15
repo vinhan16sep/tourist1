@@ -187,9 +187,9 @@
                                                             echo form_error($k .'_'. $key);
                                                             echo form_textarea($k .'_'. $key,  trim($detail['content_'. $key]), 'class="tinymce-area form-control" rows="5" id="content_'.$key.'" ');
                                                         }elseif($k == 'metakeywords' && in_array($k, $request_language_template)){
-                                                        echo form_label($val, $k .'_'. $key);
-                                                        echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, trim($detail['metakeywords_'. $key]), 'class="form-control" id="metakeywords_'.$key.'"');
+                                                            echo form_label($val, $k .'_'. $key);
+                                                            echo form_error($k .'_'. $key);
+                                                            echo form_input($k .'_'. $key, trim($detail['metakeywords_'. $key]), 'class="form-control" id="metakeywords_'.$key.'"');
                                                         }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
                                                             echo form_label($val, $k .'_'. $key);
                                                             echo form_error($k .'_'. $key);

@@ -164,7 +164,7 @@ class Post_model extends MY_Model{
         return $this->db->get()->result_array();
     }
     public function fetch_row_by_slug($slug,$lang ='en'){
-        $this->db->select('post.*, post_category_lang.title as parent_title, post_category.slug as parent_slug, post_lang.title as title, post_lang.description as description, post_lang.content as content');
+        $this->db->select('post.*, post_category_lang.title as parent_title, post_category.slug as parent_slug, post_lang.title as title, post_lang.description as description, post_lang.content as content, post_lang.metakeywords as metakeywords, post_lang.metadescription as metadescription');
         $this->db->from($this->table);
         $this->db->join('post_lang', 'post_lang.post_id = post.id');
         $this->db->join('post_category', 'post_category.id = post.post_category_id');

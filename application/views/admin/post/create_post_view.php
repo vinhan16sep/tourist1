@@ -87,6 +87,14 @@
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
                                                         echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="tinymce-area form-control" rows="5"');
+                                                    }elseif($k == 'metakeywords' && in_array($k, $request_language_template)){
+                                                        echo form_label($val, $k .'_'. $key);
+                                                        echo form_error($k .'_'. $key);
+                                                        echo form_input($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control" id="metakeywords_'.$key.'" ');
+                                                    }elseif($k == 'metadescription' && in_array($k, $request_language_template)){
+                                                        echo form_label($val, $k .'_'. $key);
+                                                        echo form_error($k .'_'. $key);
+                                                        echo form_input($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control" id="metadescription_'.$key.'" ');
                                                     }
                                                 ?>
                                             </div>
