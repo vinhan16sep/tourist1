@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
-    <?php if (!empty($category)): ?>
-        <img src="<?php echo site_url('assets/upload/post_category/' . $category['image']); ?>" alt="cover">
+    <?php if (!empty($detail)): ?>
+        <img src="<?php echo site_url('assets/upload/post_category/' . $detail['image']); ?>" alt="cover">
     <?php endif ?>
 </section>
 
@@ -12,7 +12,7 @@
         <div class="row">
             <div class="left col-md-12">
             <div class="section-header">
-                <h1><?php echo $category['title']; ?></h1>
+                <h1><?php echo $detail['title']; ?></h1>
                 <div class="line">
                     <div class="line-primary"></div>
                 </div>

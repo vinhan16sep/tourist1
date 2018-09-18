@@ -26,7 +26,7 @@ class Post extends Public_Controller {
     }
     public function category($slug) {
         $category = $this->post_category_model->fetch_row_by_slug($slug,$this->data['lang']);
-        $this->data['category'] = $category;
+        $this->data['detail'] = $category;
         $this->get_multiple_posts_with_category_id($this->post_category_model->get_all(), $category['id'], $id_array);
         if(empty($id_array)){
             $id_array = array();

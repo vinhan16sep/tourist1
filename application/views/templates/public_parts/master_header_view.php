@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</li>
 					<li> | </li>
 					<li>
-						<a href="https://www.facebook.com/100018689910568" target="_blank">
+						<a href="https://www.facebook.com/431777323850094/" target="_blank">
 							<i class="fa fa-facebook-square" aria-hidden="true"></i>
 						</a>
 					</li>
@@ -437,7 +437,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a class="right-caret visible-xs" href="#"><span class="caret"></span></a>
 					<ul class="menu-dropdown-expand menu-expand collapse" id="expand-blogs">
 						<div class="row">
-							<li class="media col-sm-4 col-xs-12">
+							<li class="media col-sm-4 col-xs-12 hidden">
 								<div class="media-left">
 									<div class="mask">
 										<?php 
@@ -470,7 +470,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							if(!empty($blog_menu['sub'])){
 								foreach($blog_menu['sub'] as $key => $val){
 							?>
-								<li class="media col-sm-4 col-xs-12">
+								<li class="media col-sm-6 col-xs-12">
 									<div class="media-left">
 										<div class="mask">
 											<img class="media-object" src="<?php echo site_url('assets/upload/post_category/' . $val['image']); ?>" alt="<?php echo $val['title'] ?>">
@@ -674,7 +674,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div id="blogs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-blogs-heading">
 							<div class="panel-body">
 								<ul>
-									<li>
+									<li class="hidden">
 										<a href="<?php echo base_url('chuyen-muc/diem-den'); ?>">
 											<h3><?php echo $this->lang->line('location') ?></h3>
 										</a>
