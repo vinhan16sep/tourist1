@@ -429,6 +429,8 @@ header.header{
 
                         &.menu-tabs{
                             .menu-tabs-expand{
+                                min-height: 520px !important;
+                                
                                 > li{
                                     width: 25%;
 
